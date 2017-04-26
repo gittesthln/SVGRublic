@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+	<title>マウスをクリックした位置に円が移動</title>
+  <script type="text/ecmascript">
+//    <![CDATA[
+  window.onload = function() {
+    document.getElementById("Canvas").addEventListener("click",click, false);  
+  }
+  function click(E) {
+  let T = document.getElementById("Circle");
+    T.setAttribute("cx",E.clientX);  
+    T.setAttribute("cy",E.clientY);  
+  }
+//    ]]></script>
+  <rect x="0" y="0" width="100%" height="100%" fill="white" id="Canvas" />
+  <circle id="Circle" cx="50" cy="50" r="20" fill="red"
+          stroke="black" stroke-width="2" />
+</svg>

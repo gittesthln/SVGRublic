@@ -1,0 +1,135 @@
+\input beamerHead.tex
+\TITLE{4}{3}{DOMの操作とイベント(2)}{5/17}
+\begin{document}
+\frame{\maketitle}
+\section{イベント処理関数をつける要素について}
+\begin{frame}[containsverbatim]
+ \frametitle{イベント処理を登録する要素について}
+\begin{itemize}
+ \item イベントを処理関数は個々の要素につける必要はない
+ \item ある要素上で起きたイベントは親要素にも伝えられる
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{円の上をクリックすると円の色を表示(3)%\\ソースコード(1)
+ }
+%  \framesubtitle{開始時にイベント処理関数を親要素に定義}
+ \LISTINGFP{7}{svg-js-click-rev2.svg}{1}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{円の上をクリックすると円の色を表示する}
+ \framesubtitle{イベント処理をつける要素について}
+\begin{itemize}
+ \item 3つの円を子要素に持つ\ELM{g}を追加(16行目)
+ \item \ELM{g}の\ATTR{id}が\VAL{Canvas}
+ \item 9行目で指定された\ATTR{id}を持つ要素を\JSKey{getElementById}メソッ
+       ドで得る
+ \item 10行目でその要素に対してイベントリスナーをつける
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ 16行目の\ELM{g}を取り除いて、\ELM{svg}に\ATTR{id}を\VAL{Canvas}
+				にすると正しく動くか確認する
+\end{frame}
+\section{マウスのドラッグを処理する}
+\begin{frame}[containsverbatim]
+ \frametitle{マウスのドラッグを処理}
+\begin{itemize}
+ \item マウスのイベントにドラッグというイベントはない
+ \item マウスのドラッグを処理とはマウスのボタンが押されたままマウスカー
+       ソルを移動することなので次のように処理
+\begin{itemize}
+ \item マウスのボタンが押される(\JSKey{mousedown}イベント)
+ \item マウスカーソルが移動している間は\JSKey{mousemove}イベントが発生
+ \item マウスボタンを離す(\JSKey{mouseup}イベント)
+\end{itemize}
+ \item ここでは\JSKey{mousedown}イベントが発生したら要素に
+       \JSKey{mousemove}イベント処理関数を登録し、マウスボタンが離された
+       らその処理関数を取り除くという処理を行う
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{マウスのドラッグを処理}
+ \LISTINGNFP{svg-js-drag.svg}{1}{13}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{マウスのドラッグを処理(2)}
+ \LISTINGNFP{svg-js-drag.svg}{14}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{マウスのドラッグを処理--ソースコード解説(1)}
+\begin{itemize}
+ \item ファイルがロードされた後で実行する関数が9行目から13行目で定義
+   \begin{itemize}
+    \item 10行目で\ELM{svg}のリストを\JSKey{getElementsByTagName}を用い
+          て得ている。この条件を満たすものはひとつしかないので
+          \JSKey{[0]}でその要素が得られる。
+    \item この要素に対して、11行目で\JSKey{mousedown}の、12行目で
+          \JSKey{mouseup}のイベント処理関数を登録
+   \end{itemize}
+ \item 14行目から18行目で\JSKey{mousedown}のイベント処理関数
+       \texttt{mdown}を定義
+  \begin{itemize}
+   \item 15行目でイベントが発生した要素を変数\texttt{inDragging}に保存
+	 \item 16行目でイベントが捕らえられたオブジェクトをコンソールに出力
+	 \item \JSKey{alert}と異なり、実行がそこで中断しない
+	 \item 出力結果は「開発者ツール」の\texttt{Console}で確認できる
+   \item 17行目でこの要素に\JSKey{mousemove}のイベント処理関数を定義
+  \end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}
+ \frametitle{マウスのドラッグを処理--ソースコード解説(2)}
+\begin{itemize}
+\item 19行目から22行目で\JSKey{mousemove}のイベント処理関数を定義
+
+      ここでは\JSKey{mousemove}のイベントで得られたカーソル位置を
+      ドラッグ開始時に保存した円の中心座標に設定
+ \item 23行目から25行目で\JSKey{mouseup}の処理関数を定義
+
+       ここでは\JSKey{mousemove}のイベント処理関数を取り除く
+\end{itemize}
+
+ \JSKey{mousemove}のイベント処理関数では\texttt{event.target}の要素に対
+ して属性を定義していないことに注意
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{マウスのドラッグを処理(改良版)}
+ \LISTINGFP{7}{svg-js-drag-rev.svg}{1}{13}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{マウスのドラッグを処理(改良版)}
+ \LISTINGNFP{svg-js-drag-rev.svg}{14}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{マウスのドラッグを処理(改良版)--ソースコード解説}
+以前のコードに対し、18行目に\JSKey{appendChild}メソッドを使用。
+ \begin{itemize}
+  \item \JSKey{appendChild}はメソッドの要素に対して引数の要素を一番最後
+        の子要素として追加する
+  \item 引数の要素がすでにすでにどこかのの子要素となっていた場合にはそれ
+        がコピーされず、移動となる
+ \end{itemize}
+ {\bfseries 確認しよう}
+ DOMツリーを開いて、ドラッグした円が一番最後の要素になっているかどうか
+ 確認しよう
+\end{frame}
+% \section{やってみよう}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+\begin{itemize}
+ \item 正方形をドラッグするように変える
+ \item 文字をドラッグするように変える
+ \item 通常、アイコンなどをドラッグするときと、ドラッグするリストの相違点を述べ、
+			 それを改善する
+ \item \ELM{path}で描かれた図形をドラッグするものを作成する
+ \item 円と正方形の図形に対し、1種類のイベント処理関数でする方法を考えよ。
+			 図形の種類が増えてもイベント処理関数に手を付けないようにするには
+			 どのような方法があるか検討すること
+\end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

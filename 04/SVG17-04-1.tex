@@ -1,0 +1,185 @@
+\input beamerHead.tex
+\TITLE{4}{1}{簡単なイベント処理と開発者ツールの使い方}{5/16}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{JavvaScriptについて}
+\begin{frame}[containsverbatim]
+ \frametitle{JavaScriptの記述方法}
+ \begin{itemize}
+  \item JavaScriptの国際的規約は\texttt{ecmascript}と呼ばれる言語
+        仕様
+  \item JavaScriptのプログラムは\ELM{script}内に記述
+        \begin{itemize}
+         \item \ATTR{type}に\VAL{text/ecmascript}を指定
+         \item \ELM{script}内に直接プログラムを記述するためには
+               \texttt{CDATA}セクションと呼ばれる範囲に記述
+         \item \texttt{CDATA}セクションの始まりは\texttt{<![CDATA[}、終
+               了は\texttt{]]>}
+         \item この記述はJavaScriptとして文法上正しくないので
+               \texttt{//}をつけて、JavaScriptからみてコメントになるよう
+               にする。
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{JavaScriptの特徴}
+ \begin{itemize}
+  \item JavaScriptでは変数はどのような型のデータも保持できる。
+  \item 変数は宣言しなくても利用可能
+  \item 宣言する場合は \JSKey{var} キーワードを用いる(通常は宣言をする)
+  \item 文の最後には\JSKey{;}を置く
+  \item 文の記述方法はC言語とほとんど同じ
+  \item 関数は \JSKey{function} キーワードで始める。
+  \item そのあとに関数名と\texttt{()}内に仮引数の宣言をする
+  \item 関数本体は\texttt{\{\}}内に記述
+  \item 値を戻す場合には\JSKey{return} 文の後に戻り値を指定
+ \end{itemize}
+\end{frame}
+ \section{イベント}
+\begin{frame}[containsverbatim]
+ \frametitle{イベントとは}
+ \begin{itemize}
+  \item プログラムの実行中に内部または外部から伝えられる情報
+  \item イベントに対応して処理するプログラムをイベント駆動型と呼ぶ
+  \item イベント駆動型ではイベントの発生順序が前もって決められないのでそ
+        れぞれの処理は独立する必要がある。
+ \end{itemize}
+\end{frame}
+\newcommand{\Event}[1]{\texttt{#1}}
+\begin{frame}[containsverbatim]
+ \frametitle{イベントの例\REF{143}}
+ この演習でよく使うイベントはマウスに関するものとファイルのロードが完了
+ したときのイベント
+\begin{center}
+\begin{tabular}[t]{|c|c|}
+ \hline
+イベントの発生条件& イベントの属性名%&
+%\multicolumn{1}{c|}{対応するSVGでのイベント}
+\\\hline
+ファイルのロード終了時  &\Event{onload} \\ \hline
+ボタンがクリックされた &\Event{onclick}  \\ \hline
+ボタンが押された &\Event{onmousedown}  \\ \hline
+マウスカーソルが移動した&\Event{onmousemove}  \\ \hline
+マウスボタンが離された&  \Event{onmouseup} \\ \hline
+マウスカーソルが範囲に入った&\Event{onmouseover}  \\ \hline
+マウスカーソルが範囲から出た&\Event{onmouseout}  \\ \hline
+\end{tabular} 
+\end{center}
+\end{frame}
+\section{イベント処理}
+\begin{frame}[containsverbatim]
+ \frametitle{クリックした円の塗りつぶしの色を表示}
+ 円の上をクリックすると円の色を表示する
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{デモの解説}
+ \begin{itemize}
+  \item 円の上をクリックするとクリックした円の塗りつぶしの色がメッセージ
+        ボックスに表示
+  \item メッセージボックスを消さないと次の操作ができない(モーダルな
+        window)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{144}}
+ \framesubtitle{要素にイベント処理関数を定義}
+ \LIST{7}All{svg-js-click.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{144}解説}
+ \begin{itemize}
+  \item 13行目から15行目で定義されている\ELM{circle}の\ATTR{onclick}に対
+        して関数\VAL{click(evt)}が呼び出されるようにしている。
+  \item 変数\texttt{evt}は発生したイベントオブジェクト
+  \item 呼び出される関数は8行目から10行目で定義
+  \item マウスによるイベントはマウスイベントと呼ばれる\REF{145}。
+  \item イベントの\ATTR{target}はイベントが発生したオブジェクト
+  \item イベントが発生したオブジェクトはSVGの要素で、その属性の値は
+        \VAL{getAttribute(属性名)}で求められる
+  \item ここでは\ATTR{fill}の値を求めている
+  \item JavaScriptでは\JSKey{+}演算子はどちらかの被演算子が文字列のとき
+        は文字列の連接(二つの文字列をつなげる)
+  \item 関数\JSKey{alert}は与えられた引数をメッセージボックスに表示
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+\begin{itemize}
+  \item 円の別の属性値を表示
+  \item \JSKey{alert}内の初めの文字列("Circle")を
+        \JSKey{event.target.tagName}に変える
+  \item 図形を変えていくつかの属性値を表示
+  \item 異なる図形をいくつか置いて、同様のことをする
+\end{itemize}
+ \end{frame}
+\section{開発者ツール}
+\begin{frame}[containsverbatim]
+ \frametitle{開発者ツール}
+ 各種ブラウザで表現は異なるが機能はほぼ同じ
+ \begin{itemize}
+  \item 開くためのショートカットキーは「F12」か「Cntrl+Shift+I」
+  \item DOMツリーの表示と修正など(Elements)
+  \item インターラクティブな操作やエラー表示、プログラムからの出力
+        (Console)
+  \item JavaScript などのプログラムソースの表示、ブレイクポイントの設定
+        (Source)
+  \item ...
+ \end{itemize}
+ 順番に見ていく
+\end{frame}
+\begin{frame}
+ \frametitle{開発者ツール--まとめ}
+\begin{itemize}
+ \item  「Elements」
+ \begin{itemize}
+	\item DOMツリーを見る
+	\item 要素の属性を変えることができる
+ \end{itemize}
+ \item 「Console」タブ
+ \begin{itemize}
+	\item プログラムの実行中にメッセージが出せる
+	\item その場でJavaScript のプログラムが実行できる
+	\item オブジェクトや変数の値の確認ができる
+ \end{itemize}
+ \item 「Source」タブ
+ \begin{itemize}
+	\item JavaScriptのソースコードにブレイクポイントを設定できる
+	\item 1行ごとに実行させることができる
+ \end{itemize}
+			 \end{itemize}
+\end{frame}
+\iffalse
+\begin{frame}[containsverbatim]
+ \frametitle{Operaで開発者ツールを開いたところ}
+ (前回最後に開いていた)Elementsタブが開いている
+ \FIGN{0.8}{04-1-opera-dev-1}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Operaで開発者ツールを開いたところ(2)}
+ コンソールで\texttt{3*4}と入力した。
+ \FIGN{0.8}{04-1-opera-dev-2}
+\end{frame}
+\fi
+\begin{frame}[containsverbatim]
+ \frametitle{確認しましよう}
+ 自分の使用しているブラウザで次のことを確認する(ノートにメモすること)
+ \begin{itemize}
+  \item 「開発者ツール」に相当する機能の名称
+  \item 「開発者ツール」を開くショートカットキー
+  \item どこかのWebページを開いてDOMツリーのノードを展開し、DOMツリー上
+        でマウスカーソルを動かしたときの現象
+  \item SVGファイルを開いて要素のプロパティを修正する
+  \item コンソールの入力がどこでできるか確認する。
+  \item コンソールで\texttt{2+3;}と入力して結果が表示されることを確認
+  \item コンソールで次のように入力したときの結果を確かめる(結果の展開が可能な
+        はずなので確認すること)
+
+        \texttt{document.getElementsByTagName("circle");}
+ \end{itemize}
+ ブラウザの機能いかがでしたか
+ \end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

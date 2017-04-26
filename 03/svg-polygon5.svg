@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+  <title>polygon 要素の例</title>
+  <g transform="translate(110,110)">
+    <g transform="scale(1,-1)">
+      <polygon
+        points="0,100 -95.1,30.9 -58.8,-80.9 58.8,-80.9 95.1,30.9"
+        stroke="black" stroke-width="4" fill="blue" />
+      <g transform="translate(210,0)">
+        <polygon
+          points="0,100 -58.8,-80.9 95.1,30.9 -95.1,30.9 58.8,-80.9"
+          stroke="black" stroke-width="4" fill="yellow" />
+      </g>
+      <g transform="translate(420,0)" fill="red" fill-rule="evenodd" >
+        <polygon 
+          points="0,100 -58.8,-80.9 95.1,30.9 -95.1,30.9 58.8,-80.9"
+          stroke="black" stroke-width="4"/>
+      </g>
+    </g>
+  </g>
+</svg>

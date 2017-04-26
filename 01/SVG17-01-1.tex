@@ -1,0 +1,114 @@
+%-*- coding: utf-8 -*-
+\input ../beamerHead.tex
+\TITLE{1}{1}{演習に関する準備}{4/18}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{SVGについて}
+\begin{frame}[containsverbatim]
+ \frametitle{SVGの概略}
+ \begin{itemize}
+  \item Web上での各種規格を定めている World Wide Web Consortium(W3C)によ
+        る2Dの図形を記述する規格
+  \item eXtensible Markup Language(XML)の規格に基づいて図形などを定義
+        \begin{itemize}
+         \item HTML文書のようにタグを用いて情報を記述
+         \item タグは自由に定義可能(extensible)
+         \item 情報を構造化
+        \end{itemize}
+  \item SVGには図形を定義する要素、図形の属性(位置、長さ、色など)を時間経過に伴
+        い変化させるアニメーション要素がある
+  \item XML形式の構造を変化させる手段がある\\
+        Document Object Model(DOM)の操作
+ \end{itemize}
+\end{frame}
+ \section{SVGの作成と表示}
+\begin{frame}[containsverbatim]
+ \frametitle{SVGの図形の表示}
+ この授業ではブラウザでSVGの図形を表示\\[1ex]
+ 
+ テキストのキャプチャ画像はChromeの最新版
+\end{frame}
+\section{授業の準備}
+\begin{frame}[containsverbatim]
+ \frametitle{授業の進め方(ガイダンスの再掲)}
+ \begin{itemize}
+\item 配布資料はPDFでネット上に公開
+      (\texttt{http://www.hilano.org/hilano-lab})
+\item 授業の予習用のビデオ(mp4)は上記のネットで公開
+\item 演習の内容を記録するルーズリーフを配布する
+  \item ノートに予習内容や課題の解答をまとめる。また、疑問点なども書きこむ
+  \item 作成したコードなどは印刷できるように準備をしておく
+  \item 予習の内容に関してルーブリック評価表(後で解説)により自己評価する
+ \end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{演習時間内}
+ \begin{itemize}
+\item 予習内容と配布資料で与えられた課題をグループ内で議論して解く。
+%\item グループ内で発表内容をまとめる     
+\item グループごとに議論した内容を代表者が報告する。
+  \item その日の演習内容についてルーブリック評価表で自己採点する。
+\item ルーズリーフは議論した内容やその日のまとめを書いて、授業終了後に提出
+  \item 演習室にはプリンタとルーズリーフに閉じるための穴あけ機を設置する
+\item 提出されたノートとルーブリック評価表は教員が添削して翌日のセミナ終了後の昼に返却
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{SVGファイルの作成方法}
+\begin{itemize}
+ \item テキストエディタ(TeraPadなど)で編集
+ \item 文字コードはUTF-8(BOM なし)\\
+       BOM = Byte Order Mark
+ \item Windowsに標準のメモ帳はUTF-8(BOM なし)で{\color{red}保存できない}
+\end{itemize}
+% いくつかの画像処理ソフトはSVGで保存することができる。
+\end{frame}
+\section[ファイルの保存]{テキストエディタにおけるファイルの保存}
+\subsection{TeraPad}
+\begin{frame}[containsverbatim]
+ \frametitle{ファイルの保存方法---TeraPad}
+ 実際に画面を見せます。
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ファイルの保存方法---TeraPad(まとめ)}
+\begin{itemize}
+ \item 「ファイル」メニューを開く
+ \item 「文字/改行コード指定保存」を開く
+ \item コードは「UTF-8N」を選択
+\end{itemize}
+ 
+\end{frame}
+\subsection{サクラエディタ}
+\begin{frame}[containsverbatim]
+ \frametitle{ファイルの保存方法---サクラエディタ(1)}
+ 実際に画面を見せます。
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ファイルの保存方法---サクラエディタ(まとめ)}
+\begin{itemize}
+ \item 「ファイル」メニューを開く
+ \item 「名前を付けて保存」を選ぶ
+ \item 「文字コードセット」プルダウンメニューを開く
+ \item UTF-8 を選択し、BOM のチェックボックスには{\color{red} チェックを入れない}
+\end{itemize}
+\end{frame}
+\begin{frame}
+ \frametitle{プリンタドライバのインストール}
+\begin{itemize}
+ \item \href{http://www.hilano.org/hilano-lab/svg/driverDownload.pdf}{ドライバー
+ のダウンロードとインストールの説明書}(PDF内にリンクあり)に従ってドライ
+ バーをインストール
+ \item ネットワークプリンタとして使用するの
+ でIPアドレスも指定したものにする。
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{これでおしまい}
+ ご苦労様でした。予習教材がありますので忘れずに見てください。
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}
+

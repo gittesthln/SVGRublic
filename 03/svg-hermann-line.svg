@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="330" width="330">
+  <title>ヘルマン格子</title>
+  <defs>
+    <line id="vertical" x1="0" y1="0" x2="0" y2="300" stroke-width="8" stroke="white"/>
+    <g id="horizontal" transform="rotate(-90)">
+      <use xlink:href="#vertical"/>
+    </g>
+  </defs>
+  <g transform="translate(20,20)">
+  <rect x="0" y="0" width="300" height="300" fill="black" />
+  <use x="25" y="0" xlink:href="#vertical" />
+  <use x="75" y="0" xlink:href="#vertical" />
+  <use x="125" y="0" xlink:href="#vertical" />
+  <use x="175" y="0" xlink:href="#vertical" />
+  <use x="225" y="0" xlink:href="#vertical" />
+  <use x="275" y="0" xlink:href="#vertical" />
+
+  <use x="0" y="25" xlink:href="#horizontal" />
+  <use x="0" y="75" xlink:href="#horizontal" />
+  <use x="0" y="125" xlink:href="#horizontal" />
+  <use x="0" y="175" xlink:href="#horizontal" />
+  <use x="0" y="225" xlink:href="#horizontal" />
+  <use x="0" y="275" xlink:href="#horizontal" />
+  </g>
+</svg>

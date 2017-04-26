@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+  <title>グラデーションにアニメーションを付ける</title>
+<defs>
+   <linearGradient id="Gradiation1" gradientUnits="userSpaceOnUse"
+      x1="0" y1="0" x2="800" y2="0">
+      <stop stop-color="yellow" offset="0%"/>
+      <stop stop-color="red"    offset="25%"/>
+      <stop stop-color="yellow" offset="50%"/>
+      <stop stop-color="red"    offset="75%"/>
+      <stop stop-color="yellow" offset="100%"/>
+      <animate attributeName="x1" attributeType="XML"
+            from="0" to="-400" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="x2" attributeType="XML"
+            from="800" to="400" dur="5s" repeatCount="indefinite"/>
+   </linearGradient>
+</defs>
+<g transform="translate(20,20)">
+  <rect x="0" y="0" width="400" height="50"
+   stroke="black" stroke-width="4" fill="url(#Gradiation1)"/>
+</g>
+</svg>

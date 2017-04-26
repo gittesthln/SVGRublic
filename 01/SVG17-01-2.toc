@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{SVG‚ÌŠî‘b}{2}{0}{1}
+\beamer@sectionintoc {2}{SVG‚ÌŠî–{}{2}{0}{2}
+\beamer@sectionintoc {3}{SVG‚Ì—á}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{Fick‚Ìö‹}{5}{0}{3}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html 
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:svg="http://www.w3.org/2000/svg">
+	<head>
+		<meta charset="UTF-8"/>
+  <script type="text/ecmascript" src="make-elm.js"></script>
+  <script type="text/ecmascript">
+//    <![CDATA[
+    var svgDoc, Ox, Oy, DragPoint = null;
+    var Pos = [], P = [], Reg = [], PVal = [];
+    var IPos =[[100,400,"red"],[380,400,"lime"],
+               [260,130,"green"],[100,240,"orange"]];
+    var NumPos = IPos.length;
+    var paths =[{fill:"#DDD", stroke:"none",opacity:"0.8"},
+                {fill:"#C22", stroke:"none",opacity:"0.8"},
+                {fill:"#3D3", stroke:"none",opacity:"0.8"},
+                {"stroke-width":"2", fill:"none", stroke:"black"},
+                {"stroke-width":"4", fill:"none", stroke:"black"}];
+    var Step;
+    window.onload = function () {
+      var i, j, k, TR, TD, TD2, TBL;
+      svgDoc = document.getElementById("canvas");
+      MKSVGElm(svgDoc, "rect", 
+        {x: "0", y: "0", width: "500", height: "500",
+         "stroke-width": "3", stroke: "black", fill: "none"},{});
+      for(i=0;i<paths.length; i++) {
+        Reg[i] = MKSVGElm(svgDoc, "path", paths[i],{});
+      }
+      document.getElementById("Set").addEventListener("click",
+        function(){ RefreshRegionN(false);}, false);
+      document.getElementById("Next").addEventListener("click",
+        function(){Step++; RefreshRegionN(false);}, false);
+      TBL = document.getElementById("Table");
+      for(i=0; i<NumPos; i++) {
+        TR = MKHTMLElm(TBL, "tr",{},{});
+        TD = MKHTMLElm(TR, "td",{style:"color:"+IPos[i][2],align:"center"},{});
+        TD.appendChild(document.createTextNode("P"+i));
+        PVal[i] = new BoxP(TR);
+        Pos[i] = new Point(svgDoc, IPos[i][0], IPos[i][1], IPos[i][2], 6,
+          {mousedown:[function(evt) {
+              DragPoint = evt.target;
+              svgDoc.appendChild(DragPoint);
+              Ox = DragPoint.getAttribute("cx")-evt.clientX;
+              Oy = DragPoint.getAttribute("cy")-evt.clientY;
+              svgDoc.addEventListener("mousemove", mouseMove,false);
+          }, false],
+          mouseup:[function(evt){
+            svgDoc.removeEventListener("mousemove", mouseMove, false);
+            DragPoint = null;
+          }, false]});
+      }
+      document.getElementById("Portion").value="1/2";
+      Step = 0;
+      RefreshRegionN(true);
+    }
+    var mouseMove = function(evt) {
+      evt.stopPropagation();
+      SetAttributes(DragPoint, {cx: Ox+evt.clientX, cy: Oy+evt.clientY});
+      RefreshRegionN(true);
+    }
+    function Point(P, cx, cy, fill, r,  Events) {
+      this.Circle = MKSVGElm(P, "circle", 
+         {cx: cx, cy: cy, fill: fill, r: r}, Events);
+      this.x = cx;
+      this.y = cy;
+    }
+    Point.prototype.setPos = function(PV) {
+      SetAttributes(this.Circle,{cx:PV.x.value, cy: PV.y.value});
+      this.x = PV.x.value-0;
+      this.y = PV.y.value-0;
+    }
+    Point.prototype.movePos = function(xx, yy) {
+      SetAttributes(this.Circle,{cx:xx, cy: yy});
+      this.x = xx;
+      this.y = yy;
+    }
+    Point.prototype.getPos = function() {
+      this.x = parseFloat(this.Circle.getAttribute("cx"));
+      this.y = parseFloat(this.Circle.getAttribute("cy"));
+    }
+    Point.prototype.toSt = function() {
+      return this.x+","+this.y+" ";
+    }
+    function BoxP(P) {
+      var O = MKHTMLElm(P, "td",[],[]);
+      this.x = MKHTMLElm(O, "input",
+        {type: "text", style:"text-align:right;width:45px"},[]);
+      O = MKHTMLElm(P, "td",[],[]);
+      O.appendChild(this.y = this.x.cloneNode(true));
+    }
+    BoxP.prototype.setVal = function(Po) {
+      Po.getPos();
+      this.x.value = Po.x;
+      this.y.value = Po.y;
+    }
+    function RefreshRegionN(flag){
+      var i, j, k, d, db, A, p;
+      if(flag) {
+        for(var i=0;i<NumPos;i++) PVal[i].setVal(Pos[i]);
+      } else {
+        for(var i=0;i<NumPos;i++) Pos[i].setPos(PVal[i]);
+      }
+      if(Step<=0) return;
+      A = eval(document.getElementById("Portion").value);//alert(A);
+      if(A>=1 || A<=0) {
+        alert("Please set A between 0 and 1");
+        A=0.5;
+        document.getElementById("Portion").value="1/2";
+      }
+      d = "M"+Pos[0].toSt();
+      for(i=1, db = "";i<4;i++) db += Pos[i].toSt();
+      Reg[4].setAttribute("d",d+"C"+db);
+      if(Step<=1) return;
+      PaintRegion(0,Pos[0],Pos[1],Pos[2],Pos[3]);
+      if(Step<=2) return;
+      for(i=1;i<Step-1 && i<4;i++) d += Pos[i].toSt();
+      p = Step-2;
+      if(Step<=8 && !Pos[Step+1])
+        Pos[Step+1] = new Point(svgDoc, 0, 0, "black", "6", {});
+
+      for(i=j=NumPos; i>1&& p>0; i--) {
+        d+= "M";
+        for(k=1; k<i&& p>0; k++, j++) {
+          Pos[j].movePos(Pos[j-i].x*(1-A)+Pos[j-i+1].x*A, 
+                         Pos[j-i].y*(1-A)+Pos[j-i+1].y*A);
+          d += Pos[j].toSt();//alert(j);
+          p--;
+        }
+      }
+      Reg[3].setAttribute("d",d);
+      if(Step<=8) return;
+      PaintRegion(1,Pos[0],Pos[4],Pos[7],Pos[9]);
+      PaintRegion(2,Pos[9],Pos[8],Pos[6],Pos[3]);
+    }
+    function PaintRegion(S, P0, P1, P2, P3){
+      var path, PSS=getSign(P0,P1,P2);
+      if(getSign(P0,P1,P3) != PSS) {
+        if(getSign(P1,P2,P3)==PSS) {
+          path = P3.toSt()+P1.toSt()+P2.toSt();
+          if(getSign(P2,P0,P3)==PSS) path += P0.toSt();
+        } else {
+          path = P3.toSt()+P2.toSt()+P0.toSt();
+        } 
+      } else {
+        if(getSign(P1,P2,P3)==PSS) {
+          path = P0.toSt()+P1.toSt()+P2.toSt();
+          if(getSign(P2,P0,P3)!=PSS) path += P3.toSt();
+        } else {
+          path =P0.toSt()+P1.toSt()+P3.toSt();
+          if(getSign(P2,P0,P3)==PSS) path += P2.toSt();
+        } 
+      }
+      Reg[S].setAttribute("d", "M"+path+"z");
+    }
+    function getSign(A,B,C){
+      return((B.x-A.x)*(C.y-A.y)-(C.x-A.x)*(B.y-A.y)>=0)?1:-1;
+    }
+//  ]]></script>
+<style type="text/css">
+td, input, button{font-size:20px;}
+li {font-size:15px;}
+</style>
+<title>Bezier 曲線を操作する</title>
+</head>
+<body >
+  <table>
+    <tr><td align="center">Bezier 曲線を操作する</td></tr>
+    <tr>
+      <td><svg width="500" height="500" id="canvas"/></td>
+      <td>
+        <table id="Table" valign="top">
+          <tr>
+            <td colspan="3" align="center">
+              <button id="Set">設定</button>
+            </td>
+        </tr>
+				<tr><td colspan="3" align="center">
+						<button  id="Next">次</button>
+					</td>
+				</tr>
+        <tr>
+          <td>比率</td>
+          <td colspan="2" align="center">
+            <input type="text" id="Portion" style="text-align:center; width:40px"/>
+          </td>
+        </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <ot>
+    <li>Bezier曲線は4つの制御点の凸包内に含まれることを示すのがこのアプリケーションの目的です</li>
+    <li>P0からP3と書かれた点(制御点)の位置を直接設定できます</li>
+    <li>値を設定したら「設定」ボタンをクリックすることでその値が図に設定されます。</li>
+    <li>右の文字P0からP3と同じ色の点(制御点)を直接ドラッグできます。</li>
+    <li>ドラッグしたときは点の位置の値は右側のテキストボックスに直ちに反映します</li>
+    <li>Portionの値は0と1の間の値でBezier曲線の途中の点のパラメータの値を設定します。</li>
+    <li>黒い点はそれぞれの線分の 比率:(1-比率)に内分する点を示します。</li>
+    <li>Bezier曲線はこれら点で定まる小さなBezier曲線に一致することを示すためにそれらの点の凸包を描いています</li>
+  </ot>
+</body>
+</html>

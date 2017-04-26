@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{SVGの基礎}{2}{0}{1}
+\beamer@sectionintoc {2}{\texttt {transform}}{2}{0}{2}
+\beamer@sectionintoc {3}{SVGの例}{3}{0}{3}
+\beamer@subsectionintoc {3}{1}{Fickの錯視--\texttt {xlink}の使い方}{3}{0}{3}
+\beamer@subsectionintoc {3}{2}{グラデーション}{7}{0}{3}
+\beamer@sectionintoc {4}{終わりに}{11}{0}{4}

@@ -1,0 +1,131 @@
+\input ../beamerHead.tex
+\TITLE{1}{2}{SVGの例}{4/18}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{SVGの基礎}
+\section{SVGの基本}
+\begin{frame}[containsverbatim]
+ \frametitle{座標系}
+\begin{itemize}
+ \item 表示画面の左上が原点$(0,0)$
+ \item  $y$ 座標は下に行くほど大きくなる
+\end{itemize} 
+
+ \begin{center}
+\setlength{\unitlength}{1cm}
+  \begin{picture}(12,6)(-1,-5)
+   \put(0,0){\line(1,0){8}}
+   \put(0,0){\line(0,-1){5}}
+   \put(0,0.3){\makebox[0em]{$(0,0)$}}
+   \put(0,0.3){\makebox[8cm][c]{$x\longrightarrow $ 大}}
+   \put(-0.5,0.3){\rotatebox{-90}{\makebox[5cm][c]{$y\longrightarrow $
+   大}}}
+   \put(4,-2){$\bullet$}
+   \put(4.3,-2){$(200,100)$}
+   \put(2,-4){$\bullet$}
+   \put(2.3,-4){$(100,200)$}
+  \end{picture}
+ \end{center}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{色名}
+ \begin{itemize}
+  \item 色名による指定\\
+        \texttt{red}, \texttt{green}などで指定。CSS3で定義されている色名
+        が利用可能。
+  \item \texttt{rgb}関数による指定\\
+        色の三原色(赤、緑、青)成分それぞれに対して$0\sim255$の値を割り当
+        てる。\%を用いることも可能
+  \item 16進数による指定\\
+        16進数6桁または3桁で指定。先頭に\texttt{\#}を付ける。
+  \item 塗らないことを指示する\texttt{none}がある。
+ \end{itemize}
+ 詳しくは配布資料の付録Aを参照
+\end{frame}
+ \begin{frame}[containsverbatim]
+  \frametitle{色の表示の例}
+  次の表示はすべて同じ色を表す。
+  \begin{itemize}
+   \item \texttt{red}
+   \item \texttt{rgb(255,0,0)}
+   \item \texttt{rgb(100\%,0\%,0\%)}
+   \item \texttt{\#FF0000}
+   \item \texttt{\#F00}
+  \end{itemize}
+ \end{frame}
+
+\section{SVGの例}
+\subsection{Fickの錯視}
+\begin{frame}[containsverbatim]
+ \frametitle{Fickの錯視}
+ \FIG{0.4}{2}{fick1}
+ \begin{itemize}
+  \item 水平線と垂直線の長さは同じ
+  \item 垂直線が水平線の中央にあり、水平線が分断されているため、垂直線が
+        長く見える
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Fickの錯視---SVGのコード\REF{14}}
+ \LISTAll{2}{fick1.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Fickの錯視---SVGのコード---解説(1)}
+ \framesubtitle{1行目：XML宣言}
+ このファイルがXML形式で書かれていることを示す。
+ \begin{itemize}
+  \item ファイルの初めのは\texttt{<?xml}で始まる必要がある。
+  \item \texttt{<?xml}の部分に空白があってはいけない。
+  \item そのあとの\texttt{version}や\texttt{encoding}の部分は属性
+        と呼ばれる。
+  \item 属性の後の\texttt{=}の右側は属性値と呼ばれ必ず\texttt{""}
+       で囲む
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{Fickの錯視---SVGのコード---解説(2)}
+ \framesubtitle{2行目から4行目：ルート要素の宣言}
+ \begin{itemize}
+  \item XML文書にはルート要素と呼ばれる残りの要素をすべて含む要素が存在
+  \item SVGの場合には\texttt{svg}がルート要素
+  \item 属性\texttt{xmlns}はSVGの規格が定義されているURLを記述
+  \item 3行目の\texttt{xmlns:xlink}は他の規格(ここでは\texttt{xlink})を
+        使用することを宣言
+  \item 属性\texttt{height}と\texttt{width}はSVGの画像の大きさを指定
+  \item ここではともに\texttt{100\%}なのでブラウザ画面全体を指定
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{Fickの錯視---SVGのコード---解説(3)}
+ \framesubtitle{5行目以降}
+ \begin{itemize}
+  \item 5行目はタブに表示されるテキストを定義
+  \item 6行目の\texttt{g}要素はいくつかのSVGの要素をグループ化
+  \item 属性\texttt{transform}は図形全体を移動、拡大などを指定
+  \item \texttt{translate}は平行移動を意味
+  \item ここでは横に\texttt{50px},下方に\texttt{150px}移動
+  \item 7行目から8行目の\texttt{line}要素は直線(水平線)を定義
+        \begin{itemize}
+         \item 属性\texttt{x1}と\texttt{y1}は始点の位置$(0,0)$
+         \item 属性\texttt{x2}と\texttt{y2}は終点の位置$(100,0)$
+         \item 属性\texttt{stroke-width}は線の幅
+         \item 属性\texttt{stroke}は線の色
+         \item 属性\texttt{stroke-linecap}は直線の終端の形状
+        \end{itemize}
+  \item 9行目から10行目の\texttt{line}要素は直線(垂直線)を定義
+        \begin{itemize}
+         \item 始点は$(50,0)$ (水平線の中央)
+         \item 終点は水平線の中央から垂直に上方の位置$(50,-100)$
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{これはおしまい}
+ もう少し複雑なものを書いて第１回目の予習はおしまいです。
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}
+

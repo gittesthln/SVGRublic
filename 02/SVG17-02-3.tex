@@ -1,0 +1,123 @@
+\input ../beamerHead.tex
+\TITLE{2}{3}{複数の値を指定するアニメーションと\\イベントを利用するアニ
+メーション}{4/25}
+\begin{document}
+\frame{\maketitle}
+\section{色のアニメーション}
+\begin{frame}[containsverbatim]
+ \frametitle{複数の値を指定するアニメーション}
+\begin{itemize}
+ \item  今までのアニメーションでは開始と終了の状態しか指定できない。
+ \item  途中の値を指定するためには\ATTR{values}を使う。
+ \item 指定する値をセミコロン(\texttt{;})で区切る
+ \item 切り替えのタイミングは\ATTR{keyTimes}で指定(ない場合は等分)
+ \item アニメーションの継続時間を\texttt{1}として切り替わるタイミングを小数で
+			 指定し、セミコロン(\texttt{;})で区切る
+ \item 両者の値の数が一致することが必要
+\end{itemize}
+ 複数の値の指定のアニメーションの例を示す(デモ)
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{複数の値の指定のアニメーション--ソースコード\REF{83}}
+ \LISTAll{4}{svg-animation-transform-values.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{複数の値の指定のアニメーション--ソースコード(解説)}
+ \begin{itemize}
+	\item 13行目から15行目で水平方向の移動のアニメーションを定義
+  \item \ATTR{valuse}は\texttt{100,50;200,50;100,50}となっているので次の
+        ように移動
+        \begin{center}
+         $(100,50)\rightarrow(200,50)\rightarrow(100,50)$
+        \end{center}
+  \item \ATTR{keyTimes}が\texttt{0;0.66;1}となっているので
+        \begin{itemize}
+         \item $(100,50)\rightarrow(200,50)$の移動が全体の$66\%$
+         \item $(200,50)\rightarrow(100,50)$の移動が残りの$34\%$
+        \end{itemize}
+        に割り当てられる。
+  \item 左から右への移動は、右から左への移動の倍時間がかかる。
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ 次のようなアニメーションを作ってみよう。
+ \begin{enumerate}
+	\item 黒い点がいくつかのところを回って元に戻る
+	\item 長方形の壁に囲まれた中を黒い点が往復する。\label{prev}
+	\item (\ref{prev})のアニメーションに、壁にぶつかる瞬間に短い間、点の色
+				が赤くなる
+ \end{enumerate}
+ 1年のときの基盤ユニットで作成したProccessingの題材をSVGで書き直してみる
+ のもよい。
+\end{frame}
+\section{イベントを利用するアニメーション}
+\begin{frame}[containsverbatim]
+ \frametitle{イベントとは}
+プログラム実行中に内部または外部から通知される情報
+\begin{itemize}
+ \item キーボードからの入力
+ \item マウスの操作
+ \item 一連の作業の終了
+ \item プログラムが開始や終了
+ \item そのほか...
+\end{itemize}
+イベントをプログラムで処理する方法はこの演習の後半部の重要な部分
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{信号機のシミュレーション--\REF{86}}
+ここでデモ\REF{86}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{信号機のシミュレーション--ソースコード(1)}
+ \LIST{4}{svg-signal.svg}{1}{8}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{信号機のシミュレーション--ソースコード(2)}
+ \LIST{4}{svg-signal.svg}{9}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{信号機のシミュレーション--ソースコード(解説1)}
+\begin{itemize}
+ \item 信号機の円の大きさを統一するために\ELM{defs}内で円を定義(7行目)
+ \item ここでは\ATTR{x}, \ATTR{fill}が定義されていない
+ \item 10行目から11行目で背景の長方形を定義
+ \item 12行目から15行目、16行目から19行目、20行目から23行目で信号機の明
+       かりの部分を定義
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{信号機のシミュレーション--ソースコード(解説2)}
+       \begin{itemize}
+        \item \ELM{use}で7行目の円を参照
+        \item それぞれの\ATTR{id}が\VAL{Red}, \VAL{Yellow}, \VAL{Blue}と
+              なっている
+        \item アニメーションとして\ATTR{to}の値にすぐに変わる\ELM{set}を
+              利用
+        \item それぞれの要素の\ATTR{id}が\VAL{InRed}, \VAL{InYellow},
+              \VAL{InBlue}
+        \item それぞれの要素でアニメーションの開始時期を定義する
+              \ATTR{begin}を設定
+        \item 13行目から14行目では\ATTR{begin}が\VAL{0s;inYellow.end}と
+              設定
+        \item これは0秒目と\ATTR{id}が\VAL{inYellow}であるアニメーション
+              の終了時にこのアニメーションが開始することを指示
+        \item つまり、黄色の後に赤となる
+        \item 残りも同様
+       \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+  \item 同じ要素に連続してアニメーションを与える方法として\ATTR{values},
+        \ATTR{keyTimes}とアニメーションのイベントを利用する方法の比較を
+        行う
+  \item いくつかの円にアニメーションをつけ、それらの変化に関連性を持たせ
+        る
+ \end{itemize}
+ 今回はこれでおしまい
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}

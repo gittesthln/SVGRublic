@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+  <title>道程に沿った文字の表示</title>
+  <defs>
+    <path d="M0,0 C0,-250 250,-250 250,0"
+      id="TextPath" fill="none" stroke="black" stroke-width="3"/>
+  </defs>
+  <g transform="translate(100,250)">
+    <text>
+      <textPath xlink:href="#TextPath" font-size="30px">
+      This is an Example.
+      </textPath>
+    </text>
+    <use xlink:href="#TextPath"/>
+  </g>
+  <g transform="translate(450,250)">
+    <text>
+      <textPath xlink:href="#TextPath" font-size="30px">
+      This is an Example.
+        <animate attributeName="startOffset"
+          from="100%" to="0%" begin="0s" dur="10s" fill="freeze"/>
+      </textPath>
+    </text>
+    <use xlink:href="#TextPath"/>
+  </g>
+</svg>

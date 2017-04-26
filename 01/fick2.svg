@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+<title>Fick の錯視</title>
+<defs>
+  <line x1="0" y1="0" x2="100" y2="0" id="line"
+        stroke-width="10" stroke="black" stroke-linecap="round" />
+</defs>
+<g transform="translate(50,150)">
+  <use xlink:href="#line"/>
+  <g transform="translate(50,0)">
+    <g transform="rotate(-90)">
+      <use xlink:href="#line"/>
+    </g>
+  </g>
+</g>
+</svg>

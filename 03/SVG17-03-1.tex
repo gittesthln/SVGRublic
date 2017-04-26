@@ -1,0 +1,204 @@
+\input ../beamerHead.tex
+\TITLE{3}{1}{複雑な図形を描く}{5/9}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{折れ線と多角形}
+\begin{frame}[containsverbatim]
+ \frametitle{折れ線と多角形}
+ いくつかの直線をつなげて折れ線や多角形を描くことができる
+ \begin{itemize}
+  \item 折れ線は\ELM{polyline}、多角形は\ELM{polygon}を用いる
+  \item 各頂点は\ATTR{points}で指定する
+  \item 折れ線も多角形も内部が塗られる。塗りたくなければ\ATTR{fill}に
+        \VAL{none}を指定する
+  \item 内部の塗り方を指示する\ATTR{fill-rule}がある
+  \item 各頂点における線分の交わりの形状を定める\ATTR{linejoin}がある\REF{41}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{多角形の例--\REF{39}}
+ 正五角形や星形を描いてみました。
+% \FIG{0.9}{3}{polygon5}
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{多角形の例--ソースコード}
+ \LISTAll{3}{svg-polygon5.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{多角形の例--ソースコード(解説)}
+ \begin{itemize}
+  \item 7行目で$y$座標の向きを数学で使われる方向に直している
+  \item 左の正五角形は8行目から10行目で定義
+  \item 座標は前もって計算しておいた。
+  \item 中央の星形は12行目から14行目で定義
+  \item 正五角形の頂点を一つ置きに取っている
+  \item 右の図形は17行目から19行目で定義
+  \item 頂点の並びは中央と同じ
+  \item 違いは\ATTR{fill-rule}が\VAL{evenodd}
+  \item 領域内の点と遠方を直線で結んだとき、図形の縁と交わる回数が奇数の
+        ところだけ塗られる
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{polygon}と\ELM{polyline}の注意}
+ \ATTR{linejoin}\REF{41}
+ \begin{itemize}
+  \item 折れ線の曲がるところの処理の指定
+  \item 値の変化が激しいグラフを書く時などには\VAL{miter}は使わないよう
+        に
+ \end{itemize}
+% \ATTR{stroke-linecap}\REF{12}
+% \FIG{0.45}{2}{linecap}
+\end{frame}
+\section{直線で構成される図形を描く}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{path}}
+ \ELM{path}は多角形や曲線を含む図形を描ける。
+
+\begin{itemize}
+ \item 図形の形は\ATTR{d}で指定
+ \item 記述するパラメータは大文字と小文字がある
+ \item 大文字は絶対座標
+ \item 小文字は直前の点からの相対座標
+ \item \VAL{M},\VAL{m}:指定した位置に移動(moveto)
+ \item \VAL{L},\VAL{l}:指定したまで道のりを指定(lineto)。これらは省略可
+       能
+ \item \VAL{z}:初めの位置と最後の位置を結んで閉じる
+ \item 座標は空白またはコンマ(\VAL{,})で区切る\\
+       テキストでは座標の対応をはっきりさせるため、ここでは$x$座標と$y$
+       座標の間はコンマにしている
+\end{itemize}
+\end{frame}
+\iffalse
+\begin{frame}[containsverbatim]
+ \frametitle{プロッター}
+ 平面に置かれた紙などに図形を描く機材(\texttt{http://www.i-cadcam.jp/plotter.html})
+ \FIGN{0.6}{large-scale-plotter}
+\end{frame}
+\fi
+\iffalse
+\begin{frame}[containsverbatim]
+ \frametitle{カッティングマシーン}
+ カッティングマシーンはカッターを上下させて移動することにより、シートを
+ カットする機械
+ \begin{itemize}
+  \item カッターを上げて移動する(切らない)のが\VAL{moveto}
+  \item カッターを下げて移動する(切る)のが\VAL{lineto}
+ \end{itemize}
+\end{frame}
+\fi
+\begin{frame}[containsverbatim]
+ \frametitle{長方形をいろいろな方法で描く}
+ \LISTAll{3}{svg-rect.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{どのような図形が描かれるでしょうか？}
+ \begin{itemize}
+  \item 一番上に基本の長方形(6行目)
+  \item その下に\ELM{polygon}(9行目)と\ELM{polyline}(12行目)
+  \item さらに下に\ELM{path}で位置を絶対座標で与え、最後に
+        \VAL{z}なし(15行目)とあり(18行目)
+  \item 21行目は相対座標(\VAL{l})を用いた場合
+ \end{itemize}
+ デモに移る
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{次のような図形を描いてみよう。}
+\begin{itemize}
+ \item 一つの\ELM{path}で二つの長方形を描く
+       \FIGN{0.3}{svg-path-rect2}
+ \item 穴が開いた正方形を一つの\ELM{path}で描く
+      \footnote{中が塗られていないことを示すために初めに小さな円を描いて
+       いる}
+              \FIGN{0.3}{svg-square-hole}
+
+\end{itemize} 
+\end{frame}
+\iftrue
+\section{曲線を描く---\Bezier 曲線}
+\begin{frame}[containsverbatim]
+ \frametitle{\Bezier 曲線}
+ \Bezier 曲線はPhotoShopなどドロー系のソフトで曲線を描くために利用される
+
+ フリーなドロー系のソフトであるGIMPで曲線を描いているところをデモする。
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\Bezier 曲線の特徴}
+ \begin{itemize}
+  \item (3次の)\Bezier 曲線を定めるためには4点
+        $\mathrm{P_0}, \mathrm{P_1}, \mathrm{P_2}, \mathrm{P_3}$ が必要
+  \item この曲線は始点が $\mathrm{P_0}$ で 終点が $\mathrm{P_3}$
+  \item $\mathrm{P_1}$ は点 $\mathrm{P_0}$ における接線の方向を定める
+  \item $\mathrm{P_2}$ は点 $\mathrm{P_3}$ における接線の方向を定める
+  \item 曲線はこの4点からなる凸包の中に含まれる
+ \end{itemize}
+ 具体的な性質についてはデモで行う
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{デモ内容の説明}
+\begin{enumerate}
+ \item 4点の座標がそれぞれ右に表示
+ \begin{itemize}
+  \item 各点はドラッグ可能
+  \item 各点の座標を直接設定可能(入力後、「設定」ボタンを押す)
+  \item 「次」のボタンを押すことで\Bezier 曲線の性質が確認できる
+ \end{itemize}
+ \item \Bezier 曲線が表示
+ \item 4点を含む凸包が表示
+ \item $\mathrm{P_0}, \mathrm{P_1}$ の中点$\mathrm{P}_{01}$が表示
+ \item $\mathrm{P_1}, \mathrm{P_2}$ の中点$\mathrm{P}_{12}$が表示
+ \item $\mathrm{P_2}, \mathrm{P_3}$ の中点$\mathrm{P}_{23}$が表示
+ \item $\mathrm{P_{01}}, \mathrm{P_{12}}$ の中点$\mathrm{P}_{012}$が表示
+ \item $\mathrm{P_{12}}, \mathrm{P_{23}}$ の中点$\mathrm{P}_{123}$が表示
+ \item $\mathrm{P_{012}}, \mathrm{P_{123}}$ の中点$\mathrm{P}_{0123}$が
+       表示。この点は\Bezier 曲線上にある
+ \item $\mathrm{P}_{0123}$の前後で2つに分けた曲線もまた、\Bezier 曲線に
+       なっている
+\end{enumerate}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{面白い曲線をデザインしてみよう}
+ これを使って曲線の一部を作成してみよう。
+
+ 半端な座標は手動で直すことを忘れないこと
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{path}における指定方法}
+ \begin{itemize}
+  \item 4点のうち初めの点$\mathrm{P}_{0}$はそれまでに描いた図形の最終位
+        置が使用される
+  \item 新規に定めたい場合には\VAL{M}または\VAL{m}で指定
+  \item 残りの3点は\VAL{C}または\VAL{c}の後に指定する。
+  \item 2つの\Bezier 曲線を滑らかにつなぐためには共通点の接線方向を合わ
+        せる
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\Bezier 曲線の例}
+ 次のコードは\REF{58}の問題3.8のハートのマークのソースコード
+\begin{Verbatim}[fontsize=\footnotesize]
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+  <title>スーツマークを描く</title>
+  <g transform="translate(150,300)">
+    <path d="M0,0 C220,-150 100,-320 0,-240 C-100,-320 -220,-150 0,0z"
+      fill="pink" stroke-width="4" stroke="red" />
+  </g>
+</svg>
+ \end{Verbatim}
+ 左右対称なので$x$座標の値を符号が逆になるように座標系をとっている
+\end{frame}
+\else
+\begin{frame}[containsverbatim]
+ \frametitle{次のビデオは...}
+次のビデオは曲線の書き方
+\end{frame}
+\fi
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}
+

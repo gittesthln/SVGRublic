@@ -1,0 +1,119 @@
+%-*- coding: utf-8 -*-
+\input ../beamerHead.tex
+\TITLE{2}{1}{位置の移動のアニメーション}{4/25}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{アニメーションについて}
+\begin{frame}[containsverbatim]
+ \frametitle{アニメーションの概略}
+ SVGの図形の属性値を時間経過で変化させることができる要素が存在
+ \begin{itemize}
+  \item 位置の移動など(\texttt{<animateTransform>})
+%  \item 色の変化(\texttt{<animateColor>})
+  \item 一般の属性の変化(\texttt{<animate>})
+\end{itemize}
+\end{frame}
+ \begin{frame}[containsverbatim]
+  \frametitle{アニメーションに共通の属性}
+  \footnotesize
+  \begin{center}
+   \begin{tabular}{|c|l|m{10em}|}\hline
+ 属性名&\multicolumn{1}{c|}{意味}&\multicolumn{1}{c|}{とりうる値} \\\hline
+\texttt{attributeName}&属性名&属性名なら何でも可\\\hline
+\texttt{attributeType}&属性値の種類&\texttt{XML}または\texttt{CSS}\\\hline
+\texttt{from}&開始時の属性の値&\\\hline
+\texttt{to}&終了時の属性の値&\\\hline
+\texttt{dur}&変化の継続時間& \texttt{2s}(2秒), \texttt{1m}(1分)\\\hline
+\texttt{begin}&開始時間&{時間を与える。例\texttt{2s}(2秒), \texttt{1m}(1分)}\\\hline
+\texttt{fill}&終了時の属性値の指定&{\texttt{freeze}(終了値で固定)\newline
+                \texttt{remove}(はじめの値に戻る)}\\\hline
+\texttt{repeatCount}&繰り返し回数&
+    {\texttt{indefinite}は無限回の繰り返し}\\\hline
+   \end{tabular}
+  \end{center}
+ 
+ \end{frame}
+ \section{位置のアニメーション}
+\begin{frame}[containsverbatim]
+ \frametitle{位置の移動---\texttt{<animateTransform>}}
+ 次の3種類がある
+\begin{itemize}
+ \item 平行移動
+ \item 回転
+ \item 拡大・縮小
+\end{itemize}
+ まずは平行移動\REF{74}から...
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{平行移動のアニメーション--ソースコード}
+ \LISTAll{4}{svg-animation-transform.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{平行移動のアニメーション--ソースコード(解説)}
+ \begin{itemize}
+  \item 7行目から8行目で水平方向に長い緑の長方形を定義
+  \item 10行目から11行目で別の水平方向に長い赤の長方形を定義
+  \item 赤の長方形は9行目の\texttt{<g>}要素で$45$度回転
+  \item 13行目から14行目で平行移動のアニメーションを定義。アニメーション
+        の要素は\texttt{<animateTransform>}
+        \begin{itemize}
+         \item このアニメーションは2つの長方形を含む6行目の\texttt{<g>}
+               要素に対して有効
+         \item \texttt{attributeName}属性には\texttt{transform}
+         \item \texttt{attributeType}属性は\texttt{XML}
+         \item \texttt{type}属性には\texttt{translate}
+         \item 開始位置は\texttt{from}属性で定義されている
+               \texttt{100,50}\\
+               \texttt{translate}の後の\texttt{()}は不要
+         \item 終了位置は\texttt{from}属性で定義されている
+               \texttt{200,50}\\
+               したがって水平方向にまとまって動く
+         \item 継続時間は\texttt{dur}属性で定義されて10秒間
+               (\texttt{10s})で2つの位置を移動
+         \item アニメーション終了時の状態は\texttt{fill}属性で定義され、
+               この場合はその位置にとどまる(\texttt{freeze})。
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{回転のアニメーション\REF{75}}
+ $45$度に傾いた赤の長方形だけにアニメーションを付ける。
+
+ 赤の長方形は回転しながら平行移動する。(タブを移動します)
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{回転のアニメーション--ソースコード}
+ \LISTAll{4}{svg-animation-rotate.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{回転のアニメーション--ソースコード(解説)}
+ \begin{itemize}
+  \item 前のコードでは赤の長方形を囲む\texttt{<g>}要素があったが、
+        今回は省略
+  \item 回転のアニメーションを直接、赤の長方形につけている
+  \item そのため10行目の要素の終了を示す\texttt{>}の前に\texttt{/}がなく、
+        13行目に\texttt{</rect>}があることに注意
+  \item 11行目から12行目のアニメーションで14行目から15行目のと異なるのは
+        次の通り
+  \begin{itemize}
+   \item \texttt{type}属性の値が\texttt{rotate}(回転)に
+   \item \texttt{from}属性の値が\texttt{0}で\texttt{to}属性の値が
+         \texttt{360}なので1回転する
+   \item \texttt{repeatCount}属性は繰り返し回数を指定する。ここでは
+         \texttt{indefinite}(不定)を指示しているので継続時間が過ぎてもア
+         ニメーションは停止しない。
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{色のアニメーションンは次の動画で...}
+ 取りあえず位置の移動のアニメーションはここで終わり
+
+ 拡大・縮小のアニメーションは各自で確かめること。
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}
+

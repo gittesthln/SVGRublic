@@ -1,0 +1,180 @@
+[{
+  "date": "4/18 SVGの基礎",
+  "name":"01",
+  "Videos":[
+    {"title":"SVGとは、授業開始にあたっての注意",
+     "files":[]
+    },
+    {"title":"SVGの画像の例(1)",
+      "files":
+       [{"name":"fick1.svg",
+         "comment":"PDF内のSVGファイル--Fickの錯視"}
+       ]
+    },
+    {"title":"SVGの画像の例(2)",
+     "files":
+       [{"name":"fick2.svg",
+         "comment":"SVGファイル--xlink を用いたFickの錯視"},
+        {"name":"svg-gradient1.svg",
+         "comment":"SVGファイル--線形グラデーション"}
+       ]
+    }
+    ]
+  },
+  {"date": "4/25 アニメーション",
+    "name":"02",
+    "Videos":[
+        {"title":"位置のアニメーション",
+         "files":
+         [{"name":"svg-animation-transform.svg",
+           "comment":"SVGファイル--平行移動のアニメーション"},
+          {"name":"svg-animation-rotate.svg",
+           "comment":"SVGファイル--回転のアニメーション"}
+           ]},
+        {"title":"一般要素のアニメーション",
+         "files":
+         [{"name":"svg-animation-color.svg",
+           "comment":"SVGファイル--色のアニメーション"},
+           {"name":"svg-mask.svg",
+           "comment":"SVGファイル--グラデーションにアニメーション"}
+           ]},
+        {"title":"複数の値を指定するアニメーション",
+         "files":
+          [{"name":"svg-animation-transform-values.svg",
+            "comment":"SVGファイル--複数の値の指定のアニメーション"},
+            {"name":"svg-signal.svg",
+            "comment":"SVGファイル--信号機のシミュレーション(長方形の上でクリックするとアニメーションが始まります)"}
+          ]
+          }
+      ]
+  },
+  {"date": "5/9 複雑な図形を描く",
+   "name": "03",
+   "Videos":[
+    {"title":"複雑な図形を描く",
+     "files":
+       [{"name":"svg-polygon5.svg",
+         "comment":"SVGファイル--多角形の表示"},
+        {"name":"svg-rect.svg",
+         "comment":"SVGファイル--長方形をいろいろな方法で描く"}
+				,{"name":"bezier-interactive-step.html",
+          "comment":"HTMLファイル--Bezier 曲線の性質"}
+        ]
+     },
+     {"title":"パターン",
+      "files":
+        [{"name":"svg-hermann-line.svg",
+          "comment":"SVGファイル--直線で描いたヘルマン格子"},
+         {"name":"svg-hermann-pattern.svg",
+          "comment":"SVGファイル--パターンで描いたヘルマン格子"},
+         {"name":"svg-morgan-animation.svg",
+          "comment":"モーガンのねじれのひも--パターンにアニメーション"}
+          ]},
+     {"title":"文字列の表示",
+       "files":
+			 [{"name":"svg-showtext.svg",
+			   "comment":"文字列の表示"},
+        {"name":"svg-text-with-tspan.svg",
+         "comment":"部分的に文字の表示を変える"},
+        {"name":"svg-text-along-path.svg",
+				 "comment":"道程に沿った文字の表示"}
+      ]}
+			]
+  },
+  {"date": "5/23",
+    "name":"05 イベント処理入門",
+    "Videos":[
+        {"title":"簡単なイベント処理と開発者ツールの使い方",
+         "files":[]},
+        {"title":"DOMの操作とイベント(1)--クリックした要素を調べる",
+         "files":[]},
+        {"title":"DOMの操作とイベント(2)--要素の属性を変える",
+         "files":[]}
+         
+      ]
+  },
+  {"date": "5/30",
+    "name":"06 要素の追加とHTML文書でのフォーム",
+    "Videos":[
+        {"title":"直線を引く",
+         "files":[]},
+        {"title":"クリックした位置をSVG内に表示",
+         "files":[]}
+      ]
+  },
+  {"date": "6/6",
+    "name":"07 要素の追加とHTML文書でのフォーム",
+    "Videos":[
+        {"title":"直線を引く",
+         "files":[]},
+        {"title":"クリックした位置をSVG内に表示",
+         "files":[]}
+      ]
+  },
+  {"date": "6/13",
+    "name":"08 起動時にオブジェクトを作成",
+    "Videos":[
+        {"title":"サイクロイドを描く--起動時に要素を作成",
+         "files":[]},
+        {"title":"オブジェクトを作成する関数",
+         "files":[]},
+        {"title":"複雑な図形の作成",
+         "files":[]}
+      ]
+  },
+  {"date": "6/20",
+    "name":"09 HTML文書とSVGの間でデータを交換",
+    "Videos":[
+         {"title":"ブラウザにデータを保存--WebStorage",
+         "files":[]},
+        {"title":"HTMLにおけるフォームの基礎",
+         "files":[]},
+        {"title":"HTML文書とSVGの間でデータを交換",
+         "files":[]}
+      ]
+  },
+  {"date": "6/27",
+    "name":"10 JavaScriptの進んだプログラミング",
+    "Videos":[
+       {"title":"サイクロイドを描く(アニメーション版)",
+         "files":[]},
+        {"title":"変数のスコープとクロージャ",
+         "files":[]},
+       {"title":"サイクロイドを描く(アニメーション版)--クロージャを使う",
+         "files":[]}
+      ]
+  },
+  {"date": "7/4",
+    "name":"11 Web サーバーの基礎",
+    "Videos":[
+        {"title":"Web サーバーの起動と設定",
+         "files":[]},
+        {"title":"PHP の基礎",
+         "files":[]},
+        {"title":"サーバーとのデータ交換",
+         "files":[]}
+      ]
+  },
+  {"date": "7/11",
+    "name":"12 Ajax と jQuery",
+    "Videos":[
+        {"title":"Ajax の利用",
+         "files":[]},
+        {"title":"jQuery の基礎",
+         "files":[]},
+        {"title":"jQueryにおけるAjaxの利用",
+         "files":[]}
+      ]
+  },
+  {"date": "7/18",
+    "name":"13",
+    "Videos":[
+        {"title":"",
+         "files":[]},
+        {"title":"",
+         "files":[]},
+        {"title":"",
+         "files":[]}
+      ]
+  }
+]

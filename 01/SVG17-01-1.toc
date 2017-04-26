@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{SVGについて}{2}{0}{1}
+\beamer@sectionintoc {2}{SVGの作成と表示}{3}{0}{2}
+\beamer@sectionintoc {3}{授業の準備}{4}{0}{3}
+\beamer@sectionintoc {4}{テキストエディタにおけるファイルの保存}{7}{0}{4}
+\beamer@subsectionintoc {4}{1}{TeraPad}{7}{0}{4}
+\beamer@subsectionintoc {4}{2}{サクラエディタ}{9}{0}{4}

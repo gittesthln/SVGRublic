@@ -1,0 +1,91 @@
+\input ../beamerHead.tex
+\TITLE{3}{3}{SVGにおける文字列}{5/9}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{文字列の表示}
+\begin{frame}[containsverbatim]
+ \frametitle{文字列の表示\REF{91}}
+ この表示では文字列がどこに表示されるかをわかりやすくするために
+       $(0,0)$で交わる2直線を書く図形を定義
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{文字列の表示--ソースコード}
+ \LISTN{svg-showtext.svg}{1}{last}{\tiny}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{文字列の表示--ソースコード(解説)}
+ \begin{itemize}
+  \item 7行目から10行目で文字列を表示したときの基準の座標系を示す水平垂
+        直線を定義。交点が原点
+  \item 12行目から17行目と18行目から23行目で2つの文字列を表示
+  \item 文字列を表示するためには\ELM{text}を用いる
+        \begin{itemize}
+         \item テキストの表示位置(\ATTR{x}と\ATTR{y})
+         \item 内部の色(\ATTR{fill})
+         \item 文字の大きさ(\ATTR{font-size})
+         \item \dots
+        \end{itemize}
+ \end{itemize}
+ 文字幅(ウェイトが)大きいフォントを利用すると縁取り(\ATTR{stroke})の内部
+ の色を変えて効果を出すことができる\REF{94}
+\end{frame}
+ \begin{frame}[containsverbatim]
+  \frametitle{文字列の一部の色を変える}
+  ひとつの\ATTR{text}内で文字列の一部分だけ色を変えることができる
+ \end{frame}
+ \begin{frame}[containsverbatim]
+  \frametitle{文字列の一部の色を変える--ソースコード}
+  \LISTAll{5}{svg-text-with-tspan.svg}
+ \end{frame}
+ \begin{frame}[containsverbatim]
+  \frametitle{文字列の一部の色を変える--ソースコード(解説)}
+\begin{itemize}
+ \item 与えられたテキスト要素内の一部の文字列の表示(色や修飾)を変えるに
+			 は\ELM{tspan}を用いる(8行目と１０行目)。
+ \item 8行目では塗りつぶしの色を赤に変えている。
+ \item 10行目では下線を引いている。
+ \item 10行目では\Verb+<+や\Verb+>+を表示するためにHTMLのエンティティを
+			 用いている(\Verb+&lt;+と\Verb+gt;+)。
+\end{itemize}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{道程に沿った文字の表示}
+ 与えられた道程に沿って文字列を配置できる。
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{道程に沿った文字の表示--ソースコード}
+ \LISTN{svg-text-along-path.svg}{1}{last}{\tiny}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{道程に沿った文字の表示--ソースコード（解説）}
+ \begin{itemize}
+	\item 7行目から8行目でテキストを表示する道のりを定義している。ここでは
+				B\'ezier曲線である。
+	\item 11行目から15行目でテキストの表示をしている。12行目から14行目で道
+				のりに沿って表示するために\ELM{textPath}を使用する。
+	\item 18行目から27行目も同様にテキストを表示している。
+	\item この要素のうち\ELM{textPath}の\ATTR{atartOffset}にアニメーション
+				を付けているので、文字列が道のりの終端から先頭に向かって移動する。
+				$0\%$が道のりのせんとうである。
+	\item これらの表示では道のりに沿って文字が配列されていることを示すため
+				に、その道のりを表示しているが、通常は必要ない。
+ \end{itemize}
+ \end{frame}
+	\begin{frame}[containsverbatim]
+ \frametitle{文字列で遊ぶ}
+ 次のことを行ってみよう
+\begin{itemize}
+ \item 自分の名前を表示
+ \item それを姓と名前の部分に分け、移動したり、色を変えたアニメーション
+       をつける
+ \item 文字列表示の属性\REF{93}の\ATTR{text-anchor}や
+       \ATTR{dominant-baseline}の違いを例とともに報告する
+\end{itemize}
+	\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{これでおしまい}
+ 次回からJavaScriptを利用してSVG画像上でいろいろな操作をすることを始める
+\end{frame}
+\end{document}
+

@@ -1,0 +1,111 @@
+\input ../beamerHead.tex
+\TITLE{2}{2}{色、一般の要素のアニメーション}{4/25}
+\begin{document}
+\frame{\maketitle}
+\section{一般の要素にアニメーションをつける}
+\subsection{色のアニメーション}
+\begin{frame}[containsverbatim]
+ \frametitle{色のアニメーション}
+\begin{itemize}
+ \item 位置以外の属性にアニメーションをつけるには\ELM{animate}を用いる。
+ \item 色に関しても例外ではない。
+ \item 色はCSS3で定義されている色名を使うので、\ATTR{attributeType}に
+			 は\VAL{CSS}を指定
+ \item 残りの属性は他のアニメーションの場合と同じ
+\end{itemize}
+ 色のアニメーションの例を示す(デモ)
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{色のアニメーション--ソースコード\REF{79}}
+ \LISTAll{4}{svg-animation-color.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{色のアニメーション--ソースコード(解説)}
+ \begin{itemize}
+	\item 7行目から定義されている円の属性にアニメーションをつけるので
+				\ELM{circle}の最後が\texttt{/>}ではなく、\texttt{>}となっ
+				ている。
+	\item この要素を閉じるために12行目に\texttt{</circle>}がある。
+	\item 9行目から10行目では塗りつぶしの色(\ATTR{fill})にアニメーショ
+				ンをつけている。
+	\item 赤(\VAL{\#ff0000})から黄色(\VAL{\#ffff00})
+				に変化する。
+	\item \ATTR{atributeType}は\VAL{CSS}となっている
+	\item 11行目から12行目では縁取り(\ATTR{stroke})にアニメーションをつ
+				けている
+	\item 黒(\VAL{\#000000})から青(\VAL{\#0000ff})に変化
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ 色のアニメーションで次のことをやってみよう
+ \begin{enumerate}
+  \item アニメーションの色を変える。
+  \item 複数の図形に別の色のアニメーションをつける
+ \end{enumerate}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{一般の要素のアニメーション}
+\begin{itemize}
+ \item 長方形の表示位置を決める\ATTR{x}などにアニメーションをつけるため
+       にも\ELM{animate}を用いる。
+ \item  線形グラデーションで \ATTR{gradientUnits} の値を \VAL{userSpaceOnUse}
+にするとグラデーションの開始位置(\ATTR{x1} や \ATTR{y1}) や終了位置
+ (\ATTR{x2} や \ATTR{y2}) を図形とは無関係な位置に指定できる。
+ \item  これらの属性にアニメーションをつけるとグラデーションの色が横に流れるよ
+ うにできる
+\end{itemize}
+ ここでデモ\REF{82}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{グラデーションにアニメーション---ソースコード(1)}
+ \LIST{4}{svg-mask.svg}{1}{19}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{グラデーションにアニメーション---ソースコード(2)}
+ \LIST{4}{svg-mask.svg}{20}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{グラデーションにアニメーション---ソースコード(解説)}
+ \begin{itemize}
+  \item 7行目から18行目にグラデーションが定義されている。
+  \item 前回のグラデーションと異なっているのは次の2点。
+  \begin{itemize}
+   \item \ATTR{gradientUnits}が\VAL{userSpaceOnUse}
+   \item グラデーションの大きさが定義されている(\ATTR{x1}など)。
+   \item グラデーションの横幅が\texttt{800}で、21行目から22行目の
+         \ELM{rect}の幅(\ATTR{width})\texttt{400}の2倍
+  \end{itemize}
+  \item 9行目から13行目でグラデーションの色が定義
+     \item 黄色$\rightarrow$赤$\rightarrow$黄色のパターンが2回繰り返され
+           ている。
+  \item 14行目から15行目にグラデーションの\ATTR{x1}の、
+        16行目から17行目にグラデーションの\ATTR{x2}のアニメーショ
+        ンがそれぞれついている。
+  \item \ATTR{x1}は\VAL{0}から\VAL{-400}に、\ATTR{x2}
+        は\VAL{800}から\VAL{400}に変化するので、グラデーションの横
+        幅は変化しない。
+  \item 長方形の内部はグラデーションの横の値が\VAL{0}から\VAL{400}
+        だけの範囲が塗られるのでグラデーションが右から左に流れる。
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ グラデーションのアニメーションで次のように変えてみよう。
+\begin{enumerate}
+ \item アニメーションが左から右に流れる。
+ \item \ATTR{x1}と\ATTR{x2}のアニメーションのスピードを変える
+ \item \ATTR{stop-color}や\ATTR{offset}にアニメーションをつける
+\end{enumerate}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{これでおしまい}
+ このビデオはこれでおしまい。
+
+ アニメーションの途中の値を複数指定する方法を次のビデオで紹介
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+  <title>部分的に文字の表示を変える</title>
+  <g transform="translate(50,100)">
+    <text x="0" y="0" font-size="36px">
+       This is a <tspan fill="red">next</tspan>
+       Example using 
+     <tspan text-decoration="underline">&lt;tspan&gt;</tspan>.
+    </text>
+    <line stroke-width="1" x1="-50" y1="0" x2="600" y2="0" stroke="gray"/>
+    <line stroke-width="1" y1="-50" x1="0" y2="50" x2="0" stroke="gray"/>
+  </g>
+</svg>

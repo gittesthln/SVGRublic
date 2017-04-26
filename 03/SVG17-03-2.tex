@@ -1,0 +1,90 @@
+%-*- coding: utf-8 -*-
+\input ../beamerHead.tex
+\TITLE{3}{2}{同じ図形で塗りつぶす。--- パターン}{5/9}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+ \section{SVGのパターン}
+\begin{frame}[containsverbatim]
+ \frametitle{パターンとは}
+ 図形が小さな図形の繰り返しで構成されているとき、\ATTR{fill}を小さな図形
+ で繰り返すことを指定できる
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{パターンの例--ヘルマン格子\REF{21}}
+水平線と垂直線が交わるあたりにぼんやりと黒い斑点が見える
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ヘルマン格子--\ELM{line}を用いて書く(1)}
+ \LIST{2}{svg-hermann-line.svg}{1}{11}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ヘルマン格子--\ELM{line}を用いて書く(2)}
+ \LIST{2}{svg-hermann-line.svg}{12}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ヘルマン格子--\ELM{pattern}を用いて書く}
+ \LISTAll{3}{svg-hermann-pattern.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ヘルマン格子--コードの解説}
+ \begin{itemize}
+  \item \ELM{line}を用いた場合には表示する分だけの直線を記述する必要があ
+        る
+  \item ここでは、直線の幅などを修正しやすいように\ELM{defs}内で一つだけ
+        \ELM{line}を定義し、水平方向と垂直方向はそれを引用している
+  \item パターンを利用しているリストでは7行目から11行目でパターンを定義
+        している。
+        \begin{itemize}
+         \item パターンの大きさは\ATTR{width}と\ATTR{height}で定義
+         \item \ATTR{patternUnits}は\VAL{userSpaceOnUse}
+         \item 8行目で背景を正方形で定義。大きさは\ELM{pattern}と同じ
+         \item 9行目と10行目で水平線と垂直線をそれぞれ定義
+        \end{itemize}
+  \item 14行目で全体の画像を\ELM{rect}で定義し、\ATTR{fill}をパターンで
+        指定。
+  \item 書き方はグラデーションのときと同じ
+	\item パターンを適用する図形は長方形でなくてもよい
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{パターンにアニメーションを付ける}
+ モーガンのねじれのひも\REF{70}をパターンで描いて、それにアニメーション
+ を付ける。
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{パターンにアニメーションを付ける--ソースコード}
+ \LISTN{svg-morgan-animation.svg}{1}{last}{\tiny}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{パターンにアニメーションを付ける--ソースコード(解説)}
+\begin{itemize}
+ \item このアニメーションでは、細長い長方形の移動が2行で組になっているこ
+			 とに注意
+ \item 縦横300の正方形を\texttt{lightgray}で塗りつぶし(22行目)。
+ \item その上に白い細長い長方形のパターン(6行目から9行目)で塗りつぶし(23
+			 行目)。
+ \item 24行目でアニメーションのついたパターンでこの白い部分を上塗り
+			 \begin{itemize}
+				\item ねじれのひもを構成する上の部分が12行目の長方形。2つで構成
+				\item 下の部分が平行移動のアニメーションを付けている
+			 \end{itemize}
+ \item どちらも2つが組になっていることに注意
+\end{itemize}
+ この例からもわかるように全部の領域を塗らない図形でもよい。
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{パターンを使ってみよう}
+ \begin{itemize}
+  \item 今までに作成したSVG画像で繰り返しの部分があるものをパターンで書
+        き直し、コードの長さ、変更の手間などの比較、考察をする
+  \item ザビニの錯視\REF{68}や輝くヘルマン格子、をパターンを用いて作成する
+  \item パターンを構成する要素の一部の属性にアニメーションをつける。錯視
+        図形の場合にはその見え方の変化を報告する
+ \end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}
+

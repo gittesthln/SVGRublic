@@ -1,0 +1,52 @@
+\documentclass[dvips]{beamer}
+\usepackage{pgfpages}
+\usepackage{moreverb,array,multirow,fancyvrb}
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2 \AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}\else%"
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
+%\usetheme{Malmoe}
+%
+\usetheme{Goettingen}
+%\usetheme{Darmstadt}
+
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\setbeamerfont{title}{size=\Large,series=\bfseries}%,color=white}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{beamergotobutton}{size=\Large}
+%\setbeamercolor{frametitle}{fg=yellow}
+\setbeamertemplate{frametitle}[default][center]
+%\addtobeamertemplate{footline}{}{\insertframenumber/\inserttotalframenumber}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\newcommand{\TITLE}[4]{%
+\title[第#1回目(その#2)]{{\small SVG資料第#1回目(その#2)}\\#3}
+\author{メディア専門ユニットI(SVG)}
+\institute{}
+\date{2016/#4}
+}
+\newcommand{\LISTN}[4]{%
+\renewcommand{\theFancyVerbLine}{#4\arabic{FancyVerbLine}}
+\VerbatimInput[numbers=left,fontsize=#4,
+numbersep=1pt,firstline=#2,lastline=#3]{#1} 
+}
+\newcommand{\LIST}[4]{\LISTN{#2}{#3}{#4}{\footnotesize}}
+\newcommand{\LISTAll}[2]{\LIST{#1}{#2}{1}{last}}
+
+\newcommand{\FIG}[3]{%
+\begin{center}
+\includegraphics[width=#1\textwidth]{../../SVG17/CH#2/#3.eps}
+\end{center}
+}
+\newcommand{\FIGN}[2]{%
+\begin{center}
+\includegraphics[width=#1\textwidth]{#2.eps}
+\end{center}
+}
+\newcommand{\REF}[1]{(配布資料#1ページ)}
+\newcommand{\ATTR}[1]{属性\texttt{#1}}
+\newcommand{\VAL}[1]{\texttt{#1}}
+\newcommand{\JSKey}[1]{\texttt{#1}}
+\newcommand{\ObjGM}[1]{\texttt{#1}}
+\newcommand{\ELM}[1]{\texttt{<#1>}要素}
+\newcommand{\Bezier}{B\'{e}zier}

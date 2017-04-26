@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" height="100%" width="100%">
+  <title>穴あき正方形</title>
+  <g transform="translate(20,20)">
+    <circle cx="100" cy="100" r="5" fill="black"/>
+      <path d="M0,0 200,0 200,200 0,200z M50,50 150,50 150,150 50,150z"
+            fill="red" stroke="blue" stroke-width="5" fill-rule="evenodd"/>
+    </g>
+</svg>

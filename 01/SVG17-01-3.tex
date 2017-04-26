@@ -1,0 +1,129 @@
+%-*- coding: utf-8 -*-
+\input ../beamerHead.tex
+\TITLE{1}{3}{SVGの例その2}{4/18}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{SVGの基礎}
+\section{\texttt{transform}}
+\begin{frame}[containsverbatim]
+ \frametitle{\texttt{transform}属性について}
+\begin{itemize}
+ \item \texttt{translate}:平行移動
+ \item \texttt{rotate}:原点を中心とする回転\\
+\begin{itemize}
+ \item 時計回りが正の方向
+ \item 角度の単位は度
+\end{itemize}
+ \item \texttt{scale}:原点を基準とした座標方向の拡大・縮小\\
+\begin{itemize}
+ \item $x$方向と$y$方向の拡大縮小率を指定
+ \item 引数が一つの場合は$x$方向と$y$方向の拡大縮小率は同じ
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{SVGの例}
+\subsection{Fickの錯視--\texttt{xlink}の使い方}
+\begin{frame}[containsverbatim]
+ \frametitle{Fickの錯視--\texttt{xlink}版}
+Fickの錯視で水平線と垂直線が同じ長さであることが直接わかるように一つの直
+ 線を引用する形で作成する。
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Fickの錯視--\texttt{xlink}版}
+ \LISTAll{2}{fick2.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Fickの錯視---SVGのコード---解説(1)}
+ \framesubtitle{6行目から９行目：\texttt{<defs>}要素}
+別のところで利用するための要素は\texttt{<defs>}内に用意する。
+ \begin{itemize}
+	\item 直線の形を決める属性は前と同じ
+	\item 後で引用をするために\texttt{id}属性を利用
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{Fickの錯視---SVGのコード---解説(2)}
+ \framesubtitle{11行目以降}
+ \begin{itemize}
+	\item 11行目で\texttt{<defs>}で定義した要素を引用するために
+				\texttt{<use>}要素を利用
+	\item 引用のために\texttt{xlink}で定義されている\texttt{href}属性を使
+				用
+	\item 引用先の\texttt{id}属性の値の前に\texttt{\#}をつける
+	\item 12行から16行目で垂直線を作成
+				\begin{itemize}
+				 \item 13行目の\texttt{<g>}の属性\texttt{transform}で
+							 \texttt{rotate}を用いることで水平線を垂直線にしている
+				 \item $-90$(度)なので終点は上方になる
+				 \item その図形を12行目の\texttt{<g>}で水平線の中央に平行移動
+				\end{itemize}
+ \end{itemize}
+\end{frame}
+\subsection{グラデーション}
+\begin{frame}[containsverbatim]
+ \frametitle{グラデーション}
+ グラデーションとはある色から別の色に少しづつ変化させて塗ること。
+ \FIG{0.6}{2}{svg-gradient}
+ 左の赤から右の黄色に次第に変化している。
+
+ グラデーションには2種類ある。
+ \begin{itemize}
+	\item 線形グラデーション(上の例)
+	\item 放射グラデーション\\
+				ある点から周辺に向かって色が変化する
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{線形グラデーション--SVGのコード\REF{26}}
+ \LISTAll{2}{svg-gradient1.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{線形グラデーション--SVGのコードの解説(1)}
+ グラデーションは\texttt{<defs>}の中で定義(7行目から11行目)
+ \begin{itemize}
+	\item 要素名は\texttt{<linearGradient>}
+	\item 属性\texttt{id}をつける(ここでは\texttt{Gradient1})
+	\item グラデーションをつける基準の座標系を属性\texttt{gradientUnits}で
+				指定\\
+				\begin{itemize}
+				 \item \texttt{objectBoundingBox}は対象とする図形の左上
+				 \item \texttt{userSpaceOnuse}は一つ上の要素(親要素)の左上
+				\end{itemize}
+	\item グラデーションの特定の位置の色を\texttt{<stop>}要素で指定
+				\begin{itemize}
+				 \item 色を\texttt{stop-color}
+				 \item 位置を属性\texttt{offset}　単位は\%
+				\end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{線形グラデーション--SVGのコードの解説(2)}
+13行目から16行目で長方形をこのグラデーションで塗る
+ \begin{itemize}
+	\item 長方形は要素\texttt{<rect>}
+	\item 左(\texttt{x})上(\texttt{y})の位置と幅(\texttt{width})と
+				高さ(\texttt{height})を指定
+	\item 縁取りの色(\texttt{stroke})を\texttt{black}
+	\item 塗りの色(\texttt{fill})をグラデーションで指定\\
+				このときは色名は\texttt{url()}となる。\texttt{id}の前に
+				\texttt{\#}をつける
+ \end{itemize}
+\end{frame}
+\section{終わりに}
+\begin{frame}
+ \frametitle{これでおしまい}
+ \begin{itemize}
+	\item  \texttt{gradientUnits}の違いは\REF{29}\\
+				 ブラウザの横幅を変えてみてください。
+	\item  放射グラデーションは配布資料\REF{33}
+ \end{itemize}
+
+ 第1回目の予習はこれでおしまい
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}
+

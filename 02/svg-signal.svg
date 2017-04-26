@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+  <title>信号機のシミュレーション</title>
+  <defs>
+    <circle r="20" id="sign" cy="30" stroke-width="2" stroke="black"/>
+  </defs>
+  <g transform="translate(30,20)">
+    <rect x="0" y="0" width="160" height="60" fill="lightgray"
+          strok-width="2" stroke="green"  id="rect"/>
+    <use xlink:href="#sign" x="130" id="Red" fill="gray" >
+      <set attributeName="fill" attributeType="CSS" id="inRed"
+         to="red" begin="rect.click;inYellow.end" dur="5s" fill="remove"/>
+    </use>
+    <use xlink:href="#sign" x="80" id="Yellow" fill="gray" >
+      <set attributeName="fill" attributeType="CSS" id="inYellow"
+         to="yellow" begin="inBlue.end" dur="2s" fill="remove"/>
+    </use>
+    <use xlink:href="#sign" x="30" id="Blue" fill="gray">
+      <set attributeName="fill" attributeType="CSS" id="inBlue"
+         to="lime"  begin="inRed.end" dur="5s" fill="remove"/>
+    </use>
+  </g>
+</svg>

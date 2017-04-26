@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Ü‚êü‚Æ‘½ŠpŒ`}{2}{0}{1}
+\beamer@sectionintoc {2}{’¼ü‚Å\¬‚³‚ê‚é}Œ`‚ğ•`‚­}{7}{0}{2}
+\beamer@sectionintoc {3}{‹Èü‚ğ•`‚­---B\'{e}zier‹Èü}{11}{0}{3}

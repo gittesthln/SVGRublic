@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%" >
+  <title>色のアニメーション</title>
+  <g transform="translate(140,80)" >
+    <circle cx="0" y="0" r="50" stroke-width="10"
+            stroke="black" fill="green">
+      <animate attributeName="fill" attributeType="CSS" begin="5s"
+         from="#ff0000" to="#ffff00" dur="10s" fill="freeze"/>
+      <animate attributeName="stroke" attributeType="CSS" begin="5s"
+         from="#000000" to="#0000ff" dur="10s" fill="freeze"/>
+    </circle>
+  </g>
+</svg>

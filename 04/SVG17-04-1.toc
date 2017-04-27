@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{JavvaScriptについて}{2}{0}{1}
+\beamer@sectionintoc {2}{イベント}{4}{0}{2}
+\beamer@sectionintoc {3}{イベント処理}{6}{0}{3}
+\beamer@sectionintoc {4}{開発者ツール}{11}{0}{4}

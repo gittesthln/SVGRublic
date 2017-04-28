@@ -1,8 +1,123 @@
-\input beamerHead.tex
+\input ../beamerHead.tex
 \TITLE{4}{2}{DOMの操作とイベント}{5/16}
 \begin{document}
 \frame{\maketitle}
 %\frame{\tableofcontents}
+\section{JavvaScriptについて}
+\begin{frame}[containsverbatim]
+ \frametitle{JavaScriptの記述方法}
+ \begin{itemize}
+  \item JavaScriptの国際的規約は\texttt{ECMAScript}と呼ばれる言語
+        仕様
+	\item 2015年にECMAScript第６版が、2016年6月に第7版が発表されている。
+	\item この授業では新しい規格を積極的に採用する。参考図書としては
+				オライリーから出ている
+				\href{https://www.amazon.co.jp/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AEJavaScript-%E7%AC%AC3%E7%89%88-ES2015%E4%BB%A5%E9%99%8D%E3%81%AE%E6%9C%80%E6%96%B0%E3%82%A6%E3%82%A7%E3%83%96%E9%96%8B%E7%99%BA-Ethan-Brown/dp/4873117836/ref=sr_1_1?s=books&ie=UTF8&qid=1493275993&sr=1-1&keywords=%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AEjavascript}{
+				「初めてのJavaScript第3版」}を薦める。
+  \item JavaScriptのプログラムは\ELM{script}内に記述
+        \begin{itemize}
+         \item \ATTR{type}に\VAL{text/ecmascript}を指定
+         \item \ELM{script}内に直接プログラムを記述するためには
+               \texttt{CDATA}セクションと呼ばれる範囲に記述
+         \item \texttt{CDATA}セクションの始まりは\Verb+<![CDATA[+、終
+               了は\Verb+]]>+
+         \item この記述はJavaScriptとして文法上正しくないので
+               \texttt{//}をつけて、JavaScriptからみてコメントになるよう
+               にする。
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{JavaScriptの特徴}
+ \begin{itemize}
+  \item JavaScriptでは変数はどのような型のデータも保持できる。
+  \item 変数は宣言しなくても利用可能
+  \item 宣言する場合は \JSKey{let} キーワードを用いる(通常は宣言をする)
+  \item 文の最後には\JSKey{;}を置く
+  \item 文の記述方法はC言語とほとんど同じ
+  \item 関数は \JSKey{function} キーワードで始める。
+  \item そのあとに関数名と\texttt{()}内に仮引数の宣言をする
+  \item 関数本体は\texttt{\{\}}内に記述
+  \item 値を戻す場合には\JSKey{return} 文の後に戻り値を指定
+ \end{itemize}
+\end{frame}
+ \section{イベント}
+\begin{frame}[containsverbatim]
+ \frametitle{イベントとは}
+ \begin{itemize}
+  \item プログラムの実行中に内部または外部から伝えられる情報
+  \item イベントに対応して処理するプログラムをイベント駆動型と呼ぶ
+  \item イベント駆動型ではイベントの発生順序が前もって決められないのでそ
+        れぞれの処理は独立する必要がある。
+ \end{itemize}
+\end{frame}
+\newcommand{\Event}[1]{\texttt{#1}}
+\begin{frame}[containsverbatim]
+ \frametitle{イベントの例\REF{134}}
+ この演習でよく使うイベントはマウスに関するものとファイルのロードが完了
+ したときのイベント
+\begin{center}
+\begin{tabular}[t]{|c|c|}
+ \hline
+イベントの発生条件& イベントの属性名%&
+%\multicolumn{1}{c|}{対応するSVGでのイベント}
+\\\hline
+ファイルのロード終了時  &\Event{onload} \\ \hline
+ボタンがクリックされた &\Event{onclick}  \\ \hline
+ボタンが押された &\Event{onmousedown}  \\ \hline
+マウスカーソルが移動した&\Event{onmousemove}  \\ \hline
+マウスボタンが離された&  \Event{onmouseup} \\ \hline
+マウスカーソルが範囲に入った&\Event{onmouseover}  \\ \hline
+マウスカーソルが範囲から出た&\Event{onmouseout}  \\ \hline
+\end{tabular} 
+\end{center}
+\end{frame}
+\section{イベント処理}
+\begin{frame}[containsverbatim]
+ \frametitle{クリックした円の塗りつぶしの色を表示}
+ 円の上をクリックすると円の色を表示する
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{デモの解説}
+ \begin{itemize}
+  \item 円の上をクリックするとクリックした円の塗りつぶしの色がメッセージ
+        ボックスに表示
+  \item メッセージボックスを消さないと次の操作ができない(モーダルな
+        window)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{136}}
+ \framesubtitle{要素にイベント処理関数を定義}
+ \LISTAll{7}{svg-js-click.svg}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{136}解説}
+ \begin{itemize}
+  \item 13行目から15行目で定義されている\ELM{circle}の\ATTR{onclick}に対
+        して関数\VAL{click(evt)}が呼び出されるようにしている。
+  \item 変数\texttt{evt}は発生したイベントオブジェクト
+  \item 呼び出される関数は8行目から10行目で定義
+  \item マウスによるイベントはマウスイベントと呼ばれる\REF{145}。
+  \item イベントの\ATTR{target}はイベントが発生したオブジェクト
+  \item イベントが発生したオブジェクトはSVGの要素で、その属性の値は
+        \VAL{getAttribute(属性名)}で求められる
+  \item ここでは\ATTR{fill}の値を求めている
+  \item JavaScriptでは\JSKey{+}演算子はどちらかの被演算子が文字列のとき
+        は文字列の連接(二つの文字列をつなげる)
+  \item 関数\JSKey{alert}は与えられた引数をメッセージボックスに表示
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+\begin{itemize}
+  \item 円の別の属性値を表示
+  \item \JSKey{alert}内の初めの文字列("Circle")を
+        \JSKey{event.target.tagName}に変える
+  \item 図形を変えていくつかの属性値を表示
+  \item 異なる図形をいくつか置いて、同様のことをする
+\end{itemize}
+ \end{frame}
 \section{イベント処理関数の登録}
 \begin{frame}[containsverbatim]
  \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{144}}

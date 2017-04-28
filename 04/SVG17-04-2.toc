@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{JavvaScriptについて}{2}{0}{1}
+\beamer@sectionintoc {2}{イベント}{4}{0}{2}
+\beamer@sectionintoc {3}{イベント処理}{6}{0}{3}
+\beamer@sectionintoc {4}{イベント処理関数の登録}{11}{0}{4}
+\beamer@sectionintoc {5}{イベント処理関数の登録する要素}{15}{0}{5}
+\beamer@sectionintoc {6}{やってみよう}{22}{0}{6}

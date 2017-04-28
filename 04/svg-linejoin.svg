@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+  <title> linejoin 属性の違い</title>
+  <defs>
+    <polyline id="hairline" points="-40,100 0,0 40,100"
+      fill="none" stroke-width="2" stroke="white"/> 
+  </defs>
+  <g transform="translate(60,50)">
+    <polyline points="-40,100 0,0 40,100"
+      fill="none" stroke-width="20" stroke="black"/> 
+    <use xlink:href="#hairline"/> 
+    <text text-anchor="middle" x="0" y="125" font-size="25">miter</text>
+  </g>
+  <g transform="translate(200,50)">
+    <polyline points="-40,100 0,0 40,100" stroke-linejoin="round"
+      fill="none" stroke-width="20" stroke="black"/> 
+    <use xlink:href="#hairline"/> 
+    <text text-anchor="middle" x="0" y="125" font-size="25">round</text>
+  </g>
+  <g transform="translate(340,50)">
+    <polyline points="-40,100 0,0 40,100" stroke-linejoin="bevel"
+      fill="none" stroke-width="20" stroke="black"/> 
+    <use xlink:href="#hairline" />
+    <text text-anchor="middle" x="0" y="125" font-size="25">bevel</text>
+  </g>
+</svg>

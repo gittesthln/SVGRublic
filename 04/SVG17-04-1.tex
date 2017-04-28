@@ -11,14 +11,16 @@
         仕様
 	\item 2015年にECMAScript第６版が、2016年6月に第7版が発表されている。
 	\item この授業では新しい規格を積極的に採用する。参考図書としては
-				オライリーから出ている\href{https://www.amazon.co.jp/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AEJavaScript-%E7%AC%AC3%E7%89%88-ES2015%E4%BB%A5%E9%99%8D%E3%81%AE%E6%9C%80%E6%96%B0%E3%82%A6%E3%82%A7%E3%83%96%E9%96%8B%E7%99%BA-Ethan-Brown/dp/4873117836/ref=sr_1_1?s=books&ie=UTF8&qid=1493275993&sr=1-1&keywords=%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AEjavascript}{「初めてのJavaScript第3版」}
+				オライリーから出ている
+				\href{https://www.amazon.co.jp/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AEJavaScript-%E7%AC%AC3%E7%89%88-ES2015%E4%BB%A5%E9%99%8D%E3%81%AE%E6%9C%80%E6%96%B0%E3%82%A6%E3%82%A7%E3%83%96%E9%96%8B%E7%99%BA-Ethan-Brown/dp/4873117836/ref=sr_1_1?s=books&ie=UTF8&qid=1493275993&sr=1-1&keywords=%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AEjavascript}{
+				「初めてのJavaScript第3版」}を薦める。
   \item JavaScriptのプログラムは\ELM{script}内に記述
         \begin{itemize}
          \item \ATTR{type}に\VAL{text/ecmascript}を指定
          \item \ELM{script}内に直接プログラムを記述するためには
                \texttt{CDATA}セクションと呼ばれる範囲に記述
-         \item \texttt{CDATA}セクションの始まりは\texttt{<![CDATA[}、終
-               了は\texttt{]]>}
+         \item \texttt{CDATA}セクションの始まりは\Verb+<![CDATA[+、終
+               了は\Verb+]]>+
          \item この記述はJavaScriptとして文法上正しくないので
                \texttt{//}をつけて、JavaScriptからみてコメントになるよう
                にする。
@@ -30,7 +32,7 @@
  \begin{itemize}
   \item JavaScriptでは変数はどのような型のデータも保持できる。
   \item 変数は宣言しなくても利用可能
-  \item 宣言する場合は \JSKey{var} キーワードを用いる(通常は宣言をする)
+  \item 宣言する場合は \JSKey{let} キーワードを用いる(通常は宣言をする)
   \item 文の最後には\JSKey{;}を置く
   \item 文の記述方法はC言語とほとんど同じ
   \item 関数は \JSKey{function} キーワードで始める。
@@ -51,7 +53,7 @@
 \end{frame}
 \newcommand{\Event}[1]{\texttt{#1}}
 \begin{frame}[containsverbatim]
- \frametitle{イベントの例\REF{143}}
+ \frametitle{イベントの例\REF{134}}
  この演習でよく使うイベントはマウスに関するものとファイルのロードが完了
  したときのイベント
 \begin{center}
@@ -85,12 +87,12 @@
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{144}}
+ \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{136}}
  \framesubtitle{要素にイベント処理関数を定義}
- \LIST{7}All{svg-js-click.svg}
+ \LISTAll{7}{svg-js-click.svg}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{144}解説}
+ \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{136}解説}
  \begin{itemize}
   \item 13行目から15行目で定義されている\ELM{circle}の\ATTR{onclick}に対
         して関数\VAL{click(evt)}が呼び出されるようにしている。
@@ -121,7 +123,7 @@
  \frametitle{開発者ツール}
  各種ブラウザで表現は異なるが機能はほぼ同じ
  \begin{itemize}
-  \item 開くためのショートカットキーは「F12」か「Cntrl+Shift+I」
+  \item 開くためのショートカットキーは「F12」か「Ctrl+Shift+I」
   \item DOMツリーの表示と修正など(Elements)
   \item インターラクティブな操作やエラー表示、プログラムからの出力
         (Console)
@@ -152,18 +154,6 @@
  \end{itemize}
 			 \end{itemize}
 \end{frame}
-\iffalse
-\begin{frame}[containsverbatim]
- \frametitle{Operaで開発者ツールを開いたところ}
- (前回最後に開いていた)Elementsタブが開いている
- \FIGN{0.8}{04-1-opera-dev-1}
-\end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{Operaで開発者ツールを開いたところ(2)}
- コンソールで\texttt{3*4}と入力した。
- \FIGN{0.8}{04-1-opera-dev-2}
-\end{frame}
-\fi
 \begin{frame}[containsverbatim]
  \frametitle{確認しましよう}
  自分の使用しているブラウザで次のことを確認する(ノートにメモすること)
@@ -177,10 +167,10 @@
   \item コンソールで\texttt{2+3;}と入力して結果が表示されることを確認
   \item コンソールで次のように入力したときの結果を確かめる(結果の展開が可能な
         はずなので確認すること)
-
+\\
         \texttt{document.getElementsByTagName("circle");}
  \end{itemize}
- ブラウザの機能いかがでしたか
+ ブラウザの機能、いかがでしたか
  \end{frame}
 \end{document}
 \begin{frame}[containsverbatim]

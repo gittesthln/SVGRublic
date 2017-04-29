@@ -1,7 +1,41 @@
-\input beamerHead.tex
+\input ../beamerHead.tex
 \TITLE{4}{3}{DOMの操作とイベント(2)}{5/17}
 \begin{document}
 \frame{\maketitle}
+\begin{frame}[containsverbatim]
+ \frametitle{クリックした位置に円を移動}
+ \framesubtitle{自分以外の要素の属性値を変える}
+ \LISTN{svg-js-click3.svg}{1}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ソースコードの解説}
+ \begin{itemize}
+  \item 17行目に画面全体を覆う長方形を定義
+  \item この長方形の\ATTR{id}に\VAL{Canvas}が設定
+  \item 9行目でこの長方形にイベント処理関数を定義
+  \item 18行目から19行目に\ATTR{id}が\VAL{Circle}である円を定義
+  \item イベント処理関数の処理手順はつぎのとおり
+        \begin{itemize}
+         \item 12行目で円の要素を得ている
+         \item その要素の\ATTR{cx}にイベントが発生したときのマウスカーソ
+               ル位置(\JSKey{E.clientX})を設定
+         \item その要素の\ATTR{cy}に対しても同様
+        \end{itemize}
+  \item このコードでは円に対してクリックイベントの処理関数が定義されてい
+        ないので円の上でクリックしても円は移動しない
+ \end{itemize}
+\end{frame}
+\section{やってみよう}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+  \item 円に対してもイベント処理関数を登録してその上をクリックしたときに移動するようにす
+        る
+  \item 円の上をクリックしたら色が変化する
+  \item 2つ以上の要素を置く。要素以外のところでクリックしたら最後にクリッ
+        クした要素がクリックした位置に移動する
+ \end{itemize}
+% 次は属性値を設定する方法を解説
 \section{イベント処理関数をつける要素について}
 \begin{frame}[containsverbatim]
  \frametitle{イベント処理を登録する要素について}
@@ -14,7 +48,7 @@
  \frametitle{円の上をクリックすると円の色を表示(3)%\\ソースコード(1)
  }
 %  \framesubtitle{開始時にイベント処理関数を親要素に定義}
- \LISTINGFP{7}{svg-js-click-rev2.svg}{1}{last}
+ \LISTAll{7}{svg-js-click-rev2.svg}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{円の上をクリックすると円の色を表示する}
@@ -51,11 +85,7 @@
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{マウスのドラッグを処理}
- \LISTINGNFP{svg-js-drag.svg}{1}{13}
-\end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{マウスのドラッグを処理(2)}
- \LISTINGNFP{svg-js-drag.svg}{14}{last}
+ \LISTN{svg-js-drag.svg}{1}{last}{\tiny}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{マウスのドラッグを処理--ソースコード解説(1)}
@@ -96,11 +126,7 @@
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{マウスのドラッグを処理(改良版)}
- \LISTINGFP{7}{svg-js-drag-rev.svg}{1}{13}
-\end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{マウスのドラッグを処理(改良版)}
- \LISTINGNFP{svg-js-drag-rev.svg}{14}{last}
+ \LISTN{svg-js-drag-rev.svg}{1}{last}{\tiny}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{マウスのドラッグを処理(改良版)--ソースコード解説}

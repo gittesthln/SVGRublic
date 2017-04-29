@@ -81,22 +81,34 @@
       ]}
 			]
   },
-  {"date": "5/16",
-    "name":"05 イベント処理入門",
+  {"date": "5/16 イベント処理入門",
+    "name":"04",
     "Videos":[
-        {"title":"簡単なイベント処理と開発者ツールの使い方",
+        {"title":"JavaScriptと開発者ツールの使い方",
          "files":
-         [{"name":"svg-js-click.svg",
-           "comment": "円をクリックすると塗りつぶしの色を表示(1)"}]},
-        {"title":"DOMの操作とイベント(1)--クリックした要素を調べる",
-         "files":[]},
+         [{"name":"svg-linejoin.svg",
+           "comment": "line-joinの違い"}]},
+        {"title":"DOMの操作とイベント(1)--クリックした要素の属性を表示",
+         "files":[{"name":"svg-js-click.svg",
+           "comment": "クリックした円の塗りつぶしの色を表示(1)--要素にイベント処理を記述"},
+          {"name":"svg-js-click-rev.svg",
+           "comment": "クリックした円の塗りつぶしの色を表示(2)--イベント処理を要素に対し開始時に設定"},
+           {"name":"svg-js-click2.svg",
+           "comment": "クリックした円を移動--要素の属性を変える"}]},
         {"title":"DOMの操作とイベント(2)--要素の属性を変える",
-         "files":[]}
+         "files":[
+         {"name":"svg-js-click3.svg",
+          "comment":"クリックした位置に円が移動--他の要素の属性値を変える"},
+         {"name":"svg-js-drag.svg",
+          "comment":"ドラッグの処理"},
+         {"name":"svg-js-drag-rev.svg",
+          "comment":"ドラッグの処理の改良"}
+          ]}
          
       ]
   },
-  {"date": "5/23",
-    "name":"06 要素の追加とHTML文書でのフォーム",
+  {"date": "5/23 要素の追加とHTML文書でのフォーム",
+    "name":"05",
     "Videos":[
         {"title":"直線を引く",
          "files":[]},
@@ -104,17 +116,8 @@
          "files":[]}
       ]
   },
-  {"date": "5/30",
-    "name":"07 要素の追加とHTML文書でのフォーム",
-    "Videos":[
-        {"title":"直線を引く",
-         "files":[]},
-        {"title":"クリックした位置をSVG内に表示",
-         "files":[]}
-      ]
-  },
-  {"date": "6/6",
-    "name":"08 起動時にオブジェクトを作成",
+  {"date": "5/30 起動時にオブジェクトを作成",
+    "name":"06",
     "Videos":[
         {"title":"サイクロイドを描く--起動時に要素を作成",
          "files":[]},
@@ -124,8 +127,8 @@
          "files":[]}
       ]
   },
-  {"date": "6/13",
-    "name":"09 HTML文書とSVGの間でデータを交換",
+  {"date": "6/6 HTML文書とSVGの間でデータを交換",
+    "name":"07",
     "Videos":[
          {"title":"ブラウザにデータを保存--WebStorage",
          "files":[]},
@@ -135,8 +138,8 @@
          "files":[]}
       ]
   },
-  {"date": "6/20",
-    "name":"10 JavaScriptの進んだプログラミング",
+  {"date": "6/13 JavaScriptの進んだプログラミング",
+    "name":"08",
     "Videos":[
        {"title":"サイクロイドを描く(アニメーション版)",
          "files":[]},
@@ -146,8 +149,8 @@
          "files":[]}
       ]
   },
-  {"date": "6/27",
-    "name":"11 Web サーバーの基礎",
+  {"date": "6/20 Web サーバーの基礎",
+    "name":"09",
     "Videos":[
         {"title":"Web サーバーの起動と設定",
          "files":[]},
@@ -157,8 +160,8 @@
          "files":[]}
       ]
   },
-  {"date": "7/11",
-    "name":"12 Ajax と jQuery",
+  {"date": "6/27 Ajax と jQuery",
+    "name":"10",
     "Videos":[
         {"title":"Ajax の利用",
          "files":[]},
@@ -169,7 +172,7 @@
       ]
   },
   {"date": "7/18",
-    "name":"13",
+    "name":"11",
     "Videos":[
         {"title":"",
          "files":[]},

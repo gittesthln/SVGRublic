@@ -2,5 +2,4 @@
 \beamer@sectionintoc {1}{イベント}{2}{0}{1}
 \beamer@sectionintoc {2}{イベント処理}{4}{0}{2}
 \beamer@sectionintoc {3}{イベント処理関数の登録}{9}{0}{3}
-\beamer@sectionintoc {4}{イベント処理関数の登録する要素}{11}{0}{4}
-\beamer@sectionintoc {5}{やってみよう}{17}{0}{5}
+\beamer@sectionintoc {4}{やってみよう}{17}{0}{4}

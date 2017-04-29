@@ -60,7 +60,7 @@
         して関数\VAL{click(evt)}が呼び出されるようにしている。
   \item 変数\texttt{evt}は発生したイベントオブジェクト
   \item 呼び出される関数は8行目から10行目で定義
-  \item マウスによるイベントはマウスイベントと呼ばれる\REF{145}。
+  \item マウスによるイベントはマウスイベントと呼ばれる\REF{134}。
   \item イベントの\ATTR{target}はイベントが発生したオブジェクト
   \item イベントが発生したオブジェクトはSVGの要素で、その属性の値は
         \VAL{getAttribute(属性名)}で求められる
@@ -81,21 +81,13 @@
 \end{itemize}
  \end{frame}
 \section{イベント処理関数の登録}
-\iffalse
 \begin{frame}[containsverbatim]
- \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{144}}
- \framesubtitle{要素にイベント処理関数を定義}
-\centering 前のビデオにおけるリスト(比較のために再掲)
- \LISTAll{7}{svg-js-click.svg}
-\end{frame}
-\fi
-\begin{frame}[containsverbatim]
- \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{147}}
+ \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{138}}
   \framesubtitle{開始時にイベント処理関数を定義}
- \LISTN{svg-js-click-rev.svg}{1}{last}{\tiny}
+ \LISTN{svg-js-click-rev.svg}{1}{last}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{147}解説}
+ \frametitle{円の上をクリックすると円の色を表示する\\ソースコード\REF{138}解説}
   \framesubtitle{開始時にイベント処理関数の解説(1)}
  \begin{itemize}
   \item 18行目から20行目にある\ELM{circle}には\ATTR{onclick}がない
@@ -106,10 +98,9 @@
         数が呼び出される
  \end{itemize}
 \end{frame}
-\section{イベント処理関数の登録する要素}
 \begin{frame}[containsverbatim]
  \frametitle{円の上をクリックすると円の色を表示する\\ソースコード
- \REF{147}解説}
+ \REF{138}解説}
   \framesubtitle{開始時にイベント処理関数の解説(2)}
 \begin{itemize}
  \item \JSKey{document}オブジェクトはSVG文書を指す。
@@ -121,15 +112,15 @@
        (イベントリスナー)を登録
  \item イベント処理関数の登録は\JSKey{addEventListener}メソッドを利用
  \item 引数は、イベント名(文字列)、イベント処理関数(関数名)、イベント処理するタイミン
-       グの3つ
- \item イベント処理関数は14行目から16行目にある\texttt{click})
- \item 最後の引数は論理値。詳しくは後日説明
+       グ(論理値、この目的は後日説明)の3つ
+ \item イベント処理関数は14行目から16行目にある\texttt{click}
+ \item \JSKey{alert}内の文字列はテンプレートリテラルで表示\REF{137}
 \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{属性値を変える}
- \framesubtitle{クリックした円の位置を変更\REF{149}}
- \LISTN{svg-js-click2.svg}{1}{18}{\tiny}
+ \framesubtitle{クリックした円の位置を変更\REF{139}}
+ \LISTN{svg-js-click2.svg}{1}{last}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{ソースコードの解説--属性値を変える}
@@ -156,40 +147,6 @@
   \end{itemize}
  
  \end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{クリックした位置に円を移動}
- \framesubtitle{自分以外の要素の属性値を変える}
- \LISTN{svg-js-click3.svg}{1}{last}{\tiny}
-\end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{ソースコードの解説}
- \begin{itemize}
-  \item 17行目に画面全体を覆う長方形を定義
-  \item この長方形の\ATTR{id}に\VAL{Canvas}が設定
-  \item 9行目でこの長方形にイベント処理関数を定義
-  \item 18行目から19行目に\ATTR{id}が\VAL{Circle}である円を定義
-  \item イベント処理関数の処理手順はつぎのとおり
-        \begin{itemize}
-         \item 12行目で円の要素を得ている
-         \item その要素の\ATTR{cx}にイベントが発生したときのマウスカーソ
-               ル位置(\JSKey{E.clientX})を設定
-         \item その要素の\ATTR{cy}に対しても同様
-        \end{itemize}
-  \item このコードでは円に対してクリックイベントの処理関数が定義されてい
-        ないので円の上でクリックしても円は移動しない
- \end{itemize}
-\end{frame}
-\section{やってみよう}
-\begin{frame}[containsverbatim]
- \frametitle{やってみよう}
- \begin{itemize}
-  \item 円に対してもイベント処理関数を登録してその上をクリックしたときに移動するようにす
-        る
-  \item 円の上をクリックしたら色が変化する
-  \item 2つ以上の要素を置く。要素以外のところでクリックしたら最後にクリッ
-        クした要素がクリックした位置に移動する
- \end{itemize}
-% 次は属性値を設定する方法を解説
 \end{frame}
 \end{document}
 \begin{frame}[containsverbatim]

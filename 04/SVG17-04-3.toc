@@ -1,3 +1,4 @@
 \beamer@endinputifotherversion {3.36pt}
-\beamer@sectionintoc {1}{イベント処理関数をつける要素について}{2}{0}{1}
-\beamer@sectionintoc {2}{マウスのドラッグを処理する}{6}{0}{2}
+\beamer@sectionintoc {1}{他の要素の属性値を変更}{2}{0}{1}
+\beamer@sectionintoc {2}{イベント処理関数をつける要素について}{5}{0}{2}
+\beamer@sectionintoc {3}{マウスのドラッグを処理する}{9}{0}{3}

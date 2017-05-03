@@ -1,0 +1,103 @@
+\input beamerHead.tex
+\TITLE{6}{2}{CSS入門}{5/31}
+\begin{document}
+\frame{\maketitle}
+\section{CSSとは}
+\begin{frame}[containsverbatim]
+ \frametitle{CSSについて}
+ \begin{itemize}
+  \item カスケーディングスタイルシート(CSS)はHTML文書の要素の表示方法を
+        指定
+  \item CSSはJavaScriptからも制御可能
+ \end{itemize}
+ \REF{付録47}
+\begin{itemize}
+ \item 属性\texttt{id}の属性値の前に\texttt{\#}をつけるとその要素を選択
+ \item 属性\texttt{class}の属性値の前に\texttt{.}をつけるとその要素を選択
+ \item \Verb+E F+ は \Verb+E+ の下の \Verb+F+
+ \item \Verb+E > F+ は \Verb+E+ の直下の \Verb+F+
+\end{itemize}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{CSSについて}
+ {\footnotesize
+\begin{tabular}{|m{13em}|m{17zw}|}\hline
+\multicolumn{1}{|c|}{セレクタ}&\multicolumn{1}{c|}{解説}\\\hline
+\Verb+*+&任意%&Universal selector&2
+\\\hline
+\Verb+E+&タイプが \Verb+E+ %&Type selector&1
+\\\hline
+\Verb+E[foo]+&タイプが \Verb+E+ で属性 \Verb+"foo"+ を持つ%&Attribute
+	 %selectors
+\\\hline
+\Verb+E[foo="bar"]+&タイプが \Verb+E+ で属性 \Verb+"foo"+ の属性値が
+     \Verb+"bar"+%&Attribute selectors
+\\\hline
+\Verb+E[foo~="bar"]+&タイプが \Verb+E+ で属性 \Verb+"foo"+ の属性値が
+     空白で区切られた一つが \Verb+"bar"+%&Attribute selectors
+ \\\hline
+\Verb+E:link+, %\newline
+\Verb+E:visited+&まだ訪れたことがない(\texttt{:link})か訪れたことがある
+     (\texttt{visited})ハイパーリンクのアンカーである要素%&The link pseudo-classes+&1
+\\\hline
+\Verb+E:active+, %\newline
+\Verb+E:hover+, %\newline
+\Verb+E:focus+&ユーザーに操作されている状態中%&The user action
+	 %pseudo-classes+&1 and 2
+\\\hline
+\Verb+E:enabled+, %\newline
+\Verb+E:disabled+&使用可能(\texttt{:enable})か使用不可のユーザーインター
+     フェイス%&The UI element states pseudo-classes
+\\\hline
+\Verb+E:checked+&チェックされているユーザーインターフェイス%&The UI element states
+	 %pseudo-classes
+\\\hline
+\Verb+E.warning+&属性\texttt{class} が "warning" である要素%&Class selectors&1
+\\\hline
+\Verb+E#myid+&属性\texttt{id} の属性値が "myid" %&ID selectors&1
+\\\hline
+\Verb+E F+&要素\texttt{E} の子孫である要素\texttt{F}%&Descendant
+	 %combinator&1
+\\\hline
+\Verb+E > F+&要素\texttt{E} の子である要素\texttt{F}%&Child combinator
+\\\hline
+\Verb-E + F-&要素\texttt{E} の直後にある要素\texttt{F}%&Adjacent
+	 %sibling combinator
+\\\hline
+\Verb+E ~ F+&要素\texttt{E} の直前にある要素\texttt{F}%&General sibling
+	 %combinator
+\\\hline
+\end{tabular}
+ }
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{CSSセレクタを用いて要素を得る}
+ \JSKey{querySelector()}と\JSKey{querySelectorAll()}は引数にCSSセレクタ
+ を与えて要素のリストを得ることが可能
+ \begin{itemize}
+  \item ラジオボタンでチェックしているものを探す
+
+        ラジオボタンのグループは属性\ATTR{name}(属性名を\texttt{foo})が
+        共通なのでセレクタは\Verb+"input[name=\"foo\"]:checked"+
+ \end{itemize}
+ \ATTR{id}、\ATTR{name}、\ATTR{class}の属性値はセレクタを使わなくても直
+ 接選択するメソッドがある。
+
+ 次のメソッドを\JSKey{querySelector()}または\JSKey{querySelectorAll()}で
+ 書き直してみよう
+\begin{itemize}
+  \item \JSKey{getElementsByTagName("foo")}
+  \item \JSKey{getElementById("foo")}
+  \item \JSKey{getElementsByClassName("foo")}
+  \item \JSKey{getElementsByName("foo")}
+ \end{itemize}
+\end{frame}
+
+ \section{やってみよう}
+\begin{frame}[containsverbatim]
+% \frametitle{}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

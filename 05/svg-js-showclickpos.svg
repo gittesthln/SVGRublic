@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="100%" width="100%">
+  <title>クリックした位置をSVG 内に表示</title>
+  <script type="text/ecmascript">
+//    <![CDATA[
+  window.onload = function() {
+    document.getElementById("Rect").addEventListener("click",click, false);
+  }
+  function click(event) {
+    document.getElementById("XP").firstChild.nodeValue=event.clientX;
+    document.getElementById("YP").firstChild.nodeValue=event.clientY;
+    document.getElementById("Circle").setAttribute("cx",event.clientX);
+    document.getElementById("Circle").setAttribute("cy",event.clientY);
+  }
+//    ]]></script>
+  <style type="text/css">
+   .textStyle { 
+     font-size:20px; text-anchor:end;
+  } 
+  </style>
+  <circle id="Circle" cx="200" cy="50" r="20" fill="red"/>
+  <text class="textStyle" x="50" y="50"> X</text> 
+  <text class="textStyle" id="XP" x="100" y="50"> </text> 
+  <text class="textStyle" x="50" y="100"> Y</text>
+  <text class="textStyle" id="YP" x="100" y="100"> </text> 
+  <rect id="Rect" x="0" y="0" width="100%" height="100%" opacity="0" />
+</svg>

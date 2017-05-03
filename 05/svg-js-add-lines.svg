@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     height="100%" width="100%">
+  <title>画面上に直線を引く</title>
+  <script type="text/ecmascript">
+//<![CDATA[
+  let svgNS ="http://www.w3.org/2000/svg";
+  let C, NewLine = null;
+  window.onload = function() {
+    C = document.getElementById("Canvas");
+    C.addEventListener("mousedown",mdown, false);
+    C.addEventListener("mouseup",mup, false);
+  }
+  function mdown(E) {
+    NewLine = document.createElementNS(svgNS, "line");
+    NewLine.setAttribute("x1",E.clientX);
+    NewLine.setAttribute("y1",E.clientY);
+    NewLine.setAttribute("x2",E.clientX);
+    NewLine.setAttribute("y2",E.clientY);
+    NewLine.setAttribute("stroke","red");
+    NewLine.setAttribute("stroke-width","4");
+    C.appendChild(NewLine);
+    C.addEventListener("mousemove",mmove, false);
+  }
+  function mmove(E) {
+    NewLine.setAttribute("x2",E.clientX);
+    NewLine.setAttribute("y2",E.clientY);
+  }
+  function mup(E) {
+    C.removeEventListener("mousemove",mmove, false);
+  }
+//]]></script>
+  <g id="Canvas">
+    <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+  </g>
+</svg>

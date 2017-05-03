@@ -1,0 +1,142 @@
+\input beamerHead.tex
+\TITLE{5}{2}{初期化で要素を作成と\\自前のアニメーション}{5/24}
+\begin{document}
+\frame{\maketitle}
+ \section{初期化で要素を作成}
+\begin{frame}[containsverbatim]
+ \frametitle{サイクロイドとは}
+ \begin{itemize}
+  \item 円が直線上を回転しながら移動するとき、円上の一点が描く軌跡
+  \item 円の半径を$r$、回転した角を$\theta$とするとき、点の位置は次の式
+        で与えられる
+    \begin{align*}
+     x &= r(\theta-\sin \theta)     \\
+     y &= r(1-\cos\theta)
+    \end{align*}
+  \item ここでは$\theta$の値を小さく変化させてその間の直線として
+        \ELM{path}として描く
+ \end{itemize}
+\end{frame}
+\newcommand{\ElmJC}[4]{\texttt{#1}&#3&#4\\\hline}
+\begin{frame}[containsverbatim]
+ \frametitle{数学関数}
+ \JSKey{Math}オブジェクトのプロパティまたはメソッドとして記述
+ \begin{center}\small\setlength{\tabcolsep}{0.1em}
+   \begin{tabular}{|c|c|c|}\hline
+    \ElmJC{名称}{}{種類}{説明}
+\ElmJC{E}{e@$e$}{定数}{自然対数の底($2.71828182\dots$)}
+\ElmJC{PI}{pi@$\protect\pi$}{定数}{円周率($\pi=3.141592\dots$)}
+\ElmJC{abs(x)}{|x|@$|x|$}{関数}{$x$ の絶対値}
+\ElmJC{ceil(x)}{}{関数}{$x$以上の整数で最小な値を返す。}
+\ElmJC{cos(x)}{}{関数}{余弦関数 $\cos x$}
+\ElmJC{exp(x)}{}{関数}{指数関数 $e^x$}
+\ElmJC{floor(x)}{}{関数}{$x$の値を超えない整数}
+\ElmJC{log(x)}{}{関数}{自然対数$\log x$}
+\ElmJC{max([x1, x2, ..., xN])}{}{関数}{与えられた引数の最大値}
+\ElmJC{min([x1, x2, ..., xN])}{}{関数}{与えられた引数の最小値}
+\ElmJC{pow(x, y)}{xy@$x^y$}{関数}{指数関数 $x^y$}
+\ElmJC{random()}{}{関数}{$0$と$1$の間の擬似乱数を返す}
+\ElmJC{round(x)}{}{関数}{$x$の値を四捨五入する}
+\ElmJC{sin(x)}{}{関数}{正弦関数 $\sin x$}
+\ElmJC{sqrt(x)}{}{関数}{平方根を求める。 $\sqrt{x}$}
+\ElmJC{tan(x)}{}{関数}{正接関数 $\tan x$}
+\end{tabular}
+ \end{center}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サイクロイド--コード(1)}
+ \LISTINGFP{7}{svg-cycloid.svg}{1}{19}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サイクロイド--コード(1)--解説}
+\begin{itemize}
+ \item 7行目で円の大きさを設定
+ \item 変数\texttt{d}はサイクロイドの形状を示す\ELM{path}の\ATTR{d}に設
+       定するための値を保持する。\texttt{"M"}で初期化
+ \item 角度を$0$から$360$に設定してそれに対する位置を計算(10行目から15行
+       目)
+   \begin{itemize}
+    \item 11行目で角度をラジアンに変換。\JSKey{Math.PI}は円周率を表す。
+    \item 12行目で$x$座標の位置を、13行目で$y$座標の位置をそれぞれ計算
+    \item 計算した結果を変数\texttt{d}に追加(14行目)
+   \end{itemize}
+ \item 16行目でサイクロイドを表示する\ELM{path}に\ATTR{d}を設定
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サイクロイド--コード(2)}
+ \LISTINGFP{7}{svg-cycloid.svg}{20}{last}
+ 表示するSVGの要素は円が転がる水平線(21行目)とサイクロイド(22行目)だけ
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+\begin{itemize}
+ \item 正$n$角形を描く
+ \item 正$7$角形の頂点を一つ置きに結んだ図形を描く
+\end{itemize}
+\end{frame}
+
+\section{自前でアニメーションを作成}
+\begin{frame}[containsverbatim]
+ \frametitle{サイクロイドのアニメーション}
+ \LISTINGFP{7}{svg-cycloid-animation.svg}{1}{14}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サイクロイドのアニメーション}
+ \LISTINGFP{7}{svg-cycloid-animation.svg}{15}{31}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サイクロイドのアニメーション}
+ \LISTINGFP{7}{svg-cycloid-animation.svg}{32}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サイクロイドのアニメーション\\コードの解説(1)}
+ \framesubtitle{表示する図形}
+ \begin{itemize}
+  \item 円が転がる水平線(33行目)とサイクロイドを描くための\ELM{path}(34
+        行目)
+  \item 回転する円(37行目)と、円周上の点(39行目)とこの点と中心を結ぶ線
+        (38行目)を囲む\ELM{g}が2つ
+  \item 内側は回転、外側は平行移動
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サイクロイドのアニメーション\\コードの解説(2)}
+ \framesubtitle{JavaScript}
+ \begin{itemize}
+  \item 9行目から14行目で初期化の関数が定義
+    \begin{itemize}
+     \item サイクロイドを表示する\ELM{path}と平行移動、回転のための
+           \ELM{g}要素を変数に格納
+     \item 13行目で部分的に描く関数\texttt{drawCurve}を呼び出し
+    \end{itemize}
+  \item 15行目から29行目で\texttt{drawCurve}を定義
+    \begin{itemize}
+     \item どこまでの角度まで表示したかを示す変数\texttt{Current}が1回転
+           を示していない(17行目)ならば曲線の次の部分を追加
+     \item 次のステップまでサイクロイドの部分を計算して追加(18行目から24
+           行目)
+     \item 転がる円を回転(26行目)と平行移動(25行目)で移動
+     \item \JSKey{setTimeout}関数は指定された関数(第1引数)を経過時間(第2
+           引数、単位はms)後に実行するように設定。ここでは
+           $100\mathrm{ms}=0.1$秒後に設定
+     \item  \JSKey{setTimeout}関数の3番目以降の引数は第1引数の関数の引数
+            となる。
+    \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+\begin{itemize}
+ \item ここで行っていることは1年の時のProccessingで描くアニメーションと
+       同じ
+ \item したがって、Proccessingで行ったアニメーションをSVGに移植すること
+       が可能
+ \item \JSKey{setTimeout()}の次の実行時間を変えてアニメーションのスピー
+       ドを変える
+\end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

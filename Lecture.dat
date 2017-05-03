@@ -99,7 +99,9 @@
          "files":[
          {"name":"svg-js-click3.svg",
           "comment":"クリックした位置に円が移動--他の要素の属性値を変える"},
-         {"name":"svg-js-drag.svg",
+          {"name":"svg-js-click-rev2.svg",
+           "comment": "クリックした円の塗りつぶしの色を表示(3)--イベント処理の要素位置の変更"},
+           {"name":"svg-js-drag.svg",
           "comment":"ドラッグの処理"},
          {"name":"svg-js-drag-rev.svg",
           "comment":"ドラッグの処理の改良"}
@@ -107,50 +109,54 @@
          
       ]
   },
-  {"date": "5/23 要素の追加とHTML文書でのフォーム",
+  {"date": "5/23 要素の追加と起動時にオブジェクトを作成",
     "name":"05",
     "Videos":[
-        {"title":"直線を引く",
-         "files":[]},
-        {"title":"クリックした位置をSVG内に表示",
-         "files":[]}
-      ]
-  },
-  {"date": "5/30 起動時にオブジェクトを作成",
-    "name":"06",
-    "Videos":[
+        {"title":"要素の追加と変更",
+         "files":[
+         {"name":"svg-js-add-lines.svg",
+          "comment":"直線を引く"},
+         {"name":"svg-js-showclickpos.svg",
+          "comment":"クリックした位置をSVG内に表示"}]
+        },
         {"title":"サイクロイドを描く--起動時に要素を作成",
          "files":[]},
-        {"title":"オブジェクトを作成する関数",
-         "files":[]},
-        {"title":"複雑な図形の作成",
+        {"title":"サイクロイドを描く--アニメーション版",
          "files":[]}
+          ]
+  },
+  {"date": "5/30 HTML文書でのフォーム",
+    "name":"06",
+    "Videos":[
+        {"title":"HTML5入門",
+         "files":[
+         {"name":"form-example.html",
+          "comment":"HTMLフォームの基礎"}
+          ]},
+        {"title":"CSS入門",
+         "files":[]},
+        {"title":"SVGとHTML文書でのデータの交換",
+        "files":[
+         {"name":"ShowSetClickPos4.html",
+          "comment":"SVGとHTML文書でのデータの交換--HTMLファイル"},
+         {"name":"HTML.css",
+          "comment":"SVGとHTML文書でのデータの交換--CSS"},
+         {"name":"SSClickPos.js",
+          "comment":"SVGとHTML文書でのデータの交換--JavaScriptファイル"}]
+         }
       ]
   },
-  {"date": "6/6 HTML文書とSVGの間でデータを交換",
+  {"date": "6/6 JavaScriptの進んだプログラミング",
     "name":"07",
     "Videos":[
-         {"title":"ブラウザにデータを保存--WebStorage",
-         "files":[]},
-        {"title":"HTMLにおけるフォームの基礎",
-         "files":[]},
-        {"title":"HTML文書とSVGの間でデータを交換",
-         "files":[]}
-      ]
-  },
-  {"date": "6/13 JavaScriptの進んだプログラミング",
-    "name":"08",
-    "Videos":[
-       {"title":"サイクロイドを描く(アニメーション版)",
-         "files":[]},
         {"title":"変数のスコープとクロージャ",
          "files":[]},
        {"title":"サイクロイドを描く(アニメーション版)--クロージャを使う",
          "files":[]}
       ]
   },
-  {"date": "6/20 Web サーバーの基礎",
-    "name":"09",
+  {"date": "6/13 Web サーバーの基礎",
+    "name":"08",
     "Videos":[
         {"title":"Web サーバーの起動と設定",
          "files":[]},
@@ -160,8 +166,8 @@
          "files":[]}
       ]
   },
-  {"date": "6/27 Ajax と jQuery",
-    "name":"10",
+  {"date": "6/20 Ajax と jQuery",
+    "name":"9",
     "Videos":[
         {"title":"Ajax の利用",
          "files":[]},
@@ -171,8 +177,8 @@
          "files":[]}
       ]
   },
-  {"date": "7/18",
-    "name":"11",
+  {"date": "6/27",
+    "name":"10",
     "Videos":[
         {"title":"",
          "files":[]},

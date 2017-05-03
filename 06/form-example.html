@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>HTMLの例</title>
+    <script type="text/ecmascript">
+      //<![CDATA[
+      window.onload = function(){
+        var F = document.getElementsByTagName("form")[0];
+          F.addEventListener("change",change,false);
+          F.addEventListener("click",click,false);
+      }
+      function change(E) {
+        console.log("change::target:"+E.target.tagName+
+                  ", E.currentTarget:"+E.currentTarget+
+                  ",value:"+E.target.value);
+      }
+      function click(E) {
+        console.log("click::target:"+E.target.tagName+
+                  ", E.currentTarget:"+E.currentTarget+
+                  ",value:"+E.target.value);
+      }
+      //]]>
+    </script>
+    <style>
+      .head {
+      background:rgb(128,128,255);
+      width:180px;
+      text-align:center;
+      font-size:18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>フォームのサンプル</h3>
+    <form>
+      <div>テキストボックス<input type="text" size="20"></input></div>
+      <div>パスワード<input type="password" size="20"></input></div>
+      <div class="head">チェックボックス</div>
+      <div><input type="checkbox" value="check1">チェック1</input></div>
+      <div><input type="checkbox" value="check2">チェック2</input></div>
+      <div class="head">ラジオボタン1</div>
+      <div><input type="radio" name="R1" value="radio1-1">ラジオボタン1-1</input></div>
+      <div><input type="radio" name="R1" value="radio1-2">ラジオボタン1-2</input></div>
+      <div><input type="radio" name="R1" value="radio1-3">ラジオボタン1-3</input></div>
+      <div class="head">ラジオボタン2</div>
+      <div><input type="radio" name="R2" value="radio2-1">ラジオボタン2-1</input></div>
+      <div><input type="radio" name="R2" value="radio2-2">ラジオボタン2-2</input></div>
+      <div><input type="radio" name="R2" value="radio2-3">ラジオボタン2-3</input></div>
+      <div class="head">ボタン2</div>
+      <div><input type="button" value="押してね"></input></div>
+      <div class="head">プルダウンメニュー</div>
+      <div>
+        <select>
+          <option value="option1">オプション1</option>
+          <option value="option2">オプション2</option>
+          <option value="option3">オプション3</option>
+        </select>
+    </form>
+  </body>
+</html>

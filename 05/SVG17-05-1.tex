@@ -1,0 +1,114 @@
+\input beamerHead.tex
+\TITLE{5}{1}{新しい要素の追加とテキストの挿入}{5/24}
+\begin{document}
+\frame{\maketitle}
+ \section{新しい要素を追加する}
+\begin{frame}[containsverbatim]
+ \frametitle{直線を引く}
+ \framesubtitle{新しい要素を追加する例}
+ \begin{itemize}
+  \item 初期画面は何も要素がない
+  \item ドラッグすると直線が引ける
+ \end{itemize}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{直線を引く}
+ \framesubtitle{ソースコード(1)}
+ \LISTINGFP{7}{svg-js-add-lines.svg}{1}{13}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{直線を引く}
+ \framesubtitle{ソースコード(2)}
+ \LISTINGFP{7}{svg-js-add-lines.svg}{14}{32}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{直線を引く}
+ \framesubtitle{ソースコード(3)--SVGの要素}
+ \LISTINGFP{7}{svg-js-add-lines.svg}{33}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{直線を引く--ソースコード解説}
+ 「円をドラッグする」とプログラムの構造はほとんど同じ
+ \begin{itemize}
+  \item 9行目から13行目でファイルのロードが終了したときに呼ばれる関数を
+        定義
+  \item 画面全体を覆う長方形(34行目)を子要素に持つ\ELM{g}に
+           \JSKey{mousedown}と\JSKey{mouseup}のイベント処理関数を登録
+  \item 14行目から24行目で\JSKey{mousedown}のイベント処理関数を定義
+    \begin{itemize}
+     \item 名前空間を指定して要素を新規に作成するメソッド
+           (\JSKey{createElementNS})で\ELM{line}を生成(15行目)
+     \item その要素の直線の始点と
+           終点をイベントが発生したカーソル位置で設定(16行目から19行目)
+     \item 20行目と21行目で色と直線の幅を設定
+     \item 23行目で\JSKey{mousemove}のイベント処理関数の登録
+    \end{itemize}
+  \item 26行目から28行目で\JSKey{mousemove}のイベント処理関数で
+        終点の位置をイベントが発生したカーソル位置に設定
+  \item 29行目から31行目で\JSKey{mouseup}のイベント処理関数で
+        \JSKey{mousemove}のイベント処理関数を取り除く
+ \end{itemize}
+\end{frame}
+ %\section{やってみよう}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+   \item 何本かの直線を引いた後で次のことを確認
+  \begin{itemize}
+  \item 右ボタンでクリックしてソースコードが変化しているか
+   \item DOMツリーを見て、作成した直線の要素があるか
+  \end{itemize}
+	\item SVG内に小さな正方形で塗りの色が異なるものをいくつか置き、その正
+				方形をクリックした後では、クリックした正方形の塗りの色で直線が引
+				けるようにする(\REF{171}図7.15参照)
+	\item 長方形をドラッグで描く
+ \end{itemize}
+\end{frame}
+\section{クリックした位置をSVG内に表示}
+\begin{frame}[containsverbatim]
+クリックした位置をSVGの図形内に表示する
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{クリックした位置をSVG内に表示}
+ \framesubtitle{ソースコード(1)--JavaScript の部分}
+ \LISTINGNFP{svg-js-showclickpos-new.svg}{1}{17}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{クリックした位置をSVG内に表示}
+ \framesubtitle{ソースコード(2)--テキストの表示部分}
+ \LISTINGNFP{svg-js-showclickpos-new.svg}{18}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{クリックした位置をSVG内に表示--ソースコード解説}
+ \begin{itemize}
+  \item 「クリックした位置に円が移動」に文字を表示する部分が追加
+        (26行目から29行目)
+  \item 27行目と29行目の\ELM{text}の中には1個空白が置いてあることに注意
+  \item これらの\ELM{text}は23行目の\ELM{g}要素の子要素になっている
+  \item \JSKey{click}イベントはこの\ELM{g}要素に付けている(9行目)
+  \item クリックの処理でテキストノードの値を書き直すのは12行目と13行目で
+        行っている
+        \begin{itemize}
+         \item \JSKey{firstChild}は対象の要素の先頭の子要素を意味する。
+         \item ここでは\ELM{text}の中の文字列を指す
+         \item これは通常のSVGの要素ではなく、テキストノードになる
+         \item \JSKey{nodeValue}はこのテキストノードの文字列を参照する
+         \item ここに空白がないと\JSKey{firstChild}が存在しないので、エ
+               ラーが発生(確かめよう)
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}
+ \frametitle{やってみよう}
+ \begin{itemize}
+	\item 表示する図形を円から別なものに変えて、その位置を示す属性の値を表
+				示する
+	\item 23行目にある\ELM{g}を取り除いて、イベント処理関数を24行目の
+				\ELM{rect}につけない理由はなにか
+	\item このリストの不備な点を指摘し、改善をする
+ \end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

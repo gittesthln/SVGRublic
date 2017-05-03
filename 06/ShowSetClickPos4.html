@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+<meta charset="UTF-8"/>
+<script type="text/ecmascript" src="SSClickPos.js"></script>
+<link rel="stylesheet" type="text/css" href="HTML.css">
+<title>HTMLとSVGの間でデータを交換させる</title>
+</head>
+<body>
+  <h1 class="display">クリック位置をHTML内に表示、HTMLから移動させる</h1>
+  <div class="Cell">
+    <svg height="410" width="410" id="canvas">
+      <g transform="translate(5,5)">
+        <g id="field">
+          <rect x="0" y="0" width="400" height="400" fill="lightgray"/>
+          <circle id="Circle" cx="200" cy="50" r="20" fill="red"/>
+          <text class="textStyle" x="50" y="50"> X</text>
+          <text class="textStyle" id="X" x="150" y="50"></text>
+          <text class="textStyle" x="50" y="100"> Y</text>
+          <text class="textStyle" id="Y" x="150" y="100"></text>
+        </g>
+        <path fill="blue" d="M-5,-5 405,-5 405,405 -5,405z M0,0 0,400 400,400 400,0z"/>
+      </g>
+    </svg>
+  </div>
+  <div class="Cell" >
+    <div><label for="XP">x=</label>
+      <input type="text" id="XP" size="3" /></div>
+    <div><label for="YP">y=</label>
+      <input type="text" id="YP" size="3" /></div>
+    <div><label for="SelectColor">色</label>
+      <select id="SelectColor"></select></div>
+    <input id="SetColor" type="button" value="設定"></input>
+  </div>
+</body>
+</html>

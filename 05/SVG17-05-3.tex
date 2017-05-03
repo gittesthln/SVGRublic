@@ -1,0 +1,151 @@
+\input beamerHead.tex
+\TITLE{7}{1}{JavaScriptの配列とオブジェクトリテラル}{6/14}
+\begin{document}
+\frame{\maketitle}
+ \section{JavaScriptの配列とオブジェクトリテラル}
+\begin{frame}[containsverbatim]
+  \frametitle{JavaScriptの配列}
+  JavaScriptの配列は次のような特徴を持つ。
+  \begin{itemize}
+   \item 配列の要素のデータ型はすべて同じでなくてもよい
+   \item 配列に要素を追加したり削除したりできる
+   \item 配列の大きさは\JSKey{length}プロパティで得られる
+  \end{itemize}
+「開発者ツール」のコンソールで確かめてみる
+ \end{frame}
+ \begin{frame}[containsverbatim]
+  \frametitle{配列の操作}
+\begin{Verbatim}
+>A = [];        //変数Aを空の配列で初期化
+[]
+>A.length        //配列の大きさは中身がないので0
+0
+>A[5]= 1;        //添え字が5の要素を1に設定
+1
+>A.length       //Aの長さは6になる
+6
+>A[0]           //A[0]からA[4]までは値が代入されていないので
+undefined       //undefined(定義されていない)となる
+\end{Verbatim}
+  \Verb+A=[1,2,"Test"]+として配列を操作してみよう
+ \end{frame}
+ \begin{frame}[containsverbatim]
+  \frametitle{オブジェクトリテラル}
+  \begin{itemize}
+   \item   オブジェクトリテラルとはキーと値のペアのリストのこと
+   \item 全体を波かっこ(\texttt\{\})で囲む
+   \item ペアと値の間はコロン(\texttt{:})で区切る
+   \item 各ペアはコンマ(\texttt{,})で区切る
+  \end{itemize}
+ \end{frame}
+ \begin{frame}[containsverbatim]
+  \frametitle{オブジェクトリテラル}
+  \small
+\begin{Verbatim}
+>A={red:"赤","blue":"青","dark-green":"#004000"};
+Object {red: "赤", blue: "青", dark-green: "#004000"}
+  //3つのペアが定義されている
+  //キーは\texttt{"}ではさまなくてもよい
+ //最後のキーのように変数名として使えない文字を含むものは
+ //\texttt{"}ではさむ
+>A.red;//値は変数のメンバーのようにアクセスできる
+"赤"
+>A.blue;//文字列であっても同じ
+"青"
+>A["red"];//文字列を添え字のように使える
+"赤"
+>A["dark-green"]//-が演算子と重なるのでこの方法でしかアクセスできない
+"#004000"
+>for(name in A) console.log("A[\""+name+"\"]=" +A[name]);
+  //配列のすべての要素を渡るために for( .. in ..)の構文を用いる
+A["red"]=赤
+A["blue"]=青
+A["dark-green"]=#004000
+\end{Verbatim}
+ \end{frame}
+ \section{要素を操作、作成するための関数群の作成}
+\begin{frame}[containsverbatim]
+ \frametitle{要素を操作、作成するための関数群(1)}
+ \LISTINGNFP{make-svg-elm.js}{1}{15}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{要素を操作、作成するための関数群(1)\\コードの解説}
+\begin{itemize}
+ \item ここではHTML内の要素とSVG内の要素を作成する関数を定義
+ \begin{itemize}
+  \item HTML内の要素を定義する関数は\texttt{MKHTMLElm()}(1行目から4行目)
+  \item SVG内の要素を定義する関数は\texttt{MKSVGElm()}(5行目から8行目)
+  \item 引数は新規作成要素の親要素、要素名、属性のリスト、イベント処理の
+        リスト
+  \item それぞれの名前空間を引数に追加して\texttt{MakeElement()}を呼び出
+        し、作成した要素を戻り値とする
+ \end{itemize}
+ \item 9行目から15行目で\texttt{MakeElement()}が定義
+       \begin{itemize}
+        \item 10行目で与えられた名前空間の要素を作成
+        \item 11行目で作成した要素の属性を設定
+        \item 12行目で作成した要素にイベント処理を設定
+        \item 13行目で指定された親要素が\JSKey{null}でなければ作成した要
+              素をその子要素に設定
+       \end{itemize}
+\end{itemize}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{要素を操作、作成するための関数群(2)}
+ \LISTINGNFP{make-svg-elm.js}{16}{last}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{要素を操作、作成するための関数群(2)\\コードの解説}
+\begin{itemize}
+ \item 16行目から20行目でオブジェクトリテラルの形式で与えられた属性と属
+       性値のペアに対いして\texttt{for in}ループで設定
+ \item 21行目から25行目でオブジェクトリテラルの形式で与えられたイベント
+       処理のリストに基づき指定された要素にイベント処理を設定
+ \item 26行目から29行目ではオブジェクトリテラルの形式で与えられた取り除
+       くイベント処理のリストに基づき指定された要素からイベント処理を取
+       り除く
+\end{itemize}
+ これらの関数群を使用して「ドラッグして直線を引く」を書き直してみよう
+
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{関数群を利用した例}
+ 乱数を使用して円をいくつか描く
+ \LIST{svg-js-random.svg}{1}{6}
+ \begin{itemize}
+  \item 6行目で関数群が記されたJavaScriptファイルを読み込む
+  \item ファイル名は属性\ATTR{xlink:href}で指定することに注意
+ \end{itemize}
+\end{frame}
+  \begin{frame}[containsverbatim]
+   \frametitle{乱数を使用して円をいくつか描く\\ソースコード(2)}
+   \LIST{svg-js-random.svg}{7}{last}
+ \end{frame}
+  \begin{frame}[containsverbatim]
+   \frametitle{乱数を使用して円をいくつか描く\\ソースコード(2)解説}
+\begin{itemize}
+ \item 9行目の変数で表示する円の座標の範囲を示す4つの変数の値を定義
+ \item 12行目で25行目にある\ELM{g}を得ている
+ \item 14行目から19行目で一つの円を新規に作成し、25行目の\ELM{g}の子要素
+       にしている
+ \item \ATTR{cx}、\ATTR{cy}、\ATTR{r}は乱数を用いて選択
+ \item \ATTR{fill}の色は10行目の配列\texttt{Colors}から乱数で選択
+ \item 乱数を求める計算は21行目から23行目の\texttt{getRAnVal()}
+ \item 引数は最小値(\texttt{Min})と最大値(\texttt{Max})
+ \item \JSKey{Math.random()}は$0$から$1$の値を返すので、その値を最小値と
+       最大値になるように変換している
+ \item 戻り値を整数とするために\JSKey{Math.floor()}を用いる
+\end{itemize}
+  \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+  \item 10行目の配列に色を追加してもプログラムが正しく動くことを確認し、
+        その理由を述べよ
+  \item 円の代わりに(形の異なる)3角形をランダムに表示するものを作成する
+ \end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

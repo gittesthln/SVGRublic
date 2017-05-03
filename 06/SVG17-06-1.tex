@@ -1,0 +1,124 @@
+\input beamerHead.tex
+\TITLE{6}{1}{HTML5入門}{5/31}
+\begin{document}
+\frame{\maketitle}
+\section{HTML5とは}
+\begin{frame}[containsverbatim]
+ \frametitle{HTML5とは}
+ \begin{itemize}
+  \item 2014年10月にW3CのRecommendationとなった最新のHTMLの規格
+  \item ここではユーザーがデータを入力できる\ELM{form}を中心に解説
+ \end{itemize}
+\end{frame}
+\section{ユーザー入力要素}
+\begin{frame}[containsverbatim]
+ \frametitle{ユーザ入力要素の例}
+    \begin{itemize}
+     \item テキストボックス::文字列の入力
+     \item パスワード::文字列を入力するが、入力された文字列が非表示
+     \item チェックボックス::項目を選択か非選択の2つの状態をとる
+     \item ラジオボタン::いくつかのグループ化されたもののうち一つだけが
+           選択可能
+     \item ボタン::押すことで何らかのアクションを起こさせる
+     \item プルダウンメニュー::いくつかの項目を開いてその中から選択可能
+    \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{form}の例}\small
+ \LIST{06-1example.html}{1}{12}
+ 36行目以降にある\ELM{form}に対してその中にある入力要素の値に変化
+        があったときにおこる\JSKey{change}イベントやクリックイベント処理
+        関数を登録
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{form}の例(1)}\small
+ \LIST{06-1example.html}{13}{24}
+ \begin{itemize}
+  \item 13行目から17行目で\JSKey{change}イベントの処理関数を定義
+  \item イベントが発生したオブジェクト(\JSKey{target})とその要素名
+        (\JSKey{tagName})、イベント処理が定義されている要素
+        (\JSKey{currentTarget})とイベントが発生した要素の値
+        (\JSKey{value})をコンソールに表示
+  \item 18行目から22行目で\JSKey{click}イベントの処理関数を定義。内容は
+        \texttt{change}と同じ
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{form}の例(2)}\small
+ \LIST{06-1example.html}{25}{33}
+ 各入力要素を区別するための文字列のスタイルシート
+ \begin{itemize}
+  \item 背景の色(\texttt{background})
+  \item ボックスの大きさ(\texttt{width})
+  \item 表示する文字列の位置(\texttt{text-align}値は\texttt{center}--中央ぞろえ)
+  \item フォントの大きさ(\texttt{font-size})
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{form}の例(3)}\small
+ \LIST{06-1example.html}{34}{41}
+ \begin{itemize}
+  \item 入力要素は\ELM{input}
+  \item 種別は\ATTR{type}で指定
+        \begin{itemize}
+         \item \VAL{"text"}はテキストボックス(37行目)
+         \item \VAL{"password"}はパスワード(38行目)
+         \item \VAL{"checkbox"}はチェックボックス(40行目と41行目)
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{form}の例(4)}{\footnotesize
+ \LIST{06-1example.html}{42}{49}
+ }
+ \begin{itemize}
+  \item ラジオボタンは\VAL{"radio"}で指定
+  \item \ATTR{name}が同じものが同一グループとみなされ、同時に一つしか選
+        択できない
+  \item 43行目から45行目と47行目から49行目の２つのグループがある
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{form}の例(5)}\small
+ \LIST{06-1example.html}{50}{last}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{form}の例(5)--解説}
+ \begin{itemize}
+  \item ボタンは\VAL{button}で定義(51行目)
+        \begin{itemize}
+         \item \ATTR{value}の属性値がボタン上に表示
+         \item ボタンの種類はこのほかに\VAL{submit}(フォームの
+               \ATTR{action}で指定された関数が実行される)や
+               \VAL{reset}(入力データの初期化)がある
+        \end{itemize}
+  \item プルダウンメニューは\ELM{select}で定義
+    \begin{itemize}
+     \item 子要素の\ELM{opation}がリストとして現れる
+     \item \ELM{option}の\ATTR{value}の属性値が\ELM{select}の値となる
+    \end{itemize}
+ \end{itemize}
+\end{frame}
+ \section{やってみよう}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+  \item \JSKey{change}イベントがいつどこで発生するか確認する
+  \item \JSKey{click}イベントがいつどこで発生するか確認する
+  \item 色が選択できるプルダウンメニューを作る
+  \item ラジオボタンのどこかをチェックした後で次のことを行う
+
+        \Verb+document.querySelector("input[name=\"R1\"]:checked")+
+  \item \ELM{select}を\texttt{<select multiple>}にするとどうなるか
+        \begin{itemize}
+         \item このとき、「Cntrl+右クリック」をいくつかのところで行う
+         \item コンソールで次のように入力した結果を確認する
+               
+               \texttt{document.querySelectorAll("option:checked")}
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

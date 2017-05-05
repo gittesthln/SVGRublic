@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     height="100%" width="100%">
+<title>サイクロイド</title>
+<script type="text/ecmascript">
+//<![CDATA[
+let R = 50;
+window.onload = function() {
+  let Angle, rad, pX, pY, d ="M";
+  for( Angle=0; Angle<= 360; Angle++) {
+    rad = Angle/180*Math.PI;  
+    pX = R*(rad-Math.sin(rad));
+    pY = R*(-1+Math.cos(rad)); 
+    d += `${pX},${pY} `; 
+  }
+  document.getElementById("cycliod").setAttribute("d",d);
+}
+//]]>
+</script>
+<g transform="translate(100,150)">
+  <line x1="-50" y1="0" x2="400" y2="0" stroke-width="2" stroke="black"/>
+  <path id="cycliod" fill="none" stroke="black" stroke-width="3"/>
+</g>
+</svg>

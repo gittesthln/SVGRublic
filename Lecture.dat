@@ -112,17 +112,19 @@
   {"date": "5/23 要素の追加と起動時にオブジェクトを作成",
     "name":"05",
     "Videos":[
-        {"title":"要素の追加と変更",
+        {"title":"テキストの表示と要素の追加",
          "files":[
-         {"name":"svg-js-add-lines.svg",
-          "comment":"直線を引く"},
          {"name":"svg-js-showclickpos.svg",
-          "comment":"クリックした位置をSVG内に表示"}]
+          "comment":"クリックした位置をSVG内に表示"},
+          {"name":"svg-js-add-lines.svg",
+          "comment":"直線を引く"}]
         },
-        {"title":"サイクロイドを描く--起動時に要素を作成",
-         "files":[]},
-        {"title":"サイクロイドを描く--アニメーション版",
-         "files":[]}
+        {"title":"サイクロイドを描く",
+         "files":[
+         {"name":"svg-cycloid.svg",
+          "comment":"サイクロイドを描く--起動時に要素を作成"},
+         {"name":"svg-cycloid-animation.svg",
+          "comment":"サイクロイドを描く--アニメーション版"}]}
           ]
   },
   {"date": "5/30 HTML文書でのフォーム",

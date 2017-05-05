@@ -1,0 +1,42 @@
+\LecName{情報メディア専門ユニットI(演習)}
+\Format{m{13zw}|m{13zw}|m{13zw}|}
+\EvalTitle{優れている,標準的,改良の余地あり}
+\newcommand{\Member}{
+\begin{center}
+ グループメンバー学籍番号\\[2ex]
+  \underline{\makebox[0.22\textwidth]{}}\hfill
+  \underline{\makebox[0.22\textwidth]{}}\hfill
+  \underline{\makebox[0.22\textwidth]{}}\hfill
+  \underline{\makebox[0.22\textwidth]{}}
+\end{center}  
+}
+\newtheorem{Report}{課題}
+\makeatletter
+\@addtoreset{Report}{section}
+\makeatother
+\newcommand{\Probs}[3]{%
+ \begin{Report}[#1]\upshape
+  #2
+  \begin{enumerate}\upshape
+  \ShowProbs#3\relax\relax
+  \end{enumerate}
+ \end{Report}
+ }
+ \renewcommand{\postchaptername}{回}
+ \newcommand{\ShowProbs}[2]{\ifx#1\relax\else%
+ \item #1\vspace{#2\textheight}\expandafter\ShowProbs\fi}
+
+ \newcommand{\changePage}[1]{
+ \renewcommand{\thepage}{第\thechapter 回(#1)-\arabic{page}}
+  \setcounter{page}{1}
+}
+\newcommand{\Must}{{(\bfseries 必須)}}
+\newcommand{\ResultA}{{ \bfseries\normalsize リ 説 図 考}}
+\newcommand{\ResultEI}{{ \bfseries\normalsize 説 考}}
+\newcommand{\ResultFI}{{ \bfseries\normalsize 図 考}}
+
+\newcommand{\setDate}[1]{
+\def\Date{#1}%
+ \renewcommand{\thepage}{第\thechapter 回(#1)-\arabic{page}}
+  \setcounter{page}{1}%
+}

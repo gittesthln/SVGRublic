@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     height="100%" width="100%">
+<title>サイクロイドを描く --- アニメーション版</title>
+<script type="text/ecmascript">
+//<![CDATA[
+let R = 50, Current = 1, Step=2, d ="M0,0 ";
+let T, Rot, C;
+window.onload = function() {
+  C =document.getElementById("cycliod");
+  T =document.getElementById("translate");
+  Rot =document.getElementById("rotate");
+  drawCurve();
+}
+function drawCurve(){
+  let Next = Current + Step, rad;
+  if(Current<=360) {
+    for( ; Current< Next; Current++) {
+      rad = Current/180*Math.PI;
+      d += `${R*(rad-Math.sin(rad))},${R*(-1+Math.cos(rad))} `;
+    }
+    C.setAttribute("d",d);
+    T.setAttribute("transform",`translate(${R*rad},-50)`);
+    Rot.setAttribute("transform", `rotate(${Next})`);
+    setTimeout(drawCurve,100);
+  }
+}
+//]]>
+</script>
+<g transform="translate(100,150)">
+  <line x1="-50" y1="0" x2="400" y2="0" stroke-width="2" stroke="black"/>
+  <path id="cycliod" fill="none" stroke="black" stroke-width="3"/>
+  <g id="translate" transform="translate(0,-50)">
+    <g id="rotate"> 
+      <circle cx="0" cy="0" r="50" stroke-width="3" stroke="black" fill="none"/>
+      <line x1="0" y1="0" x2="0" y2="50" stroke-width="2" stroke="black" />
+      <circle cx="0" cy="50" r="5" fill="black"/>
+    </g>
+  </g>
+</g>
+</svg>

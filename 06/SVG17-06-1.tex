@@ -1,5 +1,5 @@
-\input beamerHead.tex
-\TITLE{6}{1}{HTML5入門}{5/31}
+\input ../beamerHead.tex
+\TITLE{6}{1}{HTML5入門}{5/30}
 \begin{document}
 \frame{\maketitle}
 \section{HTML5とは}
@@ -25,14 +25,14 @@
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{\ELM{form}の例}\small
- \LIST{06-1example.html}{1}{12}
+ \LISTN{form-example.html}{1}{12}{\scriptsize}
  36行目以降にある\ELM{form}に対してその中にある入力要素の値に変化
         があったときにおこる\JSKey{change}イベントやクリックイベント処理
         関数を登録
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{\ELM{form}の例(1)}\small
- \LIST{06-1example.html}{13}{24}
+ \LISTN{form-example.html}{13}{24}{\scriptsize}
  \begin{itemize}
   \item 13行目から17行目で\JSKey{change}イベントの処理関数を定義
   \item イベントが発生したオブジェクト(\JSKey{target})とその要素名
@@ -45,7 +45,7 @@
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{\ELM{form}の例(2)}\small
- \LIST{06-1example.html}{25}{33}
+ \LISTN{form-example.html}{25}{33}{\scriptsize}
  各入力要素を区別するための文字列のスタイルシート
  \begin{itemize}
   \item 背景の色(\texttt{background})
@@ -56,7 +56,7 @@
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{\ELM{form}の例(3)}\small
- \LIST{06-1example.html}{34}{41}
+ \LISTN{form-example.html}{34}{41}{\scriptsize}
  \begin{itemize}
   \item 入力要素は\ELM{input}
   \item 種別は\ATTR{type}で指定
@@ -68,9 +68,8 @@
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{\ELM{form}の例(4)}{\footnotesize
- \LIST{06-1example.html}{42}{49}
- }
+ \frametitle{\ELM{form}の例(4)}{\footnotesize}
+ \LISTN{form-example.html}{42}{49}{\scriptsize}
  \begin{itemize}
   \item ラジオボタンは\VAL{"radio"}で指定
   \item \ATTR{name}が同じものが同一グループとみなされ、同時に一つしか選
@@ -79,8 +78,8 @@
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{\ELM{form}の例(5)}\small
- \LIST{06-1example.html}{50}{last}
+ \frametitle{\ELM{form}の例(5)}
+ \LISTN{form-example.html}{50}{last}{\scriptsize}
  \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{\ELM{form}の例(5)--解説}

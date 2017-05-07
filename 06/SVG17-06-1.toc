@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{HTML5とは}{2}{0}{1}
+\beamer@sectionintoc {2}{ユーザー入力要素}{3}{0}{2}
+\beamer@sectionintoc {3}{やってみよう}{11}{0}{3}

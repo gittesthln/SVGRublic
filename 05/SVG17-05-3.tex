@@ -1,5 +1,6 @@
-\input beamerHead.tex
-\TITLE{7}{1}{JavaScriptの配列とオブジェクトリテラル}{6/14}
+\input ../beamerHead.tex
+\TITLE{5}{3}{JavaScriptの配列とオブジェクトリテラル、要素を作成する関数
+群}{5/23}
 \begin{document}
 \frame{\maketitle}
  \section{JavaScriptの配列とオブジェクトリテラル}
@@ -56,7 +57,7 @@ Object {red: "赤", blue: "青", dark-green: "#004000"}
 "赤"
 >A["dark-green"]//-が演算子と重なるのでこの方法でしかアクセスできない
 "#004000"
->for(name in A) console.log("A[\""+name+"\"]=" +A[name]);
+>for(name in A) console.log(`A["${name}"]=${A[name]}`);
   //配列のすべての要素を渡るために for( .. in ..)の構文を用いる
 A["red"]=赤
 A["blue"]=青
@@ -66,7 +67,7 @@ A["dark-green"]=#004000
  \section{要素を操作、作成するための関数群の作成}
 \begin{frame}[containsverbatim]
  \frametitle{要素を操作、作成するための関数群(1)}
- \LISTINGNFP{make-svg-elm.js}{1}{15}
+ \LISTN{make-svg-elm.js}{1}{15}{\scriptsize}
  \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{要素を操作、作成するための関数群(1)\\コードの解説}
@@ -92,7 +93,7 @@ A["dark-green"]=#004000
  \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{要素を操作、作成するための関数群(2)}
- \LISTINGNFP{make-svg-elm.js}{16}{last}
+ \LISTN{make-svg-elm.js}{16}{last}{\scriptsize}
  \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{要素を操作、作成するための関数群(2)\\コードの解説}
@@ -111,7 +112,7 @@ A["dark-green"]=#004000
 \begin{frame}[containsverbatim]
  \frametitle{関数群を利用した例}
  乱数を使用して円をいくつか描く
- \LIST{svg-js-random.svg}{1}{6}
+ \LISTN{svg-js-random.svg}{1}{6}{\scriptsize}
  \begin{itemize}
   \item 6行目で関数群が記されたJavaScriptファイルを読み込む
   \item ファイル名は属性\ATTR{xlink:href}で指定することに注意
@@ -119,7 +120,11 @@ A["dark-green"]=#004000
 \end{frame}
   \begin{frame}[containsverbatim]
    \frametitle{乱数を使用して円をいくつか描く\\ソースコード(2)}
-   \LIST{svg-js-random.svg}{7}{last}
+   \LISTN{svg-js-random.svg}{7}{23}{\scriptsize}
+ \end{frame}
+  \begin{frame}[containsverbatim]
+   \frametitle{乱数を使用して円をいくつか描く\\ソースコード(2)}
+   \LISTN{svg-js-random.svg}{24}{last}{\scriptsize}
  \end{frame}
   \begin{frame}[containsverbatim]
    \frametitle{乱数を使用して円をいくつか描く\\ソースコード(2)解説}

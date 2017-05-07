@@ -124,7 +124,13 @@
          {"name":"svg-cycloid.svg",
           "comment":"サイクロイドを描く--起動時に要素を作成"},
          {"name":"svg-cycloid-animation.svg",
-          "comment":"サイクロイドを描く--アニメーション版"}]}
+          "comment":"サイクロイドを描く--アニメーション版"}]},
+        {"title":"JavaScriptのオブジェクト、要素を作成する関数群",
+         "files":[
+         {"name":"make-svg-elm.js",
+          "comment":"要素を操作、作成するための関数群の作成"},
+         {"name":"svg-js-random.svg",
+          "comment":"乱数を使用して円をいくつか描く"}]}
           ]
   },
   {"date": "5/30 HTML文書でのフォーム",

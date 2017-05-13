@@ -4,77 +4,92 @@
 \frame{\maketitle}
 \section{SVGとHTMLの間でデータ交換}
 \begin{frame}[containsverbatim]
- \frametitle{ソースコード(1)}
- \LISTN{ShowSetClickPos4.html}{1}{12}{\scriptsize}
+ \frametitle{HTMLのソースコード(1)}
+ \LISTN{ShowSetClickPos4.html}{1}{10}{\scriptsize}
  \begin{itemize}
-	\item 6行目からJavaScriptの部分が開始
-	\item 10行目から11行目で色の選択をするプルダウンメニューに現れる色の情
-				報が格納されたオブジェクトを定義
+	\item 6行目で外部JavaScriptファイルを読み込み
+	\item 7行目で外部CSSファイルを読み込むための\ELM{link}\\
+        CSSファイルの呼び出しが\ELM{style}でないことに注意
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{ソースコード(2)--プルダウンメニューの作成}
- \LISTN{ShowSetClickPos4.html}{13}{20}{\scriptsize}
- 87行目にある\ELM{select}に現れる\ELM{option}を作成
+ \frametitle{HTMLのソースコード(2)--SVGの部分(解説)}
+ \LISTN{ShowSetClickPos4.html}{11}{27}{\scriptsize}
  \begin{itemize}
-	\item 13行目で\ELM{select}を得ている
-	\item それぞれの色に対して15行目で\ELM{option}を作成
-	\item 16行目で\ATTR{value}を配列のキーに設定
-	\item 17行目でテキストノードを作成
-	\item 18行目でそれを\ELM{option}の子要素にする
-	\item 19行目で\ELM{option}を\ELM{select}の子要素にする
+  \item SVGの要素はHTML内の表の一部として現れる。
+  \item SVGの大きさが設定されている(17行目)のが以前と異なる
+  \item クリック範囲をわかりやすくするため、外枠を設定(24行目)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ソースコード(3)--テキストボックス等の部分}
+ \LISTN{ShowSetClickPos4.html}{28}{last}{\scriptsize}
+ \begin{itemize}
+  \item 円の中心を指定するテキストボックス(29目から32行目)
+  \item 色を選択するためのプルダウンメニュー(34行目)
+  \item 設定を実行するためのボタン(35行目)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{JavaScript ソースコード(1)--プルダウンメニューの作成}
+ \LISTN{SSClickPos.js}{1}{9}{\scriptsize}
+ HTMLファイルの34行目にある\ELM{select}に現れる\ELM{option}を作成
+ \begin{itemize}
+	\item 6行目で\ELM{select}を得ている
+	\item それぞれの色に対して8行目で\ELM{option}を作成し、
+        \ATTR{value}を配列のキーに設定
+  \item 8行目でテキストノードを作成し、\ELM{option}の子要素に設定
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ソースコード(2)--初期化}
+ \LISTN{SSClickPos.js}{10}{16}{\scriptsize}
+ \begin{itemize}
+	\item 10，11行目で円の中心の座標が入るHTML文書内のテキストボックスの要
+				素を得ている
+	\item 12行目では円の要素を得ている
+	\item 13，14行目では円の中心の座標が入るSVG内のテキスト表示位置の要
+				素を得ている
+	\item 15，16行目ではSVG内の円の中心位置の座標をHTML内のテキストボック
+				スに設定
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{ソースコード(3)--初期化}
- \LISTN{ShowSetClickPos4.html}{21}{35}{\scriptsize}
+ \LISTN{SSClickPos.js}{17}{23}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{ソースコード(3)--初期化(解説)}
  \begin{itemize}
-	\item 21，22行目で円の中心の座標が入るHTML文書内のテキストボックスの要
-				素を得ている
-	\item 23行目では円の要素を得ている
-	\item 24，25行目では円の中心の座標が入るSVG内のテキスト表示位置の要
-				素を得ている
-	\item 26，27行目ではSVG内の円の中心位置の座標をHTML内のテキストボック
-				スに設定
-	\item 31行目ではSVG文書の、HTML文書内での上からと左からの位置を示す
-				\texttt{BoundingClientRect}オブジェクトを得ている
-	\item これはクリックした位置がHTML文書内からの位置となり、イベントオブ
-				ジェクトからの座標をそのまま使うと円の位置がずれるため
-	\item SVGは縁取りが\texttt{5px}あるようにつくっであるので32，33行目で
+	\item 17，18行目でSVG上と「設定」ボタンのクリックイベントの処理関数を
+        設定
+	\item 19行目ではSVG文書の、HTML文書内での位置を示す
+				\texttt{BoundingClientRect}オブジェクトを得ている。
+	\item イベントオブジェクトで渡されるクリックした位置はHTML文書内からの
+        位置で、そのまま使うと円の位置がずれる。
+	\item SVGは縁取りが\texttt{5px}あるように作成しているので20，21行目で
 				その分も補正値に加えている
-	\item 34行目では画面の情報などをアップデートするための関数
+	\item 22行目で画面の情報などを更新する関数
 				\texttt{refreah()}を呼んでいる。
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{ソースコード(4)--イベント処理関数}
- \LISTN{ShowSetClickPos4.html}{36}{57}{\scriptsize}
+ \LISTN{SSClickPos.js}{24}{last}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{ソースコード(4)--イベント処理関数(解説)}
 \begin{itemize}
-	\item 36行目から40行目では画面がクリックされたときの処理関数が定義
+	\item 24行目から28行目では画面がクリックされたときの処理関数が定義
 
-				イベントが起きた座標から補正値を引いた値をHTML内に設定し(37行目
-				と38行目)その後画面の書き直しを実行
-	\item 41行目から45行目で画面の情報をアップデートする関数を定義
+				イベントが起きた座標から補正値を引いた値をHTML内に設定し(25行目
+				と26行目)その後画面の書き直しを実行
+	\item 29行目から33行目で画面の情報をアップデートする関数を定義
 
-				SVG内の座標表示と円の\ATTR{fill}の属性値を変更
-	\item 47行目から55行目はSVG内の座標位置の表示関数(以前と同じ)
+				SVG内の座標表示と円の\ATTR{fill}の属性値と中心位置を変更
+	\item 34行目から41行目はSVG内の座標位置の表示関数
  \end{itemize}
 \end{frame}
- \begin{frame}[containsverbatim]
-  \frametitle{外部CSSファイルの読み込み}
- \LISTN{ShowSetClickPos4.html}{58}{60}{\scriptsize}
-  \begin{itemize}
-   \item 58行目で外部のCSSファイルを読み込む
-   \item 読み込むために\ELM{link}を用いる
-   \item 59行目は\ELM{title}を記述
-  \end{itemize}
- \end{frame}
  \begin{frame}[containsverbatim]
   \frametitle{スタイルシート(その1)}
   \LISTN{HTML.css}{1}{7}{\scriptsize}
@@ -87,43 +102,25 @@
  \end{frame}
 \begin{frame}[containsverbatim]
   \frametitle{スタイルシート(その2)}
- \LISTN{HTML.css}{8}{20}{\scriptsize}
+ \LISTN{HTML.css}{8}{13}{\scriptsize}
+ \ATTR{class}が\texttt{Cell}の要素は左側の\ELM{svg}と右側の\ELM{input}
+ をそれぞれ内部に持つ\ELM{div}である。
  \begin{itemize}
-  \item 全体の要素を表の形で表示するためのCSSが定義
-  \item \texttt{margin-left}は左側に余白を設定
-  \item \texttt{table-row}は表の行を指定
-  \item \texttt{table-cell}は表の各項目を指定
+  \item \texttt{display}は表示方法を指定。ここではひとつの文字のように取
+        り扱うことを指定(上記の2つの要素が横に並ぶ)
+  \item \texttt{vertical-align}は垂直方向の位置指定。ここでは中央部を基
+        準線に配置することを指定
+  \item \texttt{padding-left}は要素の左側の空白を指定
  \end{itemize}
-\end{frame}
+ \end{frame}
 \begin{frame}[containsverbatim]
   \frametitle{スタイルシート(その3)}
- \LISTN{HTML.css}{21}{last}{\scriptsize}
+ \LISTN{HTML.css}{8}{last}{\scriptsize}
  \begin{itemize}
   \item \texttt{\#XP}は\ATTR{id}が\texttt{XP}の要素に対して適用
   \item ここでは数が入るので右寄せを指定
   \item \texttt{,}で並べるとそれぞれのセレクターに対して適用される
   \item 残りも同じ
- \end{itemize}
-\end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{ソースコード(4)--SVGの部分}
- \LISTN{ShowSetClickPos4.html}{61}{80}{\scriptsize}
-\end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{ソースコード(4)--SVGの部分(解説)}
- \begin{itemize}
-  \item SVGの要素はHTML内の表の一部として現れる
-  \item SVGの大きさが設定されているのが甘えと異なる
-  \item クリック範囲をわかりやすくするため、外枠を設定(76行目から77行目)
- \end{itemize}
-\end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{ソースコード(5)--テキストボックス等の部分}
- \LISTN{ShowSetClickPos4.html}{81}{last}{\scriptsize}
- \begin{itemize}
-  \item 円の中心を指定するテキストボックス(82目から85行目)
-  \item 色を選択するためのプルダウンメニュー(87行目)
-  \item 設定を実行するためのボタン(88行目)
  \end{itemize}
 \end{frame}
  \section{やってみよう}

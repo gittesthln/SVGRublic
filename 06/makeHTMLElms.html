@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>HTML要素の作成</title>
+    <script type="text/ecmascript" src="make-svg-elm.js"></script>
+    <script type="text/ecmascript">
+      //<![CDATA[
+      window.onload = function(){
+        let F = document.getElementById("menu");
+        F.addEventListener("change",change,false);
+        F.addEventListener("click",click,false);
+        for(let i = 1; i<=30; i++) {
+          let option = MKHTMLElm(F,"option",{"value":i},{});
+          option.appendChild(document.createTextNode(`${i}日`));
+        }
+      }
+      function change(E) {
+        console.log(`change::target:${E.target.tagName}`+
+                  `, E.currentTarget:${E.currentTarget}`+
+                  `, value:${E.target.value}`);
+      }
+      function click(E) {
+        console.log(`click::target:${E.target.tagName}`+
+                  `, E.currentTarget:${E.currentTarget}`+
+                  `, value:${E.target.value}`);
+      }
+      //]]>
+    </script>
+  </head>
+  <body>
+    <h3>プルダウンメニューの作成</h3>
+    <form>
+      <div>
+        <select id="menu"></select>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,3 +1,4 @@
 \beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{CSS‚Æ‚Í}{2}{0}{1}
-\beamer@sectionintoc {2}{‚â‚Á‚Ä‚İ‚æ‚¤}{5}{0}{2}
+\beamer@sectionintoc {2}{HTML—v‘f‚ğƒvƒƒOƒ‰ƒ€‚Åì¬‚·‚é}{7}{0}{2}
+\beamer@sectionintoc {3}{‚â‚Á‚Ä‚İ‚æ‚¤}{11}{0}{3}

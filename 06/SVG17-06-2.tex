@@ -1,5 +1,5 @@
 \input ../beamerHead.tex
-\TITLE{6}{2}{CSS入門}{5/30}
+\TITLE{6}{2}{CSSセレクタとHTML要素の追加}{5/30}
 \begin{document}
 \frame{\maketitle}
 \section{CSSとは}
@@ -10,16 +10,15 @@
         指定
   \item CSSはJavaScriptからも制御可能
  \end{itemize}
- \REF{付録47}
+ \REF{付録9}参照
 \begin{itemize}
- \item 属性\texttt{id}の属性値の前に\texttt{\#}をつけるとその要素を選択
- \item 属性\texttt{class}の属性値の前に\texttt{.}をつけるとその要素を選択
- \item \Verb+E F+ は \Verb+E+ の下の \Verb+F+
- \item \Verb+E > F+ は \Verb+E+ の直下の \Verb+F+
+ \item 要素名で要素を選択するためには、要素名を指定する。
+ \item 属性\texttt{id}の属性値で要素を選択するためにはその属性値の前に\texttt{\#}をつける。
+ \item 属性\texttt{class}の属性値で要素を選択するためにはその属性値の前に\texttt{.}をつける。
 \end{itemize}
  \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{CSSについて}
+ \frametitle{CSSセレクタについて}
  {\footnotesize
 \begin{tabular}{|m{13em}|m{17zw}|}\hline
 \multicolumn{1}{|c|}{セレクタ}&\multicolumn{1}{c|}{解説}\\\hline
@@ -70,33 +69,103 @@
 \end{tabular}
  }
 \end{frame}
+\iffalse
+\begin{frame}[containsverbatim]
+ \frametitle{CSSセレクタの注意}
+\begin{itemize}
+ \item \Verb+E F+ と \Verb+E > F+ の違い
+\end{itemize} 
+\end{frame}
+\fi
 \begin{frame}[containsverbatim]
  \frametitle{CSSセレクタを用いて要素を得る}
  \JSKey{querySelector()}と\JSKey{querySelectorAll()}は引数にCSSセレクタ
- を与えて要素のリストを得ることが可能
- \begin{itemize}
-  \item ラジオボタンでチェックしているものを探す
+ を与えて要素のリストを得るメソッド
+ 
+ {\bfseries 例}ラジオボタンでチェックしているものを探す
 
-        ラジオボタンのグループは属性\ATTR{name}(属性名を\texttt{foo})が
+\begin{itemize}
+ \item ラジオボタンのグループは\ATTR{name}(属性名を\texttt{foo})が
         共通なのでセレクタは\Verb+"input[name=\"foo\"]:checked"+
- \end{itemize}
- \ATTR{id}、\ATTR{name}、\ATTR{class}の属性値はセレクタを使わなくても直
- 接選択するメソッドがある。
+ \item このメソッドを使わないと、\JSKey{getElenentsByName()}で該当の要素を選び、
+       どれがチェックしているか調べる必要がある。
+\end{itemize}        
 
+ %\ATTR{id}、\ATTR{name}、\ATTR{class}の属性値はセレクタを使わなくても直
+ %接選択するメソッドがある。
+
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう(1)}
+
+ 前のビデオのサンプルに対して次のことを行おう。
+ \begin{itemize}
+ \item ラジオボタンのどこかをチェックした後で次のことを行う
+
+        \Verb+document.querySelector("input[name=\"R1\"]:checked")+
+  \item \ELM{select}を\texttt{<select multiple>}にするとどうなるか
+        \begin{itemize}
+         \item このとき、「Cntrl+右クリック」をいくつかのところで行う
+         \item コンソールで次のように入力した結果の違いを確認する。
+               
+               \texttt{document.querySelector("option:checked")}\\
+               \texttt{document.querySelectorAll("option:checked")}
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう(2)}
  次のメソッドを\JSKey{querySelector()}または\JSKey{querySelectorAll()}で
- 書き直してみよう
+ 書き直してみよう。
 \begin{itemize}
   \item \JSKey{getElementsByTagName("foo")}
   \item \JSKey{getElementById("foo")}
   \item \JSKey{getElementsByClassName("foo")}
   \item \JSKey{getElementsByName("foo")}
+\end{itemize}
+\end{frame}
+\section{HTML要素をプログラムで作成する}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{option}を追加(1)}
+  \LISTN{makeHTMLElms.html}{1}{17}{\footnotesize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{option}を追加(1)--解説}
+ \begin{itemize}
+  \item 6行目で前回作成した要素を作成する関数群のファイルを読み込む
+  \item 10行目で\ELM{select}を得ている。
+  \item 11行目と12行目でデバッグ用のイベントリスナーの登録
+  \item 13行目から16行目で\ELM{option}を\ELM{select}の子要素として追加
+        \begin{itemize}
+         \item 14行目で、\ELM{option}を作成し、同時にその属性値を設定
+         \item メニューに表示する文字列は\ELM{option}の子要素の
+               \Verb+textNode+なので\JSKey{createTextNode}で作成
+        \end{itemize}
  \end{itemize}
 \end{frame}
-
- \section{やってみよう}
 \begin{frame}[containsverbatim]
-% \frametitle{}
+ \frametitle{\ELM{option}を追加(2)}
+  \LISTN{makeHTMLElms.html}{18}{last}{\footnotesize}
 \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{\ELM{option}を追加(2)--解説}
+ \begin{itemize}
+  \item 18行目から27行目は前のビデオの例と同じ
+  \item 35行目に\ELM{option}が全くない\ELM{select}を作成
+ \end{itemize}
+\end{frame}
+ \section{やってみよう}
+ \begin{frame}[containsverbatim]
+\frametitle{やってみよう}
+% \begin{itemize}
+%   \item 色が選択できるプルダウンメニューを作る。\texttt{value}にはSVGで
+%         指定できる色名を、表示は日本語の色名にするようにすること。
+  %  \item
+  連番が設定できるメニューを作成する関数を作成せよ。それを用いて
+        3つのメニューを並べて年、月、日が指定できるものを作成せよ。
+%  \end{itemize}
+ \end{frame}
+%
 \end{document}
 \begin{frame}[containsverbatim]
  \frametitle{}

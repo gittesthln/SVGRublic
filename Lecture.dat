@@ -141,8 +141,13 @@
          {"name":"form-example.html",
           "comment":"HTMLフォームの基礎"}
           ]},
-        {"title":"CSS入門",
-         "files":[]},
+        {"title":"CSSセレクタとHTML要素の追加",
+         "files":[
+         {"name":"makeHTMLElms.html",
+          "comment":"optionの追加"},
+         {"name":"make-svg-elm.js",
+          "comment":"DOM要素を処理する関数群(前回からの再掲)"}
+          ]},
         {"title":"SVGとHTML文書でのデータの交換",
         "files":[
          {"name":"ShowSetClickPos4.html",

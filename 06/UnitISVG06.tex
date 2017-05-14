@@ -1,0 +1,245 @@
+\documentclass[a4j]{jreport}
+\input ../rubricHead.tex
+\input ../rubricPresentation.tex
+\input ../rubricUnitIHead.tex
+\begin{document}
+\setcounter{chapter}{5}
+\chapter{HTML5入門}
+\changePage{5/30}
+今回の演習の目的は次の通りである。
+\begin{itemize}
+ \item HTML5におけるフォームデータの種類とその処理方法を理解する。
+ \item フォームデータの変化に対応したイベントの発生時期を理解する。
+ \item CSSセレクタの理解する。
+ \item JavaScriptからフォーム要素を構成する方法を学ぶ。
+ \item HTML5で導入されたインラインSVGを理解し、SVG上で発生したイベントデー
+       タとHTMLのフォーム要素とでデータの交換を行う。
+\end{itemize}
+課題に\Must と書かれたものを最低行うこと。それ以外の課題は
+いくつか選択してよい。
+\Probs{入力データの種類}{演習のビデオ1を見て次の問いに答えよ。}{
+ {\Must ユーザが入力できる要素の特徴と使い方に関しての注意を次の表にまとめよ。
+ \begin{center}
+ \begin{tabular}{|m{7zw}|m{7zw}|m{22zw}|}
+  \hline
+  \multicolumn{1}{|c|}{名称}& \multicolumn{1}{c|}{データの種類}&
+        \multicolumn{1}{c|}{特徴と注意点}\\\hline
+  &\rule{0em}{0.05\textheight}&\\ \hline
+  &\rule{0em}{0.05\textheight}&\\ \hline
+  &\rule{0em}{0.05\textheight}&\\ \hline
+  &\rule{0em}{0.05\textheight}&\\ \hline
+  &\rule{0em}{0.05\textheight}&\\ \hline
+ \end{tabular} 
+ \end{center}
+ }{0}
+ {\Must それぞれの入力要素で発生するイベントの種類と順番について報告し
+ さい}{0}
+ {ビデオ内のHTML文書でパスワードのところに何かを入力した後、開発者ツール
+ の「Elements」を開き、パスワード入力の\texttt{type}属性値を
+ \texttt{text}に変えるとどうなるかを報告しなさい。}{0.03}
+ }
+ \newpage
+\Probs{CSSセレクタとHTML要素の追加}{演習のビデオ2を見て次の問いに答えよ。}{
+ {\Must ビデオ1のサンプルのHTML文書に対して、「押してね」のボタンをクリックした
+ とき、ボタン以外の入力要素の値をコンソールに出力するようにせよ。}{0}
+ {\Must 次のメソッドを\texttt{querySelector()}または\texttt{querySelectorAll()}で
+ 書き直せ。必要に応じて\texttt{All}を補うこと\\
+ \newcommand{\Spaces}{%
+ \texttt{querySelector\hspace{3zw}(\texttt{"}\hspace{7zw}\texttt{"})}\rule[-2ex]{0em}{5ex}}
+{\large
+ \begin{tabular}{|c|c|}\hline
+ \texttt{getElementsByTagName("foo")}&\Spaces\\\hline
+   \texttt{getElementById("foo")}&\Spaces\\\hline
+   \texttt{getElementsByClassName("foo")}&\Spaces\\\hline
+   \texttt{getElementsByName("foo")}&\Spaces\\\hline
+ \end{tabular}
+}
+ }{0}
+ {\Must 連番が設定できるメニューを作成する関数を作成せよ。それを用いて
+        3つのメニューを並べて年、月、日が指定できるものを作成せよ。日付
+ はどの月でも31日まであってよい。}{0}
+ }
+ \Probs{SVGとHTMLの間でデータを交換する}{演習のビデオ3を見て次の問いに答えよ。}{
+ {\Must サンプルで選択できる色を追加しなさい。}{0}
+ {次のことを確かめる。
+ \begin{itemize}
+  \item \Must HTML内の表題の部分のフォントの大きさ(\texttt{.display}の
+        \texttt{font-size})を変えてから再起動してもクリックの位置と値が
+        一致している
+  \item \Must 画面を表示した後、ブラウザの横幅を変えて表題部分の行数が増えると
+        クリックした位置と円の移動位置が一致しない。
+  \item 上記の不具合が起きる理由を説明し、それを直す。\\
+        不具合の理由:
+ \end{itemize}}{0.02}
+ {SVG内に図形を追加し、HTML内に図形を選択するプルダウンメニューま
+        たはラジオボタンを置き、クリックしたとき選択された図形が移動
+        するようにせよ。}{0}
+ }
+%\newpage
+\Rubric{第6回(5/30)}{ノートの内容}{
+%\newline
+項目の最後の文字は次に示す項目の評価である。
+{\bfseries リ}(プログラム等のリスト)、{\bfseries 説}(プログラ
+ム説明が手書きまたは印刷である)、{\bfseries 図}(結果のキャプチャ画面)、
+{\bfseries 考}( 考察が手書きまたは印刷である)を意味し、次の記号で評価を
+示す。
+$\times$(不備またはない)、$\triangle$(もう一息)、$\bigcirc$(良い)、
+$\circledcirc$(大変良い)
+}
+{
+{課題1-1}{10}
+{
+  {ユーザ入力の要素の特徴と使い方の注意が十分に記入されている。\ResultEI}
+}
+{
+  {ユーザ入力の要素の特徴と使い方の注意の一部に不備がある。\ResultEI}
+}
+{
+  {ユーザ入力の要素の特徴と使い方の注意に不備がある。\ResultEI}
+  {すべての種類に対して記入がない。\ResultEI}
+}
+{課題1-2}{10}
+{
+  {発生する入力イベントの種類とその順番をコン
+  ソールのキャプチャ画面で示している。\ResultA}
+}
+{
+  {発生する入力イベントの種類とその順番をコン
+  ソールのキャプチャ画面で示しているが中の文字が読みにくい。\ResultA}
+}
+{
+  {発生する入力イベントの種類と順番についてコン
+  ソールのキャプチャ画面で示していないか、中の文字が読めない。\ResultA}
+  }
+{課題1-3}{10}
+{
+  {パスワード入力の要素の\texttt{type}属性値を\texttt{text}に直した結果
+  が正しく行われていて、その証拠画面のキャプチャがある。\ResultFI}
+}
+{
+  {パスワード入力の要素の\texttt{type}属性値を\texttt{text}に直した結果
+  について文字の入力が行われているが、その操作の前後の画面のいずれかがない。\ResultFI}
+}
+{
+  {パスワード入力の要素の\texttt{type}属性値を\texttt{text}に直した結果
+  について文字の入力が行われていないので意図した結果が得られていない。ま
+  たは行っていない。\ResultFI}
+  }
+ {課題2-1}{10}
+ {
+   {サンプルのHTML文書で、「押してね」のボタンをクリックした
+   とき、ボタン以外の入力要素の値をすべてコンソールに出力している。\ResultA}
+   {キャプチャ画面内の文字が十分読める。\ResultF}
+ }
+ {
+  {サンプルのHTML文書で、「押してね」のボタンをクリックした
+  とき、ボタン以外の入力要素の値の一部がコンソールに出力されていない。\ResultA}
+  {コンソール画面のキャプチャ内の文字が読みにくい。\ResultF}
+ }
+ {
+  {サンプルのHTML文書で、「押してね」のボタンをクリックした
+ とき、ボタン以外の入力要素の値のほとんどがコンソールに出力されていない。
+ \ResultA}
+ {コンソール画面のキャプチャ内の文字が判別不能である。\ResultF}
+ }
+ {課題2-2}{15}
+ {
+   {\texttt{querySelector()}または\texttt{querySelectorAll()}を用いて\newline
+   \texttt{getElementsByTagName()}などの置き換えの表が正しい。\ResultEI}
+ }
+ {
+   {\texttt{querySelector()}または\texttt{querySelectorAll()}を用いて\newline
+   \texttt{getElementsByTagName()}などの置き換えの表が一部間違っている。\ResultEI}
+ }
+ {
+   {\texttt{querySelector()}または\texttt{querySelectorAll()}を用いて\newline
+   \texttt{getElementsByTagName()}などの置き換えの表が半分以上間違ってい
+   る。\ResultEI}
+ }
+ {課題2-3}{15}
+ {
+   {連番が設定できるメニューを作成する関数を作成して、年、月、日が指定で
+   きるものを作成している。\ResultA}
+   {定義した関数の引数リストが適切である。\ResultA}
+ }
+ {
+   {連番が設定できるメニューを作成する関数を作成して、年、月、日が指定で
+   きるものを作成している。定義された関数が複数ある。\ResultA}
+   {定義した関数の引数リストが一部適切でない。実行結果が正しいことを示す
+   キャプチャ画面が一部足りない。\ResultA}
+ }
+ {
+   {連番が設定できるメニューを作成する関数を作成していない。年、月、日が指定で
+   きるものを作成せずに複数で実現している。\ResultA}
+   {定義した関数の引数リストが適切でない。メニューを開いている
+   キャプチャ画面がほとんどない。\ResultA}
+ }
+ {課題3-1}{10}{
+ {サンプルで選択できる色の追加がオブジェクトリテラルに追加することでなさ
+ れている。\ResultA}
+ }
+ {
+ {サンプルで選択できる色の追加がHTML内に直接書いて実現している。\ResultA}
+ }
+ {
+ {サンプルで選択できる色の追加がされているがJavaScript内の対応が不十分。\ResultA}
+ }
+ {課題3-2}{15}
+ {
+ {HTML内の表題の部分のフォントの大きさ(\texttt{.display}の
+    \texttt{font-size})を変えた証拠の図がある。\ResultA}
+ {再起動後のクリックの位置と値が一致していることが分かる位置をクリックし
+ ている。\ResultEFI}
+ {ブラウザの横幅を変えて表題部分の行数が増えている。\ResultEFI}
+ {クリックしていて位置と円の移動位置が一致しないことが
+  クリック位置をコンソールに出力しているので分かるようになっている。\ResultEFI}
+ {前問の不具合が起きる原因の説明が正しく、それを正しく修正している。\ResultA}
+ {修正に伴い、変数の宣言などを見直している。\ResultA}
+ }
+ {
+  {HTML内の表題の部分のフォントの大きさ(\texttt{.display}の
+   \texttt{font-size})を変えた証拠の図が不十分である。\ResultA}
+  {再起動後に行ったクリックの位置と値が一致していることが分かるよう
+        な報告になっていない。\ResultEFI}
+  {ブラウザの横幅を変えているが表題部分の行数が増えていないので
+   クリックした位置と円の移動位置が一致しないことの説明が不十分になっ
+   ている。\ResultEFI}
+ {クリック位置が直前の課題と比較して適切でない。\ResultEFI}
+   {前問の不具合が起きる原因の説明が正しい。それを正しく修正している。\ResultA}
+   {修正に伴い、その他の部分の見直しが十分なされていない。\ResultA}
+}
+ {
+ {HTML内の表題の部分のフォントの大きさ(\texttt{.display}の
+  \texttt{font-size})を変えた証拠の図になっていないか存在しない。\ResultEFI}
+ {再起動後に行ったクリックの位置と値が一致していることが分かる位置をク
+        リックしていない。\ResultEFI}
+  {ブラウザの横幅を変えているが表題部分の行数が増えていないので
+     クリックした位置と円の移動位置が一致しないことの説明が不十分である。\ResultEFI}
+  {前問の不具合が起きる原因の説明が正しくない。また、正しく修正していな
+   い。\ResultA}
+ {修正に伴い、その他の部分の見直しを行っていない。\ResultA}
+}
+{課題3-3}{10}
+{
+ {SVG内に十分な図形を追加し、HTML内に図形を選択するプルダウンメニューま
+  たはラジオボタンを置き、クリックしたとき選択された図形が移動
+  するようにしている。\ResultA}
+  {表示する図形をデータとして持ち、それに基づい
+   て図形を設定し、選択メニューも作成している。\ResultA}
+ }
+ {
+   {SVG内に図形を追加し、HTML内に図形を選択するプルダウンメニューま
+    たはラジオボタンを置き、クリックしたとき選択された図形が移動
+    するようにしている。\ResultA}
+   {表示する図形と選択メニューの内容を同一のデータから作成していない。\ResultA}
+}
+{
+ {SVG内に追加した図形が少なすぎる。\ResultA}
+ {HTML内に図形を選択するプルダウンメニューま
+  たはラジオボタンを置き、クリックしたとき選択された図形が移動
+  する動作がおかしい。\ResultA}
+ }
+}
+\rublicPresenII{第6回(5/30)}
+
+\end{document}

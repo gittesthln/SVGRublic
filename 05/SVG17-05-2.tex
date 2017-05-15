@@ -1,139 +1,140 @@
 \input ../beamerHead.tex
-\TITLE{5}{2}{‰Šú‰»‚Å—v‘f‚ğì¬‚Æ\\©‘O‚ÌƒAƒjƒ[ƒVƒ‡ƒ“}{5/23}
+\TITLE{5}{2}{åˆæœŸåŒ–ã§è¦ç´ ã‚’ä½œæˆã¨\\è‡ªå‰ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³}{5/23}
 \begin{document}
 \frame{\maketitle}
- \section{‰Šú‰»‚Å—v‘f‚ğì¬}
+ \section{åˆæœŸåŒ–ã§è¦ç´ ã‚’ä½œæˆ}
 \begin{frame}[containsverbatim]
- \frametitle{ƒTƒCƒNƒƒCƒh‚Æ‚Í}
+ \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã¨ã¯}
  \begin{itemize}
-  \item ‰~‚ª’¼üã‚ğ‰ñ“]‚µ‚È‚ª‚çˆÚ“®‚·‚é‚Æ‚«A‰~ã‚Ìˆê“_‚ª•`‚­‹OÕ
-  \item ‰~‚Ì”¼Œa‚ğ$r$A‰ñ“]‚µ‚½Šp‚ğ$\theta$‚Æ‚·‚é‚Æ‚«A“_‚ÌˆÊ’u‚ÍŸ‚Ì®
-        ‚Å—^‚¦‚ç‚ê‚é
+  \item å††ãŒç›´ç·šä¸Šã‚’å›è»¢ã—ãªãŒã‚‰ç§»å‹•ã™ã‚‹ã¨ãã€å††ä¸Šã®ä¸€ç‚¹ãŒæãè»Œè·¡
+  \item å††ã®åŠå¾„ã‚’$r$ã€å›è»¢ã—ãŸè§’ã‚’$\theta$ã¨ã™ã‚‹ã¨ãã€ç‚¹ã®ä½ç½®ã¯æ¬¡ã®å¼
+        ã§ä¸ãˆã‚‰ã‚Œã‚‹
     \begin{align*}
      x &= r(\theta-\sin \theta)     \\
      y &= r(1-\cos\theta)
     \end{align*}
-  \item ‚±‚±‚Å‚Í$\theta$‚Ì’l‚ğ¬‚³‚­•Ï‰»‚³‚¹‚Ä‚»‚ÌŠÔ‚Ì’¼ü‚Æ‚µ‚Ä
-        \ELM{path}‚Æ‚µ‚Ä•`‚­
+  \item ã“ã“ã§ã¯$\theta$ã®å€¤ã‚’å°ã•ãå¤‰åŒ–ã•ã›ã¦ãã®é–“ã®ç›´ç·šã¨ã—ã¦
+        \ELM{path}ã¨ã—ã¦æã
  \end{itemize}
 \end{frame}
 \newcommand{\ElmJC}[4]{\texttt{#1}&#3&#4\\\hline}
 \begin{frame}[containsverbatim]
- \frametitle{”ŠwŠÖ”}
- \JSKey{Math}ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚Ü‚½‚Íƒƒ\ƒbƒh‚Æ‚µ‚Ä‹Lq
+ \frametitle{æ•°å­¦é–¢æ•°}
+ \JSKey{Math}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¾ãŸã¯ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦è¨˜è¿°
  \begin{center}\small\setlength{\tabcolsep}{0.1em}
    \begin{tabular}{|c|c|c|}\hline
-    \ElmJC{–¼Ì}{}{í—Ş}{à–¾}
-\ElmJC{E}{e@$e$}{’è”}{©‘R‘Î”‚Ì’ê($2.71828182\dots$)}
-\ElmJC{PI}{pi@$\protect\pi$}{’è”}{‰~ü—¦($\pi=3.141592\dots$)}
-\ElmJC{abs(x)}{|x|@$|x|$}{ŠÖ”}{$x$ ‚Ìâ‘Î’l}
-\ElmJC{ceil(x)}{}{ŠÖ”}{$x$ˆÈã‚Ì®”‚ÅÅ¬‚È’l‚ğ•Ô‚·B}
-\ElmJC{cos(x)}{}{ŠÖ”}{—]Œ·ŠÖ” $\cos x$}
-\ElmJC{exp(x)}{}{ŠÖ”}{w”ŠÖ” $e^x$}
-\ElmJC{floor(x)}{}{ŠÖ”}{$x$‚Ì’l‚ğ’´‚¦‚È‚¢®”}
-\ElmJC{log(x)}{}{ŠÖ”}{©‘R‘Î”$\log x$}
-\ElmJC{max([x1, x2, ..., xN])}{}{ŠÖ”}{—^‚¦‚ç‚ê‚½ˆø”‚ÌÅ‘å’l}
-\ElmJC{min([x1, x2, ..., xN])}{}{ŠÖ”}{—^‚¦‚ç‚ê‚½ˆø”‚ÌÅ¬’l}
-\ElmJC{pow(x, y)}{xy@$x^y$}{ŠÖ”}{w”ŠÖ” $x^y$}
-\ElmJC{random()}{}{ŠÖ”}{$0$‚Æ$1$‚ÌŠÔ‚Ì‹[——”‚ğ•Ô‚·}
-\ElmJC{round(x)}{}{ŠÖ”}{$x$‚Ì’l‚ğlÌŒÜ“ü‚·‚é}
-\ElmJC{sin(x)}{}{ŠÖ”}{³Œ·ŠÖ” $\sin x$}
-\ElmJC{sqrt(x)}{}{ŠÖ”}{•½•ûª‚ğ‹‚ß‚éB $\sqrt{x}$}
-\ElmJC{tan(x)}{}{ŠÖ”}{³ÚŠÖ” $\tan x$}
+    \ElmJC{åç§°}{}{ç¨®é¡}{èª¬æ˜}
+\ElmJC{E}{e@$e$}{å®šæ•°}{è‡ªç„¶å¯¾æ•°ã®åº•($2.71828182\dots$)}
+\ElmJC{PI}{pi@$\protect\pi$}{å®šæ•°}{å††å‘¨ç‡($\pi=3.141592\dots$)}
+\ElmJC{abs(x)}{|x|@$|x|$}{é–¢æ•°}{$x$ ã®çµ¶å¯¾å€¤}
+\ElmJC{ceil(x)}{}{é–¢æ•°}{$x$ä»¥ä¸Šã®æ•´æ•°ã§æœ€å°ãªå€¤ã‚’è¿”ã™ã€‚}
+\ElmJC{cos(x)}{}{é–¢æ•°}{ä½™å¼¦é–¢æ•° $\cos x$}
+\ElmJC{exp(x)}{}{é–¢æ•°}{æŒ‡æ•°é–¢æ•° $e^x$}
+\ElmJC{floor(x)}{}{é–¢æ•°}{$x$ã®å€¤ã‚’è¶…ãˆãªã„æ•´æ•°}
+\ElmJC{log(x)}{}{é–¢æ•°}{è‡ªç„¶å¯¾æ•°$\log x$}
+\ElmJC{max([x1, x2, ..., xN])}{}{é–¢æ•°}{ä¸ãˆã‚‰ã‚ŒãŸå¼•æ•°ã®æœ€å¤§å€¤}
+\ElmJC{min([x1, x2, ..., xN])}{}{é–¢æ•°}{ä¸ãˆã‚‰ã‚ŒãŸå¼•æ•°ã®æœ€å°å€¤}
+\ElmJC{pow(x, y)}{xy@$x^y$}{é–¢æ•°}{æŒ‡æ•°é–¢æ•° $x^y$}
+\ElmJC{random()}{}{é–¢æ•°}{$0$ã¨$1$ã®é–“ã®æ“¬ä¼¼ä¹±æ•°ã‚’è¿”ã™}
+\ElmJC{round(x)}{}{é–¢æ•°}{$x$ã®å€¤ã‚’å››æ¨äº”å…¥ã™ã‚‹}
+\ElmJC{sin(x)}{}{é–¢æ•°}{æ­£å¼¦é–¢æ•° $\sin x$}
+\ElmJC{sqrt(x)}{}{é–¢æ•°}{å¹³æ–¹æ ¹ã‚’æ±‚ã‚ã‚‹ã€‚ $\sqrt{x}$}
+\ElmJC{tan(x)}{}{é–¢æ•°}{æ­£æ¥é–¢æ•° $\tan x$}
 \end{tabular}
  \end{center}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{ƒTƒCƒNƒƒCƒh--ƒR[ƒh(1)}
+ \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰--ã‚³ãƒ¼ãƒ‰(1)}
  \LISTN{svg-cycloid.svg}{1}{19}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{ƒTƒCƒNƒƒCƒh--ƒR[ƒh(1)--‰ğà}
+ \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰--ã‚³ãƒ¼ãƒ‰(1)--è§£èª¬}
 \begin{itemize}
- \item 7s–Ú‚Å‰~‚Ì‘å‚«‚³‚ğİ’è
- \item •Ï”\texttt{d}‚ÍƒTƒCƒNƒƒCƒh‚ÌŒ`ó‚ğ¦‚·\ELM{path}‚Ì\ATTR{d}‚Éİ
-       ’è‚·‚é‚½‚ß‚Ì’l‚ğ•Û‚·‚éB\texttt{"M"}‚Å‰Šú‰»
- \item Šp“x‚ğ$0$‚©‚ç$360$‚Éİ’è‚µ‚Ä‚»‚ê‚É‘Î‚·‚éˆÊ’u‚ğŒvZ(10s–Ú‚©‚ç15s
-       –Ú)
+ \item 7è¡Œç›®ã§å††ã®å¤§ãã•ã‚’è¨­å®š
+ \item å¤‰æ•°\texttt{d}ã¯ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã®å½¢çŠ¶ã‚’ç¤ºã™\ELM{path}ã®\ATTR{d}ã«è¨­
+       å®šã™ã‚‹ãŸã‚ã®å€¤ã‚’ä¿æŒã™ã‚‹ã€‚\texttt{"M"}ã§åˆæœŸåŒ–
+ \item è§’åº¦ã‚’$0$ã‹ã‚‰$360$ã«è¨­å®šã—ã¦ãã‚Œã«å¯¾ã™ã‚‹ä½ç½®ã‚’è¨ˆç®—(10è¡Œç›®ã‹ã‚‰15è¡Œ
+       ç›®)
    \begin{itemize}
-    \item 11s–Ú‚ÅŠp“x‚ğƒ‰ƒWƒAƒ“‚É•ÏŠ·B\JSKey{Math.PI}‚Í‰~ü—¦‚ğ•\‚·B
-    \item 12s–Ú‚Å$x$À•W‚ÌˆÊ’u‚ğA13s–Ú‚Å$y$À•W‚ÌˆÊ’u‚ğ‚»‚ê‚¼‚êŒvZ
-    \item ŒvZ‚µ‚½Œ‹‰Ê‚ğ•Ï”\texttt{d}‚É’Ç‰Á(14s–Ú)
+    \item 11è¡Œç›®ã§è§’åº¦ã‚’ãƒ©ã‚¸ã‚¢ãƒ³ã«å¤‰æ›ã€‚\JSKey{Math.PI}ã¯å††å‘¨ç‡ã‚’è¡¨ã™ã€‚
+    \item 12è¡Œç›®ã§$x$åº§æ¨™ã®ä½ç½®ã‚’ã€13è¡Œç›®ã§$y$åº§æ¨™ã®ä½ç½®ã‚’ãã‚Œãã‚Œè¨ˆç®—
+    \item è¨ˆç®—ã—ãŸçµæœã‚’å¤‰æ•°\texttt{d}ã«è¿½åŠ (14è¡Œç›®)
    \end{itemize}
- \item 16s–Ú‚ÅƒTƒCƒNƒƒCƒh‚ğ•\¦‚·‚é\ELM{path}‚É\ATTR{d}‚ğİ’è
+ \item 16è¡Œç›®ã§ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã‚’è¡¨ç¤ºã™ã‚‹\ELM{path}ã«\ATTR{d}ã‚’è¨­å®š
 \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{ƒTƒCƒNƒƒCƒh--ƒR[ƒh(2)}
+ \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰--ã‚³ãƒ¼ãƒ‰(2)}
  \LISTN{svg-cycloid.svg}{20}{last}{\scriptsize}
- •\¦‚·‚éSVG‚Ì—v‘f‚Í‰~‚ª“]‚ª‚é…•½ü(21s–Ú)‚ÆƒTƒCƒNƒƒCƒh(22s–Ú)‚¾‚¯
+ è¡¨ç¤ºã™ã‚‹SVGã®è¦ç´ ã¯å††ãŒè»¢ãŒã‚‹æ°´å¹³ç·š(21è¡Œç›®)ã¨ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰(22è¡Œç›®)ã ã‘
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{‚â‚Á‚Ä‚İ‚æ‚¤}
+ \frametitle{ã‚„ã£ã¦ã¿ã‚ˆã†}
 \begin{itemize}
- \item ³$n$ŠpŒ`‚ğ•`‚­
- \item ³$7$ŠpŒ`‚Ì’¸“_‚ğˆê‚Â’u‚«‚ÉŒ‹‚ñ‚¾}Œ`‚ğ•`‚­
+ \item æ­£$n$è§’å½¢ã‚’æã
+ \item æ­£$7$è§’å½¢ã®é ‚ç‚¹ã‚’ä¸€ã¤ç½®ãã«çµã‚“ã å›³å½¢ã‚’æã
 \end{itemize}
 \end{frame}
 
-\section{©‘O‚ÅƒAƒjƒ[ƒVƒ‡ƒ“‚ğì¬}
+\section{è‡ªå‰ã§ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½œæˆ}
 \begin{frame}[containsverbatim]
- \frametitle{ƒTƒCƒNƒƒCƒh‚ÌƒAƒjƒ[ƒVƒ‡ƒ“}
+ \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³(1)}
  \LISTN{svg-cycloid-animation.svg}{1}{14}{\scriptsize}
+%\end{frame}
+%\begin{frame}[containsverbatim]
+% \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³(1)\\ã‚³ãƒ¼ãƒ‰ã®è§£èª¬}
+% \framesubtitle{JavaScript}
+ 9è¡Œç›®ã‹ã‚‰14è¡Œç›®ã§åˆæœŸåŒ–ã®é–¢æ•°ãŒå®šç¾©
+    \begin{itemize}
+     \item ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã‚’è¡¨ç¤ºã™ã‚‹\ELM{path}ã¨å¹³è¡Œç§»å‹•ã€å›è»¢ã®ãŸã‚ã®
+           \ELM{g}è¦ç´ ã‚’å¤‰æ•°ã«æ ¼ç´
+     \item 13è¡Œç›®ã§éƒ¨åˆ†çš„ã«æãé–¢æ•°\texttt{drawCurve}ã‚’å‘¼ã³å‡ºã—
+    \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{ƒTƒCƒNƒƒCƒh‚ÌƒAƒjƒ[ƒVƒ‡ƒ“}
- \LISTN{svg-cycloid-animation.svg}{15}{31}{\scriptsize}
+ \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³(2)}
+ \LISTN{svg-cycloid-animation.svg}{15}{29}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{ƒTƒCƒNƒƒCƒh‚ÌƒAƒjƒ[ƒVƒ‡ƒ“}
- \LISTN{svg-cycloid-animation.svg}{32}{last}{\scriptsize}
-\end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{ƒTƒCƒNƒƒCƒh‚ÌƒAƒjƒ[ƒVƒ‡ƒ“\\ƒR[ƒh‚Ì‰ğà(1)}
- \framesubtitle{•\¦‚·‚é}Œ`}
- \begin{itemize}
-  \item ‰~‚ª“]‚ª‚é…•½ü(33s–Ú)‚ÆƒTƒCƒNƒƒCƒh‚ğ•`‚­‚½‚ß‚Ì\ELM{path}(34
-        s–Ú)
-  \item ‰ñ“]‚·‚é‰~(37s–Ú)‚ÆA‰~üã‚Ì“_(39s–Ú)‚Æ‚±‚Ì“_‚Æ’†S‚ğŒ‹‚Ôü
-        (38s–Ú)‚ğˆÍ‚Ş\ELM{g}‚ª2‚Â
-  \item “à‘¤‚Í‰ñ“]AŠO‘¤‚Í•½sˆÚ“®
- \end{itemize}
-\end{frame}
-\begin{frame}[containsverbatim]
- \frametitle{ƒTƒCƒNƒƒCƒh‚ÌƒAƒjƒ[ƒVƒ‡ƒ“\\ƒR[ƒh‚Ì‰ğà(2)}
+ \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³(2)\\ã‚³ãƒ¼ãƒ‰ã®è§£èª¬}
  \framesubtitle{JavaScript}
+ 15è¡Œç›®ã‹ã‚‰29è¡Œç›®ã§\texttt{drawCurve}ã‚’å®šç¾©
+    \begin{itemize}
+     \item è¡¨ç¤ºæ¸ˆã¿ã®è§’åº¦ã‚’ä¿æŒã™ã‚‹å¤‰æ•°\texttt{Current}ãŒ1å›è»¢
+           ã‚’ç¤ºã—ã¦ã„ãªã„(17è¡Œç›®)ãªã‚‰ã°æ›²ç·šã®æ¬¡ã®éƒ¨åˆ†ã‚’è¿½åŠ 
+     \item æ¬¡ã®æ®µéšã¾ã§ã®éƒ¨åˆ†ã‚’è¨ˆç®—ã—ã¦è¿½åŠ (18è¡Œç›®ã‹ã‚‰24è¡Œç›®)
+     \item è»¢ãŒã‚‹å††ã‚’å›è»¢(26è¡Œç›®)ã¨å¹³è¡Œç§»å‹•(25è¡Œç›®)ã§ç§»å‹•
+     \item \JSKey{setTimeout}é–¢æ•°ã¯æŒ‡å®šã•ã‚ŒãŸé–¢æ•°(ç¬¬1å¼•æ•°)ã‚’çµŒéæ™‚é–“(ç¬¬2
+           å¼•æ•°ã€å˜ä½ã¯ms)å¾Œã«å®Ÿè¡Œã™ã‚‹ã‚ˆã†ã«è¨­å®šã€‚ã“ã“ã§ã¯
+           $100\mathrm{ms}=0.1$ç§’å¾Œã«è¨­å®š
+     \item  \JSKey{setTimeout}é–¢æ•°ã®3ç•ªç›®ä»¥é™ã®å¼•æ•°ã¯ç¬¬1å¼•æ•°ã®é–¢æ•°ã®å¼•æ•°
+            ã¨ãªã‚‹ã€‚
+    \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³(3)}
+ \LISTN{svg-cycloid-animation.svg}{30}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³(3)\\ã‚³ãƒ¼ãƒ‰ã®è§£èª¬}
+ \framesubtitle{è¡¨ç¤ºã™ã‚‹å›³å½¢}
  \begin{itemize}
-  \item 9s–Ú‚©‚ç14s–Ú‚Å‰Šú‰»‚ÌŠÖ”‚ª’è‹`
-    \begin{itemize}
-     \item ƒTƒCƒNƒƒCƒh‚ğ•\¦‚·‚é\ELM{path}‚Æ•½sˆÚ“®A‰ñ“]‚Ì‚½‚ß‚Ì
-           \ELM{g}—v‘f‚ğ•Ï”‚ÉŠi”[
-     \item 13s–Ú‚Å•”•ª“I‚É•`‚­ŠÖ”\texttt{drawCurve}‚ğŒÄ‚Ño‚µ
-    \end{itemize}
-  \item 15s–Ú‚©‚ç29s–Ú‚Å\texttt{drawCurve}‚ğ’è‹`
-    \begin{itemize}
-     \item ‚Ç‚±‚Ü‚Å‚ÌŠp“x‚Ü‚Å•\¦‚µ‚½‚©‚ğ¦‚·•Ï”\texttt{Current}‚ª1‰ñ“]
-           ‚ğ¦‚µ‚Ä‚¢‚È‚¢(17s–Ú)‚È‚ç‚Î‹Èü‚ÌŸ‚Ì•”•ª‚ğ’Ç‰Á
-     \item Ÿ‚ÌƒXƒeƒbƒv‚Ü‚ÅƒTƒCƒNƒƒCƒh‚Ì•”•ª‚ğŒvZ‚µ‚Ä’Ç‰Á(18s–Ú‚©‚ç24
-           s–Ú)
-     \item “]‚ª‚é‰~‚ğ‰ñ“](26s–Ú)‚Æ•½sˆÚ“®(25s–Ú)‚ÅˆÚ“®
-     \item \JSKey{setTimeout}ŠÖ”‚Íw’è‚³‚ê‚½ŠÖ”(‘æ1ˆø”)‚ğŒo‰ßŠÔ(‘æ2
-           ˆø”A’PˆÊ‚Íms)Œã‚ÉÀs‚·‚é‚æ‚¤‚Éİ’èB‚±‚±‚Å‚Í
-           $100\mathrm{ms}=0.1$•bŒã‚Éİ’è
-     \item  \JSKey{setTimeout}ŠÖ”‚Ì3”Ô–ÚˆÈ~‚Ìˆø”‚Í‘æ1ˆø”‚ÌŠÖ”‚Ìˆø”
-            ‚Æ‚È‚éB
-    \end{itemize}
+  \item å††ãŒè»¢ãŒã‚‹æ°´å¹³ç·š(33è¡Œç›®)ã¨ã‚µã‚¤ã‚¯ãƒ­ã‚¤ãƒ‰ã‚’æããŸã‚ã®\ELM{path}(34
+        è¡Œç›®)
+  \item å›è»¢ã™ã‚‹å††(37è¡Œç›®)ã¨ã€å††å‘¨ä¸Šã®ç‚¹(39è¡Œç›®)ã¨ã“ã®ç‚¹ã¨ä¸­å¿ƒã‚’çµã¶ç·š
+        (38è¡Œç›®)ã‚’å›²ã‚€\ELM{g}ãŒ2ã¤
+  \item å†…å´ã¯å›è»¢ã€å¤–å´ã¯å¹³è¡Œç§»å‹•
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{‚â‚Á‚Ä‚İ‚æ‚¤}
+ \frametitle{ã‚„ã£ã¦ã¿ã‚ˆã†}
 \begin{itemize}
- \item ‚±‚±‚Ås‚Á‚Ä‚¢‚é‚±‚Æ‚Í1”N‚Ì‚ÌProccessing‚Å•`‚­ƒAƒjƒ[ƒVƒ‡ƒ“‚Æ
-       “¯‚¶
- \item ‚µ‚½‚ª‚Á‚ÄAProccessing‚Ås‚Á‚½ƒAƒjƒ[ƒVƒ‡ƒ“‚ğSVG‚ÉˆÚA‚·‚é‚±‚Æ
-       ‚ª‰Â”\
- \item \JSKey{setTimeout()}‚ÌŸ‚ÌÀsŠÔ‚ğ•Ï‚¦‚ÄƒAƒjƒ[ƒVƒ‡ƒ“‚ÌƒXƒs[
-       ƒh‚ğ•Ï‚¦‚é
+ \item ã“ã“ã§è¡Œã£ã¦ã„ã‚‹ã“ã¨ã¯1å¹´ã®æ™‚ã®Proccessingã§æãã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã¨
+       åŒã˜
+ \item ã—ãŸãŒã£ã¦ã€Proccessingã§è¡Œã£ãŸã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’SVGã«ç§»æ¤ã™ã‚‹ã“ã¨
+       ãŒå¯èƒ½
+ \item \JSKey{setTimeout()}ã®æ¬¡ã®å®Ÿè¡Œæ™‚é–“ã‚’å¤‰ãˆã¦ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚¹ãƒ”ãƒ¼
+       ãƒ‰ã‚’å¤‰ãˆã‚‹
 \end{itemize}
 \end{frame}
 \end{document}

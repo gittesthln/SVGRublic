@@ -57,7 +57,7 @@ Object {red: "赤", blue: "青", dark-green: "#004000"}
 "赤"
 >A["dark-green"]//-が演算子と重なるのでこの方法でしかアクセスできない
 "#004000"
->for(name in A) console.log(`A["${name}"]=${A[name]}`);
+>for(let name in A) console.log(`A["${name}"]=${A[name]}`);
   //配列のすべての要素を渡るために for( .. in ..)の構文を用いる
 A["red"]=赤
 A["blue"]=青
@@ -115,7 +115,7 @@ A["dark-green"]=#004000
  \LISTN{svg-js-random.svg}{1}{6}{\scriptsize}
  \begin{itemize}
   \item 6行目で関数群が記されたJavaScriptファイルを読み込む
-  \item ファイル名は属性\ATTR{xlink:href}で指定することに注意
+  \item ファイル名は\ATTR{xlink:href}で指定することに注意
  \end{itemize}
 \end{frame}
   \begin{frame}[containsverbatim]

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>var VS let</title>
+    <script type="text/ecmascript">
+      //<![CDATA[
+//
+      "use strict";
+      console.log(`x=${x}`);
+      var x = "defined as global";
+      console.log(`x=${x}`);
+      {
+        var x = "defined as local?";
+        console.log(`x=${x}`);
+      }
+      console.log(`x=${x}`);
+      let v ;
+      console.log(`v=${v}`);
+//      let
+ v = "defined as global";
+      {
+        var x = "defined as local";
+        console.log(`x=${x}`);
+      }
+      console.log(`v=${v}`);
+      //]]>
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

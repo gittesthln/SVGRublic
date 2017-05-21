@@ -114,6 +114,8 @@
     "Videos":[
         {"title":"テキストの表示と要素の追加",
          "files":[
+         {"name":"SVG17-05-EXTRA.mp4",
+           "comment":"開発者ツールの部分のキャプチャ(ビデオ)"},
          {"name":"svg-js-showclickpos.svg",
           "comment":"クリックした位置をSVG内に表示"},
           {"name":"svg-js-add-lines.svg",

@@ -1,0 +1,167 @@
+\input ../beamerHead.tex
+\TITLE{7}{}{変数のスコープとクロージャ}{6/6}
+\begin{document}
+\frame{\maketitle}
+\section{JavaScriptにおける変数のスコープ}
+\begin{frame}[containsverbatim]
+ \frametitle{変数のスコープとは}
+ \begin{itemize}
+  \item 変数のスコープとは使用されている変数が有効な範囲のこと
+  \item JavaScriptでは変数は宣言しなくて使用できる。この場合、変数はグロー
+        バル変数(非推奨)
+  \item 関数内で\JSKey{var}で宣言された変数はその関数内で有効で、関数の
+        外からは見えない。
+  \item 関数の途中で新たに\JSKey{var}で変数を宣言しても、関数内の先頭で
+        宣言されたものとみなされる
+  \item \JSKey{let}で宣言された変数は宣言されたブロック内で有効
+  \item 関数の仮引数もそこで宣言されているものとして扱われる
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{確かめ}
+ \LIST{07-1varVSlet.html}{1}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{確かめ(2)}
+ \LIST{09-1scope.html}{6}{last}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{確かめ--解説}
+ 関数\texttt{F1(x)}について
+\begin{itemize}
+ \item 変数\texttt{a}に2を代入
+ \item 変数\texttt{a}は宣言されていないのでグローバル変数となる
+ \item 仮引数\texttt{x}の値を1増加
+\end{itemize}
+ 関数\texttt{F2(x)}
+ \begin{itemize}
+	\item 変数\texttt{a}を関数内で宣言(ローカル変数)し、20を代入
+	\item 仮引数は配列を想定
+	\item 配列の先頭の要素の値を1増加
+ \end{itemize}
+ 関数\texttt{F3(x)}
+ \begin{itemize}
+	\item 変数\texttt{b}を関数内に200を代入
+	\item 仮引数は配列を想定
+	\item 配列の先頭の要素の値を1増加
+	\item その後で変数\texttt{b}を宣言(19行目)
+	\item したがって、17行目の代入はこの関数のローカル変数に代入しているこ
+				とになる
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{実行結果}
+\begin{Verbatim}[fontsize=\footnotesize]
+>x=5;     //変数 x に値を設定(グローバル変数xが定義)
+5
+>F1(x);
+undefined //関数の戻り値。return がないので undefined
+>x;
+5         //F1(x)では仮引数の値を増加させているので
+	        //グローバルには影響がない
+>a;       //F1(x)内で変数aがグローバル変数として定義された
+2
+>y=[1,2,3];  //関数F2に渡すための配列を定義
+[1, 2, 3]
+>F2(y);      //F2(y)を呼ぶ
+undefined
+y;
+ >[2, 2, 3]  //y[0]が変化している
+>b;          //グローバル変数bは存在していない
+Uncaught ReferenceError: b is not defined(…)
+>F3(y);
+undefined
+>b;          //F3(y)を実行した後でもグローバル変数bは存在していない
+Uncaught ReferenceError: b is not defined(…)
+\end{Verbatim}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+JavaSCriptの変数のスコープルールや関数の引数の仕様を他の言語と比較してそ
+ の特徴を述べる。
+\end{frame}
+
+\section{クロージャ}
+\begin{frame}[containsverbatim]
+ \frametitle{クロージャ}
+\begin{itemize}
+	 \item  JavaScriptでは関数もオブジェクトなので関数内で定義された関数はローカル
+ な関数
+	 \item ローカルに定義された関数がローカルな変数を参照すると、そのロー
+				 カルな関数を通じてのみ変更が可能とできる
+ \item 関数とその実行環境を取りまとめたものをクロージャという。
+ \item 上記のローカルな関数のクロージャにはローカルに定義された変数も含
+			 まれる
+ \item クロージャを使うことでグローバル変数の使用を減少させることができ
+			 る
+	\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{アニメーション版サイクロイドを描く--クロージャ版}
+ \LIST{svg-cycloid-animation-closure.svg}{6}{27}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{アニメーション版サイクロイドを描く--クロージャ版解説}
+ \begin{itemize}
+	\item 以前のものと異なるのはグローバル変数になっていたものがすべて
+				\Verb+window.onload+の関数定義内に含まれていること
+	\item 11行目で関数\Verb+drawCurve+を定義
+	\item 関数の中身は以前とほとんど同じ
+	\item 18行目では配列の要素を指定された文字列を間に挟んで一つの文字列に
+				する\JSKey{join()}を用いている。
+	\item 27行目で初めの値でサイクロイドを描き始める
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{アニメーション版サイクロイドを描く\\クロージャ版その2}
+ \LIST{svg-cycloid-animation-closure2.svg}{6}{26}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{アニメーション版サイクロイドを描く\\クロージャ版その2}
+ \framesubtitle{定義した関数をその場で実行}
+ ここでは定義した関数をその場で実行するという技法を用いている
+ \begin{itemize}
+	\item 11行目から25行目で無名関数が引数付きで定義
+	\item その前後が\Verb+()+で囲まれていることに注意
+	\item これによりこの無名関数が実行される。
+	\item 25行目の\Verb+(1)+はこの関数の引数
+	\item したがって11行目の仮引数\Verb+Current+ははじめに 1 で実行される
+	\item 23行目では\Verb+setTimeout+で呼び出される関数を
+				(\Verb+arguments+)のプロパティ\Verb+callee+を用いて得ている
+	\item \Verb+setTimeout+関数の3番目の引数\Verb+Next+はこの%\Verb+setTimeout+
+				関数で呼び出される関数(ここでは\Verb+arguments.callee+)の引数と
+				なる
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{関数の\JSKey{arguments}について}
+ \begin{itemize}
+	\item 関数が定義されるとその中では仮引数のリストが格納されている
+				\JSKey{arguments}オブジェクトが作成される
+	\item 関数の定義に仮引数がなくても引数を渡すことが可能
+	\item 次のコードで確認すること
+
+\begin{Verbatim}
+function sum() {
+  var i, total = 0;
+  for(i=0;i<arguments.length;i++){
+    sum += arguments[i];
+  }
+  return total;
+}
+\end{Verbatim}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+	\item グローバル変数を減らすメリットは何か？
+	\item 関数を定義してその場で実行することのメリットは何か
+	\item 今まで作成したものからグローバル変数を減らしたものを作成する
+ \end{itemize}
+\end{frame}
+
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

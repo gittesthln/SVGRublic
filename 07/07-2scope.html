@@ -3,7 +3,22 @@
   <head>
     <meta charset="UTF-8"/>
     <title>変数のスコープ</title>
-    <script type="text/ecmascript" SRC="07-2.js">
+    <script type="text/ecmascript">
+      //<![CDATA[
+      function F1(x) {
+        a = 2;
+        x = x+1;
+      }
+      function F2(x) {
+        var a = 20;
+        x[0] = x[0]+1;
+      }
+      function F3(x) {
+        b = 200;
+        x[0] = x[0]+1;
+        let b;
+      }
+      //]]>
     </script>
   </head>
   <body>

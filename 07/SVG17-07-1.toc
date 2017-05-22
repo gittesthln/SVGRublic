@@ -1,0 +1,3 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{JavaScriptにおける変数のスコープ}{2}{0}{1}
+\beamer@sectionintoc {2}{クロージャ}{10}{0}{2}

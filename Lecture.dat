@@ -165,7 +165,12 @@
     "name":"07",
     "Videos":[
         {"title":"変数のスコープとクロージャ",
-         "files":[]},
+         "files":[
+				 {"name":"07-1varVSlet.html",
+				  "comment":"varとletの違い"},
+				 {"name":"07-2scope.html",
+				  "comment":"関数内の変数のスコープ"}
+					]},
        {"title":"サイクロイドを描く(アニメーション版)--クロージャを使う",
          "files":[]},
        {"title":"配列のメソッド",

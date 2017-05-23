@@ -1,0 +1,78 @@
+\input ../beamerHead.tex
+\TITLE{7}{2}{クロージャ}{6/6}
+\begin{document}
+\frame{\maketitle}
+\section{クロージャ}
+\begin{frame}[containsverbatim]
+ \frametitle{クロージャ}
+\begin{itemize}
+	 \item  JavaScriptでは関数もオブジェクトなので関数内で定義された関数はローカル
+ な関数
+	 \item ローカルに定義された関数が関数の外のローカルな変数を参照すると、そのロー
+				 カルな関数を通じて参照、変更が可能
+ \item 関数とその実行環境を取りまとめたものをクロージャという。
+ \item 上記のローカルな関数のクロージャには関数から参照可能なローカルに定義された変数も含
+			 まれる
+ \item クロージャを使うことでグローバル変数の使用を減少させることができ
+			 る
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{アニメーション版サイクロイドを描く--クロージャ版}
+ \LISTN{svg-cycloid-animation-closure.svg}{6}{25}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{アニメーション版サイクロイドを描く--クロージャ版解説}
+ \begin{itemize}
+	\item 以前のものと異なるのはグローバル変数になっていたものがすべて
+				\Verb+window.onload+の関数定義内に含まれていること
+	\item 11行目で関数\Verb+drawCurve+を定義
+	\item 関数の中身は以前とほとんど同じ
+	\item 24行目で初めの値でサイクロイドを描き始める
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{アニメーション版サイクロイドを描く\\クロージャ版(1)}
+ \LISTN{svg-cycloid-animation-closure2.svg}{6}{26}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{アニメーション版サイクロイドを描く\\クロージャ版(2)}
+ \framesubtitle{定義した関数をその場で実行}
+ ここでは定義した関数をその場で実行するという技法を用いている
+ \begin{itemize}
+	\item 11行目から23行目で関数\texttt{drawcurve}が引数付きで定義
+	\item その前後が\Verb+()+で囲まれていることに注意(23行目の前の
+				\texttt{)}に対応)
+	\item これによりこの関数が実行される。
+	\item 23行目の\Verb+(1)+はこの関数の引数
+	\item したがって11行目の仮引数\Verb+Current+ははじめに 1 で実行される
+	\item \Verb+setTimeout+関数の3番目の引数\Verb+Next+はこの%\Verb+setTimeout+
+				関数で呼び出される関数(ここでは\Verb+drawCurve+)の引数と
+				なる
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{関数の\JSKey{arguments}について}
+ \begin{itemize}
+	\item 関数が定義されるとその中では仮引数のリストが格納されている
+				\JSKey{arguments}オブジェクトが作成される
+	\item 最新のEcmaScriptの仕様では strict mode ではエラーとなる
+	\item strict mode とは Ecmascript 5版で導入されたエラーチェックとセキュ
+				リティが強化された実行環境
+	\item したがって、ここでは解説をしない
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+	\item グローバル変数を減らすメリットは何か？
+	\item 関数を定義してその場で実行することのメリットは何か
+	\item 今まで作成したものからグローバル変数を減らしたものを作成する
+ \end{itemize}
+\end{frame}
+
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

@@ -167,12 +167,17 @@
         {"title":"変数のスコープとクロージャ",
          "files":[
 				 {"name":"07-1varVSlet.html",
-				  "comment":"varとletの違い"},
+				  "comment":"varとletの違い(コンソール出力のみ)"},
 				 {"name":"07-2scope.html",
-				  "comment":"関数内の変数のスコープ"}
+				  "comment":"関数内の変数のスコープ(関数の定義のみ、コンソールでテキストと同じように実行する)"}
 					]},
-       {"title":"サイクロイドを描く(アニメーション版)--クロージャを使う",
-         "files":[]},
+       {"title":"クロージャ",
+         "files":[
+				 {"name":"svg-cycloid-animation-closure.svg",
+				  "comment":"サイクロイドを描く(アニメーション版)--クロージャを使う(1)"},
+				 {"name":"svg-cycloid-animation-closure2.svg",
+				  "comment":"サイクロイドを描く(アニメーション版)--クロージャを使う(2)"}
+       ]},
        {"title":"配列のメソッド",
          "files":[]}
       ]

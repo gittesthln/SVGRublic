@@ -60,7 +60,26 @@
 	\item 最新のEcmaScriptの仕様では strict mode ではエラーとなる
 	\item strict mode とは Ecmascript 5版で導入されたエラーチェックとセキュ
 				リティが強化された実行環境
-	\item したがって、ここでは解説をしない
+	\item したがって、ここでは\JSKey{arguments}オブジェクトについては解説
+				をしない
+	\item 新しいEcmaScriptでは\JSKey{arguments}オブジェクトの代わりに、残
+				余仮引数という概念が導入されている。
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{残余変数の使い方}
+	\begin{Verbatim}
+	function mulAll(v, ...Args) {
+	  for(let i=0; i<Args.length; i++) {
+	    v *= Args[i];
+	  }
+	  return v;
+	}
+	\end{Verbatim}
+\begin{itemize}
+ \item この関数では第1の引数が\texttt{v}で、残りの引数は
+			 \texttt{Args}という配列に引き渡される。
+ \item 残余変数は配列なので通常の使い方ができる。
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]

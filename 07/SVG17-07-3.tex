@@ -1,0 +1,105 @@
+\input ../beamerHead.tex
+\TITLE{7}{3}{配列のメソッドの利用}{6/6}
+\begin{document}
+\frame{\maketitle}
+\section{配列のメソッド}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド}
+\begin{itemize}
+ \item 通常、配列の各要素について操作をするためには\JSKey{for}文などのルー
+ プで処理を行う。
+ \item JavaScriptでは\JSKey{for}文の代わりになるメソッドがいくつか定義さ
+       れている。それぞれのメソッドは引数に関数を必要とする。
+       \begin{itemize}
+        \item 引数に渡される関数には最大で3つの引数を渡される。
+        \item 一つ目の引数は配列の要素
+        \item 2つ目の引数は配列のインデックス
+        \item 3つ目の引数はメソッドが適用される配列自身である。\\
+              これを利用すると元来の配列の要素を変更できる。
+       \end{itemize}
+\end{itemize}
+ \JSKey{forEach(func)}:引数に関数を
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド--\JSKey{forEach(func)}}
+ \begin{itemize}
+  \item 与えられた関数を配列の各要素に対して実行
+  \item 与えられた関数の戻り値は無視される。
+  \item 途中でループの処理を中断できない。
+  \item 要素の値が\JSKey{undefined}のところは実行されない。
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド--\JSKey{forEach(func)実行例}}
+
+\begin{Verbatim}[fontsize=\tiny]
+ >A = [1,2,3,4];
+(4) [1, 2, 3, 4]
+>A[5]=5;
+5
+>A;
+(6) [1, 2, 3, 4, undefined × 1, 5]
+>A.forEach(function(V,i,Vs){
+    Vs[i] = V*V;
+    console.log(V*V);
+});
+1
+4
+9
+16
+25
+undefined
+>A;
+[1, 4, 9, 16, undefined × 1, 25]
+>undefined*undefined
+NaN
+\end{Verbatim}
+ \begin{itemize}
+  \item 配列の各要素を2乗している。
+  \item 元の配列に代入しているので、実行後、要素の値
+ が変化する。
+  \item \JSKey{undefined}の値のところは実行されていない。
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド--\JSKey{map(func)}}
+ \JSKey{map(func)}\\配列の各要素に対して引数の関数を実行し、その戻り値で
+ 新しい配列を作成する。
+ \begin{Verbatim}[fontsize=\tiny]
+>A=[1,2,3]
+(3) [1, 2, 3]
+>A[5]=5
+5
+>A;
+(6) [1, 2, 3, undefined × 2, 5]
+>>A.map(function(V){return V*V;});
+(6) [1, 4, 9, undefined × 2, 25]
+>A;
+(6) [1, 2, 3, undefined × 2, 5]
+ \end{Verbatim}
+ \begin{itemize}
+  \item 要素を2乗した配列を作成している。
+  \item \JSKey{undefined}の要素はそのまま\JSKey{undefined}
+  \item 元の配列は変化していない。
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド--\JSKey{map(func)実行例}}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド}
+\begin{itemize}
+ \item \JSKey{every(func)}\\配列の各要素に対して引数の関数を実行し、そ
+       の戻り値がすべて\JSKey{true}のとき、\JSKey{true}を返す。どこかで
+       \JSKey{false}になると実行はそこで打ち切られ、\JSKey{false}を返す。
+ \item \JSKey{some(func)}\\配列の各要素に対して引数の関数を実行し、そ
+       の戻り値がすべて\JSKey{false}のとき、\JSKey{false}を返す。どこかで
+       \JSKey{true}になると実行はそこで打ち切られ、\JSKey{true}を返す。
+ \item \JSKey{filter(func)}\\配列の各要素に対して引数の関数を実行し、そ
+       の戻り値が\JSKey{true}になるものだけを集めた新しい配列を返す。
+\end{itemize} 
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

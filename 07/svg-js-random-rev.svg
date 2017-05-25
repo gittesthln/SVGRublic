@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="100%" height="100%">
+  <title>ランダムな色と大きさを一定の時間で表示し続ける</title>
+  <script type="text/ecmascript" xlink:href="make-svg-elm.js"></script>
+  <script type="text/ecmascript">
+//<![CDATA[
+window.onload = function() {
+  let Unit = 15, xMin = 40, xMax = 400, yMin = 40, yMax = 300;
+  let Colors = ["red", "yellow", "blue", "pink"];
+  let Canvas = document.getElementsByTagName("g")[0];
+  let Objs = Array(20).fill(0).map(function() {
+      return MKSVGElm(Canvas,"circle",
+        {"opacity":0.6, "stroke-width":"2", "stroke":"black"}, {});
+  });
+  (function renew() {
+    Objs.forEach(function(Obj){
+      SetAttributes(Obj,{
+        "cx":getRandVal(xMin, xMax), "cy":getRandVal(yMin, yMax),
+        "r":Math.sqrt(getRandVal(1, 4))*Unit,
+        "fill":Colors[getRandVal(0, Colors.length)]},{});
+      });
+    window.setTimeout(renew,getRandVal(10,20)*100);
+  })();
+}
+function getRandVal(Min, Max) {
+  return Math.floor(Min+(Max-Min)*Math.random());
+}
+//]]></script>
+<g />
+</svg>
+
+
+

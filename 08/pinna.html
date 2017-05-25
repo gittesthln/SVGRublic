@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+<meta charset="UTF-8"/>
+<script type="text/ecmascript" src="./make-svg-elm.js" ></script>
+<script type="text/ecmascript" src="pinna.js"></script>
+<link rel="stylesheet" type="text/css" href="pinna.css">
+<title>バインジオ・ピンナの錯視図形</title>
+</head>
+<body>
+  <h1 class="display">バインジオ・ピンナの錯視図形</h1>
+  <div class="Cell">
+    <svg height="420" width="420"
+      <g id="Canvas" transform="translate(210,210)"/>
+    </svg>
+  </div>
+  <div class="Cell" >
+    <div><label for="color1">色1</label>
+      <input type="text" id="color1" size="5"/></div>
+    <div><label for="color2">色2</label>
+      <input type="text" id="color2" size="5"/></div>
+    <input id="SetColor" type="button" value="設定"></input>
+  </div>
+</body>
+</html>

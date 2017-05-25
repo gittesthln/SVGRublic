@@ -179,11 +179,24 @@
 				  "comment":"サイクロイドを描く(アニメーション版)--クロージャを使う(2)"}
        ]},
        {"title":"配列のメソッド",
+         "files":[
+				 {"name":"svg-js-random-rev.svg",
+				  "comment":"ランダムに円を描く(配列のメソッドの利用)"}]}
+      ]
+  },
+  {"date": "6/13 WebStorageとJSON",
+    "name":"08",
+    "Videos":[
+        {"title":"WebStorage",
+         "files":[]},
+        {"title":"JSON",
+         "files":[]},
+        {"title":"サーバーとのデータ交換",
          "files":[]}
       ]
   },
-  {"date": "6/13 Web サーバーの基礎",
-    "name":"08",
+  {"date": "6/20 Web サーバーの基礎",
+    "name":"09",
     "Videos":[
         {"title":"Web サーバーの起動と設定",
          "files":[]},
@@ -193,8 +206,8 @@
          "files":[]}
       ]
   },
-  {"date": "6/20 Ajax と jQuery",
-    "name":"9",
+  {"date": "6/27 Ajax と jQuery",
+    "name":"10",
     "Videos":[
         {"title":"Ajax の利用",
          "files":[]},
@@ -205,7 +218,7 @@
       ]
   },
   {"date": "6/27",
-    "name":"10",
+    "name":"11",
     "Videos":[
         {"title":"",
          "files":[]},

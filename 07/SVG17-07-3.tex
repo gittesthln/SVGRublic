@@ -4,7 +4,23 @@
 \frame{\maketitle}
 \section{配列のメソッド}
 \begin{frame}[containsverbatim]
- \frametitle{配列のメソッド}
+ \frametitle{配列のメソッド(1)}
+ \begin{itemize}
+	\item \JSKey{Array()}は引数の大きさを指定して新しい配列を作成する。
+				各要素は\JSKey{undefined}で初期化される。
+	\item \JSKey{fill()}は引数の値で配列の要素をすべてその値に設定する。
+ \end{itemize}
+\begin{Verbatim}
+>A=Array(5);
+(5) [undefined × 5]
+>A.length;
+5
+>A.fill(1);
+(5) [1, 1, 1, 1, 1]
+\end{Verbatim}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド(2)}
 \begin{itemize}
  \item 通常、配列の各要素について操作をするためには\JSKey{for}文などのルー
  プで処理を行う。
@@ -17,20 +33,19 @@
         \item 3つ目の引数はメソッドが適用される配列自身である。\\
               これを利用すると元来の配列の要素を変更できる。
        \end{itemize}
+ \item 要素の値が\JSKey{undefined}のところは実行されない。
 \end{itemize}
- \JSKey{forEach(func)}:引数に関数を
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{配列のメソッド--\JSKey{forEach(func)}}
+ \frametitle{配列のメソッド(3)--\JSKey{forEach(func)}}
  \begin{itemize}
   \item 与えられた関数を配列の各要素に対して実行
   \item 与えられた関数の戻り値は無視される。
   \item 途中でループの処理を中断できない。
-  \item 要素の値が\JSKey{undefined}のところは実行されない。
- \end{itemize}
+  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{配列のメソッド--\JSKey{forEach(func)実行例}}
+ \frametitle{配列のメソッド(3)--\JSKey{forEach(func)実行例}}
 
 \begin{Verbatim}[fontsize=\tiny]
  >A = [1,2,3,4];
@@ -56,14 +71,14 @@ NaN
 \end{Verbatim}
  \begin{itemize}
   \item 配列の各要素を2乗している。
-  \item 元の配列に代入しているので、実行後、要素の値
+  \item 関数の3番目の引数(元の配列)に代入しているので、実行後、要素の値
  が変化する。
-  \item \JSKey{undefined}の値のところは実行されていない。
+	\item 要素の値が\JSKey{undefined}のところは実行されていない。
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{配列のメソッド--\JSKey{map(func)}}
- \JSKey{map(func)}\\配列の各要素に対して引数の関数を実行し、その戻り値で
+ \frametitle{配列のメソッド(4)--\JSKey{map(func)}}
+ 配列の各要素に対して引数の関数を実行し、その戻り値で
  新しい配列を作成する。
  \begin{Verbatim}[fontsize=\tiny]
 >A=[1,2,3]
@@ -84,20 +99,89 @@ NaN
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{配列のメソッド--\JSKey{map(func)実行例}}
+ \frametitle{配列のメソッド利用の例(1)}
+ ランダムに円を描く
+ \LISTN{svg-js-random-rev.svg}{1}{7}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{配列のメソッド}
+ \frametitle{配列のメソッド利用の例(2)}
+ ランダムに円を描く
+ \LISTN{svg-js-random-rev.svg}{8}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド利用の例--解説}
 \begin{itemize}
- \item \JSKey{every(func)}\\配列の各要素に対して引数の関数を実行し、そ
-       の戻り値がすべて\JSKey{true}のとき、\JSKey{true}を返す。どこかで
-       \JSKey{false}になると実行はそこで打ち切られ、\JSKey{false}を返す。
- \item \JSKey{some(func)}\\配列の各要素に対して引数の関数を実行し、そ
-       の戻り値がすべて\JSKey{false}のとき、\JSKey{false}を返す。どこかで
-       \JSKey{true}になると実行はそこで打ち切られ、\JSKey{true}を返す。
- \item \JSKey{filter(func)}\\配列の各要素に対して引数の関数を実行し、そ
+ \item 以前のプログラムではグローバル変数であったものがすべてローカルな
+			 変数に変更されている(10から１１行目)。
+ \item 12行目で円を登録する\texttt{g}要素を求めている。
+ \item 円を20個登録するために次のようなメソッドチェインを用いている。
+			 \begin{enumerate}
+				\item 大きさが20の配列を作成(\texttt{Array(20)})
+				\item 要素の値はすべて\JSKey{undefined}なので\JSKey{fill}メソッ
+							ドを利用して 0 に設定
+				\item その配列に\JSKey{map}を利用して\texttt{<circle>}要素を作成
+				\item 作成する円の属性は共通のものだけ
+			 \end{enumerate}
+ \item 登録した円は配列\texttt{Objs}に保存
+ \item 一定時間をに呼ばれる関数では配列\texttt{Objs}に対して
+			 \JSKey{forEach}メソッドを用いて属性値を変更
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド(5)}
+\begin{itemize}
+ \item \JSKey{every(func)}\\配列の各要素に引数の関数を実行し、そ
+       の戻り値がすべて\JSKey{true}のとき、\JSKey{true}を返す。途中で
+       \JSKey{false}になると実行が打ち切られ、\JSKey{false}を返す。
+ \item \JSKey{some(func)}\\配列の各要素に引数の関数を実行し、そ
+       の戻り値がすべて\JSKey{false}のとき、\JSKey{false}を返す。途中で
+       \JSKey{true}になると実行は打ち切られ、\JSKey{true}を返す。
+ \item \JSKey{filter(func)}\\配列の各要素に引数の関数を実行し、そ
        の戻り値が\JSKey{true}になるものだけを集めた新しい配列を返す。
 \end{itemize} 
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{配列のメソッド(6)--\JSKey{reduce}と\JSKey{reduceRight}}
+ \JSKey{reduce}\\
+ \begin{itemize}
+	\item 引数は処理をする関数とオプションの引数
+	\item オプションの引数は処理を開始するときの初期値
+	\item 処理をする関数は4つの引数を取る。
+				\begin{itemize}
+				 \item 第1引数はそれまでの計算結果\\オプションの引数があるときは開始時の
+							 値がこれと同じになる
+				 \item 第2引数は現在の要素の値
+				 \item 第3引数はインデックス
+				 \item 第4引数は繰り返し」を行う配列
+				\end{itemize}
+ \end{itemize}
+ \JSKey{reduceright}は配列の要素の最後から先頭に向かって処理される
+\end{frame}
+ \begin{frame}[containsverbatim]
+	\frametitle{実行例}
+\begin{Verbatim}
+>A=[3,5,4,7]
+(4) [3, 5, 4, 7]
+>A.reduce(function(x,v){return x+v;});//初期値がないときは適当に処理
+19   //要素の総和
+>A.reduce(function(x,v){return x+v;},"");//初期値をから文字列に設定
+"3547"    //文字列として繋がれる
+>A.reduceRight(function(x,v){return x+v;},"");
+"7453"   //reduceRight では並び順が逆になる
+\end{Verbatim}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+	\item 要素の値が整数である配列に対して、次のことを行うプログラムを作成
+				せよ。
+				\begin{itemize}
+				 \item 各要素を5で割った余りを値に持つ新しい配列
+				 \item 奇数である要素だけ選び出す
+				\end{itemize}
+	\item 大きさが10の配列で1から10の要素を順に持つ配列を作成せよ
+	\item 今までに作成したものを配列のメソッドを利用して書き直せ
+ \end{itemize}
 \end{frame}
 \end{document}
 \begin{frame}[containsverbatim]

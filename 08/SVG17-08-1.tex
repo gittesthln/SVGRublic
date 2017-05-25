@@ -1,0 +1,42 @@
+\input ../beamerHead.tex
+\TITLE{8}{1}{WebStorage--\JSKey{localStorage}}{6/13}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{Web ページのデータの保存}
+\begin{frame}[containsverbatim]
+\frametitle{ブラウザでのデータの保存}
+\begin{itemize}
+ \item Web ページ上で作成したデータをそのままブラウザが動作しているコンピュータ
+上に保存することはセキュリティ上できない。
+ \item ブラウザが管理する領域に保存することは可能
+ \item 昔からあるのがクッキー
+			 \begin{itemize}
+				\item クライアントとサーバーの間で共有して常にクライアントからサー
+							バーに提供
+				\item 小さなデータしか扱えない
+				\item サーバーとクライアントとのやりがあるたびに送られる
+			 \end{itemize}
+ \item HTML5ではブラウザーのあるページ以降のページにだけ
+存在する\JSKey{sessionStorage}とページが閉じられてもデータが存続できる
+\JSKey{localStorage}が提案
+\end{itemize}
+\end{frame}
+\section{\texttt{localStorage}の利用}
+\section{やってみよう}
+\begin{frame}[containsverbatim]
+\frametitle{やってみよう}
+次のことを確かめよ。
+\begin{itemize}
+ \item ブラウザをいったん閉じてから再度ページを開くと、最後に設定された
+       値がテキストボックスに表示
+ \item \JSKey{localStorage}の値を確認
+ \item 新しいフォルダを作成し、そのフォルダにファイルをコピーして、それ
+       を表示させたときにどうなるか
+ \item 9行目のコメントを外したらときに上と同じことを行う。
+\end{itemize} 
+\end{frame}
+ \end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}

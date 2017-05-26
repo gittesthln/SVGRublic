@@ -1,0 +1,95 @@
+\documentclass[a4j]{jreport}
+\input ../rubricHead.tex
+\input ../rubricPresentation.tex
+\input ../rubricUnitIHead2.tex
+\begin{document}
+\setcounter{chapter}{6}
+\chapter{JavaScriptの進んだプログラミング}
+\changePage{6/6}
+今回の演習の目的はJavaScriptにおける変数の取り扱いを少し詳しく学ぶ。
+今回の課題はJavaScriptの文法に関するものなので、今までに組んだものを今回
+の方法で書き直し、以前の記述方法との違いを考察として加えること。
+\begin{itemize}
+ \item \texttt{var}と\texttt{let}による変数宣言の違い
+ \item JavaScriptにおける変数のスコープルールの確認
+ \item 関数の引数の取り扱い
+ \item クロージャの理解と使用するメリット
+ \item 配列のメソッドを利用してプログラムを読みやすくする。
+\end{itemize}
+課題に\Must と書かれたものを最低行うこと。それ以外の課題は
+いくつか選択してよい。
+\Probs{変数のスコープ}{演習のビデオ1を見て次の問いに答えよ。}{
+ {\Must \texttt{var}と\texttt{let}よる変数の宣言の違いを次の表にまとめよ。
+ ２つ目以降の項目は各自考えよ。
+ \begin{center}
+ \begin{tabular}{|m{7zw}|m{16zw}|m{16zw}|}
+  \hline
+  \multicolumn{1}{|c|}{項目}& \multicolumn{1}{c|}{\texttt{var}}&
+        \multicolumn{1}{c|}{\texttt{let}}\\\hline
+  同じブロックで同じ変数を2回宣言&\rule{0em}{0.05\textheight}&\\ \hline
+  &\rule{0em}{0.06\textheight}&\\ \hline
+  &\rule{0em}{0.06\textheight}&\\ \hline
+  &\rule{0em}{0.06\textheight}&\\ \hline
+  &\rule{0em}{0.06\textheight}&\\ \hline
+ \end{tabular} 
+ \end{center}
+ }{0}
+ {\Must 関数の引数として数や配列オブジェクトを渡したとき、それらの仮引数
+ の変数を書き換えるサンプルを各自作成し、注意点をまとめよ。}{0}
+ {JavaScriptの変数のスコープルールや関数の引数の仕様を他の言語と比較してそ
+ の特徴を述べよ。}{0}
+ }
+% \newpage
+\Probs{クロージャ}{演習のビデオ2を見て次の問いに答えよ。}{
+ {\Must クロージャ版のアニメーションサイクロイドを実行中に、コンソールで7
+				行目や8行目で定義してある変数を参照できるか確認せよ。}{0}
+ 				{\Must グローバル変数を減らすメリットは何か？
+				\begin{itemize}
+				 \item \rule{0em}{0.02\textwidth}
+				 \item \rule{0em}{0.02\textwidth}
+				 \item \rule{0em}{0.02\textwidth}
+				\end{itemize}}{0}
+ 	{関数を定義してその場で実行することのメリットは何か。}{0.03}
+	{\Must 今まで作成したものからグローバル変数を減らしたものを作成せよ。}{0}			
+ }
+ \Probs{配列のメソッド}{演習のビデオ3を見て次の問いに答えよ。}{
+ {\Must 要素の値が整数である配列に対して、次のことを行うプログラムを作成
+				せよ。
+				\begin{itemize}
+				 \item 各要素を5で割った余りを値に持つ新しい配列
+				 \item 奇数である要素だけ選び出す
+				\end{itemize}}{0}
+ {\Must 配列のメソッドをいくつか利用するサンプルプログラムと用いないで同様のこ
+	とを行うものを作成し、両者の違いを比較検討せよ。たとえば、次のようなも
+	のが考えられる。
+	\begin{itemize}
+	 \item 大きさが10の配列で1から10の要素を順に持つ配列を作成する
+	 \item ラジオボタンまたはプルダウンメニューの作成
+	\end{itemize}
+	}{0}
+ {今までに作成したプログラムで配列のメソッドを使うものに書き直せ。}{0}
+ }
+%\newpage
+\RubricN{第7回(6/6)}{ノートの内容}{
+\GradeLegend
+}
+{
+{課題1-1}{10}
+{
+  {ユーザ入力の要素の特徴と使い方の注意が十分に記入されている。}
+  {ユーザ入力の要素の特徴と使い方の注意が十分に記入されている。}
+}
+{
+  {ユーザ入力の要素の特徴と使い方の注意が十分に記入されている。}
+  {ユーザ入力の要素の特徴と使い方の注意の一部に不備がある。}
+}
+{
+  {ユーザ入力の要素の特徴と使い方の注意が十分に記入されている。}
+  {ユーザ入力の要素の特徴と使い方の注意に不備がある。}
+  {すべての種類に対して記入がない。}
+}
+{\ResultEI}
+}
+\rublicPresenII{第7回(6/6)}
+
+\end{document}

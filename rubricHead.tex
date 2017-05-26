@@ -14,6 +14,13 @@
 	&\ShowItem#3\relax  %この部分を必要に応じて増減
 	&\ShowItem#4\relax
 	&\ShowItem#5\relax\\ \hline\expandafter\Target\fi}
+\newcommand{\TargetN}[6]{%現在は3段階+項目
+	\ifx\relax#1\else
+	#1{\small \hspace*{-0.2em}\newline(#2\%)}%
+	&\ShowItem#3\relax  %この部分を必要に応じて増減
+	&\ShowItem#4\relax
+	&\ShowItem#5\relax
+	&#6\relax\\ \hline\expandafter\TargetN\fi}
 \newcommand{\LecName}[1]{\newcommand{\LName}{#1}}
 \newcommand{\Date}[1]{\newcommand{\LDate}{#1}}
 \newcommand{\Aim}[1]{\newcommand{\LAim}{#1}}
@@ -27,7 +34,10 @@
 \newcommand{\EvalTitle}[1]{%
 	\newcommand{\ETitle}{\hline 評価項目\EtitleDo#1,\relax\\\hline}
   }
-  \newcommand{\Format}[1]{%
+\newcommand{\EvalTitleN}[1]{%
+	\newcommand{\ETitle}{\hline 評価項目\EtitleDo#1,\relax\\\hline}
+  }
+\newcommand{\Format}[1]{%
    \newcommand{\LongTable}{\begin{longtable}{|m{2zw}|#1}}
                                                     }
 \newcommand{\Rubric}[4]{%
@@ -46,6 +56,26 @@
 \endfoot
 \endlastfoot
 \Target#4\relax\relax\relax\relax\relax%
+%評価段階の数を変更したら\relaxの数を\Targetの引数の数以上にする
+\end{longtable}}
+\newpage
+}
+\newcommand{\RubricN}[4]{%
+\newpage
+\begin{center}
+ {\LARGE \LName}\\#1 #2\\[2ex]
+% {\Large 学籍番号 \underline{\makebox[10zw]{#1}}}
+\end{center}
+#3{\small
+\LongTable
+	 	  \ETitle
+\endfirsthead
+	 	  \ETitle
+\endhead
+	\multicolumn{4}{r}{\bfseries 次のページに続きがあります}
+\endfoot
+\endlastfoot
+\TargetN#4\relax\relax\relax\relax\relax\relax%
 %評価段階の数を変更したら\relaxの数を\Targetの引数の数以上にする
 \end{longtable}}
 \newpage

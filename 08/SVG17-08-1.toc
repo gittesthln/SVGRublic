@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Web ページのデータの保存}{2}{0}{1}
+\beamer@sectionintoc {2}{\texttt {localStorage}の利用}{13}{0}{2}
+\beamer@sectionintoc {3}{やってみよう}{13}{0}{3}

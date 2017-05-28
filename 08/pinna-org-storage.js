@@ -1,3 +1,5 @@
+let Storage = window.localStorage;
+//let Storage = window.sessionStorage;
 let Canvas, C1, C2, Paths =[];
 window.onload = function(){
   Canvas = document.getElementById("Canvas");
@@ -6,8 +8,8 @@ window.onload = function(){
   for(let i= 0; i<6;i++) {
     Paths[i] = MKSVGElm(Canvas, "path", {"stroke-width": 6, "fill": "none"},{});
   }
-  C1.value = "red";
-  C2.value = "green";
+  C1.value = Storage.C1?Storage.C1:"red";
+  C2.value = Storage.C2?Storage.C2:"green";
   document.getElementById("SetColor").addEventListener("click", DrawFigs, true);
   DrawFigs();
 }
@@ -15,6 +17,8 @@ function DrawFigs() {
   let W1=8, W2=4;
   let Color1 = C1.value;  
   let Color2 = C2.value;  
+  Storage.C1 = Color1;
+  Storage.C2 = Color2;
   DrawFigure(150, 30, W1, W2, Color1, 0);
   DrawFigure(144, 30, W1, W2, Color2, 1);
   DrawFigure(80, 20, W1, W2, Color1, 2);

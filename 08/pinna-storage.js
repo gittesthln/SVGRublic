@@ -27,9 +27,9 @@ window.onload = function(){
         for(i=0;i<720;i++) {
           Ang= Math.PI*i/180/2;
           R0=R+sR*(Math.cos(W*Ang)*Math.cos(W2*Ang));
-          d += R0*Math.cos(Ang) + ","+R0*Math.sin(Ang)+" ";
+          d += `${R0*Math.cos(Ang)},${R0*Math.sin(Ang)} `;
         }
-        SetAttributes(Paths[No], {"d": d+"z", "stroke": Color});
+        SetAttributes(Paths[No], {"d": `${d}z`, "stroke": Color});
      })
   }
 }

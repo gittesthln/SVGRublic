@@ -25,7 +25,7 @@ window.onload = function(){
           R0=R+sR*(Math.cos(W*Ang)*Math.cos(W2*Ang));
           d += `${R0*Math.cos(Ang)},${R0*Math.sin(Ang)} `;
         }
-        SetAttributes(Paths[No], {"d": d+"z", "stroke": Color});
+        SetAttributes(Paths[No], {"d": `${d}z`, "stroke": Color});
      })
   }
 }

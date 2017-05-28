@@ -188,19 +188,46 @@
     "name":"08",
     "Videos":[
         {"title":"WebStorage",
-         "files":[]},
-        {"title":"JSON",
-         "files":[]},
-        {"title":"サーバーとのデータ交換",
-         "files":[]}
+         "files":[
+         {"name":"pinna.html",
+          "comment":"バンジオ・ビンナの錯視図形(strage不使用)--HTMLファイル"},
+         {"name":"pinna.js",
+          "comment":"バンジオ・ビンナの錯視図形(strage不使用)--JavaScriptファイル"},
+         {"name":"pinna.css",
+          "comment":"バンジオ・ビンナの錯視図形--CSSファイル"},
+         {"name":"pinna-org-storage.js",
+          "comment":"バンジオ・ビンナの錯視図形(strage使用)--JavaScriptファイル"}
+          ]},
+        {"title":"JSONの利用",
+         "files":[
+         {"name":"",
+          "comment":"JSONの例"},
+         {"name":"",
+          "comment":"JSONファイルの処理"},
+         {"name":"",
+          "comment":""},
+         {"name":"",
+          "comment":""}
+]},
+        {"title":"Webサーバーの設定の確認",
+         "files":[
+          {"name":"",
+          "comment":""},
+         {"name":"",
+          "comment":""},
+         {"name":"",
+          "comment":""},
+         {"name":"",
+          "comment":""}
+]}
       ]
   },
   {"date": "6/20 Web サーバーの基礎",
     "name":"09",
     "Videos":[
-        {"title":"Web サーバーの起動と設定",
+        {"title":"PHP の基礎‘(1)",
          "files":[]},
-        {"title":"PHP の基礎",
+        {"title":"PHP の基礎(2)",
          "files":[]},
         {"title":"サーバーとのデータ交換",
          "files":[]}
@@ -214,17 +241,6 @@
         {"title":"jQuery の基礎",
          "files":[]},
         {"title":"jQueryにおけるAjaxの利用",
-         "files":[]}
-      ]
-  },
-  {"date": "6/27",
-    "name":"11",
-    "Videos":[
-        {"title":"",
-         "files":[]},
-        {"title":"",
-         "files":[]},
-        {"title":"",
          "files":[]}
       ]
   }

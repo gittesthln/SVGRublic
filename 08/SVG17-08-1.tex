@@ -19,8 +19,75 @@
 			 \end{itemize}
  \item HTML5ではブラウザーのあるページ以降のページにだけ
 存在する\JSKey{sessionStorage}とページが閉じられてもデータが存続できる
-\JSKey{localStorage}が提案
+\JSKey{localStorage}が定義されている。
 \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{今回のサンプル}
+\begin{itemize}
+ \item 曲線で囲まれた部分は色が塗られていないが、その部分がうっすらと間
+       の色で塗られているように見える
+ \item 右側のテキストボックスに色を指定したのち、「設定」ボタンを押すと
+       曲線の色がその色に設定される。
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{HTMLファイル}
+ \LISTN{pinna.html}{1}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{HTMLファイル(解説)}
+ 前回の「SVGとHTMLの間でデータを交換」と同じ構造
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{CSSファイル}
+ \LISTN{pinna.css}{1}{last}{\scriptsize}
+ 前回の「SVGとHTMLの間でデータを交換」と同じ
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{JavaScriptファイル(1)}
+ \LISTN{pinna.js}{1}{13}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{JavaScriptファイル(1)--解説}
+ \begin{itemize}
+  \item 6行目から8行目で6つの\texttt{path}要素を作成し、配列に格納
+  \item 9行目と10行目で図形の色の初期値をテキストボックスの設定
+  \item 11行目で「設定」ボタンにクリックイベントの処理関数を設定
+  \item 図形を描く関数を呼び出す(「設定」ボタンの処理関数と同じ)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{JavaScriptファイル(2)}
+ \LISTN{pinna.js}{14}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{JavaScriptファイル(2)解説}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{JavaScriptファイル(Storage使用)}
+ \LISTN{pinna-org-storage.js}{1}{27}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{バンジオ・ビンナの錯視図形}
+ \framesubtitle{JavaScriptファイル(Storage使用)解説}
+ \JSKey{Storage}を使用していないコードと異なる点は次の通り
+ \begin{itemize}
+  \item 11行目と12行目で\JSKey{localStorage}の値が設定されていればその値を、
+        そうでなければデフォルト値を色のテキストボックスの値に設定
+  \item 「設定」ボタンが押されたとき、テキストボックスの値を
+        \JSKey{localStorage}に保存
+ \end{itemize}
+ 29行目以下には前と同じ関数\texttt{DrawFigure}が記述されている。
 \end{frame}
 \section{\texttt{localStorage}の利用}
 \section{やってみよう}
@@ -31,9 +98,14 @@
  \item ブラウザをいったん閉じてから再度ページを開くと、最後に設定された
        値がテキストボックスに表示
  \item \JSKey{localStorage}の値を確認
- \item 新しいフォルダを作成し、そのフォルダにファイルをコピーして、それ
+ \item コンソールで\JSKey{sessionStorage.test=1;}のように適当なキーで
+       数を設定し、その後、値を読み出すとどうなるか確認する。設定する値
+       として配列やオブジェクトでも確認すること(次のビデオを見る前に確か
+       めておくことを強く勧める)。
+ \item 新しいフォルダを作成し、そのフォルダに必要なファイルをコピーして、それ
        を表示させたときにどうなるか
- \item 9行目のコメントを外したらときに上と同じことを行う。
+ \item 9行目のコメントを外したらときに上と同じことを行って同じ結果にな
+       るか確認する。
 \end{itemize} 
 \end{frame}
  \end{document}

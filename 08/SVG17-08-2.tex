@@ -1,5 +1,6 @@
 \input ../beamerHead.tex
 \TITLE{8}{1}{JSON}{6/13}
+\renewcommand{\theFancyVerbLine}{\footnotesize\arabic{FancyVerbLine}}
 \begin{document}
 \frame{\maketitle}
 %\frame{\tableofcontents}
@@ -23,8 +24,45 @@
  として正しいとは限らない。
 \end{frame}
 \begin{frame}[containsverbatim]
- \frametitle{}
+ \frametitle{JSONオブジェクトの利用法}
  \REF{160}
+\begin{Verbatim}[numbers=left, fontsize=\scriptsize,numbersep=1pt,
+	commandchars=\\\{\},
+	codes={\catcode`$=3\catcode`^=7}]
+>A=\{x:10,y:20,add:function()\{return(this.x+this.y);\}\}
+Object \{x: 10, y: 20\}
+>A.add()
+30
+>B=JSON.stringify(A);
+"\{"x":10,"y":20\}"
+>typeof B;
+"string"
+>JSON.parse(B);
+$\blacktriangledown$ Object
+	x: 10
+	y: 20
+	$\blacktriangleright$__proto__: Object
+\end{Verbatim}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{JSONオブジェクトの利用法(解説)}
+\begin{itemize}
+ \item 1行目でオブジェクトを定義。メソッドとして\Verb+add()+が
+			 あり、2つのメンバー\Verb+x+ と\Verb+y+ を加えた値を返す(３行
+			 目)
+ \item 5行目でオブジェクトをJSON形式に変換。この中にはメソッド
+			 の\Verb+add+が含まれていない。
+ \item ７行目では変換されたものが文字列であることを確認している。
+ \item 9行目では変換後の文字列をオブジェクトに変換している。
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Storageに配列データを保存(1)}
+ \LISTN{pinna-storage-rev2.js}{1}{12}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Storageに配列データを保存(2)}
+ \LISTN{pinna-storage-rev2.js}{13}{last}{\scriptsize}
 \end{frame}
 \end{document}
 \begin{frame}[containsverbatim]

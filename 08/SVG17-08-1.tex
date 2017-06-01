@@ -71,6 +71,24 @@
 \begin{frame}[containsverbatim]
  \frametitle{バンジオ・ビンナの錯視図形}
  \framesubtitle{JavaScriptファイル(2)解説}
+\begin{itemize}
+ \item \texttt{DrawFigs()}は図形全体を表示するための関数
+ \begin{itemize}
+	\item 15行目で波打つ曲線のパラメータを設定
+	\item 16行目と17行目で曲線で使用する2種類の色をテキストボックスから読
+				みだして変数に格納
+	\item 18行目から23行目で個々の曲線を表示
+ \end{itemize}
+ \item \texttt{DrawFigure()}は一つの曲線を描く関数
+\begin{itemize}
+ \item $0.5^{\circ}$間隔で図形の方向を設定するために角度を計算(28行目)
+ \item 曲線の原点からの距離を次の式で計算(29行目)
+			 \[
+				r = R + r_0cos(W\theta)*\cos(W_2\theta)
+			 \]
+ \item これから$\theta$方向の$x,y$座標をもとめ、\texttt{d}に追加(30行目)
+\end{itemize}
+\end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{バンジオ・ビンナの錯視図形}
@@ -86,8 +104,11 @@
         そうでなければデフォルト値を色のテキストボックスの値に設定
   \item 「設定」ボタンが押されたとき、テキストボックスの値を
         \JSKey{localStorage}に保存
+ \item 29行目以下には前と同じ関数\texttt{DrawFigure}が記述されている(表示が欠
+			 けている)。\\
+			 追加されている部分は20行目と21行目で、この関数が呼び出されたとき
+			 に、\texttt{Storage}にテキストボックスの値を保存
  \end{itemize}
- 29行目以下には前と同じ関数\texttt{DrawFigure}が記述されている。
 \end{frame}
 \section{\texttt{localStorage}の利用}
 \section{やってみよう}
@@ -105,7 +126,8 @@
  \item 新しいフォルダを作成し、そのフォルダに必要なファイルをコピーして、それ
        を表示させたときにどうなるか
  \item 9行目のコメントを外したらときに上と同じことを行って同じ結果にな
-       るか確認する。
+       るか確認し、\JSKey{localStorage}と\JSKey{sessionStorage}の違いを
+       理解する。
 \end{itemize} 
 \end{frame}
  \end{document}

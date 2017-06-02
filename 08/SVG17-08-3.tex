@@ -1,0 +1,129 @@
+\input ../beamerHead.tex
+\TITLE{8}{3}{サーバーの設定の確認}{6/13}
+\renewcommand{\theFancyVerbLine}{\footnotesize\arabic{FancyVerbLine}}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{XAMPPの設定の確認}
+\begin{frame}[containsverbatim]
+ \frametitle{XAMPPの起動(1)}
+ XAMPP Control Panel を起動する。
+ \FIGN{0.9}{10-1XAMPPControl}
+ Apacheの項目の「Start」をクリック
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{XAMPPの起動(2)}
+ XAMPP Control Panel が次のように変わることを確認
+ \FIGN{0.9}{10-2XAMPPControl}
+ 「start」から「stop」に変化したことを確認
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{設定ファイル等の確認(1)}
+ \texttt{localhost}にアクセスしたときに表示されるページ
+ \FIGN{0.8}{10-3localhost}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{XAMPPの設定の確認}
+ 次の点を確認する。
+\begin{enumerate}
+  \item \texttt{XAMPP}のインストール場所
+  \item \texttt{http://localhost}にアクセスしたときに表示される画面
+  \item \texttt{http://localhost/index.html}と
+       \texttt{http://localhost/index.php}にアクセスしたときに表示される
+        画面
+\end{enumerate}
+ \texttt{http://localhost}にアクセスしたときに表示されるファイルは何か考
+ えよう。
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{設定ファイル等の確認(1)}
+ \texttt{localhost}にアクセスしたときに表示されるページ
+ \FIGN{0.8}{10-3localhost}
+ この左側にある \texttt{phpinfo()}をクリック
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{設定ファイル等の確認(2)--phpinfo()の画面}
+ \FIGN{0.8}{10-4phpinfo}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{設定ファイル等の確認(3)}
+ 次の項目を探す。
+ \begin{itemize}
+  \item \texttt{Document\textunderscore Root}
+ \item \texttt{Loaded Configuration File}
+ \end{itemize}
+ 次のことを調べる。
+ \begin{itemize}
+  \item \texttt{C:\textbackslash XAMP\textbackslash htdocs}内にあるファイ
+       ル(フォルダは必要ない)
+  \item Apacheの設定ファイルの名称と所在
+  \item \texttt{php.ini}がある場所
+ \end{itemize}
+\end{frame}
+\section{簡単なHPの作成}
+\begin{frame}[containsverbatim]
+ \frametitle{簡単なHPの作成}
+ 次のようなHPを作成する。ファイル名は\texttt{index.html}とする。
+\LISTN{10-1first.html}{1}{last}{\scriptsize}
+このリストの第1行目の記法はHTML5で定められているものである。
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{作成したページの表示}
+次の作業をしなさい。
+\begin{enumerate}
+ \item ファイルを各自のホームページの保存するルートにコピー
+ \item このページが見えることを確認する。\texttt{http://localhost}で行う
+       こと。ファイルを直接ダブルクリックしてはいけない。
+\end{enumerate}
+ ファイルをダブルクリックしたときのアドレスバーの内容を確認すること
+\end{frame}
+ \section{PHPをサーバーモードで起動}
+\begin{frame}[containsverbatim]
+ \frametitle{PHPをコマンドからサーバーモードで起動}
+ \begin{itemize}
+	\item XAMPPを起動してHTML文書の表示をブラウザで行うためには作成したファ
+				イルをドキュメントルートに移動することが必要
+	\item デバッグ時にファイルの移動をするのは面倒
+	\item PHPはコマンドラインから実行することが可能
+				\begin{itemize}
+				 \item ファイルを指定して実行\\
+							 簡単な文法チェックもできるし、ちょっとした処理をさせるの
+							 に便利
+				 \item インターラクティブモードでの起動\\
+							 JavaScriptをブラウザのコンソールから実行することに似てい
+							 る。XAMPPに含まれるPHPではできない。
+				 \item サーバーモードで起動\\
+							 PHPを起動したフォルダがドキュメントルートになるのでアップ
+							 ロードする前のチェックに便利\\
+\begin{Verbatim}
+\xampp\php\php -S localhost:80	
+\end{Verbatim}
+でホスト名とポート番号を指定して実行する。コマンドプロンプトにはクライア
+							 ントからのやり取りが(ログ)が表示される
+				\end{itemize}
+ \end{itemize}
+\end{frame}
+ \begin{frame}[containsverbatim]
+	\frametitle{コマンドプロンプトのショートカットの作成(1)}
+	手順は次の通り
+	\begin{enumerate}
+	 \item エクスプローラから\texttt{\textbackslash Windows\textbackslash
+				 System32}を開き、そこから\texttt{cmd.exe}を探して、ショートカッ
+				 トをデスクトップに作成
+	 \item ショートカットを右クリックしてプロパティを開く。
+				 \FIGN{0.5}{cmd.exe-shortcut}
+	\end{enumerate}
+\end{frame}
+ \begin{frame}[containsverbatim]
+	\frametitle{コマンドプロンプトのショートカットの作成(2)}
+	 作業用フォルダの項目を自分が作業するフォルダに変更する。
+				 \begin{enumerate}
+					\item エクスプローラで作業フォルダを開き、上部のフォルダが表示されて
+				 いるところをクリックするとフルパスのフォルダ名に表示が変わる。
+					\item それをコピーして貼り付ける。
+				 \end{enumerate}
+ \end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}

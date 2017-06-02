@@ -1,5 +1,5 @@
 \input ../beamerHead.tex
-\TITLE{8}{1}{JSON}{6/13}
+\TITLE{8}{2}{JSONと分割代入}{6/13}
 \renewcommand{\theFancyVerbLine}{\footnotesize\arabic{FancyVerbLine}}
 \begin{document}
 \frame{\maketitle}
@@ -61,8 +61,84 @@ $\blacktriangledown$ Object
  \LISTN{pinna-storage-rev2.js}{1}{12}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
+ \frametitle{Storageに配列データを保存(1)--解説}
+ \begin{itemize}
+	\item 5行目で\ELM{input}で\ATTR{text}であるものを得ている。
+	\item 6つの\ELM{path}要素を作成するために、\JSKey{Array(6).fill(0)}で
+				６回の繰り返しを行っている(6行目)。
+	\item ９行目でテキスボックスの値の初期値を\JSKey{localStorage}にある場
+				合にはそこから、そうでない場合には初期値を設定している。\\
+				\JSKey{localStorage}のデータは文字列なので\JSKey{JSON.parse}で配
+				列に変換していることに注意。
+	\item その色のリストを利用して、５行目で得たテキストボックスに初期値を
+				表示
+	\item 11行目でボタンのクリックイベントの処理関数を登録
+	\item その関数を呼び出して、初期値で図を表示(12行目)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
  \frametitle{Storageに配列データを保存(2)}
+ \framesubtitle{表示する関数}
  \LISTN{pinna-storage-rev2.js}{13}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Storageに配列データを保存(2)--解説}
+ \framesubtitle{表示する関数}
+\begin{itemize}
+ \item テキストボックスの値を色のリストに保存(15行目)\\
+			 テキストボックスのリスト\texttt{Cs}に\JSKey{forEach}メソッドを適
+			 用していないことに注意(\texttt{Cs}には直接配列のメソッドが適用で
+			 きない)
+ \item 書き直された色のリストを\JSKey{JSON.stringify()}で文字列に変換し、
+			 \JSKey{localStorage}に保存(16行目)
+ \item 6つの曲線のパラメータを配列にしたもの(17行目から19行目)に対して、
+			 それぞれの曲線の属性を変更()
+			 \begin{itemize}
+				\item 21行目の代入は分割代入と呼ばれる。配列の一部を対応する変数
+							に代入ができる。
+				\item 23行目から27行目は図形の道のりの途中の点を計算し、
+							\JSKey(map)で配列のデータにしている。
+				\item 配列のメソッド\JSKey{join()}は配列の要素を引数の文字列を間
+							に挟む文字列を作成する(27行目)
+			 \end{itemize}
+\end{itemize}
+\end{frame}
+\section{やってみよう}
+\begin{frame}[containsverbatim]
+ \frametitle{HTMLとSVGの間でデータを交換}
+ \begin{itemize}
+	\item 「HTMLとSVGの間でデータを交換」において最終のデータを
+				個別に\JSKey{localStorage}に保存するようにする。
+	\item 「HTMLとSVGの間でデータを交換」において最終のデータを
+				JSON形式で\JSKey{localStorage}に保存するようにする。
+	\item 今までに作成したSVG図形の各種パラメータをHTMLのフォームから設定
+				できるように変更する
+	\item JSONデータを自分で作成し、JavaScriptのオブジェクトリテラルとの違
+				いを調べなさい。
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{JavaScriptのプログラムを作成}
+ 次のJavaScriptのプログラムに関する事項に答えよ。
+ \begin{itemize}
+	\item 分割代入を利用して2つの変数の値を入れ替える式を1回の代入で済ませ
+				るプログラムを書く。
+	\item 次のプログラムを実行するとエラーが発生するか、結果がどうなるか確
+				認する。
+				\begin{itemize}
+				 \item [a,,b]= [1,2,3]
+				 \item [a,,[b]] = [1,2,[5,6,7]]
+				 \item [a,...c] = [1,2,3,4,5]
+				\end{itemize}
+	\item このPDFファイルのPinnaの錯視のプログラムで
+
+				\texttt{document.getElementsByTagName('input[type="text"]')}
+
+				に対して\JSKey{forEach}が直接実行できないことを確認する(10行目の
+				\JSKey{Colors.forEach(...)}を\JSKey{Cs.forEach(...))}で書くとエ
+				ラーが発生する)。
+	\item 分割代入は前問のものに対しても可能であるか確認する
+ \end{itemize}
 \end{frame}
 \end{document}
 \begin{frame}[containsverbatim]

@@ -1,0 +1,180 @@
+\input ../beamerHead.tex
+\TITLE{9}{3}{サーバーでSVGファイルを作成}{6/20}
+\begin{document}
+\frame{\maketitle}
+\section{クライアント側のプログラム}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(1)--クライアント側}
+ \LISTN{npolygon-server.html}{1}{13}{\scriptsize}
+\begin{itemize}
+ \item クライアント側の初めの部分
+% \item 外部のCSSファイル\texttt{table.css}を読み込んでいる。
+\end{itemize} 
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(2)--クライアント側}
+ \LISTN{npolygon-server.html}{14}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(2)--クライアント側解説}
+ \begin{itemize}
+	\item 9行目から25行目でデータ入力のフォームを定義
+	\item \ATTR{method}が\VAL{PUT}で\ATTR{action}が\VAL{./svg-polygon.php}
+%	\item 全体の配置を表形式で行う
+	\item 12行目は\ATTR{class}として\VAL{Cell}と\VAL{head}の二つを指定
+	\item 16行目で辺の数を入れるテキストボックスを定義
+				\begin{itemize}
+				 \item 16行目の\ELM{label}の\ATTR{for}は\ATTR{name}がその値の要
+							 素に対応するものを意味する
+				 \item その後に\ATTR{name}が\VAL{N}であるテキストボックスを置い
+							 ている
+				\end{itemize}
+	\item 21行目に「実行」の文字のあるボタンを定義
+	\item \ATTR{type}が\VAL{submit}となっているので\ELM{form}の
+				\ATTR{action}で指定されたURLに飛ぶ
+ \end{itemize}
+\end{frame}
+\section{サーバー側のプログラム}
+\subsection{サーバー側のメインプログラム}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(3)--サーバー側}
+ \LISTN{svg-polygon.php}{1}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(3)--サーバー側(解説)}
+ \begin{itemize}
+	\item 2行目で外部ファイルを1度だけ読み込むための関数
+				\Verb+require_once+を用いて\Verb+svg-func.php+を読み込み
+	\item 3行目から14行目で正多角形の頂点を計算して文字列として戻す関数\texttt{drawPath()}を
+				定義
+	\item 4行目でフォームに入力された値を変数に格納。サーバーへのデー
+							 タの渡し方が\texttt{PUT}だったのでスーパーグローバル変数
+							 \Verb+$_GET+にある。
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(3)--サーバー側}
+				\begin{itemize}
+				 \item 5行目に現れるシンボル\texttt{MaxSize}は15行目の
+							 \texttt{define()}で定義されている定数
+				 \item 角度が$0^{\circ}$の点の位置で変数\Verb+$pathString+を初期化
+							 (5行目)
+				 \item 6から10行目で各頂点の座標を計算(\texttt{for}で繰り
+							 返し)
+				 \item 7行目で中央からの各頂点への角度をラジアンで計算。
+							 \Verb+M_PI+はPHPにおける円周率を表す定数
+				 \item 9行目で計算した頂点の座標を今までに求めた頂点の座標の後に
+							 PHPの文字列をつなぐ演算子\texttt{.}でつなぐ
+				 \item \texttt{sprintf}の戻り値はC言語の\texttt{printf}のように書式を与
+							 えて、データを文字列に変換したもの
+				 \item ここでは書式を指定しないと小数点以下の桁が多くなるのを防
+							 ぐために使用(ここでは小数点以下が4桁)
+				 \item 11行目から13行目の関数\texttt{outputTag}は指定された要素
+							 と属性を持つSVGの要素を文字列として出力
+				 \item 12行目の\texttt{array}関数は指定した要素を持つ配列を定義
+				 \item 連想配列(JavaScriptのオブジェクトリテラルのような
+               もの)で与える
+				\end{itemize}
+ \end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(3)--サーバー側}
+ \begin{itemize}
+	\item 15行目で定数\texttt{MaxSize}を定義
+	\item 16行目でこれから送るデータの形式(MIME)を指定(指定がないと
+				\VAL{text/html}となる
+	\item ここではSVGなので\texttt{image/svg+xml}を指定
+	\item SVGファイルの先頭部分を各関数\texttt{printHeader}を呼び出す。引
+				数は画像の幅と高さ(17行目)
+	\item \ELM{g}の出力(18行目)
+	\item 正n角形の出力
+	\item 閉じていない要素を閉じる関数の呼び出し(20行目)
+ \end{itemize}
+ \end{frame}
+\subsection{サーバ側のユーティティ関数}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(4)--サーバー側}
+ \framesubtitle{printHeader()}
+ \LISTN{svg-func.php}{1}{11}{\scriptsize}
+ \begin{itemize}
+  \item SVGファイルのヘッダー部分を出力する関数
+  \item 引数はSVG画像の幅と高さ
+  \item ヒアドキュメントとして記述
+  \item 出力された要素をスタックとして保存するためのグローバル変数
+        \texttt{\$setTags}を\texttt{svg}で初期化
+  \item PHPでは関数内の変数はすべてローカル。グローバル変数の参照にはスー
+        パーグローバル\texttt{\$GLOBALS}内に格納
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(4)--サーバー側}
+ \framesubtitle{\texttt{outputSpaces()}と\texttt{outputTags()}}
+ \LISTN{svg-func.php}{12}{27}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(4)--サーバー側}
+\begin{itemize}
+ \item 関数\texttt{outputSpaces()}は引数の2倍の空白を出力する
+       (出力ファイルの要素を読みやすくするためのインデント)。
+ \item 関数\texttt{outputTags}は要素名、属性と属性値のペアからなる連想配
+       列、属性をそこで閉じるかのフラッグの3つを引数にとる
+ \item 最後の引数は省略可で、デフォルト値は\texttt{false}(閉じる)
+ \item 閉じていない要
+       素名のリスト\texttt{\$setTags}の長さ\texttt{count()}を利用して
+       インデントのための空白を出力(17行目)
+ \item 17行目で開始要素を出力
+ \item 18行目から20行目で属性値と属性名を\texttt{foreach}を用いて出力
+ \item 3番目の仮引数が\texttt{true}であればそこで要素の終了を意味する
+       \texttt{\textbackslash}を出力(23行目)
+ \item そうでなければ今出力した要素をグローバル変数\texttt{\$setTags}の
+       最後の要素として付け加える(\texttt{array\_push()}を利用)
+ \item 最後に要素の終了を示す\texttt{>}を出力
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成(4)--サーバー側}
+ \LISTN{svg-func.php}{28}{last}{\scriptsize}
+%\end{frame}
+%\begin{frame}[containsverbatim]
+% \frametitle{サーバーでSVGファイルを作成(4)--サーバー側}
+\begin{itemize}
+ \item 28行目から31行目は閉じられていない要素の終了タグを出力する関数を
+       定義
+ \item 29行目でインデントを一つ下げる分の空白を出力
+ \item 30行目では\texttt{array\_pop()}を用いて最後の登録された閉じられて
+       いない要素の終了要素を出力
+ \item 32行目から35行目ではファイルの最後で閉じられていない要素をすべて
+       出力する関数\texttt{closeSVG}を定義
+ \item グローバル変数\texttt{\$setTags}の長さが0になるまで
+       \texttt{closeTags()}を呼び出している。
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーでSVGファイルを作成}
+ \begin{itemize}
+  \item HTMLリスト8.1とPHPリスト8.2、8.3を作成して正$n$角形のSVGファイルを
+        返すファイルができることを確認
+  \item HTMLのファイル名は\texttt{svg-polygon.php}とすること
+  \item アドレスバーに\verb+http://localhost/svg-polygon.php?N=10+
+と打ち込んだ場合
+ \end{itemize}
+\end{frame}
+\section{やってみよう}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+  \item 正$n$角形のSVGファイルを
+      返すファイルができることを確認
+  \item アドレスバーに\Verb+http://localhost/svg-polygon.php?N=10+
+と打ち込んだ場合どうなるか
+  \item 212ページの\texttt{header}関数を追加して、SVGファイルが保存できる
+       ことを確認
+ \end{itemize}
+ 次のことを調べる。
+ \begin{itemize}
+  \item MIMEとはなにか。
+ \end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

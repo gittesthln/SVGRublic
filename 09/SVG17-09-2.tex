@@ -1,0 +1,130 @@
+\input ../beamerHead.tex
+\TITLE{9}{2}{クライアントとサーバーでのデータのやり取りの基本}{6/20}
+\begin{document}
+\frame{\maketitle}
+\begin{frame}[containsverbatim]
+ \frametitle{データを入力する}
+ 次のファイルを\texttt{start.php}とする。
+ %\footnote{このテキストにしたがっ
+ %て PHP の設定をした場合には保存するエンコーディングをUTF-8にする。}
+ \LISTN{09-3exchange.php}{1}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{データを入力する--解説}
+ \begin{itemize}
+	\item 4行目でファイルがUTF-8でエンコーディングされていることを示してい
+				る
+	\item 8行目から11行目で入力フォームを定義
+  \item \texttt{action} では\texttt{submit}ボタンが押されたときに呼び出さ
+       れる関数またはサーバー側のファイルを指定
+	\item ここでは\texttt{hello.php}が呼び出される。
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{データを入力する--実行方法}
+ \begin{itemize}
+  \item \texttt{start.php}を適当なサーバーにコピー
+  \item ブラウザーで\texttt{start.php}を表示
+  \item このファイルには PHP のプログラム部分がまったくないので
+       拡張子を \texttt{html} にしてもよい
+  \item テキストボックスにデータを入力した後、隣にある「送信」ボタンをク
+       リック
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{データを受け取る}
+ \LISTN{09-5hello.php}{1}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{データを受け取る--解説}
+ \begin{itemize}
+  \item  \texttt{hello.php}を適当なサーバーにコピー
+  \item \texttt{start.php}の\ELM{form}で属性\ATTR{method}を
+       \texttt{POST}にしている(8行目)のでこのフォームに含まれる\texttt{input}で
+       指定されている値はスーパーグローバル変数\texttt{\$\_POST} の連想配
+       列のなかに入れられる。
+  \item 値は\texttt{\$\_POST['user']}で参照可能
+  \item 9行目で入力された文字があるかどうかの判定
+  \item 空の文字列ではないときには10行目の文が実行される
+       のでメッセージを表示
+  \item 空の文字列の場合には13行目から15行目までで「戻る」ボタンが表示
+  \item このボタンを表示する部分はHTMLの要素で記述
+  \item その後に
+       PHPで書かれている9行目の\texttt{else}節のを閉じるために16行目から18
+       行目で閉じるための\texttt{\}}を挿入
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+  \item 上記のプログラムを実行した結果を報告
+  \item テキストボッ
+       クスに\texttt{<b>Foo</b>}と入力した結果について報告し、問題点を報
+        告
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーに伝えられる情報\REF{214}}
+ \LISTN{server.php}{1}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーに伝えられる情報(解説)}
+ \begin{itemize}
+	\item 6行目で外部のCSSファイル(table.css)を読み込む。
+				\begin{itemize}
+				 \item \ELM{link}の\ATTR{href}でファイルを指定
+				 \item \ATTR{rel}で\Verb+stylesheet+を指定
+				\end{itemize}
+	\item サーバーに伝えられる情報はスーパーグローバル変数\texttt{\$\_SERVER} の連想配
+       列内にある
+	\item この配列内のキーをすべてわたるために
+				\Verb+foreach($Array as $key=>$val)+形式の構文を用いる。
+				\begin{itemize}
+				 \item \Verb+$key+にはキーの値、\Verb+$val+にはそれに対応する配列
+							 の値が入れられる(変数名は何でもよい)
+				 \item \Verb+$Array[$key]=$val+の関係が成立
+				\end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーに伝えられる情報(解説つづき)}
+	これらを並べてテーブルの形で出力(12行目から17行目)
+				\begin{itemize}
+				 \item 12行目の\Verb+<<<+はヒアドキュメントと呼ばれる形式で文字
+							 列を定義することを示す。
+				 \item この後の文字列\Verb+_EOL_+はこの文字列の最後を示すための
+							 マークを定義
+				 \item 同じ文字列が17行目にある。ここで終了となる。
+				 \item この文字列は行の先頭に置く。先頭に空白があってはいけない。
+				 \item 終了の文字列以外には分の終了を示す\Verb+;+以外は書けない。
+				 \item 14行目と15行目にある変数は展開される。
+				\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{CSSファイル}
+ 6行目で読み込まれるCSSファイル
+ %\LIST{table.css}{1}{last}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{CSSファイル(解説)}
+ \ELM{table}を用いないで表組するCSSとなっている。
+ \begin{itemize}
+	\item クラス\texttt{table}は\ELM{table}をまねるために\ATTR{display}に
+				\texttt{table}を指定
+	\item クラス\texttt{Row}は\ELM{tr}をまねるために\ATTR{display}に
+				\texttt{table-row}を指定
+	\item クラス\texttt{Cell}は\ELM{td}をまねるために\ATTR{display}に
+				\texttt{td}を指定
+	\item さらにテキストを中央揃えに指定
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{サーバーに伝えられる情報(確認しよう)}
+
+ これらの結果を見てどのようなデータが送られているか調査すること
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+ \frametitle{}
+\end{frame}

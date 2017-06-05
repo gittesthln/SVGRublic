@@ -1,0 +1,80 @@
+\input ../beamerHead.tex
+\TITLE{9}{1}{PHPの基礎(1)}{6/20}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{PHPの基礎}
+\begin{frame}[containsverbatim]
+ \frametitle{PHPでHP作成}
+ 次のような内容のファイルを作成
+
+ ファイルの拡張子を\texttt{.php}にすることを忘れないこと。
+ \LISTN{09-2first.php}{1}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{PHPプログラムの解説}
+\begin{itemize}
+ \item PHP のプログラムはHTML文書の中に埋め込むことができる。
+ \item PHPのプログラムの部分は \Verb+<php+ と \Verb+?>+内に書く(5
+       行目から7行目)。
+% \item 文法はC言語に似ている。
+ \item 文字列を印刷するためには \texttt{print} をつかう。\texttt{echo}
+       を使うこともできる。
+ \item 文の最後は \texttt{;}をつける。
+ \item  文字列は " " で挟むか ' ' で挟む。C言語のように文字と
+        いうデータは存在しない。
+ \item  " " 内の文字列では変数名や制御コード(改行)などがその値で置き換えられる。
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{重要}
+ \begin{itemize}
+  \item このPHPのファイルを用いて表示されたたページのソースはどのようになっ
+ ているか
+  \item このことが何を意味するか
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{繰り返しの記述}
+ \begin{itemize}
+  \item PHPは言語の仕様をC言語から借りてきている面が多い。
+  \item \texttt{for}文や\texttt{if}文は形式的には同じ形
+  \item 変数名は\$ ではじめなければならない
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{繰り返しの例}
+ 上の文章を10回繰り返して書くには次のようにすればよい。
+ \LISTN{09-3repeat.php}{1}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{解説}
+ \begin{itemize}
+  \item 1行目から5行目まではそのまま出力される。
+  \item 4行目から11行目がPHPにより処理される。
+   \begin{itemize}
+    \item 6行目で変数\Verb+$myName+に値を代入
+    \item 7行目から10行目が\texttt{for}による繰り返し。
+    \item 8行目と9行目で\"と\' による文字列をそれぞれ出力
+    \item 変数名の前後にある\{\}は変数名をはっきりさせるために付けている。
+          変数名に使用できない文字が来ればその前までを変数名として取り扱
+          われる。
+    \item JavaScriptのテンプレートリテラルと異なり、式を直接書くことはで
+          きない
+   \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{やってみよう}
+ \begin{itemize}
+  \item サーバーを起動して「10回表示する」ページがどのように表示されるか
+  \item 起動後のページのソースはどうなっているか
+  \item コンソールからPHPプログラムを実行して、上記のページのソースと比
+        較する。
+  \item 「10回表示する」ページにおける表示に不具合があれば直す。
+ \end{itemize}
+\end{frame}
+ \end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}

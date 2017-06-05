@@ -198,28 +198,13 @@
          {"name":"pinna-org-storage.js",
           "comment":"バンジオ・ビンナの錯視図形(strage使用)--JavaScriptファイル"}
           ]},
-        {"title":"JSONの利用",
+        {"title":"JSONの利用（HTMLファイルは以前のものを直して使用のこと）",
          "files":[
-         {"name":"",
-          "comment":"JSONの例"},
-         {"name":"",
-          "comment":"JSONファイルの処理"},
-         {"name":"",
-          "comment":""},
-         {"name":"",
-          "comment":""}
+         {"name":"pinna-storage-rev2.js",
+          "comment":"Storageに配列データを保存(pinna-storage-rev2.js)"}
 ]},
-        {"title":"Webサーバーの設定の確認",
-         "files":[
-          {"name":"",
-          "comment":""},
-         {"name":"",
-          "comment":""},
-         {"name":"",
-          "comment":""},
-         {"name":"",
-          "comment":""}
-]}
+        {"title":"Webサーバーの設定の確認(特別なファイルはありません)",
+         "files":[]}
       ]
   },
   {"date": "6/20 Web サーバーの基礎",
@@ -233,10 +218,10 @@
          "files":[]}
       ]
   },
-  {"date": "6/27 Ajax と jQuery",
+  {"date": "6/27 Ajax",
     "name":"10",
     "Videos":[
-        {"title":"Ajax の利用",
+        {"title":"Ajaxの基礎",
          "files":[]},
         {"title":"jQuery の基礎",
          "files":[]},

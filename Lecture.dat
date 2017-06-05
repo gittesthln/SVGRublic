@@ -210,10 +210,24 @@
   {"date": "6/20 Web サーバーの基礎",
     "name":"09",
     "Videos":[
-        {"title":"PHP の基礎‘(1)",
-         "files":[]},
-        {"title":"PHP の基礎(2)",
-         "files":[]},
+        {"title":"PHP の基礎‘",
+         "files":[
+				 {"name":"first.txt",
+				  "comment":"簡単なPHPファイル(拡張子がPHPになっていません。)"},
+				 {"name":"repeat.txt",
+				  "comment":"繰り返しの例(拡張子がPHPになっていません。)"}
+					]},
+        {"title":"クライアントとサーバーでのデータのやり取りの基本",
+         "files":[
+				 {"name":"start.txt",
+				  "comment":"起動用のPHPファイル"},
+				 {"name":"hello.txt",
+				  "comment":"起動用のPHPファイルから呼び出されるファイル"},
+				 {"name":"server.txt",
+				  "comment":
+					"サーバーに伝えられる情報の表示(取り扱い注意:決してどこかのサーバーにアップしないこと)"}
+					]
+				},
         {"title":"サーバーとのデータ交換",
          "files":[]}
       ]

@@ -13,11 +13,14 @@
   \item JavaScriptのオブジェクトリテラルを定義する文字列の形式をまねたも
 				の
 				\begin{itemize}
-				 \item 全体を\texttt{\{}と\texttt{\}}で囲む
-				 \item 各項目はキーと値のペアで、間を\texttt{,}でつなぐ。
+				 \item オブジェクト形式では全体を\texttt{\{}と\texttt{\}}で囲
+               む。
+         \item データのリスト(配列)では\texttt{[}と\texttt{]}で囲
+               む。
+				 \item 各項目はキーと値の間に\texttt{:}で区切り、間を\texttt{,}でつなぐ。
 				 \item キーは文字列で、\texttt{"}で挟む%"
 				 \item 値はオブジェクト、配列、数、文字列、\texttt{true}、
-							 \texttt{true}、\texttt{false}、\texttt{null}が可能
+							 \texttt{false}、\texttt{null}が可能
 				\end{itemize}
  \end{itemize}
  この定義から無条件にJavaScriptのオブジェクトリテラルがそのままJSON形式
@@ -64,9 +67,9 @@ $\blacktriangledown$ Object
  \frametitle{Storageに配列データを保存(1)--解説}
  \begin{itemize}
 	\item 5行目で\ELM{input}で\ATTR{text}であるものを得ている。
-	\item 6つの\ELM{path}要素を作成するために、\JSKey{Array(6).fill(0)}で
+	\item 6つの\ELM{path}要素を作成するために、\JSKey{Array(6).fill(1)}で
 				６回の繰り返しを行っている(6行目)。
-	\item ９行目でテキスボックスの値の初期値を\JSKey{localStorage}にある場
+	\item 9行目でテキスボックスの値の初期値を\JSKey{localStorage}にある場
 				合にはそこから、そうでない場合には初期値を設定している。\\
 				\JSKey{localStorage}のデータは文字列なので\JSKey{JSON.parse}で配
 				列に変換していることに注意。
@@ -126,9 +129,9 @@ $\blacktriangledown$ Object
 	\item 次のプログラムを実行するとエラーが発生するか、結果がどうなるか確
 				認する。
 				\begin{itemize}
-				 \item [a,,b]= [1,2,3]
-				 \item [a,,[b]] = [1,2,[5,6,7]]
-				 \item [a,...c] = [1,2,3,4,5]
+				 \item \Verb+[a,,b]= [1,2,3]+
+				 \item \Verb+[a,,[b]] = [1,2,[5,6,7]]+
+				 \item \Verb+[a,...c] = [1,2,3,4,5]+
 				\end{itemize}
 	\item このPDFファイルのPinnaの錯視のプログラムで
 

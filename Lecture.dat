@@ -195,11 +195,15 @@
           "comment":"バンジオ・ビンナの錯視図形(strage不使用)--JavaScriptファイル"},
          {"name":"pinna.css",
           "comment":"バンジオ・ビンナの錯視図形--CSSファイル"},
+         {"name":"pinna-storage.html",
+          "comment":"バンジオ・ビンナの錯視図形(strage使用)--HTMLファイル"},
          {"name":"pinna-org-storage.js",
           "comment":"バンジオ・ビンナの錯視図形(strage使用)--JavaScriptファイル"}
           ]},
-        {"title":"JSONの利用（HTMLファイルは以前のものを直して使用のこと）",
+        {"title":"JSONの利用",
          "files":[
+         {"name":"pinna-storage.html",
+          "comment":"バンジオ・ビンナの錯視図形(strageに配列データ保存)--HTMLファイル"},
          {"name":"pinna-storage-rev2.js",
           "comment":"Storageに配列データを保存(pinna-storage-rev2.js)"}
 ]},

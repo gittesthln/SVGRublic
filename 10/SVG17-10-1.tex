@@ -1,0 +1,150 @@
+%-*- coding: utf-8 -*-
+\input ../beamerHead.tex
+\TITLE{10}{1}{Ajaxによる非同期通信}{6/27}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{Ajaxとは}
+\begin{frame}[containsverbatim]
+ \frametitle{Ajaxの提唱}
+ \begin{itemize}
+  \item Asyncronous JavaScript + XML の略称
+  \item Webアプリケーションの手段としてサーバーと非同期
+(Asyncronous)通信を行いながら、JavaScriptを用いてページを書き換える手法
+  \item 名称が与えられただけですでにあった技術の組み合わせ
+  \item Google Maps がこの手法を用いたことで有名になった。
+ \begin{itemize}
+  \item 同期通信で地図をダウンロードすると、完了時までユーザーは操作が不
+        可能
+  \item 追加のデータが必要になったら、裏方でサーバーと通信を行い、データ
+        がそろった時点でページをDOMの技法で書き換える
+ \end{itemize}
+ \end{itemize}
+\end{frame}
+\section{Ajaxの例}
+\begin{frame}[containsverbatim]
+ \frametitle{正$n$角形の頂点の位置だけをサーバーから取得}
+ \FIGN{0.75}{test-ajax-start}
+ この画面でテキストボックスに適当な数を入れてクリックする
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{}
+サーバーから送られてきたデータがメッセージボックスに表示
+ \FIGN{0.75}{test-ajax-data}
+\end{frame}
+\begin{frame}[containsverbatim]
+\frametitle{}
+ 「OK」ボタンを押すと多角形が表示
+ \FIGN{0.75}{test-ajax-show}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{Ajaxを利用した正多角形の表示--HTMLファイル(1)}
+ \LISTN{test-ajax.html}{1}{8}{\footnotesize}
+ 5行目でJavaScriptファイルを読み込む
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Ajaxを利用した正多角形の表示--HTMLファイル(2)}
+ \LISTN{test-ajax.html}{9}{last}{\footnotesize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Ajaxを利用した正多角形の表示--HTMLファイル(2)解説}
+ \begin{itemize}
+  \item 13行目から18行目で\ELM{svg}     
+  \item その中に\ATTR{points}がない\ELM{polygon}がある
+  \item 19行目からフォームを定義
+	\item \ELM{input}の\ATTR{type}が\VAL{number}
+	\item これは整数しか受け付けない。
+  \item \texttt{SUBMIT}ボタンが押されると\texttt{getData()}が呼び出され
+        る
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Ajaxを利用した正多角形の表示}
+ \LISTN{Ajax.js}{1}{6}{\scriptsize}
+%\end{frame}
+%\begin{frame}[containsverbatim]
+% \frametitle{Ajaxを利用した正多角形の表示--解説}
+ \begin{itemize}
+  \item 1行目でAjax通信オブジェクトを格納する変数を定義
+  \item 2行目から6行目が通信オブジェクトを作成し、初期化を行う関数
+        \begin{itemize}
+         \item 引数は通信が完了したときに呼び出される関数
+               (コールバック関数)
+         \item 配布資料にあった古いブラウザにも対応するコードは省略 
+         \item 3行目で裏でサーバーと通信を行う
+               \texttt{XMLHttpRequest()}オブジェクトを作成
+         \item 作成できたときにはそのオブジェクトに通信が完了時のコール
+               バック関数が格納されるプロパティ
+               \texttt{onreadystatechange}に指定されたコールバック関数を
+               登録(4行目)
+         \item 関数の戻り値は作成されたオブジェクト(5行目)
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Ajaxを利用した正多角形の表示}
+ \framesubtitle{HTML文書上でボタンがクリックされたときに呼び出される関
+ 数}
+ \LIST{Ajax.js}{7}{19}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Ajaxを利用した正多角形の表示--解説}
+ \begin{itemize}
+	\item 8行目で辺の数を変数\texttt{N}に代入
+	\item 3より小さければ正多角形ができないのでメッセージボックスを開く
+	\item その後、\VAL{false}を返す。これにより\texttt{SUBMIT}がキャンセル
+  \item 13行目でAjax通信を行うオブジェクトを作成。引数にコールバック関数
+        \texttt{displayPolygon}を渡している
+  \item 通信オブジェクトが作成できたら(14行目)
+        \texttt{open}メソッドを用いて通信を開始(15行目でから16行目)
+        \begin{itemize}
+  \item 初めの引数はメソッド(ここでは\texttt{GET}を指定)
+  \item 2番目の引数はデータを要求するURL
+  \item \texttt{GET}による通信なので引数も付け加える。引数の
+        部分は\texttt{encodeURI()}関数で日本語などをエスケープする
+  \item 3番目の引数(オプション)は非同期通信(\VAL{true})を行うことを
+        指定
+  \item 17行目ではデータの終了を知らせるために\VAL{nul}を送る
+        \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Ajaxを利用した正多角形の表示}
+ \framesubtitle{コールバック関数}
+ \LISTN{Ajax.js}{20}{last}{\scriptsize}
+ \begin{itemize}
+  \item Ajaxの通信が終了(\texttt{httpObj.readyState}が$4$)し、要求が正常
+        終了(\texttt{httpObj.status}が$200$)たときに、送られてきたデータ
+        を通常のテキスト(\texttt{httpObj.responseText})として、メッセー
+        ジボックスに表示(23行目)
+  \item この値はそのまま\ELM{polyon}の\ATTR{points}の値として利用できる
+        のでそのまま設定する(24行目と25行目)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{Ajaxを利用した正多角形の表示--サーバー側のファイル}
+ \LISTN{svg-polygon-ajax.txt}{1}{last}{\scriptsize}
+\begin{itemize}
+ \item 前の頂点の計算プログラムとほとんど同じ
+ \item \texttt{header}関数で送るデータの種類を\texttt{text}に指定
+\end{itemize}
+\end{frame}
+\section{やってみよう}
+\begin{frame}[containsverbatim]
+ \frametitle{確認して報告}
+ \begin{itemize}
+  \item  いくつかの正多角形を表示した後、ブラウザでの戻るボタンを押したらどう
+ なるか
+  \item ブラウザのアドレスバーに直接\verb+svg-polygon-ajax.php?N=5+と入
+        力するとなにが起こるか
+	\item アドレスバーに\Verb+svg-polygon-ajax.php?N=2+としたら何が起こる
+				か。問題点を指摘し、修正しなさい
+ \end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}
+
+

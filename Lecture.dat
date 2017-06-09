@@ -232,19 +232,30 @@
 					"サーバーに伝えられる情報の表示(取り扱い注意:決してどこかのサーバーにアップしないこと)"}
 					]
 				},
-        {"title":"サーバーとのデータ交換",
-         "files":[]}
-      ]
+        {"title":"サーバーでSVGファイルを作成",
+         "files":[
+				 	{"name":"npolygon-server.html",
+				  "comment":"サーバーでSVGファイルを作成--クライアント側"},
+				 	{"name":"svg-polygon.txt",
+				  "comment":"サーバーでSVGファイルを作成--サーバー側(1)(拡張子が変更されている)"},
+				 	{"name":"svg-func.txt",
+				  "comment":"サーバーでSVGファイルを作成--サーバー側(2)(拡張子が変更されている)"}
+        ]
+			}]
   },
   {"date": "6/27 Ajax",
     "name":"10",
     "Videos":[
         {"title":"Ajaxの基礎",
-         "files":[]},
-        {"title":"jQuery の基礎",
-         "files":[]},
-        {"title":"jQueryにおけるAjaxの利用",
-         "files":[]}
+         "files":[
+				 {"name":"test-ajax.html",
+				  "comment":"Ajaxを利用した正多角形の表示--HTMLファイル"},
+				 {"name":"Ajax.js",
+				  "comment":"Ajaxを利用した正多角形の表示--JavaScriptファイル"},
+				 {"name":"svg-polygon-ajax.txt",
+				  "comment":
+					"Ajaxを利用した正多角形の表示--サーバー側のファイル(拡張子が変更されている)"}
+					]}
       ]
   }
 ]

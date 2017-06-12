@@ -58,9 +58,14 @@
  \frametitle{やってみよう}
  \begin{itemize}
   \item 上記のプログラムを実行した結果を報告
-  \item テキストボッ
-       クスに\texttt{<b>Foo</b>}と入力した結果について報告し、問題点を報
-        告
+	\item 9行目の\texttt{method=\"POST\"}を
+				\texttt{method=\"PUT\"}に変更し\texttt{hello.php}の9行目と10行
+				目の\Verb+$_POST+を\Verb+$_GET+に変更したもので同じように実行さ
+				せて動作することを確認
+	\item \texttt{method=\"POST\"}との\texttt{method=\"PUT\"}による違いが
+				あるか調べる。
+%  \item テキストボックスに\texttt{<b>Foo</b>}と入力した結果について報告
+%				し、問題点を報告
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
@@ -103,7 +108,7 @@
 \begin{frame}[containsverbatim]
  \frametitle{CSSファイル}
  6行目で読み込まれるCSSファイル
- %\LIST{table.css}{1}{last}
+ \LISTN{table.css}{1}{last}{\scriptsize}
 \end{frame}
 
 \begin{frame}[containsverbatim]

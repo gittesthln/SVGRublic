@@ -1,0 +1,13 @@
+.head {
+		font-size:20px;
+}
+.table {
+    display:table;
+}
+.Row{
+    display:table-row;
+}
+.Cell {
+    display:table-cell;
+    text-align:center;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script type="text/ecmascript" src="Ajax.js"></script>
+    <link rel="stylesheet" type="text/css" href="table.css">
+    <title>正n角形を描く</title>
+  </head>
+  <body>
+    <h1 class="head">正n角形を描く(Ajax版)</h1>
+    <div class="table">
+      <div class="Row">
+        <svg height="410" width="410" class="Cell">
+          <g transform="translate(205,205)">
+            <polygon id="npolygon" fill="blue"
+                     stroke-width="4" stroke="red"/>
+          </g>
+        </svg>
+        <form name="Test" method="PUT" action="javascript:getData()"
+              class="Cell">
+          <div>
+            <label for="N">n=</label>
+            <input type="number" name="N" id="N" width="20px" value="3"/>
+          </div>
+          <div><input type="SUBMIT" value="実行"/></div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -3,9 +3,9 @@
   <meta charset="UTF-8"/>
   <head>
   <title>初めてのHTML</title>
-	</head>
+  </head>
   <body>
- <?php
+<?php
 print "こんにちは、このホームページは--自分の名前--が作成しました。";
 ?>
 </body>

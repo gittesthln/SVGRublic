@@ -5,7 +5,7 @@
 \section{クライアント側のプログラム}
 \begin{frame}[containsverbatim]
  \frametitle{サーバーでSVGファイルを作成(1)--クライアント側}
- \LISTN{npolygon-server.html}{1}{13}{\scriptsize}
+ \LISTN{npolygon-server.html}{1}{14}{\scriptsize}
 \begin{itemize}
  \item クライアント側の初めの部分
 % \item 外部のCSSファイル\texttt{table.css}を読み込んでいる。
@@ -13,18 +13,18 @@
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{サーバーでSVGファイルを作成(2)--クライアント側}
- \LISTN{npolygon-server.html}{14}{last}{\scriptsize}
+ \LISTN{npolygon-server.html}{15}{last}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{サーバーでSVGファイルを作成(2)--クライアント側解説}
  \begin{itemize}
-	\item 9行目から25行目でデータ入力のフォームを定義
+	\item 16行目から24行目でデータ入力のフォームを定義
 	\item \ATTR{method}が\VAL{PUT}で\ATTR{action}が\VAL{./svg-polygon.php}
 %	\item 全体の配置を表形式で行う
-	\item 12行目は\ATTR{class}として\VAL{Cell}と\VAL{head}の二つを指定
-	\item 16行目で辺の数を入れるテキストボックスを定義
+	\item 17行目は\ATTR{class}として\VAL{Cell}と\VAL{head}の二つを指定
+	\item 19行目で辺の数を入れるテキストボックスを定義
 				\begin{itemize}
-				 \item 16行目の\ELM{label}の\ATTR{for}は\ATTR{name}がその値の要
+				 \item 19行目の\ELM{label}の\ATTR{for}は\ATTR{name}がその値の要
 							 素に対応するものを意味する
 				 \item その後に\ATTR{name}が\VAL{N}であるテキストボックスを置い
 							 ている

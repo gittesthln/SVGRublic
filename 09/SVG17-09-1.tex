@@ -1,5 +1,5 @@
 \input ../beamerHead.tex
-\TITLE{9}{1}{PHPの基礎(1)}{6/20}
+\TITLE{9}{1}{PHPの基礎}{6/20}
 \begin{document}
 \frame{\maketitle}
 %\frame{\tableofcontents}
@@ -9,14 +9,14 @@
  次のような内容のファイルを作成
 
  ファイルの拡張子を\texttt{.php}にすることを忘れないこと。
- \LISTN{09-2first.php}{1}{last}{\scriptsize}
+ \LISTN{first.php}{1}{last}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{PHPプログラムの解説}
 \begin{itemize}
  \item PHP のプログラムはHTML文書の中に埋め込むことができる。
- \item PHPのプログラムの部分は \Verb+<php+ と \Verb+?>+内に書く(5
-       行目から7行目)。
+ \item PHPのプログラムの部分は \Verb+<php+ と \Verb+?>+内に書く(8
+       行目から10行目)。
 % \item 文法はC言語に似ている。
  \item 文字列を印刷するためには \texttt{print} をつかう。\texttt{echo}
        を使うこともできる。
@@ -29,7 +29,7 @@
 \begin{frame}[containsverbatim]
 \frametitle{重要}
  \begin{itemize}
-  \item このPHPのファイルを用いて表示されたたページのソースはどのようになっ
+  \item このPHPのファイルを用いて表示されたページのソースはどのようになっ
  ているか
   \item このことが何を意味するか
  \end{itemize}
@@ -45,17 +45,17 @@
 \begin{frame}[containsverbatim]
  \frametitle{繰り返しの例}
  上の文章を10回繰り返して書くには次のようにすればよい。
- \LISTN{09-3repeat.php}{1}{last}{\scriptsize}
+ \LISTN{repeat.php}{1}{last}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{解説}
  \begin{itemize}
-  \item 1行目から5行目まではそのまま出力される。
-  \item 4行目から11行目がPHPにより処理される。
+  \item 1行目から7行目まではそのまま出力される。
+  \item 8行目から14行目がPHPにより処理される。
    \begin{itemize}
-    \item 6行目で変数\Verb+$myName+に値を代入
-    \item 7行目から10行目が\texttt{for}による繰り返し。
-    \item 8行目と9行目で\"と\' による文字列をそれぞれ出力
+    \item 9行目で変数\Verb+$myName+に値を代入
+    \item 10行目から13行目が\texttt{for}による繰り返し。
+    \item 11行目と12行目で"と' による文字列をそれぞれ出力 %"
     \item 変数名の前後にある\{\}は変数名をはっきりさせるために付けている。
           変数名に使用できない文字が来ればその前までを変数名として取り扱
           われる。

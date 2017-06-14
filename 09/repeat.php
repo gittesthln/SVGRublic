@@ -3,15 +3,7 @@
   <meta charset="UTF-8"/>
   <head>
   <title>初めてのHTML(その2)</title>
-	</head>
- <body>
-<pre>
-<!DOCTYPE html>
- <html>
-  <meta charset="UTF-8"/>
-  <head>
-  <title>初めてのHTML(その2)</title>
-	</head>
+  </head>
  <body>
  <?php
 $myName ="私の名前";
@@ -20,8 +12,5 @@ for($i=0;$i<10;$i++){
   print 'こんにちは、このホームページは{$myName}が作成しました。\n';
 }
 ?>
-</body>
-</html>
-</pre>
 </body>
 </html>

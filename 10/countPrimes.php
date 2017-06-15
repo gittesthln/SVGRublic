@@ -1,6 +1,6 @@
 <?php
-$start = $argv[1];
-$step  = 10000000;
+$start = (array_key_exists('N', $_GET))?$_GET['N']:$argv[1];
+$step  = 100*10000;
 $limit = 10000;
 $primes = [];
 array_push($primes,2);
@@ -35,9 +35,9 @@ for($j=0;$j<$pNo;$j++) {
              $flag = false;
             break;
         }
-        if($i< $p*$p) break;
+        if($i< ($p+2)*($p+2)) break;
     }
     if($flag) $c++;
 }
-print "$start $L $c\n";
+print $c;
 ?>

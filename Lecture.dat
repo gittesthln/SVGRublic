@@ -257,7 +257,25 @@
 				 {"name":"svg-polygon-ajax.txt",
 				  "comment":
 					"Ajaxを利用した正多角形の表示--サーバー側のファイル(拡張子が変更されている)"}
+					]},
+				 {"title":"非同期通信の確認",
+         "files":[
+				 {"name":"countPrimes.html",
+				  "comment":"素数の数を数える--HTMLファイル"},
+				 {"name":"countPrimes-Ajax.js",
+				  "comment":"素数の数を数える--JavaScriptファイル"},
+				 {"name":"countPrimes.txt",
+				  "comment":
+					"素数の数を数える--サーバー側のファイル(拡張子が変更されている)"}
+					]},
+				 {"title":"この演習のHPについて",
+         "files":[
+				 {"name":"Lecture.dat",
+				  "comment":"演習内容のファイル--JSONファイル"},
+				 {"name":"index.txt",
+				  "comment":
+					"演習ページ作成のPHPファイル(拡張子が変更されている)"}
 					]}
-      ]
+			]
   }
 ]

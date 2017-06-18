@@ -1,0 +1,136 @@
+%-*- coding: utf-8 -*-
+\input ../beamerHead.tex
+\TITLE{10}{3}{この演習のHP}{6/27}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{演習のHPについて}
+\begin{frame}[containsverbatim]
+ \frametitle{演習のHPの更新の方法}
+\begin{itemize}
+ \item 演習のHPに載せるためのファイルなどの情報のファイルをJSON形式で作成
+\begin{itemize}
+ \item 定型的なもの(予習内容資料、ビデオなど)は通し番号でプログラムで生
+       成
+ \item 公開のファイルはファイル名と簡単な説明を組にしている
+ \item アクセスした日時をもとに表示する範囲を制御
+\end{itemize}
+\end{itemize}
+\end{frame}
+\section{演習データの形式}
+\begin{frame}[containsverbatim]
+ \frametitle{データの一部}
+\LISTN{../Lecture.dat}{248}{280}{\tiny}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{データの一部(解説)}
+ 6月27日分のデータを例に解説する。
+\begin{itemize}
+ \item キー\texttt{date}は日時と表題がら構成(248行目)
+ \item キー\texttt{name}は演習の回数で、ファイル名の一部にもなる(249行目)
+ \item キー\texttt{Videos}は演習を構成するビデオ1本分を要素とする配列
+       (250行目以下)
+       \begin{itemize}
+        \item キー\texttt{title}はビデオのタイトル(251行目等)
+        \item キー\texttt{files}はビデオ内で参照されるファイル名とそのコメ
+              ントからなるオブジェクトの配列(251行目から278行目)
+       \end{itemize}
+\end{itemize}
+\end{frame}
+\section{処理プログラム}
+\begin{frame}[containsverbatim]
+ \frametitle{HP表示プログラム(1)}
+ \LISTN{../index.php}{1}{14}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{HP表示プログラム(1)--解説}
+\begin{itemize}
+ \item 2行目:タイムゾーンの設定
+ \item 3行目:アクセス時の時間(秒数)を得ている。
+ \item 4行目:表示する範囲の最後の時間。ここでは3週間後に設定
+ \item 5行目:ビデオファイルなどのファイル名の先頭部分の設定
+ \item 6行目:演習内容のデータファイル名
+ \item 7行目:データファイル名の最終更新日時。HPに修正日を表示するために
+       利用
+ \item 8行目:データファイルの内容を一つの文字列として読み込み
+       (\Verb+file_get_contents+)、そのあとオブジェクトに変換
+       (\Verb+json_parse+)
+ \item 10行目と11行目:ファイルの更新日時から年と月を得ている。\Verb+date+関数は
+       与えられた書式で時間を変換する関数で、年と月を得ている。
+ \item 12行目と13行目:年度を求めている。
+ \item 14行目:ファイルの更新日時を文字列に変換
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{HP表示プログラム(2)}
+ \framesubtitle{HTMLファイルの先頭部分の出力}
+ \LISTN{../index.php}{15}{39}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{HP表示プログラム(2)--解説}
+ \framesubtitle{HTMLファイルの先頭部分の出力}
+ \begin{itemize}
+  \item HTMLファイルの先頭部分をヒアドキュメントを用いて出力
+  \item 12行目から13行目で求めた年度の値を埋め込み(20行目と23行目)
+  \item 24行目でデータファイルの改訂日を埋め込み
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{HP表示プログラム(3)}
+ \framesubtitle{JSON形式を配列に変換した毎回の演習のデータの処理}
+ \LISTN{../index.php}{40}{49}{\scriptsize}\scriptsize
+  \begin{itemize}
+  \item PHPではオブジェクトの参照は\texttt{.}ではなく\Verb+->+で行う
+  \item 43行目で日付のデータを\texttt{/}か空白(\Verb+\s+)で分けて、
+        初めの2つを\Verb+$m+(月)と\Verb+$d+(日)に代入(正規表現による分解)
+  \item 44行目で授業のある日の最後の時間を作成し、
+        これがアクセス日よりも前であれば表示しない(45行目)
+  \item また、2週目以降であれば処理を打ち切る(46行目)
+  \item 授業の回数から2桁の数字を作るために\texttt{sprintf()}を用いる。
+        この関数はC言語の\texttt{printf}関数と同様の動作をするが、戻り値
+        が変換後の文字列となる。
+  \item 49行目でその回の表題を出力
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{HP表示プログラム(4)}
+ \LISTN{../index.php}{50}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{HP表示プログラム(4)--解説}
+\framesubtitle{演習内容のビデオの部分の出力}
+\begin{itemize}
+ \item 関数\texttt{showLink()}は与えられたファイルが存在すればリンクとし
+       て、なければリンクなしで表示する関数(64行目以降に定義)
+ \begin{itemize}
+ \item PHPの関数\Verb+file_exists+は与えられたファイルが存在するかどうか
+       をチェック
+ \item 存在すればリンクを作成(66行目)
+ \item 存在しなければメッセージだけ表示(68行目)
+\end{itemize}
+\item 51行目で資料ファイルを表示
+ \item 52行目から66行目までのループで各ビデオに関するファイルの表示
+ \item ビデオ教材とビデオ内のpdfファイルに関する情報を表示(56行目と57行
+       目)
+ \item 59行目から61行目で関連のファイルを出力
+\end{itemize}
+\end{frame}
+ \section{やってみよう}
+\begin{frame}[containsverbatim]
+ \frametitle{確認して報告}
+ \begin{itemize}
+  \item 正規表現とは何か
+  \item ファイルを読み込んでそのままクライアントに返すためには
+        \texttt{readfile}関数を使うとよい。この関数を利用するためにはファ
+        イルのデータの種類を\texttt{header}関数で指定する。適当なファイ
+        ルをサーバーから返すページを作成せよ。
+  \item テキストファイルを読み込むための関数として\Verb+file()+と
+        \Verb+file_get_contents()+がある。両者の違いについて調べよ。
+  \item 簡単なデータを用意して、それからWebページを作成せよ。
+ \end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}
+

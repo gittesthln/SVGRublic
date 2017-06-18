@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{演習のHPについて}{2}{0}{1}
+\beamer@sectionintoc {2}{演習データの形式}{3}{0}{2}
+\beamer@sectionintoc {3}{処理プログラム}{5}{0}{3}
+\beamer@sectionintoc {4}{やってみよう}{12}{0}{4}

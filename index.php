@@ -55,10 +55,6 @@ for($k=0;$k<count($Infos);$k++){
     $No = $i+1;
     showLink("$Prefix$kk-$No.mp4","ビデオ教材");
     showLink("$Prefix$kk-$No.pdf","ビデオ内のPDFファイル");
-    print <<<_EOL_
-<div><a href=></a></div>
-<div><a href="$Prefix$kk-$No.pdf"></a></div>
-_EOL_;
     $files = $V->{"files"};
     for($j=0;$j<count($files);$j++) {
       showLink($files[$j]->{"name"}, $files[$j]->{"comment"});
@@ -70,13 +66,6 @@ function showLink($file,$message) {
       print "<div><a href=\"$file\">$message</a></div>";
   } else {
       print "<div>$message</div>";
-  }
-}
-function showLinkV($file,$message) {
-  if(file_exists($file)) {
-    print "<div><video src=\"$file\" width=\"800\" height=\"600\" controls>$message</video></div>";
-  } else {
-    print "<div>$message</div>";
   }
 }
 ?>

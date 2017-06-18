@@ -57,7 +57,7 @@
          "comment":"SVGファイル--多角形の表示"},
         {"name":"svg-rect.svg",
          "comment":"SVGファイル--長方形をいろいろな方法で描く"}
-				,{"name":"bezier-interactive-step.html",
+        ,{"name":"bezier-interactive-step.html",
           "comment":"HTMLファイル--Bezier 曲線の性質"}
         ]
      },
@@ -72,14 +72,14 @@
           ]},
      {"title":"文字列の表示",
        "files":
-			 [{"name":"svg-showtext.svg",
-			   "comment":"文字列の表示"},
+       [{"name":"svg-showtext.svg",
+         "comment":"文字列の表示"},
         {"name":"svg-text-with-tspan.svg",
          "comment":"部分的に文字の表示を変える"},
         {"name":"svg-text-along-path.svg",
-				 "comment":"道程に沿った文字の表示"}
+         "comment":"道程に沿った文字の表示"}
       ]}
-			]
+      ]
   },
   {"date": "5/16 イベント処理入門",
     "name":"04",
@@ -166,22 +166,22 @@
     "Videos":[
         {"title":"変数のスコープとクロージャ",
          "files":[
-				 {"name":"07-1varVSlet.html",
-				  "comment":"varとletの違い(コンソール出力のみ)"},
-				 {"name":"07-2scope.html",
-				  "comment":"関数内の変数のスコープ(関数の定義のみ、コンソールでテキストと同じように実行する)"}
-					]},
+         {"name":"07-1varVSlet.html",
+          "comment":"varとletの違い(コンソール出力のみ)"},
+         {"name":"07-2scope.html",
+          "comment":"関数内の変数のスコープ(関数の定義のみ、コンソールでテキストと同じように実行する)"}
+          ]},
        {"title":"クロージャ",
          "files":[
-				 {"name":"svg-cycloid-animation-closure.svg",
-				  "comment":"サイクロイドを描く(アニメーション版)--クロージャを使う(1)"},
-				 {"name":"svg-cycloid-animation-closure2.svg",
-				  "comment":"サイクロイドを描く(アニメーション版)--クロージャを使う(2)"}
+         {"name":"svg-cycloid-animation-closure.svg",
+          "comment":"サイクロイドを描く(アニメーション版)--クロージャを使う(1)"},
+         {"name":"svg-cycloid-animation-closure2.svg",
+          "comment":"サイクロイドを描く(アニメーション版)--クロージャを使う(2)"}
        ]},
        {"title":"配列のメソッド",
          "files":[
-				 {"name":"svg-js-random-rev.svg",
-				  "comment":"ランダムに円を描く(配列のメソッドの利用)"}]}
+         {"name":"svg-js-random-rev.svg",
+          "comment":"ランダムに円を描く(配列のメソッドの利用)"}]}
       ]
   },
   {"date": "6/13 WebStorageとJSON",
@@ -216,66 +216,66 @@
     "Videos":[
         {"title":"PHP の基礎‘",
          "files":[
-				 {"name":"first.txt",
-				  "comment":"簡単なPHPファイル(拡張子がPHPになっていません。)"},
-				 {"name":"repeat.txt",
-				  "comment":"繰り返しの例(拡張子がPHPになっていません。)"}
-					]},
+         {"name":"first.txt",
+          "comment":"簡単なPHPファイル(拡張子がPHPになっていません。)"},
+         {"name":"repeat.txt",
+          "comment":"繰り返しの例(拡張子がPHPになっていません。)"}
+          ]},
         {"title":"クライアントとサーバーでのデータのやり取りの基本",
          "files":[
-				 {"name":"start.txt",
-				  "comment":"起動用のPHPファイル"},
-				 {"name":"hello.txt",
-				  "comment":"起動用のPHPファイルから呼び出されるファイル"},
-				 {"name":"server.txt",
-				  "comment":
-					"サーバーに伝えられる情報の表示(取り扱い注意:決してどこかのサーバーにアップしないこと)"},
-					{"name":"table.css",
-					"comment":"table要素を用いないで表を作成するCSS"}
-					]
-				},
+         {"name":"start.txt",
+          "comment":"起動用のPHPファイル"},
+         {"name":"hello.txt",
+          "comment":"起動用のPHPファイルから呼び出されるファイル"},
+         {"name":"server.txt",
+          "comment":
+          "サーバーに伝えられる情報の表示(取り扱い注意:決してどこかのサーバーにアップしないこと)"},
+          {"name":"table.css",
+          "comment":"table要素を用いないで表を作成するCSS"}
+          ]
+        },
         {"title":"サーバーでSVGファイルを作成",
          "files":[
-				 	{"name":"npolygon-server.html",
-				  "comment":"サーバーでSVGファイルを作成--クライアント側"},
-				 	{"name":"svg-polygon.txt",
-				  "comment":"サーバーでSVGファイルを作成--サーバー側(1)(拡張子が変更されている)"},
-				 	{"name":"svg-func.txt",
-				  "comment":"サーバーでSVGファイルを作成--サーバー側(2)(拡張子が変更されている)"}
+           {"name":"npolygon-server.html",
+          "comment":"サーバーでSVGファイルを作成--クライアント側"},
+           {"name":"svg-polygon.txt",
+          "comment":"サーバーでSVGファイルを作成--サーバー側(1)(拡張子が変更されている)"},
+           {"name":"svg-func.txt",
+          "comment":"サーバーでSVGファイルを作成--サーバー側(2)(拡張子が変更されている)"}
         ]
-			}]
+      }]
   },
   {"date": "6/27 Ajax",
     "name":"10",
     "Videos":[
         {"title":"Ajaxの基礎",
          "files":[
-				 {"name":"test-ajax.html",
-				  "comment":"Ajaxを利用した正多角形の表示--HTMLファイル"},
-				 {"name":"Ajax.js",
-				  "comment":"Ajaxを利用した正多角形の表示--JavaScriptファイル"},
-				 {"name":"svg-polygon-ajax.txt",
-				  "comment":
-					"Ajaxを利用した正多角形の表示--サーバー側のファイル(拡張子が変更されている)"}
-					]},
-				 {"title":"非同期通信の確認",
+         {"name":"test-ajax.html",
+          "comment":"Ajaxを利用した正多角形の表示--HTMLファイル"},
+         {"name":"Ajax.js",
+          "comment":"Ajaxを利用した正多角形の表示--JavaScriptファイル"},
+         {"name":"svg-polygon-ajax.txt",
+          "comment":
+          "Ajaxを利用した正多角形の表示--サーバー側のファイル(拡張子が変更されている)"}
+          ]},
+         {"title":"非同期通信の確認",
          "files":[
-				 {"name":"countPrimes.html",
-				  "comment":"素数の数を数える--HTMLファイル"},
-				 {"name":"countPrimes-Ajax.js",
-				  "comment":"素数の数を数える--JavaScriptファイル"},
-				 {"name":"countPrimes.txt",
-				  "comment":
-					"素数の数を数える--サーバー側のファイル(拡張子が変更されている)"}
-					]},
-				 {"title":"この演習のHPについて",
+         {"name":"countPrimes.html",
+          "comment":"素数の数を数える--HTMLファイル"},
+         {"name":"countPrimes-Ajax.js",
+          "comment":"素数の数を数える--JavaScriptファイル"},
+         {"name":"countPrimes.txt",
+          "comment":
+          "素数の数を数える--サーバー側のファイル(拡張子が変更されている)"}
+          ]},
+         {"title":"この演習のHPについて",
          "files":[
-				 {"name":"Lecture.dat",
-				  "comment":"演習内容のファイル--JSONファイル"},
-				 {"name":"index.txt",
-				  "comment":
-					"演習ページ作成のPHPファイル(拡張子が変更されている)"}
-					]}
-			]
+         {"name":"Lecture.dat",
+          "comment":"演習内容のファイル--JSONファイル"},
+         {"name":"index.txt",
+          "comment":
+          "演習ページ作成のPHPファイル(拡張子が変更されている)"}
+          ]}
+      ]
   }
 ]

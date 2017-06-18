@@ -13,12 +13,11 @@ function getData() {
   table = MKHTMLElm(P, "table",{}, {});
   let request = 0, start = new Date();
   for(let i=0; i<10; i++) {
-    let startN = i*100000+1;
     let httpObj = createXMLHTTPReq(function(){
       if(httpObj.readyState == 4 && httpObj.status == 200) {
         let tr = MKHTMLElm(table,"tr",{}, {});
         MKHTMLElm(tr, "td", {}, {}).
-            appendChild(document.createTextNode(startN));
+            appendChild(document.createTextNode(i*100000+1));
         MKHTMLElm(tr, "td", {}, {}).
             appendChild(document.createTextNode(httpObj.responseText));
         request--;
@@ -29,7 +28,7 @@ function getData() {
     });
     if(httpObj) {
       request++;
-      httpObj.open("GET",`./countPrimes.php?N=${startN}`,
+      httpObj.open("GET",`./countPrimes.php?N=${i*100000+1}`,
                    window.Test["ajax-mode"].value == "true");
       httpObj.send(null);
     }

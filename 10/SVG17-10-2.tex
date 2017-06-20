@@ -1,0 +1,178 @@
+%-*- coding: utf-8 -*-
+\input ../beamerHead.tex
+\TITLE{10}{2}{Ajaxによる同期通信と非同期通信の違い}{6/27}
+\begin{document}
+\frame{\maketitle}
+%\frame{\tableofcontents}
+\section{同期通信と非同期通信}
+\begin{frame}[containsverbatim]
+ \frametitle{同期通信とは}
+ あるプログラムから別のプログラムにデータを送る場合を考える。
+ \begin{itemize}
+  \item データを送った先のプログラムから応答を待ってその先の処理を行うの
+        が同期通信
+  \item 応答を待たずに、処理を続けるのが非同期通信
+  \item 非同期通信では応答が返るまでに別の処理ができる。
+ \end{itemize}
+\end{frame}
+\section{Ajaxの例}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える}
+ ここでは100万以下の素数を数えて表示するページを考える。
+ \begin{itemize}
+  \item 10万ごとの区間に区切り、その間の素数を数える。
+  \item それぞれの区間ごとにサーバーに計算を要求
+  \item 同期通信と非同期通信の選択が可能
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--HTMLファイル}
+\LISTN{countPrimes.html}{1}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--HTMLファイル(解説)}
+ \begin{itemize}
+  \item 5行目でHTML要素を作成するライブラリーを読み込む
+  \item 6行目でAjaxの処理をするファイルを読み込む
+  \item 7行目から9行目は\texttt{table}内の\texttt{td}要素の表示を右寄せ
+        にするスタイルの指定
+  \item 16行目から17行目は同期通信と非同期通信を選択するラジオボタン。
+        属性\texttt{name}が\texttt{ajax-mode}
+  \item 18行目は計算を実行するボタン
+  \item 22行目に結果を表示するための\texttt{table}要素(中身がない)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--JavaScriptファイル(1)}
+ \LISTN{countPrimes-Ajax.js}{1}{8}{\scriptsize}
+ \begin{itemize}
+  \item 1行目から3行目はファイルがロード終了後の処理。
+        \begin{itemize}
+         \item ラジオボタンのうち非同期通信を選択
+         \item \texttt{form}要素の属性\texttt{name}が\texttt{Test}なので、
+               この\texttt{form}要素は\texttt{window.Test}で参照可能
+         \item したがってラジオボタンの値を
+               \texttt{window.Text["ajax-mode"].value}で指定できる
+        \end{itemize}
+  \item 4行目から８行目はAjax通信のオブジェクトを作成する関数の定義
+        (既出)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--JavaScriptファイル(2)}
+\LISTN{countPrimes-Ajax.js}{9}{14}{\scriptsize}
+%\end{frame}
+%\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--JavaScriptファイル(2)解説}
+ \framesubtitle{Ajax通信をするための関数\texttt{getData}}
+\begin{itemize}
+ \item 10行目で\texttt{table}要素を得ている。
+ \item 11行目でそのAjax通信をするための関数\texttt{getData}を得て、
+       10行目で得た\texttt{table}要素をDOMから取り除く。
+ \item 13行目で新たに\texttt{table}要素を作成し、その要素の子要素にする
+       (\texttt{table}要素内の初期化)
+ \item 14行目で通信の状況をチェックするための変数を初期化
+       \begin{itemize}
+        \item \texttt{request}はサーバーに出した要求の数
+        \item \texttt{start}はボタンが押されたときの時間を保存\\
+              単位はある時期からの経過時間で単位はミリ秒(Processing の
+              \texttt{mils}と同じ)
+       \end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--JavaScriptファイル(3)}
+\LISTN{countPrimes-Ajax.js}{15}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--JavaScriptファイル(解説)}
+ \begin{itemize}
+\item 15行目から10万の区間ごとに分けた素数の数をサーバーに要求を10個生成
+ \begin{itemize}
+  \item 17行目から2８行目でリクエストを生成
+  \item 18行目から28行目でリクエスト結果の処理
+  \item 19行目から20行目と21行目から22行目で区間の開始位置とその区
+        間に対する結果を表示する\texttt{td}要素を作成
+  \item 23行目で発行した要求の数を減らす
+  \item 24行目で「実行」ボタンを押してからの経過時間をコンソールに
+        表示
+  \item 26行目でその値が$0$のときはメッセージを出力
+ \end{itemize}
+  \item 29行目から35行目でAjaxのオブジェクトが生成できたら、要求をサーバー
+        に送る。
+  \item 31行目で要求の数のカウンタを増加
+  \item 32行目で非同期通信かどうかの判定した結果をそのままメソッドに渡す
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--PHPファイル(1)}
+ \framesubtitle{素数であるか同課の判定する関数}
+ \LISTN{countPrimes.php}{1}{9}{\scriptsize}
+ \begin{itemize}
+  \item 引数は、素数かどうか判定したい数、素数のリスト、素数のリストに含
+        まれる素数の数の３つ
+  \item ２番目の引数の前の\texttt{\&}は参照渡しを示す。
+  \item 与えられた数の平方根以下の素数で割り切られないならば素数と判定(5
+        行目と６行目)
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--PHPファイル(2)}
+\LISTN{countPrimes.php}{10}{16}{\scriptsize}
+%\end{frame}
+%\begin{frame}[containsverbatim]
+ % \frametitle{素数の数を数える--PHPファイル(2)解説}
+ \scriptsize
+ \begin{itemize}
+  \item 変数\Verb+$argv+はコマンドプロンプトから実行したときの、引数のリスト
+        を表す配列
+        \begin{itemize} \scriptsize
+
+         \item \Verb+$argv[0]+ は実行するファイル名
+         \item 2番目以降はそれぞれ文字列が入る
+        \end{itemize}
+  \item ここではサーバーにコピーする前にコマンドプロンプトからデバッグで
+        きるようにするために利用
+  \item 関数\Verb+array_key_exists()+は配列内にキーがあるかどうかを判定
+  \item \Verb+$_GET+内に指定したキーがなければコマンドプロンプ
+        トからの実行と判定
+  \item 11行目で求める素数の区間の幅、
+        12行目で配列に格納する素数の大きさの上限を設定。
+%        ここでは$10000$ なので1億以下の数に対して素数かどうかの判定が可能
+  \item 13行目は素数の配列の初期化
+  \item 14行目から16行目まで指定された範囲の素数のリストを作成
+  \item 関数\Verb+array_push()+は指定した値(2番目以降の引数)を指定した配
+        列(1番目の引数)の後ろに追加
+ \end{itemize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--PHPファイル(2)}
+\LISTN{countPrimes.php}{17}{last}{\scriptsize}
+\end{frame}
+\begin{frame}[containsverbatim]
+ \frametitle{素数の数を数える--PHPファイル(2)解説}
+ \begin{itemize}
+  \item 17行目は与えられた区間内の素数の数を数えるカウンターの初期化
+  \item 18行目から21行目は保存してある素数より小さい区間で求める時の処理
+        (かなり手抜き)
+  \item 22行目は開始の値を奇数にするための処理
+  \item 23行目は素数のリストの大きさを保存
+  \item 24行目は区間の最後の数を設定
+  \item 25行目から27行目で与えられた区間の数に対して素数かどうかの判定を
+        し、素数の数をカウント
+  \item 28行目で素数の数を出力
+ \end{itemize}
+\end{frame}
+ \section{やってみよう}
+\begin{frame}[containsverbatim]
+ \frametitle{確認して報告}
+ \begin{itemize}
+  \item 同期通信と非同期通信のときのページの結果がどうなるか
+  \item コンソールを開いて出てくる値を調べる
+ \end{itemize}
+\end{frame}
+\end{document}
+\begin{frame}[containsverbatim]
+\frametitle{}
+\end{frame}
+

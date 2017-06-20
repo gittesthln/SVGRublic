@@ -216,16 +216,16 @@
     "Videos":[
         {"title":"PHP の基礎‘",
          "files":[
-         {"name":"first.txt",
+         {"file":"first.php",
           "comment":"簡単なPHPファイル(拡張子がPHPになっていません。)"},
-         {"name":"repeat.txt",
+         {"file":"repeat.php",
           "comment":"繰り返しの例(拡張子がPHPになっていません。)"}
           ]},
         {"title":"クライアントとサーバーでのデータのやり取りの基本",
          "files":[
-         {"name":"start.txt",
+         {"file":"start.php",
           "comment":"起動用のPHPファイル"},
-         {"name":"hello.txt",
+         {"file":"hello.php",
           "comment":"起動用のPHPファイルから呼び出されるファイル"},
          {"name":"server.txt",
           "comment":
@@ -238,10 +238,10 @@
          "files":[
            {"name":"npolygon-server.html",
           "comment":"サーバーでSVGファイルを作成--クライアント側"},
-           {"name":"svg-polygon.txt",
-          "comment":"サーバーでSVGファイルを作成--サーバー側(1)(拡張子が変更されている)"},
-           {"name":"svg-func.txt",
-          "comment":"サーバーでSVGファイルを作成--サーバー側(2)(拡張子が変更されている)"}
+           {"file":"svg-polygon.php",
+          "comment":"サーバーでSVGファイルを作成--サーバー側(1)"},
+           {"file":"svg-func.txt",
+          "comment":"サーバーでSVGファイルを作成--サーバー側(2)"}
         ]
       }]
   },
@@ -254,9 +254,9 @@
           "comment":"Ajaxを利用した正多角形の表示--HTMLファイル"},
          {"name":"Ajax.js",
           "comment":"Ajaxを利用した正多角形の表示--JavaScriptファイル"},
-         {"name":"svg-polygon-ajax.txt",
+         {"name":"svg-polygon-ajax.php",
           "comment":
-          "Ajaxを利用した正多角形の表示--サーバー側のファイル(拡張子が変更されている)"}
+          "Ajaxを利用した正多角形の表示--サーバー側のファイル"}
           ]},
          {"title":"非同期通信の確認",
          "files":[
@@ -264,17 +264,17 @@
           "comment":"素数の数を数える--HTMLファイル"},
          {"name":"countPrimes-Ajax.js",
           "comment":"素数の数を数える--JavaScriptファイル"},
-         {"name":"countPrimes.txt",
+         {"file":"countPrimes.php",
           "comment":
-          "素数の数を数える--サーバー側のファイル(拡張子が変更されている)"}
+          "素数の数を数える--サーバー側のファイル"}
           ]},
          {"title":"この演習のHPについて",
          "files":[
-         {"name":"Lecture.dat",
+         {"file":"Lecture.dat",
           "comment":"演習内容のファイル--JSONファイル"},
-         {"name":"index.txt",
+         {"file":"index.php",
           "comment":
-          "演習ページ作成のPHPファイル(拡張子が変更されている)"}
+          "演習ページ作成のPHPファイル"}
           ]}
       ]
   }

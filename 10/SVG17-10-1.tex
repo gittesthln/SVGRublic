@@ -61,32 +61,25 @@
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{Ajaxを利用した正多角形の表示}
- \LISTN{Ajax.js}{1}{6}{\scriptsize}
-%\end{frame}
-%\begin{frame}[containsverbatim]
-% \frametitle{Ajaxを利用した正多角形の表示--解説}
+ \LISTN{Ajax.js}{1}{5}{\scriptsize}
+ \framesubtitle{通信オブジェクトを作成し、初期化を行う関数}
  \begin{itemize}
-  \item 1行目でAjax通信オブジェクトを格納する変数を定義
-  \item 2行目から6行目が通信オブジェクトを作成し、初期化を行う関数
-        \begin{itemize}
-         \item 引数は通信が完了したときに呼び出される関数
-               (コールバック関数)
-         \item 配布資料にあった古いブラウザにも対応するコードは省略 
-         \item 3行目で裏でサーバーと通信を行う
-               \texttt{XMLHttpRequest()}オブジェクトを作成
-         \item 作成できたときにはそのオブジェクトに通信が完了時のコール
-               バック関数が格納されるプロパティ
-               \texttt{onreadystatechange}に指定されたコールバック関数を
-               登録(4行目)
-         \item 関数の戻り値は作成されたオブジェクト(5行目)
-        \end{itemize}
+	\item 引数は通信が完了したときに呼び出される関数(コールバック関数)
+	\item 配布資料にあった古いブラウザにも対応するコードは省略 
+	\item 2行目で裏でサーバーと通信を行う
+				\texttt{XMLHttpRequest()}オブジェクトを作成
+	\item 作成できたときにはそのオブジェクトに通信が完了時のコール
+				バック関数が格納されるプロパティ
+				\texttt{onreadystatechange}に指定されたコールバック関数を
+				登録(3行目)
+	\item 関数の戻り値は作成されたオブジェクト(5行目)
  \end{itemize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{Ajaxを利用した正多角形の表示}
  \framesubtitle{HTML文書上でボタンがクリックされたときに呼び出される関
  数}
- \LIST{Ajax.js}{7}{19}{\scriptsize}
+ \LISTN{Ajax.js}{7}{19}{\scriptsize}
 \end{frame}
 \begin{frame}[containsverbatim]
  \frametitle{Ajaxを利用した正多角形の表示--解説}

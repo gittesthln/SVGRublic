@@ -57,24 +57,17 @@ for($k=0;$k<count($Infos);$k++){
     showLink("$Prefix$kk-$No.pdf","ビデオ内のPDFファイル");
     $files = $V->{"files"};
     for($j=0;$j<count($files);$j++) {
-        if($files[$j]->{"name"}) {
           showLink($files[$j]->{"name"}, $files[$j]->{"comment"});
-        } else {
-          showLinkS($files[$j]->{"file"}, $files[$j]->{"comment"});
-        }            
     }
   }
 }
 function showLink($file,$message) {
   if(file_exists($file)) {
-      print "<div><a href=\"$file\">$message</a></div>";
-  } else {
-      print "<div>$message</div>";
-  }
-}
-function showLinkS($file,$message) {
-  if(file_exists($file)) {
+    if(mb_ereg_match(".*\.(php|js|dat)$",$file)) {
       print "<div><a href=\"sendfile.php?file=$file\">$message</a></div>";
+    } else {
+      print "<div><a href=\"$file\">$message</a></div>";
+    }
   } else {
       print "<div>$message</div>";
   }

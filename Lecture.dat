@@ -216,16 +216,16 @@
     "Videos":[
         {"title":"PHP の基礎‘",
          "files":[
-         {"file":"first.php",
+         {"name":"first.php",
           "comment":"簡単なPHPファイル(拡張子がPHPになっていません。)"},
-         {"file":"repeat.php",
+         {"name":"repeat.php",
           "comment":"繰り返しの例(拡張子がPHPになっていません。)"}
           ]},
         {"title":"クライアントとサーバーでのデータのやり取りの基本",
          "files":[
-         {"file":"start.php",
+         {"name":"start.php",
           "comment":"起動用のPHPファイル"},
-         {"file":"hello.php",
+         {"name":"hello.php",
           "comment":"起動用のPHPファイルから呼び出されるファイル"},
          {"name":"server.txt",
           "comment":
@@ -238,9 +238,9 @@
          "files":[
            {"name":"npolygon-server.html",
           "comment":"サーバーでSVGファイルを作成--クライアント側"},
-           {"file":"svg-polygon.php",
+           {"name":"svg-polygon.php",
           "comment":"サーバーでSVGファイルを作成--サーバー側(1)"},
-           {"file":"svg-func.txt",
+           {"name":"svg-func.txt",
           "comment":"サーバーでSVGファイルを作成--サーバー側(2)"}
         ]
       }]
@@ -264,15 +264,15 @@
           "comment":"素数の数を数える--HTMLファイル"},
          {"name":"countPrimes-Ajax.js",
           "comment":"素数の数を数える--JavaScriptファイル"},
-         {"file":"countPrimes.php",
+         {"name":"countPrimes.php",
           "comment":
           "素数の数を数える--サーバー側のファイル"}
           ]},
          {"title":"この演習のHPについて",
          "files":[
-         {"file":"Lecture.dat",
+         {"name":"Lecture.dat",
           "comment":"演習内容のファイル--JSONファイル"},
-         {"file":"index.php",
+         {"name":"index.php",
           "comment":
           "演習ページ作成のPHPファイル"}
           ]}

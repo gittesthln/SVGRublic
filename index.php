@@ -63,7 +63,7 @@ for($k=0;$k<count($Infos);$k++){
 }
 function showLink($file,$message) {
   if(file_exists($file)) {
-    if(mb_ereg_match(".*\.(php|js|dat|pdf|mp4|css)$",$file)) {
+    if(mb_ereg_match(".*\.(php|js|dat|css)$",$file)) {
       print "<div><a href=\"sendfile.php?file=$file\">$message</a></div>";
     } else {
       print "<div><a href=\"$file\">$message</a></div>";

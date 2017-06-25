@@ -1,0 +1,207 @@
+\documentclass[a4j]{jreport}
+\input rubricHead.tex
+\input rubricPresentation.tex
+\input rubricUnitIHead2.tex
+
+
+\newcommand{\TargetF}[6]{%現在は3段階+項目
+	\ifx\relax#1\else
+	#1{\small \hspace*{-0.2em}\newline#2点}%
+	&\ShowItem#3\relax  %この部分を必要に応じて増減
+	&\ShowItem#4\relax
+	&\ShowItem#5\relax
+	&#6\relax\\ \hline\expandafter\TargetF\fi}
+
+\newcommand{\makeSpace}{\rule[-0.5\baselineskip]{0em}{1.5\baselineskip}}
+\renewcommand{\thesection}{\arabic{section}}
+ \renewcommand{\thepage}{成績評価-\arabic{page}}
+ \newcommand{\Note}[1]{%
+ #1{\small \hspace*{-0.2em}\newline5点}
+ 	&\ShowItem
+   {与えられた課題のほとんどを行っている。}
+   {結果が正しい}
+   {考察が十分ある。}
+   \relax
+  &\ShowItem
+   {必須課題を中心に行っている。}
+   {結果がおおむね正しい}
+   {考察が少し足りない。}
+   \relax
+  &\ShowItem
+   {報告の課題が少ない。}
+   {結果が一部正しくない}
+   {考察が足りないか全くない。}
+   \relax
+	 &\PointsV\\\hline}
+\newcommand{\Cent}[1]{\hspace*{\fill}#1\hspace*{\fill}\rule{0em}{1ex}}
+\newcommand{\PointsV}{\ShowNo{5}}
+\newcommand{\PointsX}{\ShowNo{10}}
+\newcounter{NN}
+\newcommand{\ShowNo}[1]{%
+  \setcounter{NN}{#1}\Cent{#1}\ShowNoDo}
+\newcommand{\ShowNoDo}{%
+  \addtocounter{NN}{-1}\ifnum\value{NN}>-1\newline\Cent{\arabic{NN}}%
+  \expandafter\ShowNoDo\fi
+}
+\begin{document}
+ \begin{center}
+  2017年度情報メディア専門ユニットI \\
+  {\Large SVGで始めるWeb Graphics の成績評価表}
+ \end{center}
+ \section{採点区分と評価}
+情報メディア専門ユイットI SVGで始めるWeb Graphics の成績評価のための基準
+を示すものである。採点の項目と配点は次のとおりである。
+\begin{itemize}
+ \item 毎回の演習内容の評価(50点)\\
+       演習課題の結果があるノートの内容を1回につき5点満点で評価する。必
+       須課題だけの結果では最高で3点となる。
+ \item 最終レポート(40点)\\
+       評価基準は後述のルーブリック評価を参照のこと。基準点は30点。\\
+       レポートの内容は次のいずれかとする。
+       \begin{itemize}
+        \item SVGまたはHTMLを利用したアプリケーション。JavaSCriptを用い
+              たものにすること。単に、ページを手打ちしただけのものは避け
+              ること。表紙も含めて最低25ページ以上あること
+        \item 演習内容をまとめたもの。例として挙げる図形などはテキストの
+              ものと類似していてはいけない。最低ページ数は30ページ以上あ
+              ること。
+       \end{itemize}
+ \item 最終発表(20点)\\
+       評価基準は後述のルーブリック評価を参照のこと。基準点は10点。       
+\end{itemize}
+評価点の合計は110点である。60点以上を合格とする。また、S評価は90点以上を
+予定している。
+\section{提出期限等}
+提出物等に関する注意は次のとおりである。
+\begin{itemize}
+ \item 演習の最終回(7月25日)は最終レポートに関するプレゼンテーションを各自が行う。
+       発表の順番は当日決定する。
+ \item 演習終了後に演習のノートをすべて提出する。
+ \item 最終レポートとプレゼンテーション資料は7月25日中にメールに添付の形
+       で提出すること。
+\end{itemize}
+提出されたノートや成績評価に関するルーブリック評価表は試験期間終了日(8月
+4日)までに返却を終了する予定である。返却開始日は後日、メーリングリストで連絡をする。
+\section{発表までの演習の内容}
+7月4日、11日、18日の演習は最終発表に向けた準備を行う。新しい課題はない。
+また、今までの課題のノートの追加を行ってもよい。演習終了後にノートを提出
+すれば提出時における各回の演習内容の評価点をつけて返却する。
+\newpage
+\newcommand{\ShowRubric}[3]{%
+{\small
+\LongTable
+%	 	  \ETitle
+\endfirsthead
+	 	  \ETitle
+\endhead
+	\multicolumn{5}{r}{\bfseries 次のページに続きがあります}
+\endfoot
+\endlastfoot
+\hline
+\multicolumn{5}{|c|}{\Large #1(#2点)\makeSpace}\\
+\ETitle
+#3
+\end{longtable}}
+}
+\begin{center}
+ {\LARGE \LName}\\最終評価\\[2ex]
+% {\Large 学籍番号 \underline{\makebox[10zw]{#1}}}
+\end{center}
+\ShowRubric{ノートの評価}{50}
+{\Note{4/18}
+\Note{4/25}
+\Note{5/9}
+\Note{5/16}
+\Note{5/23}
+\Note{5/30}
+\Note{6/6}
+\Note{6/13}
+\Note{6/20}
+\Note{6/27}
+}
+\ShowRubric{最終レポートの評価--形式}{15}{
+\TargetF{表紙}{5}
+{
+  {表紙に必要事項がすべてある。}
+}
+{
+  {表紙に必要事項が一部ない。}
+}
+{
+  {表紙が独立したページではない。}
+  {授業名がない。}
+  {担当教員名がない。}
+  {提出日がない。}
+  {学籍番号がない。}
+  {氏名がない。}
+}
+{\PointsX}
+{体裁}{10}
+{
+  {分量が十分ある。}
+  {章、節の分け方が適切である。}
+  {図の大きさや内容が適切である。}
+  {図、表の説明文が内容を的確に表している。}
+  {図の説明文が図の下にある。}
+  {表の説明文が表の上にある。}
+  {図、表の番号が正しくついている。}
+  {文体が「である調」に統一されている。}
+}
+{
+  {分量が指定よりわずかに足りない。}
+  {章、節の分け方が一部不適切である。}
+  {図の大きさや内容に一部不備な部分がある。}
+  {図、表の説明文が内容を十分に表していない。}
+%  {図の説明文が図の下にある。}
+%  {表の説明文が表の上にある。}
+  {図、表の番号が一部正しくついていない。}
+  {文体が一部「である調」になっていない。}
+}
+{
+  {分量が指定量より1割以上少ない。}
+  {章、節の分け方が不適切である。}
+  {図の大きさや内容に不要な部分が多くある。}
+  {図、表の説明文が内容がほとんど同じものになっている。}
+  {図や表の説明文がない。}
+  {図、表の番号が正しく付いていないか付けていない。}
+  {文体が「である調」に統一されていない。}
+}
+{\PointsX}
+\relax\relax\relax\relax\relax\relax}
+\ShowRubric{最終レポートの評価(内容)--作品制作}{25}
+{\TargetF{内容}{25}
+{
+  {作成した作品の制作意図がはっきりと書かれている。}
+  {データをもとにして、ページなどが作成されている。}
+  {データの処理に関して重要な部分のコードの解説がある。}
+  {作品の説明するために十分な図が含まれている。}
+  {付録としてすべてのコードがレポート内にある。}
+}
+{
+  {作成した作品の制作意図の説明が少し曖昧である。}
+  {データをもとにして、ページなどが作成するようにできるところが一部ある。}
+  {データの処理に関して重要な部分のコードの解説が少し不十分である。}
+  {作品の説明するための図が少なすぎるか、多すぎる。}
+  {付録としてすべてのコードがレポート内にない。}
+}
+{
+  {作成した作品の制作意図の説明が明確になっていない。}
+  {データをもとにして、ページなどが作成するようにできるところが多くある。}
+  {データの処理に関して重要な部分のコードの解説がないか、足りない。}
+  {作品の説明するための図が少なすぎるか、多すぎる。}
+  {付録としてすべてのコードがレポート内にない。}
+}
+{\PointsX}
+\relax\relax\relax\relax\relax\relax}
+\ShowRubric{最終レポートの評価(内容)--授業内容のまとめ}{25}{
+\TargetF{内容}{25}
+{}
+{}
+{}
+{\PointsX}
+\relax\relax\relax\relax\relax\relax
+}
+\newpage
+\rublicPresenP{第10回(6/27)}
+
+\end{document}

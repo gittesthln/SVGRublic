@@ -33,9 +33,7 @@ pdfファイルの中にリンクが張ってあります。</p>
 演習時間内に印刷を行うためにプリンタドライバをインストールしてください。
 <a href="driverDownload.pdf">インストールするための資料</a>を参考にしてください。
 <h1>予習教材</h1>
-<p>ビデオはブラウザ内でうまく閲覧できませんでしたので、
-右クリックで「名前を付けてリンク先を保存」を選択してください。
-そのファイルを別のアプリで見てください。</p>
+<p>ビデオファイルなどいくつかのファイルはPCに保存されます。</p>
 _EOL_;
 for($k=0;$k<count($Infos);$k++){
   $Info = $Infos[$k];
@@ -63,7 +61,7 @@ for($k=0;$k<count($Infos);$k++){
 }
 function showLink($file,$message) {
   if(file_exists($file)) {
-    if(mb_ereg_match(".*\.(php|js|dat|css)$",$file)) {
+    if(mb_ereg_match(".*\.(php|js|dat|pdf|mp4|css)$",$file)) {
       print "<div><a href=\"sendfile.php?file=$file\">$message</a></div>";
     } else {
       print "<div><a href=\"$file\">$message</a></div>";

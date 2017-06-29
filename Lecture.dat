@@ -1,4 +1,16 @@
 [{
+  "date": "7/25 最終発表",
+  "name":"",
+  "Videos":[
+    {"title":"成績評価について",
+     "files":
+       [{"name":"UnitISVGFinal.pdf",
+         "comment":"成績評価について--成績評価ルーブリック"}
+       ]
+    }
+    ]
+  },
+	{
   "date": "4/18 SVGの基礎",
   "name":"01",
   "Videos":[

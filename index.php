@@ -35,28 +35,30 @@ pdfファイルの中にリンクが張ってあります。</p>
 <h1>予習教材</h1>
 <p>ビデオファイルなどいくつかのファイルはPCに保存されます。</p>
 _EOL_;
+$select = false;
 for($k=0;$k<count($Infos);$k++){
   $Info = $Infos[$k];
   $name = $Info->{"name"};
   list($m, $d) = mb_split("\s|/", $Info->{"date"});
   $ft = mktime(23,59,59,$m,$d,$year);//print $ft;
-  if($ft<$today) continue;
-  if($ft> $lastday) break;
-//  print "{$m}月{$d}日\n";
-  $kk = sprintf("%02d",$k+1);
+  if($select && $ft<$today ) continue;
+  if($select && $ft> $lastday) break;
+//    print "{$m}月{$d}日\n";
   print '<h2>' . $Info->{"date"} . '</h2>';
   $Videos = $Info->{"Videos"};
-  showLink("UnitISVG$kk.pdf","予習内容資料");
+	if($name) showLink("UnitISVG$name.pdf","予習内容資料");
   for($i=0;$i<count($Videos); $i++) {
     $V = $Videos[$i];
     print '<h3>' . $V->{"title"} . '</h3>';
     $No = $i+1;
-    showLink("$Prefix$kk-$No.mp4","ビデオ教材");
-    showLink("$Prefix$kk-$No.pdf","ビデオ内のPDFファイル");
+		if($name) {
+      showLink("$Prefix$name-$No.mp4","ビデオ教材");
+      showLink("$Prefix$name-$No.pdf","ビデオ内のPDFファイル");
+		}
     $files = $V->{"files"};
     for($j=0;$j<count($files);$j++) {
-          showLink($files[$j]->{"name"}, $files[$j]->{"comment"});
-    }
+      showLink($files[$j]->{"name"}, $files[$j]->{"comment"});
+		}
   }
 }
 function showLink($file,$message) {

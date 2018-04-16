@@ -1,0 +1,1014 @@
+\documentclass[a4j]{jarticle}
+\input mediaSenmonHead.tex
+\begin{document}
+%\maketitle
+\begin{center}
+ \Large 情報メディア専門ユニットI(セミナー) (2018 年度版)
+\end{center}
+\section{全般的な注意}
+この授業の進め方と注意はつぎのとおりである。
+\begin{enumerate}
+% \item 授業の開始時間に遅れないこと。遅れた場合には遅れた理由書を当日の
+%       うちに提出すること。欠席した場合はできる限り速やかに提出すること。
+ \item セミナー開始時にくじを引いて3人のグループを3つ作成しその中で議論を行う。
+ \item グループ内で検討した結果を1グループあたり10分を目安に最後に発表する。
+ \item セミナーでは与えられた課題をグループごとに行った議論については詳細
+			 なメモをノートにまとめ、その日の発表に生かすこと。
+ \item ノートは授業終了時に提出するかは今のところ未定である。
+\end{enumerate}
+
+この授業で使用するブラウザは Google Chrome とする。他のブラウザでもよい
+が、ブラウザによっては機能が対応していないこともある。各種ブラウザの表示の違いなどを
+確認しておくのもよいであろう。
+
+\Section{SVGによる基本図形の描画}
+
+\subsection{作業内容とレポート}
+次の事柄について確認しながら作業し、レポートとして報告すること。
+今回の内容はテキストの第2章を参考にすること。
+\begin{enumerate}
+ \item \texttt{www.hilano.org/hilano-lab/}の情報メディア演習Iの資料の中
+       からいくつかのSVGの画像を表示できることを確認する。ブラウザーは
+       %Internet Explorer、
+       Chrome で確認すること。
+ \item 長方形をいくつが色や形を変えて描く。
+ \item 円や楕円をいくつが色や形を変えて描く。
+ \item 内部の塗りをグラディエーションにする。
+ %\item 長方形に位置を移動するアニメーションを付ける。
+ %\item 長方形に色を変えるアニメーションを付ける。
+ \item テキストにある錯視図形の問題をいくつか作成すること。また、それら
+       の一部の属性を変えて見え方がどのように変化するか
+       報告すること。
+\end{enumerate}
+\begin{Report}\upshape
+次の事柄について報告すること。
+\begin{enumerate}
+ \item 各種ブラウザーで表示が異なる点があれば報告すること。
+ \item 本日の演習で利用した要素とその属性についてまとめる。
+ \item BOMとはなにか。SVGファイルでBOMがあるとなぜいけないのか。
+ \item 図形が描かれる順序と表示の形につて説明する。
+ \item 作成した図形のついて解説をつける。
+\end{enumerate}
+\end{Report}
+\begin{Report}[余力問題]\upshape
+ スマートフォンなどの携帯端末のブラウザでSVGの画像が表示できるか調査すること。
+\end{Report}
+\newpage
+
+\Section{SVGにおけるアニメーション}
+\subsection{ノートに関する注意}
+ノートに関しては次のような点に注意して利用する。
+\begin{itemize}
+ \item 提出したノートは原則としてその週の金曜日までには返却するので必ず取りに来
+ること。
+ \item 予習した内容についてのメモや、疑問点なども書いておくこと
+ \item 記入した日付も記入する
+ \item 授業後に改良した点なども追記する
+\end{itemize}
+\subsection{アニメーションに関する注意}
+アニメーションに関する基本的な事項を確認する。
+\begin{itemize}
+ \item アニメーションの種類
+\begin{itemize}
+ \item \texttt{animateTransform} 位置を移動する
+ \item \texttt{animateColor} 色を変化させる
+ \item \texttt{animateMotion} 道のりに沿ったアニメーション
+ 
+道のりについては次回行うので今回は範囲外とする。
+ \item \texttt{animate}上記以外の属性を変化させる
+ \item \texttt{set} 値を瞬時に変化させる
+\end{itemize}
+ \item アニメーションの要素はその親要素につくことを忘れないように
+\begin{verbatim}
+<rect x="0" y="0" width="100" height="200" fill="red"/>
+\end{verbatim}
+の長方形の\texttt{fill}にアニメーションをつけるには\texttt{<rect}の最後
+       にある\texttt{/>}を\texttt{>}に変える必要がある。
+\begin{Verbatim}
+<rect x="0" y="0" width="100" height="200" fill="red">
+  <aniamteColor attributeName="fill" attributeType="CSS" 
+    from="red" to="green" dur="10s" fill="freeze"/>
+</rect>
+\end{Verbatim}
+ \item いくつかの画像をまとめて移動させたいときは親要素として
+       \texttt{<g>}を追加するとよい。
+ \item 不透明度(\REF{39})についても理解すること
+\end{itemize}
+\subsection{作業内容}
+今回から作業内容を増やしました。すべてを行うことを目標としていませんので、
+興味を持った課題を選ぶこと。%次の事柄からいくつか選択して作業すること。
+\begin{enumerate}
+ \item 情報メディア演習の資料からいくつかを選び、各種アニメーションが実
+       行できることを確認する。
+
+アニメーションのキャプチャ画像は開始時（に近いとき）、途中、終了時の3つ
+       を添えること
+ \item いろいろな図形が移動するアニメーションを作成する。
+ \item 色のアニメーションで次のことを行う。
+\begin{itemize}
+  \item アニメーションの色を変える。
+  \item 複数の図形に別の色のアニメーションをつける
+   \item 図形がある範囲で左右に動き、動きの向きが変わるときに一瞬、色が
+         変わる
+ \item 不透明度にアニメーションをつけて、重なった図形の見え方を変える図
+       形
+\end{itemize}
+ \item グラデーションのアニメーションで次のことを行う。
+       \begin{itemize}
+         \item アニメーションが左から右に流れる。
+        \item \ATTR{x1}と\ATTR{x2}のアニメーションのスピードを変える
+        \item \ATTR{stop-color}や\ATTR{offset}にアニメーションをつける
+       \end{itemize}
+ \item 前回作成した図形に、位置の変化、色の変化のアニメーショ
+       ンをつけたものを作成すること。1年の時のProccessingで作成したもの
+       をSVGで作り直すのもよい。そのときは作成の手間などの比較もするとよ
+       い。
+ \item テキストにある錯視図形の問題を
+       いくつかにアニメーションをつけ、効果の変化を調べること
+       \begin{itemize}
+        \item Fickの錯視で垂直線を水平線の左端から右端に移動させる
+        \item Juddの錯視を作成する(問題4.3)
+        \item カフェウォール錯視(24ページ)の細い線に色のアニメーションを
+              つける
+        \item 問題4.16の図を作成する。
+       \end{itemize}
+ \item {\bfseries (ちょっと面倒)}グラデーションにアニメーションをつける図形を
+       \ELM{stop}のアニメーションだけで作成する
+\end{enumerate}
+\end{document}
+\Section{複雑な図形の描き方、文字列}
+\subsection{前回のノートから}
+{\bfseries ノートは必ず演習開始前までには鳥にくること。}
+
+ノートの内容がまだ不十分なものが見受けられます。次の点に注意して作成して
+ください。
+\begin{itemize}
+ \item ノートは正式なレポートではありません。思いついたこと、予習ビデオ
+       での重要な点、疑問点などを走り書きのような形で書いて構わない。
+ \item グループ内で議論したことも書くこと
+ \item 作成したコードを左のページに張り付け、右の方にコードの解説を書い
+       て構わない。
+ \item 後から追記ができるように余白があることが望ましい。
+ \item 返却されたノートに対してさらに記述を追加したり、コードの改良を付
+       け加えてよい。
+\end{itemize}
+\subsection{作業内容}
+\begin{enumerate}
+ \item \texttt{polyline}または\texttt{polygon}を用いた図形を描くこと。た
+       とえば次のようなことを考えてください。
+   \begin{itemize}
+    \item Excelなど他のプログラムを用いて正6角形の頂点の座標を計算し、そ
+          の結果を用いて正6角形を描く
+    \item 一つの\ELM{path}で二つの長方形を描く\InVideo
+       \FIGN{0.4}{svg-path-rect2}
+    \item 穴が開いた正方形を一つの\ELM{path}で描く\InVideo
+              \FIGN{0.3}{svg-square-hole}
+    \item \ELM{polygon}、\ELM{polyline}と\ELM{path}での描き方の比較をす
+          る
+    \item \ELM{path}を用いて曲線を含む図形を作成する
+   \end{itemize}
+\begin{itemize}
+ \item \texttt{path}を用いた図形を描くこと
+\end{itemize}
+なお、これらの図形には必要であればグラデーションやアニメーションをつける
+       ことが望ましい。
+ \item 今まで作成した図形の繰り返しがある画像を選んで（なければ今回新た
+       に作成して）\texttt{pattern}を用いて塗りつぶすこと。
+       \texttt{pattern}を用いなかった場合と比較をして考察に加えること。
+ \begin{itemize}
+  \item 今までに作成したSVG画像で繰り返しの部分があるものをパターンで書
+        き直し、コードの長さ、変更の手間などの比較、考察をする\InVideo
+  \item ザビニの錯視\REF{68}や輝くヘルマン格子、モーガンのねじれのひも
+        \REF{70}をパターンを用いて作成する
+        \InVideo
+  \item パターンを構成する要素の一部の属性にアニメーションをつける。錯視
+        図形の場合にはその見え方の変化を報告する\InVideo
+ \end{itemize}
+ \item 文字列を表示すること
+\begin{itemize}
+ \item 自分の名前を表示\InVideo
+ \item それを姓と名前の部分に分け、移動したり、色を変えたアニメーション
+       をつける\InVideo
+ \item 文字列表示の属性\REF{101}の\ATTR{text-anchor}や
+       \ATTR{dominant-baseline}（表5.1を参照）の違いを例とともに報告する。
+       ブラウザによって対応が異なるかもしれない。\InVideo
+\end{itemize}
+\end{enumerate}
+\newpage
+\Section{イベント処理}
+今回からは使い慣れたブラウザで作業をしてかまわない。
+\subsection{開発者ツールの使い方を理解する}
+この課題は必ず行うこと。
+\begin{enumerate}
+ \item SVGのファイルを開き、「開発者ツール」を開く方法を確認する。
+ \item SVGファイルの要素の属性値を直接、変えることができること(Elements)
+ \item コンソールを開き、そこで簡単な式を打ち込んで計算結果が表示される
+       ことを確認
+ \item 3つの円の塗りつぶしを表示するリストを打ち込んで実行する。また、表
+       示する属性値を変える。
+\end{enumerate}
+ノートに次のことを報告する(1番目のビデオにある「確認しましょう」)。
+ \begin{enumerate}
+  \item 使用したブラウザとそのバージョン
+  \item 「開発者ツール」に相当する機能の名称
+  \item 「開発者ツール」を開くショートカットキー
+  \item どこかのWebページを開いてDOMツリーのノードを展開し、DOMツリー上
+        でマウスカーソルを動かしたときの現象
+  \item SVGファイルを開いて要素のプロパティを修正する
+  \item コンソールの入力がどこでできるか確認する。
+  \item コンソールで\texttt{2+3;}と入力して結果が表示されることを確認
+  \item コンソールで次のように入力したときの結果を確かめる(結果の展開が可能な
+        はずなので確認すること)
+
+        \texttt{document.getElementsByTagName("circle");}
+ \end{enumerate}
+ {\bfseries なお、JavaScriptの実行中のエラーメッセージはConsoleに表示さ
+ れる。}
+\subsection{イベント処理の基本}
+ビデオ2の前半部の課題
+  \begin{enumerate}
+   \item 円に代わりに正方形をいくつか置いてそのうえでクリックしたときに移動する
+   \item クリックした要素の色を変える
+         (\texttt{red}$\Rightarrow$\texttt{yellow}$\Rightarrow$\texttt{blue}$\Rightarrow$\texttt{red}
+         のように変化するようにできるか)
+   \item 異なる種類の要素を置いてクリックしたときに移動する
+         (\JSKey{tagName}プロパティを使う)
+  \end{enumerate}
+  ビデオ2の後半部の課題
+\begin{enumerate}
+  \item 円に対してもイベント処理関数を登録してその上をクリックしたときに移動するようにす
+        る
+  \item 円の上をクリックしたら色が変化する。それ以外のときは移動する。
+  \item 2つ以上の要素を置く。要素以外のところでクリックしたら最後にクリッ
+        クした要素が今回クリックした位置に移動する
+\end{enumerate}
+\subsection{ドラッグの処理}
+次のことを確認する。
+\begin{itemize}
+ \item ドラッグ処理のプログラムを実行して動きを確認する。
+ \item 「開発者ツール」のElementsを開いてドラッグするごとにDOMツリーが変
+       化すること
+\end{itemize}
+ビデオ3の課題
+\begin{enumerate}
+ \item 正方形をドラッグするように変える
+ \item 文字をドラッグするように変える
+ \item 通常、アイコンなどをドラッグするときと、ここでのドラッグとの相違点を述べ、
+			 それを改善する
+ \item \ELM{path}で描かれた図形をドラッグするものを作成する
+ \item 円と正方形の図形に対し、1種類のイベント処理関数でする方法を考えよ。
+			 図形の種類が増えてもイベント処理関数に手を付けないようにするには
+			 どのような方法があるか検討すること
+\end{enumerate}
+最後の課題では自分の親要素を示す\JSKey{parentNode}を使うとよいかもしれな
+い
+\newpage
+\Section{イベント処理と要素の作成}
+\subsection{当面の予定について}
+今回と次回の演習でローカルなSVG文書やHTML文書の基本が終了するので、これ
+までに学習したことについてまとめの発表を6月7日（火）に行う。
+概要は次の通りである。
+\begin{itemize}
+ \item 全員が7分程度の発表を行う。
+ \item 発表順は授業開始直後に抽選で決定する。
+ \item 他人の発表についての感想を記したものを授業終了時に提出する。
+ \item 発表内容は次の中から選択すること
+\begin{itemize}
+ \item 今までに学習してきたことのまとめと発展
+ \item 今までに作成したものの改良したもの
+ \item 最終週に向けた課題の構想
+ \item その他、上記に準ずるもの
+\end{itemize}
+\end{itemize}
+なお、最終週7月26日についても演習の総まとめの発表を行う。また、最終発表
+に関連したレポートを電子メールで提出する(30ページ以上)。詳細は後日連絡す
+る。
+\subsection{要素の追加}
+SVG文書に新たに要素を付け加える方法を学ぶ。
+
+ビデオ1内の「やってみよう」に事項を確認する。
+ \begin{itemize}
+   \item 何本かの直線を引いた後で次のことを確認
+  \begin{itemize}
+  \item 右ボタンでクリックしてソースコードが変化しているか
+   \item DOMツリーを見て、作成した直線の要素があるか
+  \end{itemize}
+	\item SVG内に小さな正方形で塗りの色が異なるものをいくつか置き、その正
+				方形をクリックした後では、クリックした正方形の塗りの色で直線が引
+				けるようにする(\REF{171}図7.15参照)
+	\item 長方形をドラッグで描く
+ \end{itemize}
+\subsection{クリックした位置をSVG内に表示}
+ \begin{itemize}
+  \item  27行目と29行目の\ELM{text}の中の空白をなくすと正しく動かないこ
+         とを確認
+  \item 空白があってもなくても動作するように修正する(配布資料参照のこと)
+	\item 23行目にある\ELM{g}を取り除いて、イベント処理関数を24行目の
+				\ELM{rect}につけない理由はなにか
+	\item このリストの不備な点を指摘し、改善をする
+	\item 表示する図形を円から別なものに変えて、その位置を示す属性の値を表
+				示する
+ \end{itemize}
+ \subsection{初期化で要素を作成と自前のアニメーション}
+ \begin{itemize}
+  \item 複数の直線からなる図形をJavaScriptのプログラムで作成する(正$n$角
+        形など)
+  \item その図形の直線を1本ずつ付け加えるアニメーションを作成する
+  \item processing で作成したアニメーションをJavaScriptで再現し、手間の
+        比較を検討する
+  \item 円を一定時間だけ表示する(要素を取り除くためには
+        \JSKey{removeChild}を用いる)
+ \end{itemize}
+ \subsection{要素を操作、作成するための関数群の作成}
+ ビデオ3内の「やってみよう」を行う。また、次の課題も行うこと。
+ \begin{itemize}
+  \item 「ドラッグして直線を描く」のSVG文書をここでの関数を利用して書き直
+        し、両者の比較を行う
+  \item 乱数を利用して一定の時間だけ円をいくつか表示する
+  \item 前問に対して表示されている間クリックされた円の数を数える機能を追
+        加する
+ \end{itemize}
+ \newpage
+ \Section{インラインSVGとHTML要素の間のデータの交換}
+ \subsection{次回の発表について(再掲)}
+ 次回、6月7日は中間発表とする。
+概要は次の通りである。
+\begin{itemize}
+ \item 全員が7分程度の発表を行う。
+ \item 発表順は授業開始直後に抽選で決定する。
+ \item 他人の発表についての感想を記したものを授業終了時に提出する。
+ \item 発表内容は次の中から選択すること
+\begin{itemize}
+ \item 今までに学習してきたことのまとめと発展
+ \item 今までに作成したものの改良したもの(発表がなかった週の内容を発展さ
+       せてもよい)
+ \item 最終週に向けた課題の構想
+ \item その他、上記に準ずるもの
+\end{itemize}
+\end{itemize}
+\subsection{先週の課題から回ってきた分}
+\subsubsection{初期化で要素を作成と自前のアニメーション}
+ \begin{itemize}
+  \item 複数の直線からなる図形をJavaScriptのプログラムで作成する(正$n$角
+        形など)
+  \item その図形の直線を1本ずつ付け加えるアニメーションを作成する
+  \item processing で作成したアニメーションをJavaScriptで再現し、手間の
+        比較を検討する
+  \item 円を一定時間だけ表示する(要素を取り除くためには
+        \JSKey{removeChild}を用いる)
+ \end{itemize}
+ \subsection{新規分}
+ \subsubsection{HTMLのフォームについて}
+ 次のことを行う。
+ \begin{itemize}
+	\item 5/31分の1番目のビデオのフォームを作成し、それぞれのデータの入力の取り扱
+ いについてまとめる。
+	\item プルダウンメニュー、ラジオボタンの要素を追加や変更を行う
+				(ビデオ内の「やってみよう」を参照)
+	\item ラジオボタンのどこかをチェックした後でコンソールで次の入力を行っ
+				た結果を報告する
+				
+				\Verb+document.querySelector("input[name=\"R1\"]:checked")+
+
+				また、次のようにしたらどうなるか確認する。
+
+				\Verb+document.querySelector("input:checked")+
+				
+	\item 上のことを踏まえてフォームにどのようなデータが入っているかを知る
+				方法について、要素ごとにまとめる
+ \end{itemize}
+ 
+ \subsubsection{HTMLのフォームのデータとSVGの間でのデータ交換}
+ 確認事項はノート内に記述すること
+\begin{enumerate}
+ \item ビデオ内のファイルを実行すること。
+\begin{itemize}
+ \item 表題のフォントを変えて(CSS 内の \texttt{.display} の内容を変える)
+       もクリックした位置が変わらないことを確認する。
+ \item 実行の途中でブラウザの横幅を変えて表題の行数を変化させるとクリッ
+       クした位置と円の移動位置が変わることを確認する。
+ \item その状態で再読み込みをするとマウスのクリック位置に円が移動するこ
+       とを確認する。
+ \item この不具合を直すこと。
+ \item 円の色の選択を増やすことをしなさい。
+ \item 円以外の形に変えて、それらの属性をHTMLの方から設定できるようにす
+       ること
+\end{itemize}
+ \item 今までに作成した錯視図形の属性を外部から設定できるものを作成しな
+       さい（問題7.21）。
+\end{enumerate}
+\newpage
+\iffalse
+\newcommand{\Row}{\rule{0em}{3zw}&&\\\hline}
+\Section{中間発表}
+\begin{center}
+ {\LARGE 2016年度中間発表講評シート}\\[\baselineskip]
+ {\Large \underline{\makebox[13zw][l]{学籍番号：}}
+ \hspace{2zw}\underline{\makebox[15zw][l]{氏名：}}}\\
+  \begin{tabularx}{\linewidth}[t]{|c|p{10zw}|X|}
+  \hline
+   {\small 発表者学籍番号}&\multicolumn{1}{c|}{テーマ}&
+   \multicolumn{1}{c|}{発表内容}\\\hline
+   \Row
+\Row
+\Row
+ \end{tabularx}
+\end{center}
+\fi
+\stepcounter{ReportNo}
+\Section{よりよいJavaScriptのプログラミングのために}
+\subsection{関数群の利用}
+ビデの関数群を利用して今までに作成したSVGファイル等を書き直す。たとえば
+次のようなもので行う。
+\begin{itemize}
+ \item 画面上に直線を引く
+ \item SVGの要素とHTMLのフォームとの間でデータを交換する
+ \item その他自作のもの
+\end{itemize}
+これらの関数群にさらに次のような機能を持つ関数を追加する。
+\begin{itemize}
+ \item オブジェクトリテラルを引数にしてそれを選択できるプルダウンメニュー
+			 を作成する。必要ならば引数を追加してよい・
+ \item 指定された範囲の番号を選択できるプルダウンメニュー\\
+			日にちや月などのプルダウンメニューが同じ関数でできるようにする
+\end{itemize}
+	\subsection{CSSセレクタ}
+	2番目のビデオにある「やってみよう(1)」の課題の報告をする。結果と画面の
+	キャプチャを付けること
+\subsubsection{\JSKey{nth-child(n)}}
+	  7行目の\JSKey{nth-child(n)}の\texttt{n}を次のように変えたらどうなるか。
+  \begin{itemize}
+   \item \JSKey{2n}
+   \item \JSKey{n+4}
+   \item \JSKey{-n+4}
+  \end{itemize}
+  また、背景色を黄色にする項目を次のようにするにはどのようにすればよいか
+  \begin{itemize}
+   \item 奇数番目だけ
+   \item 第1行だけ
+   \item 上から数えて奇数番めの上２つだけ(ここでは6つの項目のうち1番
+         目と3番目)
+  \end{itemize}
+\subsubsection{\JSKey{style}属性から操作}
+コンソールを開いてそこでつぎのJavaScriptを実行させた結果を確かめる
+ \begin{itemize}\footnotesize
+  \item \Verb+document.getElementsByTagName("li")[0].style.color = "red"+
+  \item \Verb+document.getElementsByTagName("li")[1].style.fontSize = "30px"+
+ \end{itemize}
+ \subsubsection{\JSKey{querySelector()}の利用}
+ 次のメソッドを\JSKey{querySelector()}または\JSKey{querySelectorAll()}で
+ 書き直す。(コンソールで行うとよい)
+\begin{itemize}
+  \item \JSKey{getElementsByTagName("foo")}
+  \item \JSKey{getElementById("foo")}
+  \item \JSKey{getElementsByClassName("foo")}
+  \item \JSKey{getElementsByName("foo")}
+\end{itemize}
+5月31日の「HTML5入門」のHTML文書内のフォームに対し、ボタンが押されたと
+ きにチェックされているチェックボックスやラジオボタン、プルダウンメニュー
+ の値を18行目から22行目の関数を書き直してコンソールに出力する
+ \subsection{変数のスコープとクロージャ}
+ 次のことを行う。
+ \begin{itemize}
+	\item スコープを確かめるHTMLファイルからコンソールでスコープを確認する
+				(キャプチャ画面が必要)。
+	\item JavaScript の変数のスコープルールや関数の引数の仕様を
+他の言語と比較してその特徴を述べる。
+	\item クロージャについて自分なりにまとめる。例も考えるとよい。
+	\item グローバル変数を減らすメリットは何か
+	\item 次の関数を入力し、コンソールから正しく動くことを確認する。
+\begin{Verbatim}
+  function sum() {
+    var i, total = 0;
+    for(i=0;i<arguments.length;i++){
+      sum += arguments[i];
+    }
+    return total;
+  }
+\end{Verbatim}
+				この方法と、C++などの関数のオーバーロードとの違いについて考察す
+				る。
+	\item JavaScriptで関数のオーバーロードは可能か考察する。もし、できなけ
+				ればどのような方法があるか述べよ。
+ \end{itemize}
+	\begin{center}
+{\color{red}{\LARGE\bfseries すべての課題において考察を付けること}}
+	\end{center}
+\iffalse
+\Section{Web Storage について}
+\subsection{Web ページのデータの保存}
+Web ページ上で作成したデータをそのままブラウザが動作しているコンピュータ
+上に保存することはセキュリティ上できません。この節ではそれらの方法につい
+て簡単な解説をします。
+%\subsection{Web Storage}
+Web StorageとはHTML5で導入された、Webページ間のデータの共有する仕組みで
+す。HTML5以前の方法ではクッキーと呼ばれるデータをクライアントとサーバー
+の間で共有してサーバー側からデータの共有をサポートする仕組みがありました。
+クッキーでは小さなデータしか扱えず、サーバーとクライアントとのやりがある
+たびに送られるのでセキュリティや速度の面で問題がありました。
+
+HTML5ではこれに代わる方法としてブラウザーのあるページ以降のページにだけ
+存在する\texttt{sessionStorage}とページが閉じられてもデータが存続できる
+\texttt{localStorage}が提案されました。現在ではHTML5とは独立した規格になっ
+ています\footnote{\texttt{http://www.w3.org/TR/webstorage/}}。
+\subsection{\texttt{localStorage}の利用}
+図\ref{localStorage}は\texttt{locaStorage}を利用して、右側で設定した値を
+保存し、次にそのページが開かれたときにその値を復元する例です。この例では
+値を設定した後、一番下の「実行」ボタンを押したものです。
+\begin{figure}[ht]
+ \begin{center}
+  \includegraphics[width=0.5\textwidth]{localStorage.eps}
+ \end{center}
+\caption{\texttt{localStorage}を利用した画像データの保存}\label{localStorage}
+\end{figure}
+
+この状態でOpera Dragonfly を開き、ストレージタブのローカルストレー
+ジを開いたときの状態が図\ref{localStorage2}です。
+\begin{figure}[ht]
+ \begin{center}
+  \includegraphics[width=0.5\textwidth]{localStorage2.eps}
+ \end{center}
+\caption{\texttt{localStorage}の値の確認}\label{localStorage2}
+\end{figure}
+\texttt{localStorage}の値がいくつか設定されているのがわかります。
+\newpage
+次のリストは図\ref{localStorage}のものです。
+\listinginput{1}{storage.html}
+\begin{itemize}
+ \item 8行目で変数\texttt{Storage}に\texttt{window.localStorage}を代入し
+       ています。これは後で、\texttt{sessionStorage}との区別をするためで
+       す。
+ \item 15行目から17行目でもし\texttt{SelectedColor}という
+       \texttt{Storage}の値が設定されていたらその値に、そうでなければ(初
+       めてページを開いたとき)デフォルトの値として\texttt{red}が設定され
+       ます。
+ \item 18行目から28行目はプルダウンメニューの設定です。ここでは22行目か
+       ら24行目で、初期値を\texttt{localStorage}にする設定をしています。
+ \item 29行目から31行目と32行目から34行目でもテキストボックスの初期値の
+       設定を行っています。ここでは3項演算子\texttt{?}を用いています。
+       \texttt{?}の前の論理式が\texttt{true}のときは\texttt{:}の前の値が、
+       \texttt{false}のときは\texttt{:}の値に設定されます。
+
+       この演算子は優先順位が低いので設定する値に式が含まれるときは
+       \texttt{()}でくくっておくのが安全です。
+ \item 35行目からは一番下のボタンを押したときの処理を行っています。ここ
+       では設定された値が不正なものかチェックし、正しくなければその旨の
+       メッセージを出します。ただしいときには指定された色の、指定された
+       大きさの正多角形を表示します。
+\begin{itemize}
+ \item 36行目でエラーが起きたかどうかを記憶する変数\texttt{Res}に
+       \texttt{true}を設定しています。チェックで値が不正なときはこの値を
+       \texttt{false}に設定します(42行目と49行目)
+ \item 39行目から45行目は辺の数のチェックです。少数の入力のチェックはし
+       ていませんのでそのチェックは不十分です。
+ \item 46行目から52行目は多角形の大きさのチェックです。あまり小さな多角
+       形は描かないようにしています。
+ \item 53行目から62行目で与えられた値での正多角形を描くための座標の位置を計算
+       し、図形にその値を設定しています。
+\end{itemize}
+\end{itemize}
+\subsection{\texttt{sessionStorge}の利用}
+HTML文書はセッションレスであるといわれます。この意味は各ページが独立して
+いて相互にデータのやり取りができないことを意味します。しかし、このような
+状態ではユーザを認証して他のページにアクセスを許可することができません。
+
+これを解決するために考えられたのがクッキーです。
+クッキーはあるページに関する小さなデータをクライアント側に保存し、そのペー
+ジをアクセスするときにそのデータをサーバーにデータを送ります。
+そのデータをもとにサーバーはそのページの表示内容を判断し、ページを作成し
+ます。
+
+HTML5に関連した \texttt{sessionStorage} を利用すると、あるページから別のペー
+ジに移動するときに、データの引き継ぎが可能になります。先ほどの図形のパラ
+メータを設定するページを設定画面と表示画面に分けてデータの引き継ぎが可能
+であることを確認しましょう。
+
+\newpage
+図\ref{sessionStorage}はデータを設定するための初期画面です。
+\begin{figure}[ht]
+ \begin{center}
+  \includegraphics[width=0.5\textwidth]{sessionStorageStart.eps}
+ \end{center}
+\caption{\texttt{sessionStorage}を利用した画像データの作成(スタート画面)}\label{sessionStorage}
+\end{figure}
+
+\ref{sessionStorage2}は値を設定後の画面です。
+\begin{figure}[ht]
+ \begin{center}
+  \includegraphics[width=0.5\textwidth]{sessionStorageStart2.eps}
+ \end{center}
+\caption{\texttt{sessionStorage}を利用した画像データの作成(スタート画
+ 面---値設定後)}\label{sessionStorage2}
+\end{figure}
+
+\newpage
+図\ref{sessionStorage2}で「実行」ボタンを押すと図
+\ref{sessionStorageFail}が表示されます。
+\begin{figure}[ht]
+ \begin{center}
+  \includegraphics[width=0.5\textwidth]{sessionStorageResult.eps}
+ \end{center}
+\caption{\texttt{sessionStorage}を利用した画像データの作成(結果表示画面)}\label{sessionStorageFail}
+\end{figure}
+
+新しいタブを開いて直接結果表示画面を開こうとすると図\ref{sessionFail}が
+表示されます。「OK」を押すと\ref{sessionStorage}に戻ります。
+\begin{figure}[ht]
+ \begin{center}
+  \includegraphics[width=0.5\textwidth]{sessionResultFail.eps}
+ \end{center}
+\caption{\texttt{sessionStorage}を利用した画像データの作成(エラー結果表示画面)}\label{sessionFail}
+\end{figure}
+
+次のリストは図\ref{sessionStorage}のリストです。ファイル名を
+\texttt{session-start.html}とします。
+\listinginput{1}{session-start.html}
+このリストは図\ref{localStorage}からSVGの図形を取り除いたものとほとんど
+変わりません。違いは次のところです。
+\begin{itemize}
+ \item ストレージは\texttt{sessionStorage}に変わっています(9行目)。
+ \item 入力データが正当なものであれば、表示するページに移動します(53行目
+       から55行目)。移動するページの名称\texttt{session-result.html}を指
+       定しています。
+ \item \texttt{window.location.href}は表示されているURLを保持するプロパ
+       ティですがこれを変更することでページの移行を行っています。
+\end{itemize}
+次のリストは結果を表示する画面のリストです。ファイル名は
+\texttt{session-result.html}としてください。
+\listinginput{1}{session-result.html}
+\begin{itemize}
+ \item 12行目で \texttt{Storage.SelectedColor}が設定されているかを判定し、
+       判定していれば\texttt{session-result.html}から移行してきたと判断
+       します。
+ \item 見つからないときは、メッセージボックスを表示し(28行目)、その後、
+       設定のページに移行します(29行目)。
+\end{itemize}
+\subsection{今回の作業とレポート内容}
+今回のレポートの題名は学籍番号\texttt{-07.docx}とすること。締め切りは
+6月15日(月)15:00までとする。
+\begin{enumerate}
+ \item 図\ref{localStorage}のリストについて次のことを行い報告しなさい。
+\begin{itemize}
+ \item リストを実行して、動作を確認しなさい。また、
+       \texttt{localStorage}の値も確認しなさい。
+ \item このページを消して再度表示させると直前の値が表示されることを確認
+       しなさい。
+ \item 9行目のコメントを外すとデフォルトの値が設定されることを確認しなさ
+       い。
+ \item \texttt{localStorage}の値を直接書き直すと、その値が初めに設定され
+			 ることを確認しなさい。
+\end{itemize}
+ \item 図\ref{sessionStorage}と\ref{sessionStorageFail}のリストについて
+       も同様のことを行いなさい。また、ブラウザを閉じて再度表示させたと
+       きに\texttt{Storage}がどのようになっているか調べなさい。
+ \item \texttt{Storage}が使用されているサイトを探し、どのようなデータが
+			 保存されているか調べなさい。
+ \item 今までに作成した課題のうち改良ができたものについて報告しなさい。
+%       また、未提出の課題もできるだけ提出のこと。
+\end{enumerate}
+\iffalse
+\Section{オブジェクトについて}
+\section{今週の課題}
+\begin{enumerate}
+ \item リスト7.23のようにオブジェクトを定義して、オブジェクトの値の参照
+       方法や、関数がメンバーとして登録できることを確かめなさい。
+ \item 次のリストを実行してからそのあとの問いについて調べなさい。
+       2つ以上のブラウザで行うことが望ましい。
+
+このリストは与えられた
+オブジェクトのメンバーをHTMLの\texttt{table}要素(28行目から29行目)を用いて表示させるもので
+       す。横の要素は\texttt{tr}(15行目)で、それぞれの項目は\texttt{td}
+       要素(13行目と14行目)で表します。
+
+各\texttt{td}要素は関数で作成しています(18行目から24行目)。
+\listinginput{1}{checkObj.html}
+\begin{enumerate}
+ \item 実行した結果を報告しなさい。また、その内容からわかることを述べな
+       さい。
+ \item 6行目をコメントアウトすると何が起こるか報告しなさい。また、その理
+       由を説明しなさい。
+ \item 8行目の\texttt{document.location}を別なものにして、実行して、その
+       結果について考察しなさい。
+ \item 6行目の\texttt{wondow.onload}を\texttt{window.onkeypress}、8行目
+       を\texttt{var Obj = e;}として次のことを行いなさい。
+\begin{enumerate}
+ \item キーボードで\texttt{a}を入力した結果からわかることを述べなさい。
+ \item いろいろ条件を変えて実行した結果を報告し、それからわかることを述
+       べなさい。
+\end{enumerate}
+\end{enumerate}
+ \item リスト7.27 を実行しなさい。リスト7.26 も必要であるので注意するこ
+       と。また、指定されたファイル名にすること。
+
+ \item {\bfseries 余力問題}定義できる円の要素を増やしなさい。
+\end{enumerate}
+今回のレポートの締め切りは7月1日(月)15:00までとする。
+\newpage
+\fi
+\Section{クライアントとサーバーでのデータのやり取り}
+\subsection{作業内容(1)}
+\subsubsection{XAMPP をインストールと設定の確認}
+\begin{enumerate}
+ \item XAMPP をインストールしなさい。
+\item \texttt{XAMPP}のインストール場所はどこか
+
+\fbox{\phantom{\Large C:\textbackslash xampp}}\Check
+ \item \texttt{http://localhost}にアクセスしたときに表示される画面を確
+       認する。
+ \item 同様に\texttt{http://localhost/index.html}と
+       \texttt{http://localhost/index.php}にアクセスしたときに表示される画面を確
+       認する。
+ \item \texttt{localhost}にアクセスしたときに表示されるページの左側にあ
+       る \texttt{phpinfo()}をクリックしたときに表示されるページから次の
+       項目を探し、内容を調べる。
+\begin{itemize}
+ \item \texttt{Document\textunderscore Root}
+ \item \texttt{Loaded Configuration File}
+\end{itemize}
+ \item \texttt{C:\textbackslash XAMP\textbackslash htdocs}内にあるファイ
+       ルにはどのようなものがあるか報告する(フォルダは必要ない)。
+ \item Apacheの設定ファイルの名称と所在はどこか。下記の欄に記入する。
+
+\fbox{\phantom{\Large C:\textbackslash XAMP\textbackslash conf\textbackslash httpd.conf}}\Check
+ \item \texttt{php.ini}がある場所はどこか下記に記載すること
+
+\fbox{\phantom{\Large C:\textbackslash WINDOWS}}\Check
+% \item  \texttt{phpinfo()}の表示が見えることを確認する。\CHECK
+\iffalse
+ \item コマンドプロンプトからDHCPによる自分のIPアドレスを確認する。確認
+       するコマンドは\texttt{ipconfig} である。
+
+IPアドレスをここに記入する。\fbox{\phantom{\Large
+       192.168.255.255}}\Check
+\fi
+\end{enumerate}
+\subsubsection{簡単なHPの作成}
+ 次のようなHPを作成する。ファイル名は\texttt{index.html}とする。
+\begin{listing}{1}
+<!DOCTYPE html>
+ <html>
+ <title>初めてのHTML</title>
+ <body>
+ こんにちは、このホームページは--自分の名前--が作成しました。
+</body>
+ </html>
+\end{listing}
+このリストの第1行目の記法は現在規格が策定中のHTML5で定められているもので
+ある。
+
+次の作業をしなさい。
+\begin{enumerate}
+ \item ファイルを各自のホームページの保存するルートにコピーする。\Check
+ \item このページが見えることを確認する。\texttt{http://localhost}で行う
+       こと。ファイルを直接ダブルクリックしてはいけない。\Check
+\iffalse
+ \item 他の人のIPアドレスを教えてもらって他人のページが見えることを確認
+       する。\CHECK
+\fi
+\end{enumerate}
+\subsubsection{PHPプログラミング超入門}
+ PHPを用いて自分の名前を PHPの \texttt{print}を用いて同様のことを行う。
+
+次のような内容のファイルを作成する。
+       ファイルの拡張子を\texttt{.php}にすることを忘れないこと。\CHECK
+
+\begin{listing}{1}
+<!DOCTYPE html>
+ <html>
+ <title>初めてのHTML</title>
+ <body>
+ <?php
+print "こんにちは、このホームページは--自分の名前--が作成しました。";
+?>
+</body>
+ </html>
+\end{listing}
+プログラムの簡単な解説をする。
+\begin{itemize}
+ \item PHP のプログラムはHTML文書の中に埋め込むことができる。
+ \item PHPのプログラムの部分は \verb+<php+ と \verb+?>+内に書く(5
+       行目から7行目)。
+% \item 文法はC言語に似ている。
+ \item PHPにおいて文字列は " " で挟むか ' ' で挟む。C言語のように文字と
+       いうデータは存在しない。文字列の表現の記法による違いは" " 内では
+       変数名などがその値で置き換えられるということである。
+ \item 文字列を印刷するためには \texttt{print} をつかう。\texttt{echo}
+       を使うこともできる。
+ \item 文の最後は \texttt{;}をつける。
+
+\end{itemize}
+
+このPHPのファイルを用いて表示されたたページのソースはどのようになっ
+       ているか調べる。\Check
+
+PHPは言語の仕様をC言語から借りてきている面が多い。\texttt{for}文
+       や\texttt{if}文は形式的には同じ形をしている。一番の違いは変数名
+       は\$ ではじめなければならないということである。上の文章を10回繰り
+       返して書くには次のようにすればよい。
+\begin{listing}{1}
+ <!DOCTYPE html>
+ <html>
+ <title>初めてのHTML</title>
+ <body>
+ <?php
+for($i=0;$i<10;$i++){
+print "こんにちは、このホームページは--自分の名前--が作成しました。";
+}
+?>
+</body>
+ </html>
+\end{listing}
+このファイルに対しても前のPHPファイルと同様の確認を行い、さらに不都合な
+点を直すこと。
+
+また、次のようなファイルに変更して" " では文字列内で変数の値が展開される
+ことを確認すること。
+\begin{listing}{1}
+ <!DOCTYPE html>
+ <html>
+<head>
+ <title>初めてのHTML</title>
+</head>
+ <body>
+ <?php
+$myName ="私の名前";
+for($i=0;$i<10;$i++$){
+print "こんにちは、このホームページは$myName が作成しました。";
+print 'こんにちは、このホームページは$myName が作成しました。';
+}
+?>
+</body>
+ </html>
+\end{listing}
+%\newpage
+\subsubsection{レポート(1)}
+\begin{Report}
+次の事柄について報告すること。
+\begin{itemize}
+ \item 今回行った作業。設定ファイルの変更事項などを忘れずに記載すること。
+ \item 行った作業について疑問点などを挙げ、解決策について述べる。
+ \item 作成したファイルの内容と簡単な解説をつけること。
+ \end{itemize}
+\end{Report}
+\begin{Report}[余力問題]\upshape
+\verb+c:/xampp/apache/conf/extra/httpd-xampp.conf+内の記述で下記の部分を
+探し、11行目から13行目の部分を追加する(この部分は元来のファイルには記述
+ されていない)。
+\begin{listing}{1}
+#
+# PHP-Module setup
+#
+LoadFile "C:/xampp/php/php5ts.dll"
+LoadFile "C:/xampp/php/libpq.dll"
+LoadModule php5_module "C:/xampp/php/php5apache2_4.dll"
+
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+<FilesMatch "\.html$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+<FilesMatch "\.phps$">
+    SetHandler application/x-httpd-php-source
+</FilesMatch>
+\end{listing}
+この結果何が変化するか想像してそれが正しいかどうか検証すること。
+
+なお、保存した後、XAMPP Control Panel でApache を再起動して変更を
+有効にすることを忘れないこと。
+
+この前後で\texttt{phpinfo()}の出力内容がどのように変化したかを確認するの
+ もよいであろう。
+\end{Report}
+\subsection{クライアントとサーバーでのデータのやり取りの基本}
+
+次のファイルを\texttt{start.php}とします\footnote{このテキストにしたがっ
+て PHP の設定をした場合には保存するエンコーディングをUTF-8にしてくださ
+い。}。
+\begin{listing}{1}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>簡単なデータのやり取り</title>
+</head>
+<body>
+  <form method="POST" action="hello.php">
+    <input type="text" name="user"/>
+    <input type="submit" value="送信"/>
+  </form>
+</body>
+</html>
+\end{listing}
+次のファイルを\texttt{hello.php}とします。
+\begin{listing}{1}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>簡単なデータのやり取りの結果</title>
+</head>
+  <body>
+<?php 
+  if($_POST['user']!='') {
+    print("ようこそ{$_POST['user']}さん\n");
+  } else {
+?>
+  <form method="POST" action="start.php">
+    <input type="submit" value="戻る"/>
+  </form>
+<?php
+  }
+?>
+  </body>
+</html>
+\end{listing}
+\begin{enumerate}
+ \item \texttt{start.php}と\texttt{hello.php}を適当なサーバーにコピーし
+       ます。
+ \item その後、ブラウザーで\texttt{start.php}を表示し
+       ます。なお、このファイルには PHP のプログラム部分が
+       まったくありませんのでファイル名の拡張子を \texttt{html} にしても
+       かまいません。
+ \item テキストボックスにデータを入力した後、隣にある「送信」ボタンをク
+       リックします。
+ \item 前のページで入力されて文字列が表示されていることがわかります。
+\end{enumerate}
+\begin{itemize}
+ \item \texttt{start.php}の\texttt{form}タグで属性\texttt{method}を
+       \texttt{POST}にしている(3行目)のでこのフォームに含まれる\texttt{input}で
+       指定されている値はスーパーグローバル変数\TagP{\$\_POST} の連想配
+       列のなかに入れられます。
+ \item データが入力されるテキストボックスには\AttribH{name}で
+       \texttt{user}となっているので値は\texttt{\$\_POST['user']}で参照
+       できます。
+ \item \texttt{action} では\texttt{submit}ボタンが押されたときに呼び出さ
+       れる関数またはサーバー側のファイルを指定します。ここでは
+       \texttt{hello.php}が呼び出されます。
+ \item \texttt{hello.php}ではまず、4行目で入力された文字があるかどうかの
+       判定をしています。空の文字列ではないときには5行目の文が実行される
+       のでメッセージが表示されます。
+ \item 空の文字列の場合には8行目から10行目までで「戻る」ボタンが表示され
+       るようになっています。%\Check
+       このボタンを表示する部分はHTMLの要素で記述しているので、その後に
+       PHPで書かれている6行目の\TagP{else}節のを閉じるために11行目から12
+       行目で閉じるための\texttt{\}}を挿入しています。
+\end{itemize}
+\subsubsection{レポート(2)}
+次の事柄について報告すること。
+\begin{itemize}
+ \item 上記のプログラムを実行した結果を報告しなさい。また、テキストボッ
+       クスに\texttt{<b>Foo</b>}と入力した結果について報告し、問題点を考
+       察しなさい。
+\item HTMLリスト8.1とPHPリスト8.2、8.3を作成して正$n$角形のSVGファイルを
+      返すファイルができることを確認しなさい。HTMLのファイル名は
+      \texttt{svg-polygon.php}とすること。また、問題8.1について報告しな
+      さい。
+ \item アドレスバーに\verb+http://localhost/svg-polygon.php?N=10+
+と打ち込んだ場合どうなるか確認しなさい。
+ \item 225ページの\texttt{header}関数を追加して、SVGファイルが保存できる
+       ことを確認しなさい。
+ \item 問題8.2を答えなさい。
+ \item PHPリスト8.4を実行しなさい。
+      サーバーに伝えられる情報のうち Internet Explorer
+       や Opera などのブラウザに関する情報として何がある
+       か確認しなさい。Mac や Wii でも同様のことをして報告しなさい。
+ 余力があれば携帯電話でWebページを見ることができる場合に
+       は携帯電話会社、電話機の種類とそのブラウザが何であるかを
+  \texttt{http://hilano.ic.kanagawa-it.ac.jp/hilano-lab/s.php}にアクセスして報告し
+       なさい。
+ \item 今回の作業で使用したPHPの言語の特徴を項目ごとにまとめる。C言
+       語などすでに知っている言語と比べてどのような特徴があるかまとめる。
+% \item 問題8.4について報告しなさい。またそうなる理由についても報告しなさ
+%       い。
+% \item 問題8.6について報告しなさい。
+\end{itemize}
+
+レポート提出期限は6月22日(月)15時までメールでで提出すること。
+
+\iffalse\else
+\Section{Ajax}
+\subsection{作業内容}
+作業内容について必ずレポートに記載すること。なお、いくつかの属性について
+はリストどおりではなく、変更をし、その内容を報告すること。また、変更した
+結果について検討すること。
+\begin{enumerate}
+ \item リスト8.8、8.9、8.10 のファイルを作成して正$n$角形が描けることを確認しなさい。
+ \item リスト8.11を入力して実行しなさい。
+\end{enumerate}
+\begin{Report}\upshape
+次の事柄について報告しなさい。
+\begin{enumerate}
+ \item 問題8.6について報告しなさい。またそうなる理由についても報告しなさ
+       い。
+ \item リスト8.11に図形を追加して表示しなさい。また、表示した図形をクリッ
+       クするとその図形の色が右のテキストボックスで指定した色に変わるよ
+       うにしなさい。
+ \end{enumerate}
+\end{Report}
+今回のレポートの締め切りは6月29日(月)15:00までとする。
+\fi
+\fi
+\end{document}
+
+

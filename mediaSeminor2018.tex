@@ -1,5 +1,8 @@
 \documentclass[a4j]{jarticle}
 \input mediaSenmonHead.tex
+\renewcommand{\Section}[1]{%
+\newpage \stepcounter{ReportNo}\section{第\theReportNo 回 --- #1}
+}
 \begin{document}
 %\maketitle
 \begin{center}
@@ -56,7 +59,8 @@
 \newpage
 
 \Section{SVGにおけるアニメーション}
-\subsection{ノートに関する注意}
+\iffalse
+	\subsection{ノートに関する注意}
 ノートに関しては次のような点に注意して利用する。
 \begin{itemize}
  \item 提出したノートは原則としてその週の金曜日までには返却するので必ず取りに来
@@ -65,6 +69,7 @@
  \item 記入した日付も記入する
  \item 授業後に改良した点なども追記する
 \end{itemize}
+\fi
 \subsection{アニメーションに関する注意}
 アニメーションに関する基本的な事項を確認する。
 \begin{itemize}
@@ -94,11 +99,12 @@
        \texttt{<g>}を追加するとよい。
  \item 不透明度(\REF{39})についても理解すること
 \end{itemize}
-\subsection{作業内容}
-今回から作業内容を増やしました。すべてを行うことを目標としていませんので、
-興味を持った課題を選ぶこと。%次の事柄からいくつか選択して作業すること。
+\subsection{課題}
+%今回から作業内容を増やしました。すべてを行うことを目標としていませんので、
+%興味を持った課題を選ぶこと。%
+次の事柄からいくつか選択して作業すること。
 \begin{enumerate}
- \item 情報メディア演習の資料からいくつかを選び、各種アニメーションが実
+ \item 情報メディア演習(セミナー)の資料からいくつかを選び、各種アニメーションが実
        行できることを確認する。
 
 アニメーションのキャプチャ画像は開始時（に近いとき）、途中、終了時の3つ
@@ -123,21 +129,23 @@
        ンをつけたものを作成すること。1年の時のProccessingで作成したもの
        をSVGで作り直すのもよい。そのときは作成の手間などの比較もするとよ
        い。
- \item テキストにある錯視図形の問題を
-       いくつかにアニメーションをつけ、効果の変化を調べること
+ \item テキストにある錯視図形の
+       いくつかにアニメーションをつけ、効果の変化を調べること。たとえば
+       次のようなものが挙げられる。
        \begin{itemize}
-        \item Fickの錯視で垂直線を水平線の左端から右端に移動させる
-        \item Juddの錯視を作成する(問題4.3)
-        \item カフェウォール錯視(24ページ)の細い線に色のアニメーションを
+        \item Fickの錯視で垂直線を水平線の左端から右端に移動させる(問題4.1)。
+        \item Juddの錯視(問題4.3)を作成し、両端の線分の回転させて開く角
+							度を変化させるアニメーションをつける。
+        \item カフェウォール錯視(23ページ)の細い線に色のアニメーションを
               つける
-        \item 問題4.16の図を作成する。
+        \item 問題4.11の図を作成する。
        \end{itemize}
  \item {\bfseries (ちょっと面倒)}グラデーションにアニメーションをつける図形を
        \ELM{stop}のアニメーションだけで作成する
 \end{enumerate}
-\end{document}
 \Section{複雑な図形の描き方、文字列}
-\subsection{前回のノートから}
+\iffalse
+	\subsection{前回のノートから}
 {\bfseries ノートは必ず演習開始前までには鳥にくること。}
 
 ノートの内容がまだ不十分なものが見受けられます。次の点に注意して作成して
@@ -152,17 +160,19 @@
  \item 返却されたノートに対してさらに記述を追加したり、コードの改良を付
        け加えてよい。
 \end{itemize}
-\subsection{作業内容}
+\fi
+\subsection{課題}
+次の中からいくつか選んで報告する。
 \begin{enumerate}
  \item \texttt{polyline}または\texttt{polygon}を用いた図形を描くこと。た
        とえば次のようなことを考えてください。
    \begin{itemize}
     \item Excelなど他のプログラムを用いて正6角形の頂点の座標を計算し、そ
           の結果を用いて正6角形を描く
-    \item 一つの\ELM{path}で二つの長方形を描く\InVideo
-       \FIGN{0.4}{svg-path-rect2}
-    \item 穴が開いた正方形を一つの\ELM{path}で描く\InVideo
-              \FIGN{0.3}{svg-square-hole}
+    \item 一つの\ELM{path}で二つの長方形を描く
+       \FIGN{0.4}{03/svg-path-rect2}
+    \item 穴が開いた正方形を一つの\ELM{path}で描く
+              \FIGN{0.3}{03/svg-square-hole}
     \item \ELM{polygon}、\ELM{polyline}と\ELM{path}での描き方の比較をす
           る
     \item \ELM{path}を用いて曲線を含む図形を作成する
@@ -177,23 +187,23 @@
        \texttt{pattern}を用いなかった場合と比較をして考察に加えること。
  \begin{itemize}
   \item 今までに作成したSVG画像で繰り返しの部分があるものをパターンで書
-        き直し、コードの長さ、変更の手間などの比較、考察をする\InVideo
-  \item ザビニの錯視\REF{68}や輝くヘルマン格子、モーガンのねじれのひも
-        \REF{70}をパターンを用いて作成する
-        \InVideo
+        き直し、コードの長さ、変更の手間などの比較、考察をする。
+  \item ザビニの錯視\REF{46}や輝くヘルマン格子、モーガンのねじれのひも
+        \REF{48}をパターンを用いて作成する。
   \item パターンを構成する要素の一部の属性にアニメーションをつける。錯視
-        図形の場合にはその見え方の変化を報告する\InVideo
+        図形の場合にはその見え方の変化を報告する。
  \end{itemize}
  \item 文字列を表示すること
 \begin{itemize}
- \item 自分の名前を表示\InVideo
+ \item 自分の名前を表示
  \item それを姓と名前の部分に分け、移動したり、色を変えたアニメーション
-       をつける\InVideo
+       をつける
  \item 文字列表示の属性\REF{101}の\ATTR{text-anchor}や
        \ATTR{dominant-baseline}（表5.1を参照）の違いを例とともに報告する。
-       ブラウザによって対応が異なるかもしれない。\InVideo
+       ブラウザによって対応が異なるかもしれない。
 \end{itemize}
 \end{enumerate}
+\end{document}
 \newpage
 \Section{イベント処理}
 今回からは使い慣れたブラウザで作業をしてかまわない。

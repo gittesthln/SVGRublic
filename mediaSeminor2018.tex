@@ -346,9 +346,9 @@ SVG文書に新たに要素を付け加える方法を学ぶ。
   \item 前問に対して表示されている間クリックされた円の数を数える機能を追
         加する
  \end{itemize}
-\end{document}
 % \newpage
  \Section{インラインSVGとHTML要素の間のデータの交換}
+ \iffalse
  \subsection{次回の発表について(再掲)}
  次回、6月7日は中間発表とする。
 概要は次の通りである。
@@ -377,13 +377,79 @@ SVG文書に新たに要素を付け加える方法を学ぶ。
         \JSKey{removeChild}を用いる)
  \end{itemize}
  \subsection{新規分}
- \subsubsection{HTMLのフォームについて}
- 次のことを行う。
+ \fi
+ \subsection{HTMLのフォームについて}
+ 次のリストを入力して次のことを行う。
+\begin{Verbatim}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>HTMLの例</title>
+    <script type="text/ecmascript">
+      //<![CDATA[
+      window.onload = function(){
+        let F = document.getElementsByTagName("form")[0];
+        F.addEventListener("change",change,false);
+        F.addEventListener("click",click,false);
+      }
+      function change(E) {
+        console.log(`change::target:${E.target.tagName}`+
+                  `, E.currentTarget:${E.currentTarget}`+
+                  `, value:${E.target.value}`);
+      }
+      function click(E) {
+        console.log(`click::target:${E.target.tagName}`+
+                  `, E.currentTarget:${E.currentTarget}`+
+                  `, value:${E.target.value}`);
+      }
+      //]]>
+    </script>
+    <style>
+      .head {
+      background:rgb(128,128,255);
+      width:180px;
+      text-align:center;
+      font-size:18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>フォームのサンプル</h3>
+    <form>
+      <div>テキストボックス<input type="text" size="20"></input></div>
+      <div>パスワード<input type="password" size="20"></input></div>
+      <div class="head">チェックボックス</div>
+      <div><input type="checkbox" value="check1">チェック1</input></div>
+      <div><input type="checkbox" value="check2">チェック2</input></div>
+      <div class="head">ラジオボタン1</div>
+      <div><input type="radio" name="R1" value="radio1-1">ラジオボタン1-1</input></div>
+      <div><input type="radio" name="R1" value="radio1-2">ラジオボタン1-2</input></div>
+      <div><input type="radio" name="R1" value="radio1-3">ラジオボタン1-3</input></div>
+      <div class="head">ラジオボタン2</div>
+      <div><input type="radio" name="R2" value="radio2-1">ラジオボタン2-1</input></div>
+      <div><input type="radio" name="R2" value="radio2-2">ラジオボタン2-2</input></div>
+      <div><input type="radio" name="R2" value="radio2-3">ラジオボタン2-3</input></div>
+      <div class="head">ボタン2</div>
+      <div><input type="button" value="押してね"></input></div>
+      <div class="head">プルダウンメニュー</div>
+      <div>
+        <select>
+          <option value="option1">オプション1</option>
+          <option value="option2">オプション2</option>
+          <option value="option3">オプション3</option>
+        </select>
+      </div>
+    </form>
+  </body>
+</html>
+\end{Verbatim}
+ 
  \begin{itemize}
-	\item 5/31分の1番目のビデオのフォームを作成し、それぞれのデータの入力の取り扱
+	\item フォームにおけるそれぞれのデータの入力の取り扱
  いについてまとめる。
 	\item プルダウンメニュー、ラジオボタンの要素を追加や変更を行う
-				(ビデオ内の「やってみよう」を参照)
+%				(ビデオ内の「やってみよう」を参照)
 	\item ラジオボタンのどこかをチェックした後でコンソールで次の入力を行っ
 				た結果を報告する
 				
@@ -398,10 +464,9 @@ SVG文書に新たに要素を付け加える方法を学ぶ。
  \end{itemize}
  
  \subsubsection{HTMLのフォームのデータとSVGの間でのデータ交換}
- 確認事項はノート内に記述すること
+ %確認事項はノート内に記述すること
+ リスト6.16において次のことを行う。
 \begin{enumerate}
- \item ビデオ内のファイルを実行すること。
-\begin{itemize}
  \item 表題のフォントを変えて(CSS 内の \texttt{.display} の内容を変える)
        もクリックした位置が変わらないことを確認する。
  \item 実行の途中でブラウザの横幅を変えて表題の行数を変化させるとクリッ
@@ -412,9 +477,6 @@ SVG文書に新たに要素を付け加える方法を学ぶ。
  \item 円の色の選択を増やすことをしなさい。
  \item 円以外の形に変えて、それらの属性をHTMLの方から設定できるようにす
        ること
-\end{itemize}
- \item 今までに作成した錯視図形の属性を外部から設定できるものを作成しな
-       さい（問題7.21）。
 \end{enumerate}
 \newpage
 \iffalse
@@ -434,6 +496,7 @@ SVG文書に新たに要素を付け加える方法を学ぶ。
  \end{tabularx}
 \end{center}
 \fi
+\end{document}
 \stepcounter{ReportNo}
 \Section{よりよいJavaScriptのプログラミングのために}
 \subsection{関数群の利用}

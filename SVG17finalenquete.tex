@@ -1,0 +1,80 @@
+\documentclass[a4j]{jarticle}
+\usepackage{moreverb,graphicx}
+%\title{メディア基礎演習I数理図形レポート}
+%\author{}
+%\date{}
+\iffalse
+\newcommand{\Check}{\hfill\fbox{\phantom{\rule{1em}{1em}}}}
+\newcommand{\CHECK}{\hfill\fbox{\fbox{\phantom{\rule{1em}{1em}}}}}
+\else
+\newcommand{\Check}{}
+\newcommand{\CHECK}{}
+\fi
+\newtheorem{Report}{レポート課題}
+\newcommand{\TagP}[1]{\texttt{#1}}
+\newcommand{\AttribH}[1]{\texttt{#1}}
+\newcounter{ReportNo}
+\newcommand{\Section}[1]{%
+\newpage \stepcounter{ReportNo}\section{第\theReportNo 週 --- #1}
+}
+\begin{document}
+%\maketitle
+\begin{center}
+ \Large 情報メディア専門ユニットI(演習)アンケート (2017 年度版)
+\end{center}
+\thispagestyle{empty}
+\newcommand{\Ans}{%
+ \par\begin{tabular}{*{5}{p{7zw}}}
+	1. とても良い&2. 良い& 3. ふつう&4. 悪い&5. とても悪い
+ \end{tabular}}
+\newcommand{\AnsII}{%
+ \par\begin{tabular}{*{5}{p{10zw}}}
+	1. よくできた&2. 少し良くできたた& 3. ふつう&4. 少しできなかった&5. できなかっ
+			た
+ \end{tabular}}
+{\LARGE 学籍番号 \underline{\makebox[10zw]{}}氏名
+\underline{\makebox[10zw]{}}}\\
+今後の授業の参考にするためにアンケートを取ります。記名式ですが成績には影
+響しません。
+
+\begin{enumerate}
+ \item 今回の授業形態をどのように思いますか\Ans
+ \item 授業の予習教材は見ましたか
+			 \\
+			 \begin{tabular}{*{5}{p{7zw}}}
+ 1. すべて見た& ２. ほとんど見た &3．必要な時に見た&4.ほとんど見ない&5.全く見ていない
+			 \end{tabular}
+ \item ビデオ教材の評価はどうでしたか\Ans
+ \item ビデオ教材の改良点はありますか。自由に書いてください。\\[2cm]
+ \item 予習した時間は各回につきどのくらいだったでしょうか
+			 \begin{tabular}{*{5}{p{7zw}}}
+ 1. 3時間以上& ２. 2時間程度 &3．1時間程度&4.ほとんどしなかった&5.全くし
+				ていない
+			 \end{tabular}
+ \item 予習の内容はどのようなものでしたか？
+  行った項目についてお答えください
+\begin{itemize}
+ \item  ビデオを見た時間は１週当たりどのくらいでしたか
+			 \begin{tabular}{*{5}{p{7zw}}}
+ 1. 3時間以上& ２. 2時間程度 &3．1時間程度&4.ほとんどしなかった&5.全くし
+				ていない
+			 \end{tabular}
+ \item  同じビデオを何回見ましたか。平均でお答えください。
+			 \begin{tabular}{*{5}{p{7zw}}}
+ 1. 3回以上& ２. 2回程度 &3．1回程度&4.ほとんど見ない&5.全く見ていないし
+												ていない
+		\end{tabular}
+ \item  ビデオを見ながらメモを取りましたか
+ \item 自分でコードを打ち込んでからもう一度ビデオを見直しましたか
+\end{itemize}
+ \item プレゼンテーション資料はうまくできましたか。\Ans
+ \item 他の人のプレゼンテーションで参考になったところはありますか。
+			 具体的に述べてください。\\[2cm]
+ \item 今回の授業形態についてどのように感じましたか？自由に書いてくださ
+			 い。\\[2cm]
+ \item 今回の演習を通じで自分が成長できた点がありましたらお書きください。
+			 \\[2cm]
+ \item その他、授業に関して意見がありましたら遠慮なく書いてください。
+\end{enumerate}
+
+\end{document}
